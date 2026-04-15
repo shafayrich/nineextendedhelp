@@ -84,11 +84,13 @@
         .timer-display { font-size: 1.5em; font-weight: bold; font-family: monospace; padding: 5px 15px; background: #1e293b; color: #10b981; border-radius: 8px; border: 2px solid #10b981; display: flex; align-items: center; }
         .timer-display.danger { color: #ef4444; border-color: #ef4444; animation: pulse 1s infinite; }
 
-        .scratchpad-container { display: none; width: 100%; border: 2px solid var(--border); border-radius: 12px; margin-bottom: 30px; background: #fff; position: relative; }
-        #scratchpad { width: 100%; height: 300px; cursor: crosshair; touch-action: none; border-radius: 12px; }
-        .scratch-tools { position: absolute; top: 10px; right: 10px; display: flex; gap: 5px; }
-        .s-btn { padding: 5px 10px; background: #e2e8f0; border: none; border-radius: 5px; cursor: pointer; font-weight: bold; color: #334155; }
-        .s-btn:hover { background: #cbd5e1; }
+        /* Digital Notes Area */
+        .notes-container { display: none; width: 100%; border-radius: 12px; margin-bottom: 30px; position: relative; }
+        #digital-notes { width: 100%; height: 200px; padding: 20px; font-family: monospace; font-size: 1.1em; border: 2px solid var(--border); border-radius: 12px; background: var(--bg); color: var(--text-main); resize: vertical; }
+        #digital-notes:focus { outline: none; border-color: var(--accent); }
+        .notes-tools { position: absolute; top: 10px; right: 20px; display: flex; gap: 8px; }
+        .n-btn { padding: 6px 12px; background: var(--card-bg); border: 1px solid var(--border); border-radius: 6px; cursor: pointer; font-weight: bold; color: var(--text-main); }
+        .n-btn:hover { border-color: var(--accent); }
 
         .quiz-layout { display: flex; gap: 40px; align-items: flex-start; }
         .sidebar { width: 320px; position: sticky; top: 20px; background: var(--card-bg); padding: 25px; border-radius: 16px; border: 1px solid var(--border); flex-shrink: 0; }
@@ -134,8 +136,8 @@
         .btn-answer { background: rgba(239, 68, 68, 0.2); color: #dc2626; border: 1px solid #ef4444; display: none; }
         .btn-desmos { background: #1e293b; color: #38bdf8; border: 1px solid #38bdf8; display: none; }
         
-        /* FIXED: Hint box now perfectly hidden by default again! */
-        .hint-box { margin-top: 15px; padding: 15px 20px; background: rgba(245, 158, 11, 0.1); border-left: 5px solid var(--half); color: var(--half); border-radius: 0 8px 8px 0; display: none; }
+        /* HIDDEN BY DEFAULT TO PREVENT GLITCH */
+        .hint-box { margin-top: 15px; padding: 15px 20px; background: rgba(245, 158, 11, 0.1); border-left: 5px solid var(--half); color: var(--half); border-radius: 0 8px 8px 0; display: none !important; }
         
         .feedback { margin-top: 20px; padding: 20px; border-radius: 10px; display: none; font-size: 1.1em; }
         .feedback.show { display: block; }
@@ -242,25 +244,25 @@
         <h2>📝 Mastery Exam Simulator</h2>
         
         <div class="level-selector">
-            <button class="level-btn" id="btn-easy" onclick="loadQuizLevel('easy')">🟢 Easy Mode <span>10 Basics & Foundations</span></button>
-            <button class="level-btn" id="btn-normal" onclick="loadQuizLevel('normal')">🟡 Normal Mode <span>10 Standard Problems</span></button>
-            <button class="level-btn" id="btn-hard" onclick="loadQuizLevel('hard')">🟠 Hard Mode <span>10 Advanced Complexities</span></button>
-            <button class="level-btn" id="btn-final" onclick="loadQuizLevel('final')">🔴 Final MYP Exam <span>12 Real IB-Style Questions</span></button>
+            <button class="level-btn" id="btn-easy" onclick="loadQuizLevel('easy')">🟢 Easy Mode <span>12 Basics & Foundations</span></button>
+            <button class="level-btn" id="btn-normal" onclick="loadQuizLevel('normal')">🟡 Normal Mode <span>12 Standard Problems</span></button>
+            <button class="level-btn" id="btn-hard" onclick="loadQuizLevel('hard')">🟠 Hard Mode <span>12 Advanced Complexities</span></button>
+            <button class="level-btn" id="btn-final" onclick="loadQuizLevel('final')">🔴 Final MYP Exam <span>15 Real IB-Style Questions</span></button>
         </div>
 
         <div class="top-tools">
-            <button class="tool-btn" onclick="toggleScratchpad()">✍️ Toggle Digital Scratchpad</button>
+            <button class="tool-btn" onclick="toggleNotes()">📝 Toggle Digital Notes</button>
             <div class="timer-container">
                 <div class="timer-display" id="timer-display">45:00</div>
                 <button class="tool-btn" style="padding: 8px 15px; font-size: 0.9em;" onclick="promptCustomTime()" title="Change Timer">⚙️ Edit</button>
             </div>
         </div>
 
-        <div class="scratchpad-container" id="scratchpad-container">
-            <canvas id="scratchpad"></canvas>
-            <div class="scratch-tools">
-                <button class="s-btn" onclick="clearScratchpad()">Clear</button>
-                <button class="s-btn" onclick="toggleScratchpad()">Close</button>
+        <div class="notes-container" id="notes-container">
+            <textarea id="digital-notes" placeholder="Type your rough work, steps, and notes here..."></textarea>
+            <div class="notes-tools">
+                <button class="n-btn" onclick="clearNotes()">Clear Notes</button>
+                <button class="n-btn" onclick="toggleNotes()">Close</button>
             </div>
         </div>
 
@@ -336,51 +338,14 @@
         });
     }
 
-    // --- SCRATCHPAD LOGIC ---
-    let canvas = document.getElementById('scratchpad');
-    let ctx = canvas.getContext('2d');
-    let isDrawing = false;
-    
-    function resizeCanvas() {
-        let container = document.getElementById('scratchpad-container');
-        canvas.width = container.offsetWidth;
-        canvas.height = 300;
-        ctx.lineCap = 'round';
-        ctx.lineJoin = 'round';
-        ctx.lineWidth = 3;
-        ctx.strokeStyle = document.body.classList.contains('dark-mode') ? '#fff' : '#0f172a';
+    // --- DIGITAL NOTES LOGIC (Replaced Scratchpad) ---
+    function clearNotes() { 
+        document.getElementById('digital-notes').value = ''; 
     }
-
-    window.addEventListener('resize', resizeCanvas);
-
-    canvas.addEventListener('mousedown', startPos);
-    canvas.addEventListener('touchstart', startPos, {passive: true});
-    canvas.addEventListener('mouseup', endPos);
-    canvas.addEventListener('touchend', endPos);
-    canvas.addEventListener('mousemove', draw);
-    canvas.addEventListener('touchmove', draw, {passive: true});
-
-    function startPos(e) { isDrawing = true; draw(e); }
-    function endPos() { isDrawing = false; ctx.beginPath(); }
-    function draw(e) {
-        if (!isDrawing) return;
-        e.preventDefault();
-        let rect = canvas.getBoundingClientRect();
-        let clientX = e.clientX || (e.touches && e.touches[0].clientX);
-        let clientY = e.clientY || (e.touches && e.touches[0].clientY);
-        let x = clientX - rect.left;
-        let y = clientY - rect.top;
-        ctx.lineTo(x, y);
-        ctx.stroke();
-        ctx.beginPath();
-        ctx.moveTo(x, y);
-    }
-
-    function clearScratchpad() { ctx.clearRect(0, 0, canvas.width, canvas.height); }
-    function toggleScratchpad() {
-        let el = document.getElementById('scratchpad-container');
+    function toggleNotes() {
+        let el = document.getElementById('notes-container');
         if (el.style.display === 'block') { el.style.display = 'none'; } 
-        else { el.style.display = 'block'; resizeCanvas(); }
+        else { el.style.display = 'block'; document.getElementById('digital-notes').focus(); }
     }
 
     // --- TIMER LOGIC ---
@@ -470,68 +435,73 @@
         { title: "11. Inequalities & Signs", body: `<div class="tb-section"><h3>Solving Inequalities</h3><p>An inequality like <code>x<sup>2</sup> - 4 > 0</code> is asking: "For what x-values is the parabola ABOVE the x-axis?"</p><div class="fundamental-box"><h4>The 3 Steps</h4><ol><li><strong>Find the roots:</strong> Set the equation to 0 and solve (e.g. x=2, x=-2).</li><li><strong>Draw a Sign Diagram:</strong> Plot the roots on a number line.</li><li><strong>Determine the shape:</strong> Look at 'a'. If a > 0 (happy U-shape), the signs go <code>+  -  +</code>. If a < 0 (sad n-shape), the signs go <code>-  +  -</code>.</li></ol></div></div><div class="tb-section"><h3>Reading the Diagram</h3><p>If the question asks for <code>> 0</code>, you want the positive (+) regions. If it asks for <code>< 0</code>, you want the negative (-) regions.</p><p><strong>Example:</strong> For <code>x<sup>2</sup> - 4 > 0</code>, the parabola is U-shaped, so signs are <code>+  -  +</code>. The positive regions are on the outsides: <code>x < -2</code> OR <code>x > 2</code>.</p></div>` }
     ];
 
-    // --- QUIZ DATABASES (42 Qs) ---
+    // --- QUIZ DATABASES (TOTAL 51 QUESTIONS - ALL UPGRADED) ---
+    
+    // Easy: 12 Questions
     const easyQuiz = [
-        { type: 'mcq', needsGraph: false, q: "Simplify: x<sup>3</sup> &times; x<sup>5</sup>", opts: ["x<sup>8</sup>", "x<sup>15</sup>", "2x<sup>8</sup>", "x<sup>2</sup>"], ans: 0, exp: "Add the exponents: 3 + 5 = 8.", hint: "When multiplying identical bases, ADD the powers." },
-        { type: 'typed', needsGraph: false, q: "Expand using FOIL: (x + 2)(x + 4)", correctAnswers: ["x^2+6x+8", "x²+6x+8"], exp: "x*x = x². Outside: 4x. Inside: 2x. Last: 8. Combine: x² + 6x + 8.", hint: "First, Outside, Inside, Last. Then combine the middle two x terms." },
-        { type: 'mcq', needsGraph: false, q: "Evaluate: 16<sup>1/2</sup>", opts: ["4", "8", "32", "1/8"], ans: 0, exp: "A power of 1/2 is the same as a square root. The square root of 16 is 4.", hint: "What number multiplied by itself equals 16?" },
-        { type: 'mcq', needsGraph: false, q: "Factor out the GCF: 4x<sup>2</sup> - 12x", opts: ["4x(x - 3)", "4(x<sup>2</sup> - 3x)", "x(4x - 12)", "2x(2x - 6)"], ans: 0, exp: "The largest number is 4, largest letter is x. Pulling out 4x leaves (x - 3).", hint: "What is the biggest number AND letter that goes into both terms?" },
+        { type: 'typed', needsGraph: false, q: "Simplify: x<sup>3</sup> &times; x<sup>5</sup>", correctAnswers: ["x^8", "x⁸"], exp: "Add the exponents: 3 + 5 = 8.", hint: "When multiplying identical bases, ADD the powers." },
+        { type: 'typed', needsGraph: false, q: "Expand using FOIL: (x + 2)(x + 4)", correctAnswers: ["x^2+6x+8", "x²+6x+8", "8+6x+x^2"], exp: "x*x = x². Outside: 4x. Inside: 2x. Last: 8. Combine: x² + 6x + 8.", hint: "First, Outside, Inside, Last. Then combine the middle two x terms." },
+        { type: 'typed', needsGraph: false, q: "Evaluate: 16<sup>1/2</sup>", correctAnswers: ["4"], exp: "A power of 1/2 is the same as a square root. The square root of 16 is 4.", hint: "What number multiplied by itself equals 16?" },
+        { type: 'typed', needsGraph: false, q: "Factor out the GCF: 4x<sup>2</sup> - 12x", correctAnswers: ["4x(x-3)"], exp: "The largest number is 4, largest letter is x. Pulling out 4x leaves (x - 3).", hint: "What is the biggest number AND letter that goes into both terms?" },
         { type: 'mcq', needsGraph: false, q: "Solve for x: x(x - 5) = 0", opts: ["x = 0 or 5", "x = 5 only", "x = 0 or -5", "x = -5 only"], ans: 0, exp: "By the Null Factor Law, either the outside x is 0, or the bracket (x-5) is 0.", hint: "If two things multiply to zero, one of them must be zero." },
-        { type: 'mcq', needsGraph: false, q: "What is the y-intercept of y = 2x<sup>2</sup> + 3x - 8?", opts: ["(0, -8)", "(0, 2)", "(0, 3)", "(-8, 0)"], ans: 0, exp: "Set x = 0. Only the constant 'c' remains, which is -8.", hint: "The y-intercept always happens when x is 0." },
+        { type: 'typed', needsGraph: false, q: "What is the y-intercept of y = 2x<sup>2</sup> + 3x - 8? (Type just the number)", correctAnswers: ["-8"], exp: "Set x = 0. Only the constant 'c' remains, which is -8.", hint: "The y-intercept always happens when x is 0." },
         { type: 'typed', needsGraph: false, q: "Simplify fully: y<sup>8</sup> / y<sup>2</sup>", correctAnswers: ["y^6", "y⁶"], exp: "When dividing the same base, subtract the powers: 8 - 2 = 6.", hint: "Subtract the bottom power from the top power." },
         { type: 'mcq', needsGraph: false, q: "Which way does the parabola y = -x<sup>2</sup> + 4 open?", opts: ["Downwards (n-shape)", "Upwards (U-shape)", "Left", "Right"], ans: 0, exp: "Because 'a' is negative, it opens downwards (it is a 'sad' parabola).", hint: "Look at the sign in front of the x squared." },
-        { type: 'mcq', needsGraph: false, q: "Factor completely: x<sup>2</sup> - 25", opts: ["(x - 5)(x + 5)", "(x - 5)<sup>2</sup>", "(x - 25)(x + 1)", "x(x - 25)"], ans: 0, exp: "This is a Difference of Two Squares. Root of 25 is 5.", hint: "Create two brackets with opposite signs." },
-        { type: 'mcq', needsGraph: false, q: "What is the restricted domain of f(x) = 5 / (x - 2)?", opts: ["x &ne; 2", "x > 2", "x &ne; -2", "All real numbers"], ans: 0, exp: "The denominator cannot be 0. So x - 2 &ne; 0, meaning x &ne; 2.", hint: "The bottom of a fraction can never be zero." }
+        { type: 'typed', needsGraph: false, q: "Factor completely using Difference of Two Squares: x<sup>2</sup> - 25", correctAnswers: ["(x-5)(x+5)", "(x+5)(x-5)"], exp: "This is a Difference of Two Squares. Root of 25 is 5.", hint: "Create two brackets with opposite signs." },
+        { type: 'mcq', needsGraph: false, q: "What is the restricted domain of f(x) = 5 / (x - 2)?", opts: ["x &ne; 2", "x > 2", "x &ne; -2", "All real numbers"], ans: 0, exp: "The denominator cannot be 0. So x - 2 &ne; 0, meaning x &ne; 2.", hint: "The bottom of a fraction can never be zero." },
+        { type: 'typed', needsGraph: false, q: "Simplify: (x<sup>3</sup>)<sup>2</sup>", correctAnswers: ["x^6", "x⁶"], exp: "Power to a power means you multiply the exponents: 3 * 2 = 6.", hint: "When raising an exponent to another exponent, MULTIPLY them." },
+        { type: 'typed', needsGraph: false, q: "Evaluate: 2<sup>3</sup>", correctAnswers: ["8"], exp: "2 * 2 * 2 = 8", hint: "Multiply 2 by itself three times." }
     ];
 
+    // Normal: 12 Questions
     const normalQuiz = [
         { type: 'typed', needsGraph: false, q: "Factor the trinomial: x<sup>2</sup> + 7x + 10", correctAnswers: ["(x+5)(x+2)", "(x+2)(x+5)"], exp: "Numbers that multiply to 10 and add to 7 are +5 and +2.", hint: "Find two numbers that multiply to the last number and add to the middle number." },
-        { type: 'mcq', needsGraph: false, q: "Identify the vertex of y = 2(x - 3)<sup>2</sup> + 4", opts: ["(3, 4)", "(-3, 4)", "(3, -4)", "(2, 4)"], ans: 0, exp: "In vertex form, flip the inside sign, keep the outside. (3, 4).", hint: "Flip the sign inside the bracket, keep the sign outside." },
-        { type: 'mcq', needsGraph: false, q: "Convert y = (x - 2)<sup>2</sup> to standard form.", opts: ["y = x<sup>2</sup> - 4x + 4", "y = x<sup>2</sup> - 4", "y = x<sup>2</sup> + 4x - 4", "y = x<sup>2</sup> + 4"], ans: 0, exp: "Expand (x-2)(x-2) using FOIL to get x<sup>2</sup> - 2x - 2x + 4.", hint: "Write it out as two brackets multiplied together and use FOIL." },
+        { type: 'typed', needsGraph: false, q: "Identify the vertex of y = 2(x - 3)<sup>2</sup> + 4. Type the coordinate without spaces (e.g. (1,2))", correctAnswers: ["(3,4)", "3,4"], exp: "In vertex form, flip the inside sign, keep the outside. (3, 4).", hint: "Flip the sign inside the bracket, keep the sign outside." },
+        { type: 'typed', needsGraph: false, q: "Convert y = (x - 2)<sup>2</sup> to standard form.", correctAnswers: ["x^2-4x+4", "x²-4x+4"], exp: "Expand (x-2)(x-2) using FOIL to get x<sup>2</sup> - 2x - 2x + 4.", hint: "Write it out as two brackets multiplied together and use FOIL." },
         { type: 'typed', needsGraph: false, q: "Solve for x: x<sup>2</sup> - 9 = 0. (Write answer as two numbers separated by a comma, e.g. 5,-5)", correctAnswers: ["3,-3", "-3,3", "x=3,x=-3", "x=-3,x=3"], exp: "Move 9 to the other side: x² = 9. Take the square root to get 3 and -3.", hint: "Don't forget the negative square root!" },
-        { type: 'mcq', needsGraph: false, q: "Simplify fully: (2x<sup>2</sup>)<sup>3</sup>", opts: ["8x<sup>6</sup>", "6x<sup>6</sup>", "2x<sup>6</sup>", "8x<sup>5</sup>"], ans: 0, exp: "Cube the 2 (2*2*2=8) and multiply the powers (2*3=6).", hint: "The power of 3 applies to the number 2 as well!" },
-        { type: 'mcq', needsGraph: false, q: "Find the x-intercepts of y = x<sup>2</sup> - x - 12", opts: ["4 and -3", "-4 and 3", "12 and -1", "6 and -2"], ans: 0, exp: "Factor to (x - 4)(x + 3) = 0. The roots are x=4, x=-3.", hint: "Factor the equation first. Multiply to -12, add to -1." },
-        { type: 'mcq', needsGraph: false, q: "Simplify the fraction: (x<sup>2</sup> - 9) / (x - 3)", opts: ["x + 3", "x - 3", "x", "Cannot be simplified"], ans: 0, exp: "Factor top to (x-3)(x+3). Cancel the (x-3) from top and bottom.", hint: "Factor the top using Difference of Two Squares first." },
-        { type: 'mcq', needsGraph: true, eq1: "y=x^2-4x", q: "<span class='desmos-badge'>DESMOS TOOL</span> Graph <code>y = x<sup>2</sup> - 4x</code> below. What is the minimum y-value of this parabola?", opts: ["-4", "2", "0", "-2"], ans: 0, exp: "The vertex is at (2, -4). The minimum y-value is -4.", hint: "Open the graph. Click the absolute lowest point on the curve. What is the y-coordinate?" },
+        { type: 'typed', needsGraph: false, q: "Simplify fully: (2x<sup>2</sup>)<sup>3</sup>", correctAnswers: ["8x^6", "8x⁶"], exp: "Cube the 2 (2*2*2=8) and multiply the powers (2*3=6).", hint: "The power of 3 applies to the number 2 as well!" },
+        { type: 'typed', needsGraph: false, q: "Find the x-intercepts of y = x<sup>2</sup> - x - 12 (Write answer as two numbers separated by a comma)", correctAnswers: ["4,-3", "-3,4"], exp: "Factor to (x - 4)(x + 3) = 0. The roots are x=4, x=-3.", hint: "Factor the equation first. Multiply to -12, add to -1." },
+        { type: 'typed', needsGraph: false, q: "Simplify the fraction: (x<sup>2</sup> - 9) / (x - 3)", correctAnswers: ["x+3"], exp: "Factor top to (x-3)(x+3). Cancel the (x-3) from top and bottom.", hint: "Factor the top using Difference of Two Squares first." },
+        { type: 'typed', needsGraph: true, eq1: "y=x^2-4x", q: "<span class='desmos-badge'>DESMOS TOOL</span> Graph <code>y = x<sup>2</sup> - 4x</code> below. What is the minimum y-value of this parabola?", correctAnswers: ["-4"], exp: "The vertex is at (2, -4). The minimum y-value is -4.", hint: "Open the graph. Click the absolute lowest point on the curve. What is the y-coordinate?" },
         { type: 'mcq', needsGraph: false, q: "If the discriminant (&Delta;) is exactly 0, what does this mean?", opts: ["The parabola touches the x-axis exactly once", "It has two real roots", "It never touches the x-axis", "The y-intercept is 0"], ans: 0, exp: "A discriminant of 0 means there is exactly 1 repeated real root (the vertex is on the axis).", hint: "If the plus/minus part of the formula is 0, how many answers do you get?" },
-        { type: 'mcq', needsGraph: false, q: "What is the range of y = x<sup>2</sup> + 5?", opts: ["y &ge; 5", "y &le; 5", "All real numbers", "x &ge; 5"], ans: 0, exp: "Since x² can never be negative, the lowest the equation can go is 0 + 5 = 5.", hint: "What is the smallest possible value for anything squared?" }
+        { type: 'mcq', needsGraph: false, q: "What is the range of y = x<sup>2</sup> + 5?", opts: ["y &ge; 5", "y &le; 5", "All real numbers", "x &ge; 5"], ans: 0, exp: "Since x² can never be negative, the lowest the equation can go is 0 + 5 = 5.", hint: "What is the smallest possible value for anything squared?" },
+        { type: 'typed', needsGraph: false, q: "Expand: (x - 5)<sup>2</sup>", correctAnswers: ["x^2-10x+25", "x²-10x+25"], exp: "(x-5)(x-5) = x² - 5x - 5x + 25 = x² - 10x + 25.", hint: "Write out the bracket twice and FOIL it." },
+        { type: 'typed', needsGraph: false, q: "What is the GCF of 18x<sup>2</sup> and 27x?", correctAnswers: ["9x"], exp: "The largest number that goes into 18 and 27 is 9. They both share at least one 'x'. So, 9x.", hint: "Find the biggest number that divides 18 and 27." }
     ];
 
+    // Hard: 12 Questions
     const hardQuiz = [
         { type: 'typed', needsGraph: false, q: "Factor using the AC method: 2x<sup>2</sup> + 7x + 3", correctAnswers: ["(2x+1)(x+3)", "(x+3)(2x+1)"], exp: "a*c = 6. Factors of 6 adding to 7 are 6 and 1. Split middle: 2x² + 6x + 1x + 3. Group to get (2x+1)(x+3).", hint: "Multiply the first and last numbers. What multiplies to that, and adds to the middle?" },
-        { type: 'mcq', needsGraph: false, q: "Solve 2x<sup>2</sup> - 5x - 3 = 0", opts: ["x = 3, x = -0.5", "x = -3, x = 0.5", "x = 1.5, x = -1", "x = 3, x = 1"], ans: 0, exp: "Factor to (2x + 1)(x - 3) = 0. Roots are x = -1/2 and x = 3.", hint: "Factor using the AC method, or use the Quadratic Formula." },
+        { type: 'typed', needsGraph: false, q: "Solve 2x<sup>2</sup> - 5x - 3 = 0 (Type the two answers separated by a comma)", correctAnswers: ["3,-0.5", "-0.5,3", "3,-1/2", "-1/2,3"], exp: "Factor to (2x + 1)(x - 3) = 0. Roots are x = -1/2 and x = 3.", hint: "Factor using the AC method, or use the Quadratic Formula." },
         { type: 'mcq', needsGraph: false, q: "If &Delta; = -10, how many real roots does the quadratic have?", opts: ["0", "1", "2", "10"], ans: 0, exp: "A negative discriminant means you cannot take the square root, so there are no real roots.", hint: "Can you take the square root of a negative number?" },
-        
-        // NEW LENGHTY WORD PROBLEM 1
-        { type: 'mcq', needsGraph: false, q: "<strong>Optimization Word Problem:</strong> A farmer has 60 meters of fencing and wants to enclose a rectangular garden against a straight river (so no fencing is needed along the river). The area of the garden is modeled by the function <code>A(x) = x(60 - 2x)</code>, where <i>x</i> is the width of the garden. What is the maximum area the farmer can enclose, and what width produces this maximum area?", opts: ["Width = 15m, Area = 450m²", "Width = 30m, Area = 900m²", "Width = 20m, Area = 400m²", "Width = 10m, Area = 400m²"], ans: 0, exp: "Expand to A(x) = -2x² + 60x. The vertex is at x = -60 / -4 = 15. The max area is A(15) = 15(60 - 30) = 450m².", hint: "Expand the equation to standard form. Then use x = -b / (2a) to find the vertex (maximum)." },
-        
-        { type: 'mcq', needsGraph: false, q: "What is the equation if y = x<sup>2</sup> is shifted LEFT 3 and DOWN 4?", opts: ["y = (x + 3)<sup>2</sup> - 4", "y = (x - 3)<sup>2</sup> - 4", "y = (x + 3)<sup>2</sup> + 4", "y = (x - 3)<sup>2</sup> + 4"], ans: 0, exp: "Left 3 means (x+3) inside. Down 4 means -4 outside.", hint: "Inside the brackets is the opposite of logic (Left is +). Outside is normal." },
-        { type: 'mcq', needsGraph: false, q: "A parabola has x-intercepts at x = 2 and x = -4. What is the axis of symmetry?", opts: ["x = -1", "x = 1", "x = -2", "x = 3"], ans: 0, exp: "The axis is exactly halfway between the roots. (2 + -4) / 2 = -2 / 2 = -1.", hint: "Find the exact middle (average) of the two roots." },
+        { type: 'typed', needsGraph: false, q: "To complete the square for x<sup>2</sup> + 6x, what number must be added to the end?", correctAnswers: ["9"], exp: "Take half of 'b' (half of 6 is 3), then square it (3² = 9).", hint: "Take half of the middle number, then square it." },
+        { type: 'typed', needsGraph: false, q: "What is the equation if y = x<sup>2</sup> is shifted LEFT 3 and DOWN 4?", correctAnswers: ["y=(x+3)^2-4", "(x+3)^2-4", "y=(x+3)²-4"], exp: "Left 3 means (x+3) inside. Down 4 means -4 outside.", hint: "Inside the brackets is the opposite of logic (Left is +). Outside is normal." },
+        { type: 'typed', needsGraph: false, q: "A parabola has x-intercepts at x = 2 and x = -4. What is the axis of symmetry? (Type just the number)", correctAnswers: ["-1", "x=-1"], exp: "The axis is exactly halfway between the roots. (2 + -4) / 2 = -2 / 2 = -1.", hint: "Find the exact middle (average) of the two roots." },
         { type: 'mcq', needsGraph: false, q: "<strong>Multi-Step:</strong> Find the roots of y = x<sup>2</sup> - 6x + 8. If this graph is shifted UP by 2 units, what is the new y-intercept?", opts: ["(0, 10)", "(0, 8)", "(0, 2)", "(0, 6)"], ans: 0, exp: "Original y-intercept is (0,8). Shifting up 2 units makes the new y-intercept (0,10). The roots were a distractor!", hint: "You don't actually need the roots. Just look at the original y-intercept and shift it up." },
-        
-        // NEW LENGTHY WORD PROBLEM 2
-        { type: 'mcq', needsGraph: false, q: "<strong>Economics Word Problem:</strong> A theater club charges $10 per ticket and normally sells 100 tickets. They estimate that for every $1 increase in ticket price, they will sell 5 fewer tickets. The revenue is modeled by <code>R(x) = (10 + x)(100 - 5x)</code>, where <i>x</i> is the number of $1 price increases. What ticket price should they charge to maximize their revenue?", opts: ["$15", "$5", "$20", "$10"], ans: 0, exp: "The roots are x = -10 and x = 20. The vertex is halfway between them at x = 5. So they should do 5 price increases. New price = 10 + 5 = $15.", hint: "Find the two x-intercepts of the equation. The maximum revenue will occur exactly halfway between those two roots." },
-        
+        { type: 'typed', needsGraph: false, q: "<strong>Word Problem:</strong> A rocket's height is h(t) = -5t<sup>2</sup> + 20t + 25. At what time 't' does it hit the ground?", correctAnswers: ["5", "t=5"], exp: "Set h(t) = 0. Divide by -5: t² - 4t - 5 = 0. Factor: (t - 5)(t + 1) = 0. Time must be positive, so t = 5.", hint: "Set the equation to 0 and factor. Reject the negative time answer." },
         { type: 'typed', needsGraph: false, q: "Solve the inequality: x<sup>2</sup> - 16 > 0. Type the positive region only (e.g. x>4)", correctAnswers: ["x>4"], exp: "Roots are 4 and -4. It's a happy parabola, so it's > 0 on the outsides (x > 4 and x < -4).", hint: "Where is the parabola above the x-axis?" },
-        { type: 'mcq', needsGraph: true, eq1: "y=x^2", eq2: "y=2x+3", q: "<span class='desmos-badge'>DESMOS</span> Graph <code>y = x<sup>2</sup></code> and <code>y = 2x + 3</code>. At what x-coordinates do they intersect?", opts: ["3 and -1", "1 and -3", "2 and -1", "0 and 3"], ans: 0, exp: "They cross at (-1, 1) and (3, 9). The x-coordinates are -1 and 3.", hint: "Open the graph, find where the line and curve touch, and look at the x values." }
+        { type: 'typed', needsGraph: true, eq1: "y=x^2", eq2: "y=2x+3", q: "<span class='desmos-badge'>DESMOS</span> Graph <code>y = x<sup>2</sup></code> and <code>y = 2x + 3</code>. What is the POSITIVE x-coordinate where they intersect?", correctAnswers: ["3", "x=3"], exp: "They cross at (-1, 1) and (3, 9). The positive x-coordinate is 3.", hint: "Open the graph, find where the line and curve touch, and look at the positive x value." },
+        { type: 'typed', needsGraph: false, q: "Calculate the exact discriminant (&Delta;) of x<sup>2</sup> - 3x + 2", correctAnswers: ["1"], exp: "b² - 4ac = (-3)² - 4(1)(2) = 9 - 8 = 1.", hint: "Use the formula b² - 4ac" },
+        { type: 'typed', needsGraph: false, q: "Make x the subject of the formula: y = (x + 5) / 3", correctAnswers: ["3y-5", "x=3y-5", "-5+3y"], exp: "Multiply by 3: 3y = x + 5. Subtract 5: 3y - 5 = x.", hint: "First multiply both sides by 3 to remove the fraction." }
     ];
 
+    // Final Exam: 15 Questions
     const finalExam = [
-        { type: 'mcq', needsGraph: false, q: "<span class='level-badge lvl-1'>Level 1-2</span> Expand the brackets: 3x(x - 4)", opts: ["3x<sup>2</sup> - 12x", "3x<sup>2</sup> - 4", "3x - 12x", "x<sup>2</sup> - 12x"], ans: 0, exp: "Multiply 3x by x, and 3x by -4.", hint: "Multiply the outside term by EVERYTHING inside the bracket." },
+        { type: 'typed', needsGraph: false, q: "<span class='level-badge lvl-1'>Level 1-2</span> Expand the brackets: 3x(x - 4)", correctAnswers: ["3x^2-12x", "3x²-12x"], exp: "Multiply 3x by x, and 3x by -4.", hint: "Multiply the outside term by EVERYTHING inside the bracket." },
         { type: 'typed', needsGraph: false, q: "<span class='level-badge lvl-1'>Level 1-2</span> Factor completely: x<sup>2</sup> - 16", correctAnswers: ["(x-4)(x+4)", "(x+4)(x-4)"], exp: "Difference of Two Squares. The square root of 16 is 4.", hint: "Difference of squares. Create two brackets with opposite signs." },
-        { type: 'mcq', needsGraph: false, q: "<span class='level-badge lvl-3'>Level 3-4</span> Find the y-intercept of y = -3(x - 1)(x + 4)", opts: ["(0, 12)", "(0, -12)", "(0, -3)", "(0, 4)"], ans: 0, exp: "Set x=0: -3(-1)(4) = -3 * -4 = 12.", hint: "Substitute x = 0 into the equation and multiply the remaining numbers." },
+        { type: 'typed', needsGraph: false, q: "<span class='level-badge lvl-3'>Level 3-4</span> Find the y-intercept of y = -3(x - 1)(x + 4). Type the number only.", correctAnswers: ["12"], exp: "Set x=0: -3(-1)(4) = -3 * -4 = 12.", hint: "Substitute x = 0 into the equation and multiply the remaining numbers." },
         { type: 'typed', needsGraph: false, q: "<span class='level-badge lvl-3'>Level 3-4</span> Simplify fully: (x<sup>2</sup> - 25) / (x + 5)", correctAnswers: ["x-5"], exp: "Factor top to (x-5)(x+5). The (x+5) brackets cancel.", hint: "Factor the top first. Then cancel matching brackets." },
-        { type: 'mcq', needsGraph: false, q: "<span class='level-badge lvl-5'>Level 5-6</span> Factor completely: 3x<sup>2</sup> - 27", opts: ["3(x - 3)(x + 3)", "3(x<sup>2</sup> - 9)", "(3x - 9)(x + 3)", "x(3x - 27)"], ans: 0, exp: "Pull out GCF of 3 to get 3(x² - 9). Then factor DOTS to 3(x-3)(x+3).", hint: "Always look for a Greatest Common Factor before doing anything else!" },
-        { type: 'mcq', needsGraph: false, q: "<span class='level-badge lvl-5'>Level 5-6</span> Identify the vertex of y = -2x<sup>2</sup> + 12x - 10", opts: ["(3, 8)", "(-3, -64)", "(6, -10)", "(-2, 12)"], ans: 0, exp: "x = -12 / -4 = 3. Plug in 3: -2(9) + 36 - 10 = -18 + 36 - 10 = 8.", hint: "Use the formula x = -b / (2a) to find the x-coordinate first." },
+        { type: 'typed', needsGraph: false, q: "<span class='level-badge lvl-5'>Level 5-6</span> Factor completely: 3x<sup>2</sup> - 27", correctAnswers: ["3(x-3)(x+3)", "3(x+3)(x-3)"], exp: "Pull out GCF of 3 to get 3(x² - 9). Then factor DOTS to 3(x-3)(x+3).", hint: "Always look for a Greatest Common Factor before doing anything else!" },
+        { type: 'typed', needsGraph: false, q: "<span class='level-badge lvl-5'>Level 5-6</span> What is the x-coordinate of the vertex for y = -2x<sup>2</sup> + 12x - 10?", correctAnswers: ["3", "x=3"], exp: "x = -b / 2a = -12 / -4 = 3.", hint: "Use the formula x = -b / (2a) to find the x-coordinate." },
         { type: 'mcq', needsGraph: true, eq1: "y=0.5x^2-2x-5", q: "<span class='level-badge lvl-5'>Level 5-6</span> <span class='desmos-badge'>DESMOS</span> Find the positive root of <code>y = 0.5x<sup>2</sup> - 2x - 5</code> to 1 decimal place.", opts: ["5.7", "1.7", "7.4", "4.2"], ans: 0, exp: "Graphing shows roots at -1.742 and 5.742. The positive root is 5.7.", hint: "Open Desmos, look at where the curve crosses the positive right side of the x-axis." },
-        { type: 'mcq', needsGraph: false, q: "<span class='level-badge lvl-7'>Level 7-8</span> For what positive value of <i>k</i> does x<sup>2</sup> + kx + 9 = 0 have exactly ONE real root?", opts: ["6", "3", "9", "0"], ans: 0, exp: "One root means &Delta; = 0. So k² - 4(1)(9) = 0. k² - 36 = 0. k = 6.", hint: "For one root, the discriminant (b² - 4ac) must equal zero. Setup an equation for k." },
-        
-        // NEW LENGTHY WORD PROBLEM 3
-        { type: 'mcq', needsGraph: false, q: "<span class='level-badge lvl-7'>Level 7-8</span> <strong>Multi-Part Word Problem:</strong> A physics class launches a water balloon from the roof of the school. Its height in meters above the ground after <i>t</i> seconds is given by the function <code>h(t) = -5t² + 10t + 40</code>. Calculate the exact time the balloon hits the ground, and find the maximum height it reaches during its flight.", opts: ["Hits ground at 4s, Max height is 45m", "Hits ground at 8s, Max height is 40m", "Hits ground at 2s, Max height is 45m", "Hits ground at 4s, Max height is 50m"], ans: 0, exp: "Set h=0: -5(t² - 2t - 8) = -5(t - 4)(t + 2) = 0. Hits ground at t=4. Vertex x = -10 / -10 = 1. Plug in t=1: h(1) = -5(1) + 10(1) + 40 = 45m.", hint: "Part 1: Set the equation to 0 and factor to find the roots (time). Part 2: Find the vertex using -b/2a to get the maximum height." },
-        
-        { type: 'mcq', needsGraph: false, q: "<span class='level-badge lvl-7'>Level 7-8</span> A bridge arch is modeled by y = -0.1(x - 10)<sup>2</sup> + 10. What is the maximum height of the arch?", opts: ["10", "0.1", "20", "100"], ans: 0, exp: "This is vertex form! The vertex is (10, 10). The y-coordinate is the max height.", hint: "The equation is already in Vertex form. Look at the 'k' value outside the brackets." },
-        { type: 'mcq', needsGraph: false, q: "<span class='level-badge lvl-7'>Level 7-8</span> What is the GCF of 24x<sup>3</sup>y<sup>2</sup> and 36x<sup>2</sup>y<sup>4</sup>?", opts: ["12x<sup>2</sup>y<sup>2</sup>", "6x<sup>2</sup>y<sup>2</sup>", "12x<sup>3</sup>y<sup>4</sup>", "4xy"], ans: 0, exp: "Biggest number is 12. Lowest x power is x². Lowest y power is y².", hint: "Find the absolute largest number that divides 24 and 36." },
-        { type: 'mcq', needsGraph: true, eq1: "y=x^2-3x", eq2: "y=-x^2+5", q: "<span class='level-badge lvl-7'>Level 7-8</span> <span class='desmos-badge'>DESMOS</span> Find the intersection points of <code>y = x<sup>2</sup> - 3x</code> and <code>y = -x<sup>2</sup> + 5</code>.", opts: ["(-1, 4) and (2.5, -1.25)", "(1, -2) and (-2.5, -1.25)", "(0, 0) and (5, 0)", "They do not intersect"], ans: 0, exp: "Graphing both shows intersections at exactly x = -1 (y=4) and x = 2.5 (y=-1.25).", hint: "Graph both equations. Click the grey dots where the red and blue lines cross." }
+        { type: 'typed', needsGraph: false, q: "<span class='level-badge lvl-7'>Level 7-8</span> For what positive value of <i>k</i> does x<sup>2</sup> + kx + 9 = 0 have exactly ONE real root?", correctAnswers: ["6", "k=6"], exp: "One root means &Delta; = 0. So k² - 4(1)(9) = 0. k² - 36 = 0. k = 6.", hint: "For one root, the discriminant (b² - 4ac) must equal zero. Setup an equation for k." },
+        { type: 'mcq', needsGraph: false, q: "<span class='level-badge lvl-7'>Level 7-8</span> <strong>Optimization Word Problem:</strong> A farmer has 60 meters of fencing to enclose a garden against a river. The area is <code>A(x) = x(60 - 2x)</code>. What is the maximum area?", opts: ["450m²", "900m²", "400m²", "100m²"], ans: 0, exp: "Expand to A(x) = -2x² + 60x. Vertex x = -60 / -4 = 15. A(15) = 15(60 - 30) = 450m².", hint: "Expand the equation to standard form. Then use x = -b / (2a) to find the maximum." },
+        { type: 'mcq', needsGraph: false, q: "<span class='level-badge lvl-7'>Level 7-8</span> <strong>Economics Word Problem:</strong> Revenue is modeled by <code>R(x) = (10 + x)(100 - 5x)</code>, where <i>x</i> is the number of $1 price increases. How many increases maximize revenue?", opts: ["x = 5", "x = 10", "x = 20", "x = 15"], ans: 0, exp: "Roots are -10 and 20. Vertex is exactly halfway: (-10 + 20) / 2 = 5.", hint: "Find the two roots. The maximum revenue occurs exactly halfway between them." },
+        { type: 'typed', needsGraph: false, q: "<span class='level-badge lvl-7'>Level 7-8</span> A bridge arch is modeled by y = -0.1(x - 10)<sup>2</sup> + 10. What is the maximum height of the arch?", correctAnswers: ["10", "10m"], exp: "This is vertex form! The vertex is (10, 10). The y-coordinate is the max height.", hint: "The equation is already in Vertex form. Look at the 'k' value outside the brackets." },
+        { type: 'mcq', needsGraph: false, q: "<span class='level-badge lvl-7'>Level 7-8</span> <strong>Multi-Part:</strong> A physics class launches a balloon: <code>h(t) = -5t² + 10t + 40</code>. Find when it hits the ground, and its max height.", opts: ["Hits ground at 4s, Max height is 45m", "Hits ground at 8s, Max height is 40m", "Hits ground at 2s, Max height is 45m", "Hits ground at 4s, Max height is 50m"], ans: 0, exp: "Set h=0: -5(t-4)(t+2) = 0. Hits ground at t=4. Vertex x = -10/-10 = 1. Plug in t=1: h(1) = -5+10+40 = 45m.", hint: "Set the equation to 0 and factor to find time. Use -b/2a to find max height." },
+        { type: 'typed', needsGraph: false, q: "<span class='level-badge lvl-7'>Level 7-8</span> What is the GCF of 24x<sup>3</sup>y<sup>2</sup> and 36x<sup>2</sup>y<sup>4</sup>?", correctAnswers: ["12x^2y^2", "12x²y²"], exp: "Biggest number is 12. Lowest x power is x². Lowest y power is y².", hint: "Find the absolute largest number that divides 24 and 36." },
+        { type: 'mcq', needsGraph: true, eq1: "y=x^2-3x", eq2: "y=-x^2+5", q: "<span class='level-badge lvl-7'>Level 7-8</span> <span class='desmos-badge'>DESMOS</span> Find the intersection points of <code>y = x<sup>2</sup> - 3x</code> and <code>y = -x<sup>2</sup> + 5</code>.", opts: ["(-1, 4) and (2.5, -1.25)", "(1, -2) and (-2.5, -1.25)", "(0, 0) and (5, 0)", "They do not intersect"], ans: 0, exp: "Graphing both shows intersections at exactly x = -1 (y=4) and x = 2.5 (y=-1.25).", hint: "Graph both equations. Click the grey dots where the lines cross." },
+        { type: 'typed', needsGraph: false, q: "<span class='level-badge lvl-7'>Level 7-8</span> Evaluate without a calculator: 27<sup>2/3</sup>", correctAnswers: ["9"], exp: "Cube root of 27 is 3. Then square the 3 to get 9.", hint: "Take the cube root first, then square the result." }
     ];
 
     // --- QUIZ ENGINE LOGIC ---
@@ -662,7 +632,7 @@
             }
 
             html += `</div>
-            <div class="hint-box" id="hint-box-${qIndex}">${qData.hint}</div>
+            <div class="hint-box" style="display:none;" id="hint-box-${qIndex}">${qData.hint}</div>
             <div class="feedback" id="feedback-${qIndex}"></div>`;
 
             if (qData.needsGraph) {
