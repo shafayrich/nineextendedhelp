@@ -7,8 +7,18 @@
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='75' x='5' font-size='75' font-family='Times New Roman, serif' font-style='italic' font-weight='bold' fill='%230f4c81'>fx</text></svg>">
     
     <script>
-        MathJax = {
-            tex: { inlineMath: [['$', '$'], ['\\(', '\\)']] }
+        window.MathJax = {
+            tex: { inlineMath: [['$', '$'], ['\\(', '\\)']] },
+            startup: {
+                pageReady: () => {
+                    return MathJax.startup.defaultPageReady().then(() => {
+                        // Re-render math once the library is safely loaded
+                        if (typeof safeRenderMath === 'function') {
+                            safeRenderMath();
+                        }
+                    });
+                }
+            }
         };
     </script>
     <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
@@ -462,6 +472,14 @@
 </div>
 
 <script>
+    // --- SAFE MATH RENDERER ---
+    // This totally fixes the crash where questions disappear!
+    function safeRenderMath() {
+        if (window.MathJax && typeof window.MathJax.typesetPromise === 'function') {
+            window.MathJax.typesetPromise().catch((err) => console.log('MathJax Error:', err.message));
+        }
+    }
+
     // --- WEB AUDIO SYNTHESIZER (SOUND EFFECTS) ---
     const AudioContext = window.AudioContext || window.webkitAudioContext;
     let audioCtx;
@@ -976,7 +994,7 @@
         document.getElementById('arrow-exam').style.transform = 'rotate(0deg)';
         
         // Trigger MathJax on new questions
-        if (window.MathJax) { MathJax.typesetPromise([document.getElementById('quiz-container')]); }
+        safeRenderMath();
     }
 
     function shuffleArray(array) {
@@ -1158,7 +1176,7 @@
         document.getElementById(`show-ans-btn-${qIndex}`).style.display = 'inline-block';
         event.target.disabled = true;
         event.target.innerText = "Hint Used";
-        if (window.MathJax) { MathJax.typesetPromise([document.getElementById(`hint-box-${qIndex}`)]); }
+        safeRenderMath();
     }
 
     function useAnswer(qIndex) {
@@ -1282,9 +1300,7 @@
             }
         }
         
-        // Re-render math if answer string had $
-        if (window.MathJax) { MathJax.typesetPromise([feedbackDiv]); }
-
+        safeRenderMath();
         updateNavStyles();
     }
 
@@ -1369,7 +1385,7 @@
         document.getElementById('modalBody').scrollTop = 0;
         
         // Trigger MathJax for modal content
-        if (window.MathJax) { MathJax.typesetPromise([document.getElementById('modalBody')]); }
+        safeRenderMath();
     }
 
     window.closeModal = function() {
@@ -1388,7 +1404,7 @@
 
     // Auto-load on startup
     window.onload = () => {
-        loadQuizLevel('easy'); // Ensure quiz renders on first load
+        loadQuizLevel('easy'); // Ensure quiz renders safely on load
         renderTextbook();
         loadProgress();
     };
