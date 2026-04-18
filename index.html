@@ -39,20 +39,26 @@
         * { box-sizing: border-box; margin: 0; padding: 0; }
 
         body { font-family: 'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif; line-height: 1.7; color: var(--text-main); background: var(--bg); padding: 20px; transition: background 0.3s, color 0.3s; }
-        .app-container { max-width: 1400px; margin: 0 auto; position: relative; }
+        
+        /* RESPONSIVE FULL WIDTH */
+        .app-container { max-width: 96%; width: 1800px; margin: 0 auto; position: relative; }
         
         .dark-mode-toggle { position: absolute; top: 20px; right: 20px; background: rgba(255,255,255,0.2); border: 2px solid rgba(255,255,255,0.5); color: white; padding: 10px 20px; border-radius: 50px; cursor: pointer; font-weight: bold; transition: 0.3s; z-index: 10; }
         .dark-mode-toggle:hover { background: rgba(255,255,255,0.4); }
 
-        header { position: relative; text-align: center; padding: 60px 20px; background: linear-gradient(135deg, var(--primary), var(--accent)); color: white; border-radius: 16px; margin-bottom: 40px; box-shadow: 0 10px 30px rgba(15, 76, 129, 0.2); }
+        header { position: relative; text-align: center; padding: 60px 20px; background: linear-gradient(135deg, var(--primary), var(--accent)); color: white; border-radius: 16px; margin-bottom: 20px; box-shadow: 0 10px 30px rgba(15, 76, 129, 0.2); }
         header h1 { margin: 0; font-size: 2.8em; font-weight: 800; letter-spacing: -1px; }
         header p { margin: 10px 0 0 0; font-size: 1.2em; opacity: 0.9; font-weight: 300; }
+
+        /* GLOBAL SEARCH BAR */
+        .global-search-container { margin-bottom: 40px; }
+        .search-bar { width: 100%; padding: 20px 25px; font-size: 1.2em; border-radius: 12px; border: 2px solid var(--border); background: var(--card-bg); color: var(--text-main); box-shadow: 0 4px 20px rgba(0,0,0,0.05); transition: 0.3s; font-weight: 500; }
+        .search-bar:focus { outline: none; border-color: var(--accent); box-shadow: 0 4px 25px rgba(59, 130, 246, 0.15); }
 
         .card { background: var(--card-bg); padding: 40px; border-radius: 16px; box-shadow: 0 4px 20px rgba(0,0,0,0.04); margin-bottom: 40px; border: 1px solid var(--border); transition: background 0.3s, border-color 0.3s; }
         h2 { color: var(--primary); border-bottom: 3px solid var(--border); padding-bottom: 15px; margin-top: 0; margin-bottom: 25px; font-size: 2.2em; display: flex; align-items: center; gap: 12px; }
         
-        .search-bar { width: 100%; padding: 15px; font-size: 1.1em; border-radius: 8px; border: 2px solid var(--border); margin-bottom: 20px; background: var(--bg); color: var(--text-main); }
-        .glossary-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px; }
+        .glossary-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 20px; }
         .glossary-item { background: var(--bg); border: 1px solid var(--border); border-radius: 10px; padding: 20px; transition: all 0.3s ease; }
         .glossary-item:hover { border-color: var(--accent); transform: translateY(-3px); }
         .glossary-term { font-weight: 800; color: var(--accent); font-size: 1.15em; margin-bottom: 8px; display: block; text-transform: uppercase; }
@@ -60,7 +66,7 @@
 
         .desmos-container { border-radius: 12px; overflow: hidden; border: 2px solid var(--border); background: #fff; }
 
-        .recap-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 20px; }
+        .recap-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 20px; }
         .recap-box { background: var(--bg); padding: 25px; border-radius: 12px; border-left: 6px solid var(--primary); cursor: pointer; transition: 0.3s ease; border-top: 1px solid var(--border); border-right: 1px solid var(--border); border-bottom: 1px solid var(--border); color: var(--text-main); }
         .recap-box:hover { transform: translateY(-4px); background: var(--card-bg); box-shadow: 0 10px 25px rgba(0,0,0,0.1); }
         .recap-box h3 { margin-top: 0; margin-bottom: 10px; font-size: 1.3em; }
@@ -76,13 +82,18 @@
         .level-btn.active-hard { border-color: var(--level-hard); background: rgba(249, 115, 22, 0.1); color: var(--level-hard); }
         .level-btn.active-final { border-color: var(--level-final); background: rgba(220, 38, 38, 0.1); color: var(--level-final); }
 
-        .top-tools { display: flex; gap: 15px; margin-bottom: 20px; flex-wrap: wrap; align-items: center; }
+        .top-tools { display: flex; justify-content: space-between; gap: 15px; margin-bottom: 20px; flex-wrap: wrap; align-items: center; }
         .tool-btn { padding: 12px 25px; border-radius: 8px; border: 2px solid var(--accent); background: var(--bg); color: var(--accent); font-weight: bold; cursor: pointer; font-size: 1em; transition: 0.2s; display: flex; align-items: center; gap: 8px; }
         .tool-btn:hover { background: var(--accent); color: white; }
         
-        .timer-container { display: flex; align-items: center; gap: 10px; background: var(--bg); padding: 8px 15px; border-radius: 12px; border: 1px solid var(--border); }
-        .timer-display { font-size: 1.5em; font-weight: bold; font-family: monospace; padding: 5px 15px; background: #1e293b; color: #10b981; border-radius: 8px; border: 2px solid #10b981; display: flex; align-items: center; }
+        /* ADVANCED TIMER UI */
+        .timer-container { display: flex; align-items: center; gap: 15px; background: var(--bg); padding: 10px 20px; border-radius: 12px; border: 1px solid var(--border); flex-wrap: wrap; }
+        .timer-display { font-size: 1.6em; font-weight: bold; font-family: monospace; padding: 5px 15px; background: #1e293b; color: #10b981; border-radius: 8px; border: 2px solid #10b981; display: flex; align-items: center; letter-spacing: 2px; }
         .timer-display.danger { color: #ef4444; border-color: #ef4444; animation: pulse 1s infinite; }
+        .timer-controls { display: flex; gap: 8px; }
+        .t-btn { padding: 10px 15px; font-size: 0.95em; font-weight: bold; border-radius: 6px; cursor: pointer; border: 1px solid var(--border); background: var(--card-bg); color: var(--text-main); transition: 0.2s; }
+        .t-btn:hover:not(:disabled) { border-color: var(--accent); color: var(--accent); }
+        .t-btn:disabled { opacity: 0.4; cursor: not-allowed; background: var(--unanswered); }
 
         /* Digital Notes Area */
         .notes-container { display: none; width: 100%; border-radius: 12px; margin-bottom: 30px; position: relative; }
@@ -93,7 +104,7 @@
         .n-btn:hover { border-color: var(--accent); }
 
         .quiz-layout { display: flex; gap: 40px; align-items: flex-start; }
-        .sidebar { width: 320px; position: sticky; top: 20px; background: var(--card-bg); padding: 25px; border-radius: 16px; border: 1px solid var(--border); flex-shrink: 0; }
+        .sidebar { width: 340px; position: sticky; top: 20px; background: var(--card-bg); padding: 25px; border-radius: 16px; border: 1px solid var(--border); flex-shrink: 0; }
         .quiz-main { flex-grow: 1; min-width: 0; }
 
         .nav-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px; margin-bottom: 25px; }
@@ -108,8 +119,8 @@
         .toggle-switch input[type="checkbox"] { transform: scale(1.5); margin-right: 10px; cursor: pointer; accent-color: var(--correct); }
         #mode-label { font-size: 1em; font-weight: bold; color: var(--correct); }
         
-        .question-container { border: 1px solid var(--border); padding: 30px; border-radius: 12px; margin-bottom: 30px; background: var(--card-bg); }
-        .question-text { font-size: 1.3em; font-weight: 600; margin-bottom: 25px; }
+        .question-container { border: 1px solid var(--border); padding: 40px; border-radius: 12px; margin-bottom: 30px; background: var(--card-bg); }
+        .question-text { font-size: 1.3em; font-weight: 600; margin-bottom: 25px; line-height: 1.6; }
         
         .desmos-badge, .level-badge { padding: 4px 10px; border-radius: 6px; font-size: 0.7em; vertical-align: middle; margin-right: 12px; font-weight: bold; }
         .desmos-badge { background: #1e293b; color: #38bdf8; border: 1px solid #38bdf8; }
@@ -119,27 +130,31 @@
         .lvl-7 { background: rgba(153, 27, 27, 0.2); color: #dc2626; border: 1px solid #f87171; }
         
         .options { display: flex; flex-direction: column; gap: 12px; margin-bottom: 20px; }
-        .option-btn { text-align: left; padding: 18px 20px; background: var(--bg); border: 2px solid var(--border); border-radius: 10px; cursor: pointer; font-size: 1.1em; color: var(--text-main); font-weight: 500; }
+        .option-btn { text-align: left; padding: 18px 20px; background: var(--bg); border: 2px solid var(--border); border-radius: 10px; cursor: pointer; font-size: 1.1em; color: var(--text-main); font-weight: 500; transition: 0.2s; }
+        .option-btn:hover:not(:disabled) { border-color: var(--accent); }
         .option-btn.selected-option { border-color: var(--answered); background: rgba(148, 163, 184, 0.2); }
         .correct-btn { background: rgba(16, 185, 129, 0.2) !important; border-color: var(--correct) !important; color: var(--correct) !important; }
         .incorrect-btn { background: rgba(239, 68, 68, 0.2) !important; border-color: var(--incorrect) !important; color: var(--incorrect) !important; text-decoration: line-through; }
         
         .math-toolbar { display: flex; gap: 8px; margin-bottom: 10px; flex-wrap: wrap; background: var(--bg); padding: 10px; border-radius: 8px; border: 1px solid var(--border); }
         .math-btn { padding: 8px 15px; background: var(--card-bg); border: 1px solid var(--border); border-radius: 6px; cursor: pointer; font-weight: bold; font-family: monospace; font-size: 1.1em; color: var(--text-main); }
+        .math-btn:hover { border-color: var(--accent); }
+        
         .typed-input-container { display: flex; gap: 15px; margin-bottom: 20px; }
-        .typed-input { flex-grow: 1; padding: 18px; font-size: 1.3em; font-family: monospace; border: 2px solid var(--border); border-radius: 10px; background: var(--bg); color: var(--text-main); }
-        .check-btn { padding: 15px 30px; background: var(--primary); color: white; border: none; border-radius: 10px; cursor: pointer; font-size: 1.1em; font-weight: bold; }
+        .typed-input { flex-grow: 1; padding: 18px; font-size: 1.3em; font-family: monospace; border: 2px solid var(--border); border-radius: 10px; background: var(--bg); color: var(--text-main); transition: 0.3s; }
+        .check-btn { padding: 15px 30px; background: var(--primary); color: white; border: none; border-radius: 10px; cursor: pointer; font-size: 1.1em; font-weight: bold; transition: 0.2s; }
+        .check-btn:hover:not(:disabled) { background: var(--primary-hover); transform: translateY(-2px); }
 
         .action-row { display: flex; gap: 12px; margin-top: 20px; flex-wrap: wrap; }
-        .action-btn { padding: 10px 20px; border-radius: 8px; border: none; font-weight: bold; cursor: pointer; }
+        .action-btn { padding: 10px 20px; border-radius: 8px; border: none; font-weight: bold; cursor: pointer; transition: 0.2s; }
         .btn-hint { background: rgba(245, 158, 11, 0.2); color: #d97706; border: 1px solid #f59e0b; }
+        .btn-hint:hover:not(:disabled) { background: rgba(245, 158, 11, 0.3); }
         .btn-answer { background: rgba(239, 68, 68, 0.2); color: #dc2626; border: 1px solid #ef4444; display: none; }
         .btn-desmos { background: #1e293b; color: #38bdf8; border: 1px solid #38bdf8; display: none; }
         
-        /* HINT BOX HIDDEN SECURELY */
-        .hint-box { margin-top: 15px; padding: 15px 20px; background: rgba(245, 158, 11, 0.1); border-left: 5px solid var(--half); color: var(--half); border-radius: 0 8px 8px 0; display: none !important; }
+        .hint-box { margin-top: 15px; padding: 15px 20px; background: rgba(245, 158, 11, 0.1); border-left: 5px solid var(--half); color: var(--half); border-radius: 0 8px 8px 0; display: none !important; font-size: 1.05em; }
         
-        .feedback { margin-top: 20px; padding: 20px; border-radius: 10px; display: none; font-size: 1.1em; }
+        .feedback { margin-top: 20px; padding: 20px; border-radius: 10px; display: none; font-size: 1.1em; line-height: 1.6; }
         .feedback.show { display: block; }
         .feedback.success { background: rgba(16, 185, 129, 0.1); border-left: 6px solid var(--correct); color: var(--correct); }
         .feedback.half { background: rgba(245, 158, 11, 0.1); border-left: 6px solid var(--half); color: var(--half); }
@@ -149,19 +164,20 @@
         .question-desmos-wrapper iframe { width: 100%; height: 400px; border: none; display: block; background: #fff; }
 
         .submit-area { text-align: center; margin-top: 50px; padding-top: 30px; border-top: 3px dashed var(--border); }
-        .submit-btn { background: var(--primary); color: white; border: none; padding: 18px 50px; font-size: 1.4em; font-weight: bold; border-radius: 12px; cursor: pointer; }
+        .submit-btn { background: var(--primary); color: white; border: none; padding: 20px 60px; font-size: 1.5em; font-weight: bold; border-radius: 12px; cursor: pointer; transition: 0.3s; box-shadow: 0 10px 20px rgba(15, 76, 129, 0.2); }
+        .submit-btn:hover { background: var(--primary-hover); transform: translateY(-3px); }
         
         #final-results { display: none; margin-top: 40px; text-align: center; padding: 40px; background: linear-gradient(135deg, #1e293b, #0f172a); color: white; border-radius: 16px; border: 2px solid var(--accent); }
-        .score-display { font-size: 4em; font-weight: 800; color: var(--correct); margin: 15px 0; }
+        .score-display { font-size: 4.5em; font-weight: 800; color: var(--correct); margin: 15px 0; }
         .myp-grade { font-size: 2.5em; background: var(--accent); display: inline-block; padding: 15px 40px; border-radius: 50px; font-weight: bold; margin-top: 15px; }
 
-        .history-board { margin-top: 30px; background: var(--bg); padding: 20px; border-radius: 12px; color: var(--text-main); text-align: left; }
+        .history-board { margin-top: 40px; background: var(--bg); padding: 25px; border-radius: 12px; color: var(--text-main); text-align: left; }
         .history-board h3 { border-bottom: 2px solid var(--border); padding-bottom: 10px; margin-bottom: 15px; }
         .history-list { list-style: none; padding: 0; }
-        .history-list li { padding: 10px; border-bottom: 1px solid var(--border); display: flex; justify-content: space-between; }
+        .history-list li { padding: 15px; border-bottom: 1px solid var(--border); display: flex; justify-content: space-between; font-size: 1.1em; }
 
         .modal-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(15, 23, 42, 0.85); z-index: 1000; backdrop-filter: blur(8px); }
-        .modal-content { position: fixed; top: 5%; left: 50%; transform: translateX(-50%); background: var(--card-bg); padding: 0; border-radius: 16px; width: 95%; max-width: 1000px; height: 90vh; display: flex; flex-direction: column; overflow: hidden; z-index: 1001; }
+        .modal-content { position: fixed; top: 5%; left: 50%; transform: translateX(-50%); background: var(--card-bg); padding: 0; border-radius: 16px; width: 95%; max-width: 1200px; height: 90vh; display: flex; flex-direction: column; overflow: hidden; z-index: 1001; }
         .modal-header { padding: 25px 35px; background: var(--bg); border-bottom: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; }
         .modal-header h2 { margin: 0; font-size: 1.8em; color: var(--primary); border: none; padding: 0; }
         .modal-body { padding: 40px; overflow-y: auto; flex-grow: 1; font-size: 1.15em; line-height: 1.8; color: var(--text-main); }
@@ -169,7 +185,7 @@
         .close-btn:hover { background: #dc2626; transform: scale(1.05); }
         
         .tb-section { margin-bottom: 40px; }
-        .tb-section h3 { color: var(--accent); border-bottom: 2px dashed var(--border); padding-bottom: 10px; margin-bottom: 20px; }
+        .tb-section h3 { color: var(--accent); border-bottom: 2px dashed var(--border); padding-bottom: 10px; margin-bottom: 20px; font-size: 1.5em; }
         .fundamental-box { background: rgba(245, 158, 11, 0.1); border-left: 5px solid var(--half); padding: 20px; margin: 20px 0; border-radius: 0 8px 8px 0; }
         .fundamental-box h4 { margin: 0 0 10px 0; color: var(--half); font-size: 1.2em; }
         .example-box { background: rgba(59, 130, 246, 0.1); padding: 25px; border-left: 5px solid var(--primary); margin: 20px 0; border-radius: 0 8px 8px 0; font-family: monospace; font-size: 1.05em; }
@@ -190,22 +206,19 @@
             background-color: var(--accent); 
             color: white; 
             cursor: pointer; 
-            padding: 15px 20px; 
+            padding: 15px 25px; 
             border-radius: 50px; 
-            font-size: 1em; 
+            font-size: 1.1em; 
             font-weight: bold;
             box-shadow: 0 4px 15px rgba(0,0,0,0.3);
             transition: background-color 0.3s, transform 0.3s;
         }
-        #backToTopBtn:hover {
-            background-color: var(--primary); 
-            transform: translateY(-5px);
-        }
+        #backToTopBtn:hover { background-color: var(--primary); transform: translateY(-5px); }
 
         @keyframes fall { 0% { opacity: 1; transform: translateY(-10vh) rotate(0deg); } 100% { opacity: 1; transform: translateY(110vh) rotate(720deg); } }
         @keyframes pulse { 0% { transform: scale(1); } 50% { transform: scale(1.05); } 100% { transform: scale(1); } }
 
-        @media (max-width: 1000px) { .quiz-layout { flex-direction: column; } .sidebar { width: 100%; position: static; margin-bottom: 30px; } .level-selector { flex-direction: column; } }
+        @media (max-width: 1200px) { .quiz-layout { flex-direction: column; } .sidebar { width: 100%; position: static; margin-bottom: 30px; } .level-selector { flex-direction: column; } .top-tools { flex-direction: column; align-items: stretch; } .timer-container { justify-content: center; } }
     </style>
 </head>
 <body>
@@ -219,25 +232,28 @@
         <p>Interactive Textbook, Adaptive Mastery Quiz & Graphing Toolkit</p>
     </header>
 
-    <div class="card">
+    <div class="global-search-container">
+        <input type="text" id="global-search" class="search-bar" placeholder="🔍 Search the entire guide (Glossary terms, Textbook chapters...)" onkeyup="globalSearch()">
+    </div>
+
+    <div class="card" id="glossary-section">
         <h2>📖 Core Dictionary & Glossary</h2>
-        <input type="text" id="glossary-search" class="search-bar" placeholder="🔍 Search dictionary terms (e.g. Discriminant, Vertex...)" onkeyup="filterGlossary()">
         <div class="glossary-grid" id="glossary-grid">
             <div class="glossary-item"><span class="glossary-term">Vertex / Vertices</span><p class="glossary-def">The highest (maximum) or lowest (minimum) turning point of a parabola. Found exactly on the axis of symmetry.</p></div>
             <div class="glossary-item"><span class="glossary-term">Roots / X-Intercepts</span><p class="glossary-def">The points where a graph crosses the x-axis. Also known as "solutions" or "zeros" because they occur where y = 0.</p></div>
-            <div class="glossary-item"><span class="glossary-term">Y-Intercept</span><p class="glossary-def">The specific point where the graph crosses the y-axis (where x = 0). In y = ax² + bx + c, the y-intercept is 'c'.</p></div>
+            <div class="glossary-item"><span class="glossary-term">Y-Intercept</span><p class="glossary-def">The specific point where the graph crosses the y-axis (where x = 0). In y = ax<sup>2</sup> + bx + c, the y-intercept is 'c'.</p></div>
             <div class="glossary-item"><span class="glossary-term">Domain</span><p class="glossary-def">The complete set of all possible <i>input values</i> (x-values) that a function can accept without breaking mathematical rules.</p></div>
             <div class="glossary-item"><span class="glossary-term">Range</span><p class="glossary-def">The complete set of all possible resulting <i>output values</i> (y-values) that a function produces.</p></div>
             <div class="glossary-item"><span class="glossary-term">Parabola</span><p class="glossary-def">The perfectly symmetrical U-shaped or upside-down U-shaped curve created when graphing a quadratic equation.</p></div>
-            <div class="glossary-item"><span class="glossary-term">Discriminant (&Delta;)</span><p class="glossary-def">The expression b² - 4ac (found inside the square root of the quadratic formula). It reveals exactly how many roots the equation has.</p></div>
-            <div class="glossary-item"><span class="glossary-term">Coefficient</span><p class="glossary-def">The number explicitly multiplying a variable. In the term 5x², the coefficient is 5. If it's just x², the coefficient is an invisible 1.</p></div>
+            <div class="glossary-item"><span class="glossary-term">Discriminant (&Delta;)</span><p class="glossary-def">The expression b<sup>2</sup> - 4ac (found inside the square root of the quadratic formula). It reveals exactly how many roots the equation has.</p></div>
+            <div class="glossary-item"><span class="glossary-term">Coefficient</span><p class="glossary-def">The number explicitly multiplying a variable. In the term 5x<sup>2</sup>, the coefficient is 5. If it's just x<sup>2</sup>, the coefficient is an invisible 1.</p></div>
             <div class="glossary-item"><span class="glossary-term">GCF</span><p class="glossary-def">Greatest Common Factor. The largest shared number or variable that divides evenly into all terms of an expression.</p></div>
-            <div class="glossary-item"><span class="glossary-term">Indices / Exponents</span><p class="glossary-def">A superscript number indicating how many times a base is multiplied by itself (e.g., in x³, 3 is the index).</p></div>
+            <div class="glossary-item"><span class="glossary-term">Indices / Exponents</span><p class="glossary-def">A superscript number indicating how many times a base is multiplied by itself (e.g., in x<sup>3</sup>, 3 is the index).</p></div>
             <div class="glossary-item"><span class="glossary-term">Axis of Symmetry</span><p class="glossary-def">The invisible vertical mirror line dividing a parabola perfectly in half. Calculated using the formula x = -b / (2a).</p></div>
             <div class="glossary-item"><span class="glossary-term">Asymptote</span><p class="glossary-def">An invisible line that a graph continually approaches but never physically touches or crosses.</p></div>
             <div class="glossary-item"><span class="glossary-term">Binomial</span><p class="glossary-def">An algebraic expression containing exactly two terms, usually connected by a plus or minus (e.g., x + 4).</p></div>
             <div class="glossary-item"><span class="glossary-term">Factorise</span><p class="glossary-def">The reverse of expanding. Taking an expanded expression and compressing it back into multiplied brackets.</p></div>
-            <div class="glossary-item"><span class="glossary-term">Inequality</span><p class="glossary-def">A mathematical statement comparing two quantities that are not equal, using symbols like <, >, ≤, or ≥.</p></div>
+            <div class="glossary-item"><span class="glossary-term">Inequality</span><p class="glossary-def">A mathematical statement comparing two quantities that are not equal, using symbols like &lt;, &gt;, &le;, or &ge;.</p></div>
             <div class="glossary-item"><span class="glossary-term">Sign Diagram</span><p class="glossary-def">A 1D number line used to determine where a function is positive (+) or negative (-) by testing intervals between roots.</p></div>
         </div>
     </div>
@@ -245,14 +261,14 @@
     <div class="card">
         <h2>📈 Global Graphing Sandbox (Powered by Desmos)</h2>
         <div class="desmos-container">
-            <iframe src="https://www.desmos.com/calculator?hideExpressions=false" width="100%" height="450px" frameborder="0"></iframe>
+            <iframe src="https://www.desmos.com/calculator?hideExpressions=false" width="100%" height="500px" frameborder="0"></iframe>
         </div>
     </div>
 
-    <div class="card">
+    <div class="card" id="textbook-section">
         <h2>📚 The Extended Syllabus (Interactive Textbook)</h2>
-        <p style="color: var(--text-muted); margin-bottom: 20px; font-size: 1.1em;">Click on any chapter to view detailed rules, formulas, and multiple step-by-step examples.</p>
-        <div class="recap-grid">
+        <p style="color: var(--text-muted); margin-bottom: 20px; font-size: 1.1em;">Click on any chapter to view highly detailed rules, formulas, and step-by-step beginner examples.</p>
+        <div class="recap-grid" id="textbook-grid">
             <div class="recap-box" onclick="openModal(0)"><h3>1. Fractions & Indices</h3><span class="click-hint">Read Chapter &rarr;</span></div>
             <div class="recap-box" onclick="openModal(1)"><h3>2. Factoring Basics</h3><span class="click-hint">Read Chapter &rarr;</span></div>
             <div class="recap-box" onclick="openModal(2)"><h3>3. Solving Equations</h3><span class="click-hint">Read Chapter &rarr;</span></div>
@@ -279,9 +295,14 @@
 
         <div class="top-tools">
             <button class="tool-btn" onclick="toggleNotes()">📝 Toggle Digital Notes</button>
+            
             <div class="timer-container">
                 <div class="timer-display" id="timer-display">45:00</div>
-                <button class="tool-btn" style="padding: 8px 15px; font-size: 0.9em;" onclick="promptCustomTime()" title="Change Timer">⚙️ Edit</button>
+                <div class="timer-controls">
+                    <button class="t-btn" id="btn-timer-start" onclick="toggleTimer()">▶️ Start</button>
+                    <button class="t-btn" id="btn-timer-edit" onclick="promptCustomTime()" title="Change Timer">⚙️ Edit</button>
+                    <button class="t-btn" id="btn-timer-lock" onclick="lockTimer()" title="Lock Timer settings">🔒 Lock</button>
+                </div>
             </div>
         </div>
 
@@ -368,11 +389,20 @@
         document.body.classList.toggle('dark-mode');
     }
 
-    // --- GLOSSARY SEARCH ---
-    function filterGlossary() {
-        let search = document.getElementById('glossary-search').value.toLowerCase();
-        let items = document.querySelectorAll('.glossary-item');
-        items.forEach(item => {
+    // --- GLOBAL SEARCH LOGIC ---
+    function globalSearch() {
+        let search = document.getElementById('global-search').value.toLowerCase();
+        
+        // Filter Glossary
+        let gItems = document.querySelectorAll('.glossary-item');
+        gItems.forEach(item => {
+            let text = item.innerText.toLowerCase();
+            item.style.display = text.includes(search) ? 'block' : 'none';
+        });
+
+        // Filter Textbook Chapters
+        let tItems = document.querySelectorAll('.recap-box');
+        tItems.forEach(item => {
             let text = item.innerText.toLowerCase();
             item.style.display = text.includes(search) ? 'block' : 'none';
         });
@@ -388,9 +418,11 @@
         else { el.style.display = 'block'; document.getElementById('digital-notes').focus(); }
     }
 
-    // --- TIMER LOGIC ---
+    // --- ADVANCED TIMER LOGIC ---
     let timerInterval;
     let timeRemaining;
+    let timerRunning = false;
+    let timerLocked = false;
     
     let defaultTimes = {
         'easy': 15,
@@ -399,27 +431,43 @@
         'final': 45
     };
 
-    function startTimer(minutes) {
+    function initTimer(minutes) {
         clearInterval(timerInterval);
+        timerRunning = false;
+        timerLocked = false;
         timeRemaining = minutes * 60;
-        let display = document.getElementById('timer-display');
-        display.style.display = 'flex';
-        display.classList.remove('danger');
+        
+        document.getElementById('btn-timer-start').innerText = "▶️ Start";
+        document.getElementById('btn-timer-edit').disabled = false;
+        document.getElementById('btn-timer-lock').disabled = false;
+        document.getElementById('timer-display').classList.remove('danger');
         
         updateTimerDisplay();
+    }
 
-        timerInterval = setInterval(() => {
-            timeRemaining--;
-            updateTimerDisplay();
+    function toggleTimer() {
+        if(timerRunning) {
+            clearInterval(timerInterval);
+            timerRunning = false;
+            document.getElementById('btn-timer-start').innerText = "▶️ Resume";
+        } else {
+            timerRunning = true;
+            document.getElementById('btn-timer-start').innerText = "⏸️ Pause";
             
-            if (timeRemaining <= 300 && timeRemaining > 0) display.classList.add('danger'); // 5 mins left
-            if (timeRemaining <= 0) {
-                clearInterval(timerInterval);
-                display.innerText = "00:00";
-                alert("Time's up! Submitting quiz.");
-                submitQuiz();
-            }
-        }, 1000);
+            timerInterval = setInterval(() => {
+                timeRemaining--;
+                updateTimerDisplay();
+                
+                if (timeRemaining <= 300 && timeRemaining > 0) document.getElementById('timer-display').classList.add('danger');
+                if (timeRemaining <= 0) {
+                    clearInterval(timerInterval);
+                    timerRunning = false;
+                    document.getElementById('timer-display').innerText = "00:00";
+                    alert("Time's up! Submitting quiz automatically.");
+                    submitQuiz();
+                }
+            }, 1000);
+        }
     }
 
     function updateTimerDisplay() {
@@ -429,16 +477,28 @@
         display.innerText = `${m < 10 ? '0' : ''}${m}:${s < 10 ? '0' : ''}${s}`;
     }
 
-    function stopTimer() {
-        clearInterval(timerInterval);
-    }
-
     function promptCustomTime() {
-        let t = prompt("Enter minutes for this quiz:", Math.floor(timeRemaining / 60) || defaultTimes[currentMode]);
+        if(timerLocked) return;
+        let t = prompt("Enter minutes for this quiz:", Math.floor(timeRemaining / 60));
         if(t !== null && !isNaN(t) && t > 0) {
             defaultTimes[currentMode] = parseInt(t);
-            startTimer(parseInt(t));
+            initTimer(parseInt(t));
         }
+    }
+
+    function lockTimer() {
+        if(timerLocked) return;
+        if(confirm("Are you sure you want to lock the timer? You won't be able to edit the time once locked!")) {
+            timerLocked = true;
+            document.getElementById('btn-timer-edit').disabled = true;
+            document.getElementById('btn-timer-lock').disabled = true;
+        }
+    }
+
+    function stopTimer() {
+        clearInterval(timerInterval);
+        timerRunning = false;
+        document.getElementById('btn-timer-start').innerText = "▶️ Start";
     }
 
     // --- CONFETTI LOGIC ---
@@ -460,17 +520,17 @@
         setTimeout(() => { container.style.display = 'none'; }, 6000);
     }
 
-    // --- FULL 11 DETAILED TEXTBOOK CHAPTERS (Fixed Formatting) ---
+    // --- FULL 11 DETAILED TEXTBOOK CHAPTERS ---
     const modalContent = [
-        { title: "1. Algebraic Fractions & Indices", body: `<div class="tb-section"><h3>The Core Rules of Exponents</h3><div class="fundamental-box"><h4>Indices = Mathematical Shorthand</h4><p>Instead of writing <code>x * x * x * x * x</code>, we write <code>x<sup>5</sup></code>. The 'x' is the base, and '5' is the index/power/exponent.</p></div><ul><li><strong>Multiplication Rule:</strong> When multiplying the same base, ADD the powers. <code>x<sup>3</sup> &times; x<sup>4</sup> = x<sup>7</sup></code>.</li><li><strong>Division Rule:</strong> When dividing the same base, SUBTRACT the powers. <code>x<sup>8</sup> / x<sup>2</sup> = x<sup>6</sup></code>.</li><li><strong>Power to a Power:</strong> When an exponent is raised to another exponent, MULTIPLY them. <code>(x<sup>3</sup>)<sup>4</sup> = x<sup>12</sup></code>.</li></ul><div class="example-box"><strong>Example 1:</strong> Simplify (3x<sup>2</sup>)<sup>3</sup><br>The power of 3 applies to the number 3 AND the x<sup>2</sup>.<br>3<sup>3</sup> = 27<br>(x<sup>2</sup>)<sup>3</sup> = x<sup>6</sup><br>Final Answer: 27x<sup>6</sup></div></div><div class="tb-section"><h3>Advanced: Negative & Fractional Indices</h3><p><strong>Negative Indices:</strong> A negative power means division, or moving the base to the other side of the fraction line. It flips the base. <br><code>x<sup>-3</sup> = 1 / x<sup>3</sup></code>.</p><p><strong>Fractional Indices:</strong> The denominator of the fraction tells you the root, and the numerator tells you the power. Think "Roots in the ground (bottom), Power in the sky (top)".<br><code>x<sup>2/3</sup></code> means: take the <strong>cube root</strong> of x, and then <strong>square</strong> the result.</p><div class="example-box"><strong>Example 2:</strong> Evaluate 16<sup>3/4</sup><br>1. Root on bottom: 4th root of 16 is 2 (since 2 &times; 2 &times; 2 &times; 2 = 16).<br>2. Power on top: 2<sup>3</sup> = 8.<br>Final Answer: 8</div></div><div class="tb-section"><h3>Simplifying Algebraic Fractions</h3><div class="fundamental-box"><h4>THE GOLDEN RULE OF FRACTIONS</h4><p>You can <strong>NEVER</strong> cross out or cancel individual terms that are separated by a plus (+) or minus (-) sign. You can ONLY cancel out things that are multiplied together (factors).</p></div><p><strong>Correct Method:</strong> To simplify <code>(x<sup>2</sup> - 9) / (x + 3)</code>, you must factor the top first.<br>1. Factor top (Difference of Two Squares): <code>(x - 3)(x + 3)</code><br>2. Rewrite fraction: <code>(x - 3)(x + 3) / (x + 3)</code><br>3. Cancel the matching bracket: Final answer is <code>x - 3</code>.</p><div class="example-box"><strong>Example 3:</strong> Simplify (x<sup>2</sup> - 16) / (x<sup>2</sup> + 4x)<br>1. Factor Top (DOTS): (x - 4)(x + 4)<br>2. Factor Bottom (GCF): x(x + 4)<br>3. Cancel matching (x + 4) brackets.<br>Final Answer: (x - 4) / x</div></div>` },
-        { title: "2. Factoring & Product Notation", body: `<div class="tb-section"><h3>What is Factoring?</h3><p>Factoring is the exact reverse of expanding. When you expand, you multiply terms into brackets. When you factor, you pull terms out and put the brackets back in. It is essential for solving equations.</p></div><div class="tb-section"><h3>Technique 1: The GCF (Greatest Common Factor)</h3><div class="fundamental-box"><h4>Always Check This First!</h4><p>Before trying any complex quadratic rules, look at your expression and ask: Is there a number or a letter that divides evenly into EVERY term?</p></div><p><strong>Example:</strong> Factor <code>12x<sup>3</sup> - 18x<sup>2</sup></code></p><ul><li>Look at the numbers (12 and 18): The biggest number that goes into both is <strong>6</strong>.</li><li>Look at the letters (x<sup>3</sup> and x<sup>2</sup>): The most you can pull out is <strong>x<sup>2</sup></strong>.</li><li>Pull out the GCF (6x<sup>2</sup>) and leave the rest in brackets: <code>6x<sup>2</sup>(2x - 3)</code>.</li></ul><div class="example-box"><strong>Example 2:</strong> Factor 15x<sup>3</sup>y - 20x<sup>2</sup>y<sup>2</sup><br>1. Numbers: GCF of 15 and 20 is 5.<br>2. x variables: They share x<sup>2</sup>.<br>3. y variables: They share y.<br>4. Pull out 5x<sup>2</sup>y: 5x<sup>2</sup>y(3x - 4y)</div></div><div class="tb-section"><h3>Technique 2: Difference of Two Squares (DOTS)</h3><p>If you see exactly two terms, separated by a minus sign, and both are perfect squares, you can use DOTS.</p><div class="example-box"><strong>Formula:</strong> a<sup>2</sup> - b<sup>2</sup> = (a - b)(a + b)</div><p><strong>Example:</strong> <code>x<sup>2</sup> - 49</code> becomes <code>(x - 7)(x + 7)</code> because x &times; x = x<sup>2</sup> and 7 &times; 7 = 49.</p><div class="example-box"><strong>Example 3:</strong> Factor 4x<sup>2</sup> - 81<br>1. Square root of 4x<sup>2</sup> is 2x.<br>2. Square root of 81 is 9.<br>Final Answer: (2x - 9)(2x + 9)</div></div>` },
-        { title: "3. Solving Equations", body: `<div class="tb-section"><h3>The Balance Scale</h3><div class="fundamental-box"><h4>The Golden Rule of Algebra</h4><p>An equation is a balanced scale. Whatever operation you perform on one side of the equals sign, you MUST perform on the exact same operation on the other side.</p></div><p>To solve for a variable, you want to isolate it. You do this by performing the <strong>opposite operations</strong> in the <strong>reverse order of BEDMAS/PEMDAS</strong>. You peel away the outer layers first.</p><div class="example-box"><strong>Example 1:</strong> Make x the subject of y = (x + 5) / 3<br>1. Multiply both sides by 3: 3y = x + 5<br>2. Subtract 5 from both sides: 3y - 5 = x<br>Final Answer: x = 3y - 5</div></div><div class="tb-section"><h3>Solving Quadratic Equations (Null Factor Law)</h3><div class="fundamental-box"><h4>The 5 Steps to Solve Quadratics</h4><ol><li>If necessary, rearrange the equation so one side is zero.</li><li>Fully factorise the other side.</li><li>Use the Null Factor Law (A &times; B = 0 &rarr; A = 0 or B = 0).</li><li>Solve the resulting linear equations.</li><li>Check at least one of your solutions.</li></ol></div><div class="example-box"><strong>Example 2:</strong> Solve 5x<sup>2</sup> = 3x + 2<br>1. Rearrange to zero: 5x<sup>2</sup> - 3x - 2 = 0<br>2. Factor (AC method): (5x + 2)(x - 1) = 0<br>3. Null Factor: 5x + 2 = 0 OR x - 1 = 0<br>4. Solve: x = -2/5 OR x = 1</div><div class="example-box"><strong>Example 3 (Algebraic Fractions):</strong> Solve (x + 5) / 4 = (9 - x) / x<br>1. Cross-multiply to remove fractions: x(x + 5) = 4(9 - x)<br>2. Expand brackets: x<sup>2</sup> + 5x = 36 - 4x<br>3. Rearrange to zero: x<sup>2</sup> + 9x - 36 = 0<br>4. Factor trinomial: (x + 12)(x - 3) = 0<br>5. Solve: x = -12 OR x = 3</div></div>` },
-        { title: "4. Function Notation, Domain & Range", body: `<div class="tb-section"><h3>The Function Machine</h3><div class="fundamental-box"><h4>f(x) is just y in a tuxedo</h4><p><code>f(x)</code> is read as "f of x". It means "The output of function f, when the input is x". If <code>f(x) = 2x + 1</code>, then finding <code>f(5)</code> just means replacing every 'x' with a 5: <code>2(5) + 1 = 11</code>.</p></div></div><div class="tb-section"><h3>Domain (The Inputs)</h3><p>The Domain is the list of all acceptable x-values. For most standard equations (like lines and parabolas), you can plug in any number, so the domain is "All Real Numbers". However, you must restrict the domain to prevent math errors.</p><ul><li><strong>Rule 1 (Fractions):</strong> You cannot divide by zero. In <code>f(x) = 10 / (x - 3)</code>, x cannot be 3. Domain: <code>x &ne; 3</code>.</li><li><strong>Rule 2 (Roots):</strong> You cannot take the square root of a negative number. In <code>f(x) = &radic;(x - 4)</code>, the inside must be 0 or bigger. Domain: <code>x &ge; 4</code>.</li></ul><div class="example-box"><strong>Example 1:</strong> Find the domain of f(x) = 12 / (x<sup>2</sup> - 25)<br>1. The bottom cannot be 0. So x<sup>2</sup> - 25 &ne; 0.<br>2. Factor to (x - 5)(x + 5) &ne; 0.<br>Domain: x &ne; 5 and x &ne; -5.</div></div><div class="tb-section"><h3>Range (The Outputs)</h3><p>The Range is the list of all possible y-values that the machine can spit out. To find it, think about limits or sketch the graph. For example, in <code>y = x<sup>2</sup> + 2</code>, the lowest x<sup>2</sup> can ever be is 0. So the lowest the whole equation can be is 0 + 2 = 2. Range: <code>y &ge; 2</code>.</p><div class="example-box"><strong>Example 2:</strong> Find the range of y = -x<sup>2</sup> + 10<br>1. The highest -x<sup>2</sup> can ever be is 0 (it is usually negative).<br>2. 0 + 10 = 10. <br>Range: y &le; 10.</div></div>` },
-        { title: "5. Forms of Quadratics", body: `<div class="tb-section"><h3>The Anatomy of a Parabola</h3><p>A quadratic always graphs as a symmetrical U-shape (or upside-down U) called a parabola. Every parabola has a <strong>vertex</strong> (its lowest/highest point), a <strong>y-intercept</strong>, and 0, 1, or 2 <strong>x-intercepts</strong> (roots).</p></div><div class="tb-section"><h3>The Three Forms</h3><p>We write quadratic equations in three different ways depending on what information we want to see quickly.</p><div class="example-box"><strong>1. Standard Form: </strong> y = ax<sup>2</sup> + bx + c<br>- Best for finding the <strong>y-intercept</strong>. It's simply the coordinate (0, c).</div><div class="example-box"><strong>2. Factored (Intercept) Form: </strong> y = a(x - p)(x - q)<br>- Best for finding the <strong>x-intercepts (roots)</strong>. Set the brackets to 0. The roots are x=p and x=q (Notice the signs flip!).</div><div class="example-box"><strong>3. Vertex Form: </strong> y = a(x - h)<sup>2</sup> + k<br>- Best for finding the <strong>vertex (turning point)</strong>. The vertex is exactly at (h, k). Note that the 'h' sign flips, but 'k' stays the same.</div></div><div class="tb-section"><h3>Converting Between Forms</h3><p>You can always switch between these forms using expanding or factoring.</p><div class="example-box"><strong>Example:</strong> Convert y = 2(x - 3)<sup>2</sup> - 5 to Standard Form.<br>1. Expand brackets first: 2(x<sup>2</sup> - 6x + 9) - 5<br>2. Distribute the 2: 2x<sup>2</sup> - 12x + 18 - 5<br>3. Combine terms: y = 2x<sup>2</sup> - 12x + 13</div></div>` },
-        { title: "6. Complex Factoring", body: `<div class="tb-section"><h3>The AC Method (Split the Middle)</h3><p>When you have a trinomial like <code>2x<sup>2</sup> + 7x + 3</code>, you cannot simply find two numbers that multiply to 3 and add to 7. Because the leading coefficient ('a') is not 1, you must use the AC Method.</p><div class="fundamental-box"><h4>The 4 Steps of AC Method</h4><ol><li>Multiply the first and last numbers (a &times; c).</li><li>Find two magic numbers that multiply to your AC and add to your middle term b.</li><li>Split the middle term into two pieces using your magic numbers.</li><li>Factor by grouping (split down the middle and pull out GCFs).</li></ol></div><div class="example-box"><strong>Example 1:</strong> Factor 6x<sup>2</sup> - 7x - 3<br><br>1. AC = 6 &times; -3 = -18.<br>2. Magic numbers multiplying to -18 and adding to -7 are <strong>-9 and 2</strong>.<br>3. Split middle: 6x<sup>2</sup> - 9x + 2x - 3<br>4. Factor left half: 3x(2x - 3)<br>5. Factor right half: +1(2x - 3)<br>6. Notice (2x - 3) matches. Pull it out.<br>Final Answer: (3x + 1)(2x - 3)</div><div class="example-box"><strong>Example 2:</strong> Factor 2x<sup>2</sup> - x - 10<br><br>1. AC = 2 &times; -10 = -20.<br>2. Magic numbers multiplying to -20 and adding to -1 are <strong>-5 and 4</strong>.<br>3. Split middle: 2x<sup>2</sup> - 5x + 4x - 10<br>4. Group: x(2x - 5) + 2(2x - 5)<br>Final Answer: (x + 2)(2x - 5)</div></div>` },
-        { title: "7. Quadratic Formula & Discriminant", body: `<div class="tb-section"><h3>The Ultimate Tool</h3><p>When factoring is impossible (the numbers are too ugly or decimals), the Quadratic Formula will always find the exact x-intercepts for an equation in the form <code>ax<sup>2</sup> + bx + c = 0</code>.</p><div class="example-box"><strong>Formula:</strong> x = [-b &plusmn; &radic;(b<sup>2</sup> - 4ac)] / 2a</div><p>Remember that the &plusmn; means you must split your calculation at the very end into two separate equations (one with plus, one with minus) to find both roots.</p><div class="example-box"><strong>Example 1:</strong> Solve 3x<sup>2</sup> - 5x - 7 = 0<br>1. a=3, b=-5, c=-7<br>2. Plug in: x = [5 &plusmn; &radic;(25 - 4(3)(-7))] / 6<br>3. Simplify inside root: x = [5 &plusmn; &radic;(25 + 84)] / 6 = [5 &plusmn; &radic;109] / 6<br>4. Two answers: x = [5 + &radic;109] / 6 AND x = [5 - &radic;109] / 6</div></div><div class="tb-section"><h3>The Discriminant (&Delta;)</h3><div class="fundamental-box"><h4>&Delta; = b<sup>2</sup> - 4ac</h4><p>This is the specific chunk of math located <i>inside</i> the square root of the formula. Calculating it beforehand tells you what type of graph you are dealing with.</p></div><ul><li><strong>&Delta; > 0 (Positive):</strong> You can take the square root of a positive number, creating a + and - version. Result: <strong>Two distinct real roots.</strong> (The parabola crosses the x-axis twice).</li><li><strong>&Delta; = 0 (Zero):</strong> The square root of 0 is 0. The &plusmn; part vanishes. Result: <strong>One repeated root.</strong> (The vertex of the parabola sits perfectly on the x-axis, touching it once).</li><li><strong>&Delta; < 0 (Negative):</strong> You cannot take the square root of a negative number in real math. It breaks. Result: <strong>No real roots.</strong> (The parabola floats entirely above or entirely below the x-axis, never touching it).</li></ul></div>` },
-        { title: "8. Transformations", body: `<div class="tb-section"><h3>Moving the Parabola</h3><p>We analyze transformations by looking at vertex form: <code>y = a(x - h)<sup>2</sup> + k</code>.</p><ul><li><strong>Vertical Shifts (+k):</strong> A number added at the very end of the equation shifts the graph up and down exactly as it looks. <code>+ 5</code> means UP 5. <code>- 3</code> means DOWN 3.</li><li><strong>Horizontal Shifts (+h):</strong> A number inside the brackets with the 'x' shifts the graph left and right, but it goes the <strong>opposite</strong> direction to logic. <code>(x - 4)<sup>2</sup></code> shifts RIGHT 4. <code>(x + 2)<sup>2</sup></code> shifts LEFT 2.</li><li><strong>Vertical Stretch/Dilation ('a'):</strong> If 'a' is a large whole number (e.g., 5), the parabola gets vertically stretched (it looks skinnier/steeper). If 'a' is a fraction (e.g., 0.25), it gets vertically compressed (it looks wider/flatter).</li><li><strong>Reflection (Negative 'a'):</strong> If there is a minus sign at the very front, the U-shape flips upside down to become an 'n' shape.</li></ul><div class="example-box"><strong>Example:</strong> Describe the transformations of y = -2(x + 3)<sup>2</sup> - 5 from the base y = x<sup>2</sup><br>1. The minus sign reflects it upside down.<br>2. The 2 stretches it vertically (makes it steeper).<br>3. The (x + 3) shifts it LEFT by 3 units.<br>4. The -5 shifts it DOWN by 5 units.</div></div>` },
-        { title: "9. Graph to Equation", body: `<div class="tb-section"><h3>Working Backwards (Graph to Equation)</h3><p>Often, exams will give you a picture of a parabola and ask you to create the equation. You must play detective and choose the right template.</p><p><strong>Scenario A: They give you the Vertex.</strong><br>1. Use the Vertex Form template: y = a(x - h)<sup>2</sup> + k.<br>2. Plug the vertex coordinates into h and k (remember to flip the h sign!).<br>3. Pick any other random clear coordinate point (x, y) on the graph.<br>4. Substitute those x and y values into your equation. The only letter left is 'a'.<br>5. Use algebra to solve for 'a', then write your final equation.</p><div class="example-box"><strong>Example A:</strong> Graph has vertex (2, -3) and passes through (4, 5).<br>1. Template: y = a(x - 2)<sup>2</sup> - 3<br>2. Sub in (4,5): 5 = a(4 - 2)<sup>2</sup> - 3<br>3. Solve: 5 = a(2)<sup>2</sup> - 3 &rarr; 5 = 4a - 3 &rarr; 8 = 4a &rarr; a = 2<br>Final Equation: y = 2(x - 2)<sup>2</sup> - 3</div><p><strong>Scenario B: They give you the X-Intercepts.</strong><br>1. Use the Factored Form template: y = a(x - p)(x - q).<br>2. Plug the intercepts into p and q (flip their signs!).<br>3. Pick any other random point (like the y-intercept) and sub it in for x and y.<br>4. Solve for 'a', and write the final equation.</p><div class="example-box"><strong>Example B:</strong> Graph crosses x-axis at -1 and 3, and crosses y-axis at (0, -6).<br>1. Template: y = a(x + 1)(x - 3)<br>2. Sub in (0,-6): -6 = a(0 + 1)(0 - 3)<br>3. Solve: -6 = a(1)(-3) &rarr; -6 = -3a &rarr; a = 2<br>Final Equation: y = 2(x + 1)(x - 3)</div></div>` },
+        { title: "1. Algebraic Fractions & Indices", body: `<div class="tb-section"><h3>The Core Rules of Exponents</h3><div class="fundamental-box"><h4>Indices = Mathematical Shorthand</h4><p>Instead of writing <code>x &times; x &times; x &times; x &times; x</code>, we write <code>x<sup>5</sup></code>. The 'x' is the base, and '5' is the index/power/exponent.</p></div><ul><li><strong>Multiplication Rule:</strong> When multiplying the same base, ADD the powers. <code>x<sup>3</sup> &times; x<sup>4</sup> = x<sup>7</sup></code>.</li><li><strong>Division Rule:</strong> When dividing the same base, SUBTRACT the powers. <code>x<sup>8</sup> / x<sup>2</sup> = x<sup>6</sup></code>.</li><li><strong>Power to a Power:</strong> When an exponent is raised to another exponent, MULTIPLY them. <code>(x<sup>3</sup>)<sup>4</sup> = x<sup>12</sup></code>.</li></ul><div class="example-box"><strong>Example 1:</strong> Simplify (3x<sup>2</sup>)<sup>3</sup><br>The power of 3 applies to the number 3 AND the x<sup>2</sup>.<br>3<sup>3</sup> = 27<br>(x<sup>2</sup>)<sup>3</sup> = x<sup>6</sup><br>Final Answer: 27x<sup>6</sup></div></div><div class="tb-section"><h3>Advanced: Negative & Fractional Indices</h3><p><strong>Negative Indices:</strong> A negative power means division, or moving the base to the other side of the fraction line. It flips the base. <br><code>x<sup>-3</sup> = 1 / x<sup>3</sup></code>.</p><p><strong>Fractional Indices:</strong> The denominator of the fraction tells you the root, and the numerator tells you the power. Think "Roots in the ground (bottom), Power in the sky (top)".<br><code>x<sup>2/3</sup></code> means: take the <strong>cube root</strong> of x, and then <strong>square</strong> the result.</p><div class="example-box"><strong>Example 2:</strong> Evaluate 16<sup>3/4</sup><br>1. Root on bottom: 4th root of 16 is 2 (since 2 &times; 2 &times; 2 &times; 2 = 16).<br>2. Power on top: 2<sup>3</sup> = 8.<br>Final Answer: 8</div></div><div class="tb-section"><h3>Simplifying Algebraic Fractions</h3><div class="fundamental-box"><h4>THE GOLDEN RULE OF FRACTIONS</h4><p>You can <strong>NEVER</strong> cross out or cancel individual terms that are separated by a plus (+) or minus (-) sign. You can ONLY cancel out things that are multiplied together (factors).</p></div><p><strong>Correct Method:</strong> To simplify <code>(x<sup>2</sup> - 9) / (x + 3)</code>, you must factor the top first.<br>1. Factor top (Difference of Two Squares): <code>(x - 3)(x + 3)</code><br>2. Rewrite fraction: <code>(x - 3)(x + 3) / (x + 3)</code><br>3. Cancel the matching bracket: Final answer is <code>x - 3</code>.</p></div>` },
+        { title: "2. Factoring Basics (When there is NO equals sign)", body: `<div class="tb-section"><h3>Expression vs. Equation</h3><p>Before we factor, we must know what we are looking at. An <strong>Expression</strong> (like <code>x<sup>2</sup> + 5x + 6</code>) has NO equals sign. You cannot "solve" it to find what x is. You can only <strong>factor</strong> it (rewrite it as multiplied brackets).</p></div><div class="tb-section"><h3>Technique 1: Greatest Common Factor (GCF)</h3><div class="fundamental-box"><h4>Always Check This First!</h4><p>Before trying complex rules, ask: Is there a number or letter that divides evenly into EVERY term?</p></div><div class="example-box"><strong>Example:</strong> Factor 15x<sup>3</sup> - 20x<sup>2</sup><br>1. Biggest number dividing 15 and 20 is <strong>5</strong>.<br>2. They both share at least <strong>x<sup>2</sup></strong>.<br>3. Pull 5x<sup>2</sup> to the front: 5x<sup>2</sup>(3x - 4)</div></div><div class="tb-section"><h3>Technique 2: Basic Trinomials (x<sup>2</sup> + bx + c)</h3><p>When the number in front of x<sup>2</sup> is an invisible 1, factoring is easy. Find two numbers that <strong>MULTIPLY</strong> to the last number (c) and <strong>ADD</strong> to the middle number (b).</p><div class="example-box"><strong>Example:</strong> Factor x<sup>2</sup> + 7x + 10<br>1. Multiply to 10? (1 &times; 10) or (2 &times; 5).<br>2. Which pair adds to 7? (2 + 5 = 7).<br>3. Write your brackets: (x + 2)(x + 5)</div></div><div class="tb-section"><h3>Technique 3: Difference of Two Squares (DOTS)</h3><p>If you see exactly two terms, separated by a minus sign, and both are perfect squares, you can use DOTS: <code>a<sup>2</sup> - b<sup>2</sup> = (a - b)(a + b)</code>.</p><div class="example-box"><strong>Example:</strong> Factor 4x<sup>2</sup> - 81<br>1. Square root of 4x<sup>2</sup> is 2x.<br>2. Square root of 81 is 9.<br>Final Answer: (2x - 9)(2x + 9)</div></div>` },
+        { title: "3. Solving Equations (When it EQUALS something)", body: `<div class="tb-section"><h3>The Goal: Find 'x'</h3><p>An <strong>Equation</strong> has an equals sign (like <code>x<sup>2</sup> + 7x + 10 = 0</code>). This means we can actually find the specific number(s) that 'x' represents.</p></div><div class="tb-section"><h3>The Null Factor Law (When it = 0)</h3><div class="fundamental-box"><h4>The Magic of Zero</h4><p>If I tell you that two hidden numbers multiply to equal zero (A &times; B = 0), what do you know for a FACT? <strong>At least one of those numbers MUST be zero.</strong> We use this rule to solve factored quadratics!</p></div><div class="example-box"><strong>Example:</strong> Solve x<sup>2</sup> + 7x + 10 = 0<br>1. Factor the expression: (x + 2)(x + 5) = 0<br>2. Because they multiply to 0, either the first bracket is 0, or the second bracket is 0.<br>3. Set up two mini-equations:<br>&nbsp;&nbsp;&nbsp;x + 2 = 0 &rarr; x = -2<br>&nbsp;&nbsp;&nbsp;x + 5 = 0 &rarr; x = -5<br>Final Answer: x = -2 or x = -5</div></div><div class="tb-section"><h3>What if it DOES NOT = 0?</h3><p>You <strong>cannot</strong> use the Null Factor Law if the equation equals 8, or 12, or anything other than 0. You must force one side to be zero first by moving terms across the equals sign (remember to flip their sign!).</p><div class="example-box"><strong>Example:</strong> Solve x<sup>2</sup> + 7x = -10<br>1. It does not equal zero! Move the -10 to the other side by adding 10.<br>2. New equation: x<sup>2</sup> + 7x + 10 = 0<br>3. Now you can factor and solve just like the previous example!</div><div class="example-box"><strong>Example 2 (Fractions):</strong> Solve (x + 5) / 4 = (9 - x) / x<br>1. Cross-multiply to remove fractions: x(x + 5) = 4(9 - x)<br>2. Expand brackets: x<sup>2</sup> + 5x = 36 - 4x<br>3. Move EVERYTHING to the left to make it = 0: x<sup>2</sup> + 9x - 36 = 0<br>4. Factor: (x + 12)(x - 3) = 0<br>5. Solve: x = -12 or x = 3</div></div>` },
+        { title: "4. Function Notation, Domain & Range", body: `<div class="tb-section"><h3>The Function Machine</h3><div class="fundamental-box"><h4>f(x) is just y in a tuxedo</h4><p><code>f(x)</code> is read as "f of x". It means "The output of function f, when the input is x". If <code>f(x) = 2x + 1</code>, then finding <code>f(5)</code> just means replacing every 'x' with a 5: <code>2(5) + 1 = 11</code>.</p></div></div><div class="tb-section"><h3>Domain (The Inputs)</h3><p>The Domain is the list of all acceptable x-values. For most standard equations (like lines and parabolas), you can plug in any number, so the domain is "All Real Numbers". However, you must restrict the domain to prevent math errors.</p><ul><li><strong>Rule 1 (Fractions):</strong> You cannot divide by zero. In <code>f(x) = 10 / (x - 3)</code>, x cannot be 3. Domain: <code>x &ne; 3</code>.</li><li><strong>Rule 2 (Roots):</strong> You cannot take the square root of a negative number. In <code>f(x) = &radic;(x - 4)</code>, the inside must be 0 or bigger. Domain: <code>x &ge; 4</code>.</li></ul></div><div class="tb-section"><h3>Range (The Outputs)</h3><p>The Range is the list of all possible y-values that the machine can spit out. To find it, think about limits or sketch the graph. For example, in <code>y = x<sup>2</sup> + 2</code>, the lowest x<sup>2</sup> can ever be is 0. So the lowest the whole equation can be is 0 + 2 = 2. Range: <code>y &ge; 2</code>.</p></div>` },
+        { title: "5. Forms of Quadratics", body: `<div class="tb-section"><h3>The Anatomy of a Parabola</h3><p>A quadratic always graphs as a symmetrical U-shape (or upside-down U) called a parabola. Every parabola has a <strong>vertex</strong> (its lowest/highest point), a <strong>y-intercept</strong>, and 0, 1, or 2 <strong>x-intercepts</strong> (roots).</p></div><div class="tb-section"><h3>The Three Forms</h3><p>We write quadratic equations in three different ways depending on what information we want to see quickly.</p><div class="example-box"><strong>1. Standard Form: </strong> y = ax<sup>2</sup> + bx + c<br>- Best for finding the <strong>y-intercept</strong>. It's simply the coordinate (0, c).</div><div class="example-box"><strong>2. Factored (Intercept) Form: </strong> y = a(x - p)(x - q)<br>- Best for finding the <strong>x-intercepts (roots)</strong>. Set the brackets to 0. The roots are x=p and x=q (Notice the signs flip!).</div><div class="example-box"><strong>3. Vertex Form: </strong> y = a(x - h)<sup>2</sup> + k<br>- Best for finding the <strong>vertex (turning point)</strong>. The vertex is exactly at (h, k). Note that the 'h' sign flips, but 'k' stays the same.</div></div>` },
+        { title: "6. Complex Factoring (When 'a' is not 1)", body: `<div class="tb-section"><h3>The Problem</h3><p>When the number in front of x<sup>2</sup> is NOT 1 (for example, <code>2x<sup>2</sup> + 7x + 3</code>), the simple "What multiplies to the last and adds to the middle?" trick <strong>will not work</strong>. You must use the <strong>AC Method</strong> (also called "Split the Middle").</p></div><div class="tb-section"><h3>The AC Method: Step-by-Step</h3><div class="fundamental-box"><h4>The 4 Steps</h4><ol><li><strong>Multiply:</strong> Multiply the very first number (a) and the very last number (c).</li><li><strong>Magic Numbers:</strong> Find two numbers that multiply to that new "AC" number, AND add to the middle number (b).</li><li><strong>Split:</strong> Replace the middle term with your two magic numbers.</li><li><strong>Group:</strong> Cut the equation in half. Factor the left side. Factor the right side. Pull out the matching bracket.</li></ol></div><div class="example-box"><strong>Beginner Friendly Example 1:</strong> Factor 2x<sup>2</sup> + 7x + 3<br><br><strong>Step 1:</strong> Multiply a &times; c &rarr; 2 &times; 3 = <strong>6</strong>.<br><br><strong>Step 2:</strong> Find magic numbers. What multiplies to 6 and adds to the middle number (7)?<br>&nbsp;&nbsp;&nbsp;The numbers are <strong>6</strong> and <strong>1</strong>.<br><br><strong>Step 3:</strong> Split the middle term (7x) into 6x and 1x.<br>&nbsp;&nbsp;&nbsp;<code>2x<sup>2</sup> + 6x + 1x + 3</code><br><br><strong>Step 4:</strong> Group and factor.<br>&nbsp;&nbsp;&nbsp;Left side: <code>2x<sup>2</sup> + 6x</code> &rarr; Pull out 2x &rarr; <code>2x(x + 3)</code><br>&nbsp;&nbsp;&nbsp;Right side: <code>1x + 3</code> &rarr; Pull out 1 &rarr; <code>+1(x + 3)</code><br><br>Notice how both sides now have an <code>(x + 3)</code> bracket? That means you did it right! Pull that matching bracket to the front, and put the leftovers (2x and +1) in their own bracket.<br><br><strong>Final Factored Answer:</strong> (x + 3)(2x + 1)</div><div class="example-box"><strong>Beginner Friendly Example 2:</strong> Factor 6x<sup>2</sup> - 7x - 3<br><br>1. Multiply 6 &times; -3 = <strong>-18</strong>.<br>2. Magic numbers multiplying to -18 and adding to -7 are <strong>-9</strong> and <strong>2</strong>.<br>3. Split middle: <code>6x<sup>2</sup> - 9x + 2x - 3</code><br>4. Group left side: <code>3x(2x - 3)</code><br>5. Group right side: <code>+1(2x - 3)</code><br>6. Pull out matching bracket.<br><strong>Final Answer:</strong> (2x - 3)(3x + 1)</div></div>` },
+        { title: "7. Quadratic Formula & Discriminant", body: `<div class="tb-section"><h3>The Ultimate Tool</h3><p>When factoring is impossible (the numbers are too ugly or decimals), the Quadratic Formula will always find the exact x-intercepts for an equation in the form <code>ax<sup>2</sup> + bx + c = 0</code>.</p><div class="example-box"><strong>Formula:</strong> x = [-b &plusmn; &radic;(b<sup>2</sup> - 4ac)] / (2a)</div><p>Remember that the &plusmn; means you must split your calculation at the very end into two separate equations (one with plus, one with minus) to find both roots.</p></div><div class="tb-section"><h3>The Discriminant (&Delta;)</h3><div class="fundamental-box"><h4>&Delta; = b<sup>2</sup> - 4ac</h4><p>This is the specific chunk of math located <i>inside</i> the square root of the formula. Calculating it beforehand tells you what type of graph you are dealing with.</p></div><ul><li><strong>&Delta; > 0 (Positive):</strong> You can take the square root of a positive number, creating a + and - version. Result: <strong>Two distinct real roots.</strong> (The parabola crosses the x-axis twice).</li><li><strong>&Delta; = 0 (Zero):</strong> The square root of 0 is 0. The &plusmn; part vanishes. Result: <strong>One repeated root.</strong> (The vertex of the parabola sits perfectly on the x-axis, touching it once).</li><li><strong>&Delta; < 0 (Negative):</strong> You cannot take the square root of a negative number in real math. It breaks. Result: <strong>No real roots.</strong> (The parabola floats entirely above or entirely below the x-axis, never touching it).</li></ul></div>` },
+        { title: "8. Transformations", body: `<div class="tb-section"><h3>Moving the Parabola</h3><p>We analyze transformations by looking at vertex form: <code>y = a(x - h)<sup>2</sup> + k</code>.</p><ul><li><strong>Vertical Shifts (+k):</strong> A number added at the very end of the equation shifts the graph up and down exactly as it looks. <code>+ 5</code> means UP 5. <code>- 3</code> means DOWN 3.</li><li><strong>Horizontal Shifts (+h):</strong> A number inside the brackets with the 'x' shifts the graph left and right, but it goes the <strong>opposite</strong> direction to logic. <code>(x - 4)<sup>2</sup></code> shifts RIGHT 4. <code>(x + 2)<sup>2</sup></code> shifts LEFT 2.</li><li><strong>Vertical Stretch/Dilation ('a'):</strong> If 'a' is a large whole number (e.g., 5), the parabola gets vertically stretched (it looks skinnier/steeper). If 'a' is a fraction (e.g., 0.25), it gets vertically compressed (it looks wider/flatter).</li><li><strong>Reflection (Negative 'a'):</strong> If there is a minus sign at the very front, the U-shape flips upside down to become an 'n' shape.</li></ul></div>` },
+        { title: "9. Graph to Equation", body: `<div class="tb-section"><h3>Working Backwards (Graph to Equation)</h3><p>Often, exams will give you a picture of a parabola and ask you to create the equation. You must play detective and choose the right template.</p><p><strong>Scenario A: They give you the Vertex.</strong><br>1. Use the Vertex Form template: y = a(x - h)<sup>2</sup> + k.<br>2. Plug the vertex coordinates into h and k (remember to flip the h sign!).<br>3. Pick any other random clear coordinate point (x, y) on the graph.<br>4. Substitute those x and y values into your equation. The only letter left is 'a'.<br>5. Use algebra to solve for 'a', then write your final equation.</p><p><strong>Scenario B: They give you the X-Intercepts.</strong><br>1. Use the Factored Form template: y = a(x - p)(x - q).<br>2. Plug the intercepts into p and q (flip their signs!).<br>3. Pick any other random point (like the y-intercept) and sub it in for x and y.<br>4. Solve for 'a', and write the final equation.</p></div>` },
         { title: "10. Real-World Modeling", body: `<div class="tb-section"><h3>Decoding Word Problems</h3><div class="fundamental-box"><h4>The 3 Key Features</h4><p>In real-world quadratics (like throwing a ball, bridges, or revenue), the math directly translates to physical events:</p><ul><li><strong>y-intercept (c):</strong> The starting height (when time t = 0) or starting profit.</li><li><strong>Vertex (h, k):</strong> The maximum or minimum point. The x-value (h) is <i>when/where</i> it happens, the y-value (k) is the <i>actual max/min height or profit</i>.</li><li><strong>x-intercepts (roots):</strong> When the object hits the ground (height = 0) or when profit drops to $0. We usually ignore the negative root because time/quantity cannot be negative.</li></ul></div></div><div class="tb-section"><h3>Example Walkthroughs</h3><div class="example-box"><strong>Example 1 (Projectile):</strong> A rocket's height is given by h = -5t<sup>2</sup> + 20t + 25. Find the max height and when it hits the ground.<br><br>1. <strong>Hit the ground (Roots):</strong> Set h = 0.<br>-5t<sup>2</sup> + 20t + 25 = 0. Divide by -5: t<sup>2</sup> - 4t - 5 = 0. Factor: (t - 5)(t + 1) = 0. Time is t=5 seconds (ignore t=-1).<br><br>2. <strong>Max Height (Vertex):</strong> Use x = -b / (2a).<br>t = -20 / (2 &times; -5) = -20 / -10 = 2 seconds. Plug t=2 back in: h = -5(2)<sup>2</sup> + 20(2) + 25 = -20 + 40 + 25 = 45m.</div><div class="example-box"><strong>Example 2 (Optimization):</strong> A farmer has 40m of fence to make a rectangular pen against a barn wall. Area is A(x) = x(40 - 2x). Find max area.<br><br>1. Expand: A(x) = -2x<sup>2</sup> + 40x<br>2. Vertex x (width): x = -40 / -4 = 10m<br>3. Max Area (y-value): Plug 10 back in. A = 10(40 - 20) = 10(20) = 200m<sup>2</sup>.</div></div>` },
         { title: "11. Inequalities & Signs", body: `<div class="tb-section"><h3>Solving Inequalities</h3><p>An inequality like <code>x<sup>2</sup> - 4 > 0</code> is asking: "For what x-values is the parabola physically drawn ABOVE the x-axis?"</p><div class="fundamental-box"><h4>The 3 Steps</h4><ol><li><strong>Find the roots:</strong> Set the equation to 0 and solve (e.g. x=2, x=-2).</li><li><strong>Draw a Sign Diagram:</strong> Plot the roots on a 1D number line.</li><li><strong>Determine the shape:</strong> Look at 'a'. If a > 0 (happy U-shape), the signs go <code>+  -  +</code>. If a < 0 (sad n-shape), the signs go <code>-  +  -</code>.</li></ol></div></div><div class="tb-section"><h3>Reading the Diagram</h3><p>If the question asks for <code>> 0</code>, you want the positive (+) regions. If it asks for <code>< 0</code>, you want the negative (-) regions.</p><div class="example-box"><strong>Example 1:</strong> Solve x<sup>2</sup> - 4 > 0<br>1. Roots: x=2, x=-2.<br>2. Shape: Positive x<sup>2</sup> means U-shape. Signs are <code>+  -  +</code>.<br>3. We want > 0 (the pluses). The pluses are on the outsides.<br>Answer: x < -2 OR x > 2.</div><div class="example-box"><strong>Example 2:</strong> Solve -x<sup>2</sup> + 5x - 6 &ge; 0<br>1. Roots: Divide by -1 to get x<sup>2</sup> - 5x + 6 = 0 &rarr; (x - 2)(x - 3) &rarr; x=2, x=3.<br>2. Shape: Original equation has a negative -x<sup>2</sup>, so it's an n-shape. Signs are <code>-  +  -</code>.<br>3. We want &ge; 0 (the pluses). The plus is in the middle section.<br>Answer: 2 &le; x &le; 3.</div></div>` }
     ];
@@ -482,7 +542,7 @@
         { type: 'typed', needsGraph: false, q: "Simplify: x<sup>3</sup> &times; x<sup>5</sup>", correctAnswers: ["x^8", "x⁸"], exp: "Add the exponents: 3 + 5 = 8.", hint: "When multiplying identical bases, ADD the powers." },
         { type: 'typed', needsGraph: false, q: "Expand using FOIL: (x + 2)(x + 4)", correctAnswers: ["x^2+6x+8", "x²+6x+8", "8+6x+x^2"], exp: "x*x = x². Outside: 4x. Inside: 2x. Last: 8. Combine: x² + 6x + 8.", hint: "First, Outside, Inside, Last. Then combine the middle two x terms." },
         { type: 'typed', needsGraph: false, q: "Evaluate: 16<sup>1/2</sup>", correctAnswers: ["4"], exp: "A power of 1/2 is the same as a square root. The square root of 16 is 4.", hint: "What number multiplied by itself equals 16?" },
-        { type: 'typed', needsGraph: false, q: "Factor out the GCF: 4x<sup>2</sup> - 12x", correctAnswers: ["4x(x-3)"], exp: "The largest number is 4, largest letter is x. Pulling out 4x leaves (x - 3).", hint: "What is the biggest number AND letter that goes into both terms?" },
+        { type: 'typed', needsGraph: false, q: "Factor out the GCF: 4x<sup>2</sup> - 12x", correctAnswers: ["4x(x-3)", "4x(x - 3)"], exp: "The largest number is 4, largest letter is x. Pulling out 4x leaves (x - 3).", hint: "What is the biggest number AND letter that goes into both terms?" },
         { type: 'mcq', needsGraph: false, q: "Solve for x: x(x - 5) = 0", opts: ["x = 0 or 5", "x = 5 only", "x = 0 or -5", "x = -5 only"], ans: 0, exp: "By the Null Factor Law, either the outside x is 0, or the bracket (x-5) is 0.", hint: "If two things multiply to zero, one of them must be zero." },
         { type: 'typed', needsGraph: false, q: "What is the y-intercept of y = 2x<sup>2</sup> + 3x - 8? (Type just the number)", correctAnswers: ["-8"], exp: "Set x = 0. Only the constant 'c' remains, which is -8.", hint: "The y-intercept always happens when x is 0." },
         { type: 'typed', needsGraph: false, q: "Simplify fully: y<sup>8</sup> / y<sup>2</sup>", correctAnswers: ["y^6", "y⁶"], exp: "When dividing the same base, subtract the powers: 8 - 2 = 6.", hint: "Subtract the bottom power from the top power." },
@@ -502,7 +562,7 @@
         { type: 'typed', needsGraph: false, q: "Simplify fully: (2x<sup>2</sup>)<sup>3</sup>", correctAnswers: ["8x^6", "8x⁶"], exp: "Cube the 2 (2*2*2=8) and multiply the powers (2*3=6).", hint: "The power of 3 applies to the number 2 as well!" },
         { type: 'typed', needsGraph: false, q: "Find the x-intercepts of y = x<sup>2</sup> - x - 12 (Write answer as two numbers separated by a comma)", correctAnswers: ["4,-3", "-3,4"], exp: "Factor to (x - 4)(x + 3) = 0. The roots are x=4, x=-3.", hint: "Factor the equation first. Multiply to -12, add to -1." },
         { type: 'typed', needsGraph: false, q: "Simplify the fraction: (x<sup>2</sup> - 9) / (x - 3)", correctAnswers: ["x+3"], exp: "Factor top to (x-3)(x+3). Cancel the (x-3) from top and bottom.", hint: "Factor the top using Difference of Two Squares first." },
-        { type: 'typed', needsGraph: true, eq1: "y=x^2-4x", q: "<span class='desmos-badge'>DESMOS TOOL</span> Graph <code>y = x<sup>2</sup> - 4x</code> below. What is the minimum y-value of this parabola?", correctAnswers: ["-4"], exp: "The vertex is at (2, -4). The minimum y-value is -4.", hint: "Open the graph. Click the absolute lowest point on the curve. What is the y-coordinate?" },
+        { type: 'typed', needsGraph: true, eq1: "y=x^2-4x", q: "<span class='desmos-badge'>DESMOS TOOL</span> Graph y = x<sup>2</sup> - 4x below. What is the minimum y-value of this parabola?", correctAnswers: ["-4"], exp: "The vertex is at (2, -4). The minimum y-value is -4.", hint: "Open the graph. Click the absolute lowest point on the curve. What is the y-coordinate?" },
         { type: 'mcq', needsGraph: false, q: "If the discriminant (&Delta;) is exactly 0, what does this mean?", opts: ["The parabola touches the x-axis exactly once", "It has two real roots", "It never touches the x-axis", "The y-intercept is 0"], ans: 0, exp: "A discriminant of 0 means there is exactly 1 repeated real root (the vertex is on the axis).", hint: "If the plus/minus part of the formula is 0, how many answers do you get?" },
         { type: 'mcq', needsGraph: false, q: "What is the range of y = x<sup>2</sup> + 5?", opts: ["y &ge; 5", "y &le; 5", "All real numbers", "x &ge; 5"], ans: 0, exp: "Since x² can never be negative, the lowest the equation can go is 0 + 5 = 5.", hint: "What is the smallest possible value for anything squared?" },
         { type: 'typed', needsGraph: false, q: "Expand: (x - 5)<sup>2</sup>", correctAnswers: ["x^2-10x+25", "x²-10x+25"], exp: "(x-5)(x-5) = x² - 5x - 5x + 25 = x² - 10x + 25.", hint: "Write out the bracket twice and FOIL it." },
@@ -511,7 +571,7 @@
 
     // Hard: 12 Questions
     const hardQuiz = [
-        { type: 'typed', needsGraph: false, q: "Factor using the AC method: 2x<sup>2</sup> + 7x + 3", correctAnswers: ["(2x+1)(x+3)", "(x+3)(2x+1)"], exp: "a*c = 6. Factors of 6 adding to 7 are 6 and 1. Split middle: 2x² + 6x + 1x + 3. Group to get (2x+1)(x+3).", hint: "Multiply the first and last numbers. What multiplies to that, and adds to the middle?" },
+        { type: 'typed', needsGraph: false, q: "Factor using the AC method: 2x<sup>2</sup> + 7x + 3", correctAnswers: ["(2x+1)(x+3)", "(x+3)(2x+1)"], exp: "a &times; c = 6. Factors of 6 adding to 7 are 6 and 1. Split middle: 2x² + 6x + 1x + 3. Group to get (2x+1)(x+3).", hint: "Multiply the first and last numbers. What multiplies to that, and adds to the middle?" },
         { type: 'typed', needsGraph: false, q: "Solve 2x<sup>2</sup> - 5x - 3 = 0 (Type the two answers separated by a comma)", correctAnswers: ["3,-0.5", "-0.5,3", "3,-1/2", "-1/2,3"], exp: "Factor to (2x + 1)(x - 3) = 0. Roots are x = -1/2 and x = 3.", hint: "Factor using the AC method, or use the Quadratic Formula." },
         { type: 'mcq', needsGraph: false, q: "If &Delta; = -10, how many real roots does the quadratic have?", opts: ["0", "1", "2", "10"], ans: 0, exp: "A negative discriminant means you cannot take the square root, so there are no real roots.", hint: "Can you take the square root of a negative number?" },
         { type: 'typed', needsGraph: false, q: "To complete the square for x<sup>2</sup> + 6x, what number must be added to the end?", correctAnswers: ["9"], exp: "Take half of 'b' (half of 6 is 3), then square it (3² = 9).", hint: "Take half of the middle number, then square it." },
@@ -520,7 +580,7 @@
         { type: 'mcq', needsGraph: false, q: "<strong>Multi-Step:</strong> Find the roots of y = x<sup>2</sup> - 6x + 8. If this graph is shifted UP by 2 units, what is the new y-intercept?", opts: ["(0, 10)", "(0, 8)", "(0, 2)", "(0, 6)"], ans: 0, exp: "Original y-intercept is (0,8). Shifting up 2 units makes the new y-intercept (0,10). The roots were a distractor!", hint: "You don't actually need the roots. Just look at the original y-intercept and shift it up." },
         { type: 'typed', needsGraph: false, q: "<strong>Word Problem:</strong> A rocket's height is h(t) = -5t<sup>2</sup> + 20t + 25. At what time 't' does it hit the ground?", correctAnswers: ["5", "t=5"], exp: "Set h(t) = 0. Divide by -5: t² - 4t - 5 = 0. Factor: (t - 5)(t + 1) = 0. Time must be positive, so t = 5.", hint: "Set the equation to 0 and factor. Reject the negative time answer." },
         { type: 'typed', needsGraph: false, q: "Solve the inequality: x<sup>2</sup> - 16 > 0. Type the positive region only (e.g. x>4)", correctAnswers: ["x>4"], exp: "Roots are 4 and -4. It's a happy parabola, so it's > 0 on the outsides (x > 4 and x < -4).", hint: "Where is the parabola above the x-axis?" },
-        { type: 'typed', needsGraph: true, eq1: "y=x^2", eq2: "y=2x+3", q: "<span class='desmos-badge'>DESMOS</span> Graph <code>y = x<sup>2</sup></code> and <code>y = 2x + 3</code>. What is the POSITIVE x-coordinate where they intersect?", correctAnswers: ["3", "x=3"], exp: "They cross at (-1, 1) and (3, 9). The positive x-coordinate is 3.", hint: "Open the graph, find where the line and curve touch, and look at the positive x value." },
+        { type: 'typed', needsGraph: true, eq1: "y=x^2", eq2: "y=2x+3", q: "<span class='desmos-badge'>DESMOS</span> Graph y = x<sup>2</sup> and y = 2x + 3. What is the POSITIVE x-coordinate where they intersect?", correctAnswers: ["3", "x=3"], exp: "They cross at (-1, 1) and (3, 9). The positive x-coordinate is 3.", hint: "Open the graph, find where the line and curve touch, and look at the positive x value." },
         { type: 'typed', needsGraph: false, q: "Calculate the exact discriminant (&Delta;) of x<sup>2</sup> - 3x + 2", correctAnswers: ["1"], exp: "b² - 4ac = (-3)² - 4(1)(2) = 9 - 8 = 1.", hint: "Use the formula b² - 4ac" },
         { type: 'typed', needsGraph: false, q: "Make x the subject of the formula: y = (x + 5) / 3", correctAnswers: ["3y-5", "x=3y-5", "-5+3y"], exp: "Multiply by 3: 3y = x + 5. Subtract 5: 3y - 5 = x.", hint: "First multiply both sides by 3 to remove the fraction." }
     ];
@@ -529,7 +589,7 @@
     const finalExam = [
         { type: 'typed', needsGraph: false, q: "<span class='level-badge lvl-1'>Level 1-2</span> Expand the brackets: 3x(x - 4)", correctAnswers: ["3x^2-12x", "3x²-12x"], exp: "Multiply 3x by x, and 3x by -4.", hint: "Multiply the outside term by EVERYTHING inside the bracket." },
         { type: 'typed', needsGraph: false, q: "<span class='level-badge lvl-1'>Level 1-2</span> Factor completely: x<sup>2</sup> - 16", correctAnswers: ["(x-4)(x+4)", "(x+4)(x-4)"], exp: "Difference of Two Squares. The square root of 16 is 4.", hint: "Difference of squares. Create two brackets with opposite signs." },
-        { type: 'typed', needsGraph: false, q: "<span class='level-badge lvl-3'>Level 3-4</span> Find the y-intercept of y = -3(x - 1)(x + 4). Type the number only.", correctAnswers: ["12"], exp: "Set x=0: -3(-1)(4) = -3 * -4 = 12.", hint: "Substitute x = 0 into the equation and multiply the remaining numbers." },
+        { type: 'typed', needsGraph: false, q: "<span class='level-badge lvl-3'>Level 3-4</span> Find the y-intercept of y = -3(x - 1)(x + 4). Type the number only.", correctAnswers: ["12"], exp: "Set x=0: -3(-1)(4) = -3 &times; -4 = 12.", hint: "Substitute x = 0 into the equation and multiply the remaining numbers." },
         { type: 'typed', needsGraph: false, q: "<span class='level-badge lvl-3'>Level 3-4</span> Simplify fully: (x<sup>2</sup> - 25) / (x + 5)", correctAnswers: ["x-5"], exp: "Factor top to (x-5)(x+5). The (x+5) brackets cancel.", hint: "Factor the top first. Then cancel matching brackets." },
         { type: 'typed', needsGraph: false, q: "<span class='level-badge lvl-5'>Level 5-6</span> Factor completely: 3x<sup>2</sup> - 27", correctAnswers: ["3(x-3)(x+3)", "3(x+3)(x-3)"], exp: "Pull out GCF of 3 to get 3(x² - 9). Then factor DOTS to 3(x-3)(x+3).", hint: "Always look for a Greatest Common Factor before doing anything else!" },
         { type: 'typed', needsGraph: false, q: "<span class='level-badge lvl-5'>Level 5-6</span> What is the x-coordinate of the vertex for y = -2x<sup>2</sup> + 12x - 10?", correctAnswers: ["3", "x=3"], exp: "x = -b / 2a = -12 / -4 = 3.", hint: "Use the formula x = -b / (2a) to find the x-coordinate." },
@@ -564,7 +624,7 @@
 
         currentMode = level;
         
-        startTimer(defaultTimes[level]);
+        initTimer(defaultTimes[level]); // Initialize, but don't start
         
         shuffleArray(quizData);
         quizData.forEach(q => {
