@@ -98,7 +98,6 @@
         .recap-box:hover { transform: translateY(-4px); background: var(--card-bg); box-shadow: 0 10px 25px rgba(0,0,0,0.1); }
         .recap-box h3 { margin-top: 0; margin-bottom: 10px; font-size: 1.3em; padding-right: 30px; }
         .recap-box p { font-size: 0.95em; color: var(--text-muted); margin: 0 0 15px 0; }
-        .click-hint { font-size: 0.85em; color: white; background: var(--primary); padding: 5px 12px; border-radius: 20px; font-weight: bold; display: inline-block; }
         
         .mastery-badge { position: absolute; top: 20px; right: 20px; font-size: 1.5em; opacity: 0.1; filter: grayscale(100%); transition: 0.3s; }
         .recap-box.mastered .mastery-badge { opacity: 1; filter: grayscale(0%); }
@@ -121,7 +120,6 @@
         .tool-btn { padding: 12px 25px; border-radius: 8px; border: 2px solid var(--accent); background: var(--bg); color: var(--accent); font-weight: bold; cursor: pointer; font-size: 1em; transition: 0.2s; display: flex; align-items: center; gap: 8px; justify-content: center; }
         .tool-btn:hover { background: var(--accent); color: white; }
         
-        /* ADVANCED TIMER UI */
         .timer-container { display: flex; align-items: center; gap: 15px; background: var(--bg); padding: 10px 20px; border-radius: 12px; border: 1px solid var(--border); flex-wrap: wrap; }
         .timer-display { font-size: 1.6em; font-weight: bold; font-family: monospace; padding: 5px 15px; background: #1e293b; color: #10b981; border-radius: 8px; border: 2px solid #10b981; display: flex; align-items: center; letter-spacing: 2px; }
         .timer-display.danger { color: #ef4444; border-color: #ef4444; animation: pulse 1s infinite; }
@@ -130,7 +128,6 @@
         .t-btn:hover:not(:disabled) { border-color: var(--accent); color: var(--accent); }
         .t-btn:disabled { opacity: 0.4; cursor: not-allowed; background: var(--unanswered); }
 
-        /* Digital Notes Area */
         .notes-container { display: none; width: 100%; border-radius: 12px; margin-bottom: 30px; position: relative; }
         #digital-notes { width: 100%; height: 200px; padding: 20px; font-family: monospace; font-size: 1.1em; border: 2px solid var(--border); border-radius: 12px; background: var(--bg); color: var(--text-main); resize: vertical; }
         #digital-notes:focus { outline: none; border-color: var(--accent); }
@@ -472,8 +469,14 @@
 </div>
 
 <script>
+    // --- DOM CONTENT LOADED EVENT ---
+    document.addEventListener("DOMContentLoaded", () => {
+        loadQuizLevel('easy'); // Renders questions safely after HTML is ready
+        renderTextbook();      // Renders chapters safely
+        loadProgress();        // Loads previous mastery checkmarks
+    });
+
     // --- SAFE MATH RENDERER ---
-    // This totally fixes the crash where questions disappear!
     function safeRenderMath() {
         if (window.MathJax && typeof window.MathJax.typesetPromise === 'function') {
             window.MathJax.typesetPromise().catch((err) => console.log('MathJax Error:', err.message));
@@ -543,7 +546,6 @@
     function globalSearch() {
         let search = document.getElementById('global-search').value.toLowerCase();
         
-        // Glossary Search
         let gItems = document.querySelectorAll('.glossary-item');
         let gMatch = false;
         gItems.forEach(item => {
@@ -560,7 +562,6 @@
             document.getElementById('arrow-glossary').style.transform = 'rotate(0deg)';
         }
 
-        // Learning Module Search
         let tItems = document.querySelectorAll('.recap-box:not(.resource-box)');
         let tMatch = false;
         tItems.forEach(item => {
@@ -614,6 +615,7 @@
     let timeRemaining;
     let timerRunning = false;
     let timerLocked = false;
+    let currentMode = 'easy';
     
     let defaultTimes = { 'easy': 15, 'normal': 25, 'hard': 35, 'final': 45 };
 
@@ -632,7 +634,7 @@
     }
 
     function toggleTimer() {
-        playClick(); // Required to unlock audio context on first click
+        playClick();
         if(timerRunning) {
             clearInterval(timerInterval);
             timerRunning = false;
@@ -676,12 +678,11 @@
     function lockTimer() {
         if(timerLocked) return;
         if(confirm("Are you sure you want to completely LOCK the timer? You will not be able to edit or pause the time once locked! (Perfect for strict exams).")) {
-            playClick(); // Play sound effect
+            playClick();
             timerLocked = true;
             document.getElementById('btn-timer-edit').disabled = true;
             document.getElementById('btn-timer-lock').disabled = true;
             
-            // Auto start if locked
             if(!timerRunning) toggleTimer();
         }
     }
@@ -989,11 +990,9 @@
         renderNav();
         renderQuestions();
         
-        // Ensure the exam accordion is open
         document.getElementById('exam-content').style.display = 'block';
         document.getElementById('arrow-exam').style.transform = 'rotate(0deg)';
         
-        // Trigger MathJax on new questions
         safeRenderMath();
     }
 
@@ -1150,9 +1149,11 @@
     function scrollToQ(index) {
         document.querySelectorAll('.question-container').forEach(el => el.classList.remove('focused'));
         const el = document.getElementById('q-' + index);
-        el.scrollIntoView({ behavior: 'smooth', block: 'center' });
-        el.classList.add('focused');
-        setTimeout(() => el.classList.remove('focused'), 1500);
+        if (el) {
+            el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            el.classList.add('focused');
+            setTimeout(() => el.classList.remove('focused'), 1500);
+        }
     }
 
     function toggleFeedbackMode() {
@@ -1226,13 +1227,12 @@
         if(s.isEvaluated) return;
         
         s.isEvaluated = true;
-        s.flagged = false; // Remove flag upon grading
+        s.flagged = false; 
         
         const feedbackDiv = document.getElementById(`feedback-${qIndex}`);
         
         const actionRowBtns = document.getElementById(`actions-${qIndex}`).querySelectorAll('.action-btn');
         actionRowBtns.forEach(b => { 
-            // Keep the Read Chapter and Desmos buttons visible, hide Hint, Flag and Answer
             if(!b.classList.contains('btn-desmos') && !b.classList.contains('btn-read-chapter')) {
                 b.style.display = 'none'; 
             }
@@ -1381,10 +1381,7 @@
         document.getElementById('modalOverlay').style.display = 'block';
         document.body.style.overflow = 'hidden'; 
         
-        // Auto scroll to top of modal content
         document.getElementById('modalBody').scrollTop = 0;
-        
-        // Trigger MathJax for modal content
         safeRenderMath();
     }
 
@@ -1393,7 +1390,6 @@
         document.getElementById('modalOverlay').style.display = 'none';
         document.body.style.overflow = 'auto'; 
         
-        // Stop YouTube video from continuing to play when modal closes
         const modalBody = document.getElementById('modalBody');
         modalBody.innerHTML = ''; 
     }
@@ -1401,13 +1397,6 @@
     document.getElementById('modalOverlay').addEventListener('click', function(e) {
         if (e.target === this) closeModal();
     });
-
-    // Auto-load on startup
-    window.onload = () => {
-        loadQuizLevel('easy'); // Ensure quiz renders safely on load
-        renderTextbook();
-        loadProgress();
-    };
 
 </script>
 </body>
