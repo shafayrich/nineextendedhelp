@@ -6,6 +6,7 @@
     <title>MYP 9 Extended Math: The Ultimate Learning Platform</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='75' x='5' font-size='75' font-family='Times New Roman, serif' font-style='italic' font-weight='bold' fill='%230f4c81'>fx</text></svg>">
     <style>
+        /* ========== FULL CSS ========== */
         :root {
             --primary: #0f4c81;
             --primary-hover: #1d3557;
@@ -242,6 +243,9 @@
         .yt-fallback a { color: var(--accent); font-weight: bold; text-decoration: none; padding: 5px 15px; border-radius: 20px; background: rgba(59, 130, 246, 0.1); transition: 0.2s; display: inline-block; }
         .yt-fallback a:hover { background: rgba(59, 130, 246, 0.2); }
 
+        .yt-search-btn { display: inline-block; margin-top: 10px; padding: 10px 20px; background: var(--accent); color: white !important; border-radius: 8px; font-weight: bold; text-decoration: none; transition: 0.2s; border: 1px solid var(--accent); }
+        .yt-search-btn:hover { background: var(--primary); border-color: var(--primary); }
+
         .beginner-box { background: #e0f2fe; border-left: 6px solid #0284c7; padding: 20px; margin-bottom: 30px; border-radius: 0 12px 12px 0; color: #0c4a6e; }
         .beginner-box h3 { margin: 0 0 10px 0; color: #0369a1; font-size: 1.3em; display: flex; align-items: center; gap: 8px; }
 
@@ -318,6 +322,7 @@
         </button>
         <div class="accordion-content" id="glossary-content" style="display: block;">
             <div class="glossary-grid" id="glossary-grid">
+                <!-- All glossary items unchanged -->
                 <div class="glossary-item"><span class="glossary-term">Vertex / Vertices</span><p class="glossary-def">The highest (maximum) or lowest (minimum) turning point of a parabola. Found exactly on the axis of symmetry.</p></div>
                 <div class="glossary-item"><span class="glossary-term">Roots / X-Intercepts</span><p class="glossary-def">The points where a graph crosses the x-axis. Also known as "solutions" or "zeros" because they occur where y = 0.</p></div>
                 <div class="glossary-item"><span class="glossary-term">Y-Intercept</span><p class="glossary-def">The specific point where the graph crosses the y-axis (where x = 0). In y = ax<sup>2</sup> + bx + c, the y-intercept is 'c'.</p></div>
@@ -452,7 +457,7 @@
 
 <script>
 // =============================================
-// WEB AUDIO API — DEPENDENCY-FREE SOUND ENGINE
+// WEB AUDIO API — VOLUME REDUCED (ULTRA-FAINT)
 // =============================================
 let audioCtx = null;
 
@@ -472,29 +477,28 @@ function playTone(freq, type, gainVal, duration, startDelay) {
     gainNode.connect(ctx.destination);
     osc.type = type || 'sine';
     osc.frequency.setValueAtTime(freq, ctx.currentTime + (startDelay || 0));
-    gainNode.gain.setValueAtTime(gainVal || 0.04, ctx.currentTime + (startDelay || 0));
+    gainNode.gain.setValueAtTime(gainVal || 0.02, ctx.currentTime + (startDelay || 0));
     gainNode.gain.exponentialRampToValueAtTime(0.0001, ctx.currentTime + (startDelay || 0) + duration);
     osc.start(ctx.currentTime + (startDelay || 0));
     osc.stop(ctx.currentTime + (startDelay || 0) + duration + 0.05);
 }
 
-function playClick() { playTone(880, 'sine', 0.03, 0.06, 0); }
+function playClick() { playTone(880, 'sine', 0.015, 0.06, 0); }
 
 function playCorrect() {
-    playTone(523, 'sine', 0.05, 0.15, 0);
-    playTone(659, 'sine', 0.05, 0.15, 0.12);
-    playTone(784, 'sine', 0.06, 0.22, 0.24);
+    playTone(523, 'sine', 0.025, 0.15, 0);
+    playTone(659, 'sine', 0.025, 0.15, 0.12);
+    playTone(784, 'sine', 0.03, 0.22, 0.24);
 }
 
 function playIncorrect() {
-    playTone(300, 'sawtooth', 0.04, 0.18, 0);
-    playTone(240, 'sawtooth', 0.04, 0.18, 0.14);
+    playTone(300, 'sawtooth', 0.02, 0.18, 0);
+    playTone(240, 'sawtooth', 0.02, 0.18, 0.14);
 }
 
 function playVictoryChord() {
-    // C major chord + arpeggiated triumphant sequence
     const notes = [261.6, 329.6, 392, 523, 659, 784, 1047];
-    notes.forEach((freq, i) => playTone(freq, 'sine', 0.07, 0.5, i * 0.08));
+    notes.forEach((freq, i) => playTone(freq, 'sine', 0.035, 0.5, i * 0.08));
 }
 
 // =============================================
@@ -701,7 +705,7 @@ const chapterTitles = [
 ];
 
 // =============================================
-// MODAL CONTENT — Pure HTML math (no LaTeX)
+// MODAL CONTENT — UPDATED VIDEOS FOR CHAPTERS 6-9
 // =============================================
 const modalContent = [
     {
@@ -709,6 +713,7 @@ const modalContent = [
         desc: "Core exponent rules, negative/fractional indices, and simplifying complex algebraic fractions.",
         body: `<div class="video-wrapper"><iframe src="https://www.youtube-nocookie.com/embed/NuccqpiUHrk" allowfullscreen></iframe></div>
         <div class="yt-fallback"><a href="https://www.youtube.com/watch?v=NuccqpiUHrk" target="_blank">⚠️ Video not playing? Click here to watch on YouTube ↗️</a></div>
+        <div style="text-align:center; margin:15px 0;"><a href="https://www.youtube.com/results?search_query=Algebraic+Fractions+%26+Indices" target="_blank" class="yt-search-btn">🔍 Watch / Search on YouTube</a></div>
         <div class="beginner-box"><h3>👶 Beginner's Concept</h3><p>Think of exponents (indices) like a math shortcut. Instead of writing "x" multiplied by itself 5 times, we write x<sup>5</sup>. When we multiply terms with the same base, we just add the shortcuts! When we divide, we subtract them.</p></div>
         <div class="tb-section"><h3>The Core Rules of Exponents</h3>
         <ul>
@@ -731,6 +736,7 @@ const modalContent = [
         desc: "Mastering the GCF, perfect squares, grouping, and multi-step factoring.",
         body: `<div class="video-wrapper"><iframe src="https://www.youtube-nocookie.com/embed/D3a8NnpQ2vU" allowfullscreen></iframe></div>
         <div class="yt-fallback"><a href="https://www.youtube.com/watch?v=D3a8NnpQ2vU" target="_blank">⚠️ Video not playing? Click here to watch on YouTube ↗️</a></div>
+        <div style="text-align:center; margin:15px 0;"><a href="https://www.youtube.com/results?search_query=Factoring+Basics" target="_blank" class="yt-search-btn">🔍 Watch / Search on YouTube</a></div>
         <div class="beginner-box"><h3>👶 Beginner's Concept</h3><p>If "Expanding" is baking a cake (mixing all the ingredients together), then "Factoring" is un-baking the cake. You are figuring out what original brackets were multiplied together to create the current expression.</p></div>
         <div class="tb-section"><h3>Expression vs. Equation</h3><p>An <strong>Expression</strong> (like x<sup>2</sup> + 5x + 6) has NO equals sign. You cannot "solve" it — you can only <strong>factor</strong> it into (x+2)(x+3).</p></div>
         <div class="tb-section"><h3>Technique 1: Greatest Common Factor (GCF)</h3><div class="fundamental-box"><h4>Always Check This First!</h4><p>Look for the largest number and the highest power of variables that divide evenly into EVERY term.</p></div>
@@ -749,6 +755,7 @@ const modalContent = [
         desc: "The Balance Scale method, complex fractions, taking roots, and the Null Factor Law.",
         body: `<div class="video-wrapper"><iframe src="https://www.youtube-nocookie.com/embed/i7idZfS8t8w" allowfullscreen></iframe></div>
         <div class="yt-fallback"><a href="https://www.youtube.com/watch?v=i7idZfS8t8w" target="_blank">⚠️ Video not playing? Click here to watch on YouTube ↗️</a></div>
+        <div style="text-align:center; margin:15px 0;"><a href="https://www.youtube.com/results?search_query=Solving+Equations+Null+Factor+Law" target="_blank" class="yt-search-btn">🔍 Watch / Search on YouTube</a></div>
         <div class="beginner-box"><h3>👶 Beginner's Concept</h3><p>Imagine I have two hidden numbers. I tell you that if you multiply them together, the answer is ZERO. You instantly know: one of those numbers MUST be zero! That is the entire secret to the Null Factor Law.</p></div>
         <div class="tb-section"><h3>Solving by Taking Square Roots</h3><p>If there is no 'x' term (only an x<sup>2</sup> term), isolate the x<sup>2</sup> and take the square root. <strong>CRITICAL:</strong> Always include the &plusmn; sign!</p>
         <details class="solution-toggle"><summary>👁️ Example: Solve 2x<sup>2</sup> &minus; 50 = 0</summary><div class="solution-content">1. Isolate x<sup>2</sup>: 2x<sup>2</sup> = 50 &rarr; x<sup>2</sup> = 25.<br>2. Square root both sides: x = &plusmn;&radic;25.<br><br><strong>Final Answer: x = 5 or x = &minus;5</strong></div></details></div>
@@ -762,6 +769,7 @@ const modalContent = [
         desc: "Function machines, restricted inputs, finding ranges algebraically, and interval notation.",
         body: `<div class="video-wrapper"><iframe src="https://www.youtube-nocookie.com/embed/A5kAC-L83lY" allowfullscreen></iframe></div>
         <div class="yt-fallback"><a href="https://www.youtube.com/watch?v=A5kAC-L83lY" target="_blank">⚠️ Video not playing? Click here to watch on YouTube ↗️</a></div>
+        <div style="text-align:center; margin:15px 0;"><a href="https://www.youtube.com/results?search_query=Domain+and+Range+of+a+Function" target="_blank" class="yt-search-btn">🔍 Watch / Search on YouTube</a></div>
         <div class="beginner-box"><h3>👶 Beginner's Concept</h3><p>Think of a function like a Vending Machine. The <strong>Domain</strong> is the list of things you can put IN. The <strong>Range</strong> is the list of things the machine can spit OUT.</p></div>
         <div class="tb-section"><h3>Mathematical Restrictions (Domain)</h3>
         <ul><li><strong>Fractions:</strong> Denominator &ne; 0. Set the denominator &ne; 0 and solve.</li><li><strong>Even Roots:</strong> Cannot take a square root of a negative number. Set the inside &ge; 0 and solve.</li></ul>
@@ -774,6 +782,7 @@ const modalContent = [
         desc: "Standard, Factored, Vertex form analysis, and Completing the Square.",
         body: `<div class="video-wrapper"><iframe src="https://www.youtube-nocookie.com/embed/eRbgHCaWQQE" allowfullscreen></iframe></div>
         <div class="yt-fallback"><a href="https://www.youtube.com/watch?v=eRbgHCaWQQE" target="_blank">⚠️ Video not playing? Click here to watch on YouTube ↗️</a></div>
+        <div style="text-align:center; margin:15px 0;"><a href="https://www.youtube.com/results?search_query=The+3+Quadratic+Forms" target="_blank" class="yt-search-btn">🔍 Watch / Search on YouTube</a></div>
         <div class="beginner-box"><h3>👶 Beginner's Concept</h3><p>The three quadratic forms are like three different photographs of the same friend — each shows different information about the exact same parabola.</p></div>
         <div class="tb-section"><h3>The Three Forms &amp; Their Superpowers</h3>
         <table style="width:100%; text-align:left; border-collapse: collapse; margin-bottom: 20px;">
@@ -788,8 +797,9 @@ const modalContent = [
     {
         title: chapterTitles[5],
         desc: "Handling trinomials when 'a' is not 1 using the AC Method, plus the Cross Method.",
-        body: `<div class="video-wrapper"><iframe src="https://www.youtube-nocookie.com/embed/XJv7GkEDfHQ" allowfullscreen></iframe></div>
-        <div class="yt-fallback"><a href="https://www.youtube.com/watch?v=XJv7GkEDfHQ" target="_blank">⚠️ Video not playing? Click here to watch on YouTube ↗️</a></div>
+        body: `<div class="video-wrapper"><iframe src="https://www.youtube-nocookie.com/embed/0RPJqPkfG5Y" allowfullscreen></iframe></div>
+        <div class="yt-fallback"><a href="https://www.youtube.com/watch?v=0RPJqPkfG5Y" target="_blank">⚠️ Video not playing? Click here to watch on YouTube ↗️</a></div>
+        <div style="text-align:center; margin:15px 0;"><a href="https://www.youtube.com/results?search_query=Complex+Factoring+AC+Method" target="_blank" class="yt-search-btn">🔍 Watch / Search on YouTube</a></div>
         <div class="beginner-box"><h3>👶 Beginner's Concept</h3><p>When there's a number in front of x<sup>2</sup> (like 3x<sup>2</sup>), the easy factoring rules break down. The "AC Method" is a secret code to unlock the middle term.</p></div>
         <div class="tb-section"><h3>The AC Method (Split the Middle)</h3><div class="fundamental-box"><h4>The 4 Steps</h4><ol><li><strong>Multiply:</strong> Multiply the first number (a) and the last number (c). This is your "AC Target".</li><li><strong>Magic Numbers:</strong> Find two numbers that multiply to the AC Target AND add to the middle number (b).</li><li><strong>Split:</strong> Replace bx with your two magic numbers.</li><li><strong>Group:</strong> Cut the 4-term equation in half. Factor GCF from each half. Pull out the matching bracket.</li></ol></div>
         <details class="solution-toggle"><summary>👁️ Example 1: Factor 2x<sup>2</sup> + 7x + 3</summary><div class="solution-content">Step 1: AC = 2 &times; 3 = 6.<br>Step 2: Magic numbers: 6 and 1 (6&times;1=6, 6+1=7).<br>Step 3: Split: 2x<sup>2</sup> + 6x + 1x + 3<br>Step 4: Left (2x<sup>2</sup>+6x): 2x(x+3). Right (1x+3): +1(x+3).<br>Matching bracket: (x+3).<br><br><strong>Final Answer: (x + 3)(2x + 1)</strong></div></details>
@@ -798,8 +808,9 @@ const modalContent = [
     {
         title: chapterTitles[6],
         desc: "Deriving and using the Quadratic Formula flawlessly, interpreting the Discriminant.",
-        body: `<div class="video-wrapper"><iframe src="https://www.youtube-nocookie.com/embed/I-E-l_Y5m5c" allowfullscreen></iframe></div>
-        <div class="yt-fallback"><a href="https://www.youtube.com/watch?v=I-E-l_Y5m5c" target="_blank">⚠️ Video not playing? Click here to watch on YouTube ↗️</a></div>
+        body: `<div class="video-wrapper"><iframe src="https://www.youtube-nocookie.com/embed/IL3UCuXrUzE" allowfullscreen></iframe></div>
+        <div class="yt-fallback"><a href="https://www.youtube.com/watch?v=IL3UCuXrUzE" target="_blank">⚠️ Video not playing? Click here to watch on YouTube ↗️</a></div>
+        <div style="text-align:center; margin:15px 0;"><a href="https://www.youtube.com/results?search_query=Quadratic+Formula+Discriminant" target="_blank" class="yt-search-btn">🔍 Watch / Search on YouTube</a></div>
         <div class="beginner-box"><h3>👶 Beginner's Concept</h3><p>The Quadratic Formula is a heavy-duty bulldozer. No matter how ugly the numbers, plug them in and it smashes through the math to hand you the exact roots every time.</p></div>
         <div class="tb-section"><h3>The Ultimate Tool</h3><p>For ax<sup>2</sup> + bx + c = 0 that won't factor cleanly:</p><div class="fundamental-box"><strong>x = (&minus;b &plusmn; &radic;(b<sup>2</sup> &minus; 4ac)) / (2a)</strong></div><p>Always put negative numbers in parentheses when substituting to avoid sign errors!</p>
         <details class="solution-toggle"><summary>👁️ Example: Solve 3x<sup>2</sup> &minus; 5x &minus; 7 = 0</summary><div class="solution-content">a=3, b=&minus;5, c=&minus;7<br>x = (&minus;(&minus;5) &plusmn; &radic;((&minus;5)<sup>2</sup> &minus; 4(3)(&minus;7))) / (2&times;3)<br>x = (5 &plusmn; &radic;(25 + 84)) / 6<br>x = (5 &plusmn; &radic;109) / 6<br><br><strong>Answers: x = (5 + &radic;109)/6 and x = (5 &minus; &radic;109)/6</strong></div></details></div>
@@ -810,8 +821,9 @@ const modalContent = [
     {
         title: chapterTitles[7],
         desc: "How parameters alter a parabola's position, stretch, and shape on the graph.",
-        body: `<div class="video-wrapper"><iframe src="https://www.youtube-nocookie.com/embed/yBiQv1QkCgA" allowfullscreen></iframe></div>
-        <div class="yt-fallback"><a href="https://www.youtube.com/watch?v=yBiQv1QkCgA" target="_blank">⚠️ Video not playing? Click here to watch on YouTube ↗️</a></div>
+        body: `<div class="video-wrapper"><iframe src="https://www.youtube-nocookie.com/embed/3B2VtQmYVqM" allowfullscreen></iframe></div>
+        <div class="yt-fallback"><a href="https://www.youtube.com/watch?v=3B2VtQmYVqM" target="_blank">⚠️ Video not playing? Click here to watch on YouTube ↗️</a></div>
+        <div style="text-align:center; margin:15px 0;"><a href="https://www.youtube.com/results?search_query=Transformations+of+Quadratic+Functions" target="_blank" class="yt-search-btn">🔍 Watch / Search on YouTube</a></div>
         <div class="beginner-box"><h3>👶 Beginner's Concept</h3><p>The basic parabola (y = x<sup>2</sup>) is your starting character. Adding "power-ups" to its equation moves it around. Adding a number outside moves it up or down. Changing the number inside the brackets moves it left or right (opposite to what you'd expect!). A negative sign flips it upside down.</p></div>
         <div class="tb-section"><h3>Transformation Rules: y = a(x &minus; h)<sup>2</sup> + k</h3>
         <ul><li><strong>Vertical Shift (k):</strong> +k shifts UP, &minus;k shifts DOWN.</li><li><strong>Horizontal Shift (h):</strong> (x &minus; h)<sup>2</sup> shifts RIGHT. (x + h)<sup>2</sup> shifts LEFT. It is the <em>opposite</em> of the sign!</li><li><strong>Stretch/Compression (a):</strong> |a| &gt; 1 = narrower (steeper). 0 &lt; |a| &lt; 1 = wider (flatter).</li><li><strong>Reflection:</strong> If 'a' is negative, the graph opens downward (upside down).</li></ul>
@@ -820,8 +832,9 @@ const modalContent = [
     {
         title: chapterTitles[8],
         desc: "Looking at a picture of a parabola and successfully building its mathematical equation.",
-        body: `<div class="video-wrapper"><iframe src="https://www.youtube-nocookie.com/embed/Fv4douldz4A" allowfullscreen></iframe></div>
-        <div class="yt-fallback"><a href="https://www.youtube.com/watch?v=Fv4douldz4A" target="_blank">⚠️ Video not playing? Click here to watch on YouTube ↗️</a></div>
+        body: `<div class="video-wrapper"><iframe src="https://www.youtube-nocookie.com/embed/Fh1pJw9xLZ8" allowfullscreen></iframe></div>
+        <div class="yt-fallback"><a href="https://www.youtube.com/watch?v=Fh1pJw9xLZ8" target="_blank">⚠️ Video not playing? Click here to watch on YouTube ↗️</a></div>
+        <div style="text-align:center; margin:15px 0;"><a href="https://www.youtube.com/results?search_query=Graph+to+Equation+Quadratic" target="_blank" class="yt-search-btn">🔍 Watch / Search on YouTube</a></div>
         <div class="beginner-box"><h3>👶 Beginner's Concept</h3><p>You're a detective. You see a curve and need to figure out its "DNA code" (its equation). Can you see the exact vertex? Use Vertex Form. Can you see the roots? Use Factored Form. Then plug in a known point to find 'a'.</p></div>
         <div class="tb-section"><h3>Scenario A: Given the Vertex</h3><p>Start with y = a(x &minus; h)<sup>2</sup> + k.</p>
         <details class="solution-toggle"><summary>👁️ Example: Vertex at (&minus;1, 4), passes through (2, &minus;14)</summary><div class="solution-content">1. Sub vertex: y = a(x + 1)<sup>2</sup> + 4<br>2. Sub point (2, &minus;14): &minus;14 = a(2 + 1)<sup>2</sup> + 4<br>3. Solve: &minus;14 = 9a + 4 &rarr; &minus;18 = 9a &rarr; a = &minus;2<br><br><strong>Equation: y = &minus;2(x + 1)<sup>2</sup> + 4</strong></div></details></div>
@@ -833,6 +846,7 @@ const modalContent = [
         desc: "Using quadratics to solve for max height, optimization, economics, and domains.",
         body: `<div class="video-wrapper"><iframe src="https://www.youtube-nocookie.com/embed/OZtqz_xw0SQ" allowfullscreen></iframe></div>
         <div class="yt-fallback"><a href="https://www.youtube.com/watch?v=OZtqz_xw0SQ" target="_blank">⚠️ Video not playing? Click here to watch on YouTube ↗️</a></div>
+        <div style="text-align:center; margin:15px 0;"><a href="https://www.youtube.com/results?search_query=Real-World+Modeling+Quadratics" target="_blank" class="yt-search-btn">🔍 Watch / Search on YouTube</a></div>
         <div class="beginner-box"><h3>👶 Beginner's Concept</h3><p>If you throw a ball in the air, its path is a perfect parabola! "When does it hit the ground?" = find the roots (height = 0). "What is the highest point?" = find the Vertex!</p></div>
         <div class="tb-section"><h3>The Translation Guide</h3>
         <ul><li><strong>"Maximum / Minimum / Highest / Lowest"</strong> &rarr; Find the Vertex using x = &minus;b / (2a).</li><li><strong>"Hits ground / Break-even / Starts at zero"</strong> &rarr; Find the roots by setting equation = 0.</li><li><strong>"Initial / Starting amount"</strong> &rarr; Find the y-intercept by setting x = 0.</li></ul>
@@ -844,6 +858,7 @@ const modalContent = [
         desc: "Drawing sign diagrams to solve quadratic inequalities (>, <, >=).",
         body: `<div class="video-wrapper"><iframe src="https://www.youtube-nocookie.com/embed/ZNtzWpU80-0" allowfullscreen></iframe></div>
         <div class="yt-fallback"><a href="https://www.youtube.com/watch?v=ZNtzWpU80-0" target="_blank">⚠️ Video not playing? Click here to watch on YouTube ↗️</a></div>
+        <div style="text-align:center; margin:15px 0;"><a href="https://www.youtube.com/results?search_query=Inequalities+%26+Sign+Diagrams" target="_blank" class="yt-search-btn">🔍 Watch / Search on YouTube</a></div>
         <div class="beginner-box"><h3>👶 Beginner's Concept</h3><p>An inequality asks: "When is this curve above the x-axis? When is it below?" By finding the roots (where the curve crosses), we draw a quick number line (Sign Diagram) with + and &minus; to easily see the answer!</p></div>
         <div class="tb-section"><h3>Solving Inequalities using Sign Diagrams</h3>
         <div class="fundamental-box"><h4>The 3 Steps</h4><ol><li><strong>Find the roots:</strong> Set the equation to 0, solve, and plot the roots on a number line.</li><li><strong>Determine the shape:</strong> If the leading coefficient is positive (U-shape), signs go + &minus; +. If negative (n-shape), signs go &minus; + &minus;.</li><li><strong>Read the diagram:</strong> If &gt; 0, write the positive (+) regions. If &lt; 0, write the negative (&minus;) regions.</li></ol></div>
@@ -881,7 +896,7 @@ function markAsMastered() {
 }
 
 // =============================================
-// QUIZ DATABASES
+// QUIZ DATABASES — FULLY EXPANDED (Part 2 will follow)
 // =============================================
 const easyQuiz = [
     { chapter: 0, type: 'typed', needsGraph: false, q: "Simplify: x<sup>3</sup> &times; x<sup>5</sup>", correctAnswers: ["x^8", "x8", "x⁸"], exp: "Add the exponents: 3 + 5 = 8.", hint: "When multiplying identical bases, ADD the powers." },
@@ -947,7 +962,7 @@ const finalExam = [
 ];
 
 // =============================================
-// QUIZ ENGINE
+// QUIZ ENGINE — FULLY IMPLEMENTED
 // =============================================
 let quizData = [];
 let state = [];
