@@ -706,10 +706,167 @@ const chapterTitles = [
 ];
 
 // =============================================
-// MODAL CONTENT — UPDATED VIDEOS FOR CHAPTERS 6-9
+// MODAL CONTENT — FULLY RESTORED (ALL 11 CHAPTERS)
 // =============================================
-const modalContent = [ /* ... (unchanged, same as previous working version) ... */ ];
-// (Due to space, I'm omitting the long modalContent array here, but it is identical to the fully functional version from before.)
+const modalContent = [
+    {
+        title: chapterTitles[0],
+        desc: "Core exponent rules, negative/fractional indices, and simplifying complex algebraic fractions.",
+        body: `<div class="video-wrapper"><iframe src="https://www.youtube-nocookie.com/embed/NuccqpiUHrk" allowfullscreen></iframe></div>
+        <div class="yt-fallback"><a href="https://www.youtube.com/watch?v=NuccqpiUHrk" target="_blank">⚠️ Video not playing? Click here to watch on YouTube ↗️</a></div>
+        <div style="text-align:center; margin:15px 0;"><a href="https://www.youtube.com/results?search_query=Algebraic+Fractions+%26+Indices" target="_blank" class="yt-search-btn">🔍 Watch / Search on YouTube</a></div>
+        <div class="beginner-box"><h3>👶 Beginner's Concept</h3><p>Think of exponents (indices) like a math shortcut. Instead of writing "x" multiplied by itself 5 times, we write x<sup>5</sup>. When we multiply terms with the same base, we just add the shortcuts! When we divide, we subtract them.</p></div>
+        <div class="tb-section"><h3>The Core Rules of Exponents</h3>
+        <ul>
+            <li><strong>Multiplication Rule:</strong> a<sup>m</sup> &times; a<sup>n</sup> = a<sup>m+n</sup> — Add the powers when multiplying the same base.</li>
+            <li><strong>Division Rule:</strong> a<sup>m</sup> &divide; a<sup>n</sup> = a<sup>m&minus;n</sup> — Subtract the powers when dividing.</li>
+            <li><strong>Power to a Power:</strong> (a<sup>m</sup>)<sup>n</sup> = a<sup>m&times;n</sup> — Multiply the powers.</li>
+            <li><strong>Zero Power Rule:</strong> a<sup>0</sup> = 1 — Anything to the power of 0 is exactly 1.</li>
+        </ul>
+        <details class="solution-toggle"><summary>👁️ Example: Simplify (3x<sup>2</sup>y<sup>4</sup>)<sup>3</sup></summary><div class="solution-content">The power of 3 applies to every single factor inside the bracket.<br>1. Number: 3<sup>3</sup> = 27<br>2. First variable: (x<sup>2</sup>)<sup>3</sup> = x<sup>6</sup><br>3. Second variable: (y<sup>4</sup>)<sup>3</sup> = y<sup>12</sup><br><br><strong>Final Answer: 27x<sup>6</sup>y<sup>12</sup></strong></div></details></div>
+        <div class="tb-section"><h3>Advanced: Negative &amp; Fractional Indices</h3>
+        <p><strong>Negative Indices (a<sup>-n</sup> = 1 / a<sup>n</sup>):</strong> A negative power indicates a reciprocal. Move the base to the other side of the fraction line and make the power positive.</p>
+        <p><strong>Fractional Indices (a<sup>m/n</sup> = <sup>n</sup>&radic;(a<sup>m</sup>)):</strong> The denominator is the root (roots grow in the ground / bottom). The numerator is the power (power is in the sky / top).</p>
+        <details class="solution-toggle"><summary>👁️ Example: Evaluate 27<sup>&minus;2/3</sup></summary><div class="solution-content">1. Deal with the negative: 1 / 27<sup>2/3</sup><br>2. Root on bottom: Cube root of 27 is 3 (since 3&times;3&times;3 = 27).<br>3. Power on top: 3<sup>2</sup> = 9.<br><br><strong>Final Answer: 1/9</strong></div></details></div>
+        <div class="tb-section"><h3>Simplifying Algebraic Fractions</h3>
+        <div class="fundamental-box"><h4>THE GOLDEN RULE OF FRACTIONS</h4><p>You can <strong>NEVER</strong> cancel individual terms separated by a plus (+) or minus (&minus;) sign. You must fully factor the numerator and denominator, and ONLY cancel matching multiplied brackets.</p></div>
+        <details class="solution-toggle"><summary>👁️ Example: Simplify (x<sup>2</sup> + 5x + 6) &divide; (x<sup>2</sup> &minus; 4)</summary><div class="solution-content">1. Factor Numerator (Trinomial): (x + 2)(x + 3)<br>2. Factor Denominator (DOTS): (x &minus; 2)(x + 2)<br>3. Rewrite: [(x + 2)(x + 3)] / [(x &minus; 2)(x + 2)]<br>4. Cancel matching (x + 2) brackets.<br><br><strong>Final Answer: (x + 3) / (x &minus; 2)</strong></div></details></div>`
+    },
+    {
+        title: chapterTitles[1],
+        desc: "Mastering the GCF, perfect squares, grouping, and multi-step factoring.",
+        body: `<div class="video-wrapper"><iframe src="https://www.youtube-nocookie.com/embed/D3a8NnpQ2vU" allowfullscreen></iframe></div>
+        <div class="yt-fallback"><a href="https://www.youtube.com/watch?v=D3a8NnpQ2vU" target="_blank">⚠️ Video not playing? Click here to watch on YouTube ↗️</a></div>
+        <div style="text-align:center; margin:15px 0;"><a href="https://www.youtube.com/results?search_query=Factoring+Basics" target="_blank" class="yt-search-btn">🔍 Watch / Search on YouTube</a></div>
+        <div class="beginner-box"><h3>👶 Beginner's Concept</h3><p>If "Expanding" is baking a cake (mixing all the ingredients together), then "Factoring" is un-baking the cake. You are figuring out what original brackets were multiplied together to create the current expression.</p></div>
+        <div class="tb-section"><h3>Expression vs. Equation</h3><p>An <strong>Expression</strong> (like x<sup>2</sup> + 5x + 6) has NO equals sign. You cannot "solve" it — you can only <strong>factor</strong> it into (x+2)(x+3).</p></div>
+        <div class="tb-section"><h3>Technique 1: Greatest Common Factor (GCF)</h3><div class="fundamental-box"><h4>Always Check This First!</h4><p>Look for the largest number and the highest power of variables that divide evenly into EVERY term.</p></div>
+        <details class="solution-toggle"><summary>👁️ Example: Factor 12x<sup>3</sup>y<sup>2</sup> &minus; 18x<sup>2</sup>y<sup>3</sup></summary><div class="solution-content">1. Biggest number dividing 12 and 18 is <strong>6</strong>.<br>2. Lowest power of x is <strong>x<sup>2</sup></strong>.<br>3. Lowest power of y is <strong>y<sup>2</sup></strong>.<br><br><strong>Final Answer: 6x<sup>2</sup>y<sup>2</sup>(2x &minus; 3y)</strong></div></details></div>
+        <div class="tb-section"><h3>Technique 2: Basic Trinomials (x<sup>2</sup> + bx + c)</h3><p>Find two numbers that <strong>MULTIPLY</strong> to the last number (c) and <strong>ADD</strong> to the middle number (b).</p>
+        <details class="solution-toggle"><summary>👁️ Example: Factor x<sup>2</sup> &minus; 8x + 15</summary><div class="solution-content">1. Multiply to +15: (&minus;3) &times; (&minus;5) = +15 ✓<br>2. Add to &minus;8: (&minus;3) + (&minus;5) = &minus;8 ✓<br><br><strong>Final Answer: (x &minus; 3)(x &minus; 5)</strong></div></details></div>
+        <div class="tb-section"><h3>Technique 3: Difference of Two Squares (DOTS)</h3><p>Used for two terms with a minus sign where both are perfect squares: <strong>a<sup>2</sup> &minus; b<sup>2</sup> = (a &minus; b)(a + b)</strong></p>
+        <details class="solution-toggle"><summary>👁️ Example: Factor 25x<sup>2</sup> &minus; 49y<sup>2</sup></summary><div class="solution-content">1. Square root of 25x<sup>2</sup> is 5x.<br>2. Square root of 49y<sup>2</sup> is 7y.<br><br><strong>Final Answer: (5x &minus; 7y)(5x + 7y)</strong></div></details></div>
+        <div class="tb-section"><h3>Expert Level: Factoring by Grouping (4 Terms)</h3>
+        <details class="solution-toggle"><summary>👁️ Example: Factor x<sup>3</sup> + 3x<sup>2</sup> + 2x + 6</summary><div class="solution-content">1. Group into halves: (x<sup>3</sup> + 3x<sup>2</sup>) and (2x + 6).<br>2. Factor left: x<sup>2</sup>(x + 3).<br>3. Factor right: +2(x + 3).<br>4. Pull out matching (x + 3) bracket.<br><br><strong>Final Answer: (x + 3)(x<sup>2</sup> + 2)</strong></div></details></div>
+        <div class="tb-section"><h3>Expert Level: Multi-Step Factoring</h3>
+        <details class="solution-toggle"><summary>👁️ Example: Factor fully 3x<sup>3</sup> &minus; 27x</summary><div class="solution-content">1. Pull out GCF of 3x: 3x(x<sup>2</sup> &minus; 9).<br>2. The bracket is DOTS! Factor (x<sup>2</sup> &minus; 9) into (x&minus;3)(x+3).<br><br><strong>Final Answer: 3x(x &minus; 3)(x + 3)</strong></div></details></div>`
+    },
+    {
+        title: chapterTitles[2],
+        desc: "The Balance Scale method, complex fractions, taking roots, and the Null Factor Law.",
+        body: `<div class="video-wrapper"><iframe src="https://www.youtube-nocookie.com/embed/i7idZfS8t8w" allowfullscreen></iframe></div>
+        <div class="yt-fallback"><a href="https://www.youtube.com/watch?v=i7idZfS8t8w" target="_blank">⚠️ Video not playing? Click here to watch on YouTube ↗️</a></div>
+        <div style="text-align:center; margin:15px 0;"><a href="https://www.youtube.com/results?search_query=Solving+Equations+Null+Factor+Law" target="_blank" class="yt-search-btn">🔍 Watch / Search on YouTube</a></div>
+        <div class="beginner-box"><h3>👶 Beginner's Concept</h3><p>Imagine I have two hidden numbers. I tell you that if you multiply them together, the answer is ZERO. You instantly know: one of those numbers MUST be zero! That is the entire secret to the Null Factor Law.</p></div>
+        <div class="tb-section"><h3>Solving by Taking Square Roots</h3><p>If there is no 'x' term (only an x<sup>2</sup> term), isolate the x<sup>2</sup> and take the square root. <strong>CRITICAL:</strong> Always include the &plusmn; sign!</p>
+        <details class="solution-toggle"><summary>👁️ Example: Solve 2x<sup>2</sup> &minus; 50 = 0</summary><div class="solution-content">1. Isolate x<sup>2</sup>: 2x<sup>2</sup> = 50 &rarr; x<sup>2</sup> = 25.<br>2. Square root both sides: x = &plusmn;&radic;25.<br><br><strong>Final Answer: x = 5 or x = &minus;5</strong></div></details></div>
+        <div class="tb-section"><h3>The Null Factor Law</h3><div class="fundamental-box"><h4>The 5 Steps to Solve Quadratics</h4><ol><li>Rearrange so one side equals zero.</li><li>Fully factorise the other side.</li><li>Apply the Null Factor Law: if A &times; B = 0, then A = 0 or B = 0.</li><li>Solve the resulting linear equations.</li><li>Check at least one solution.</li></ol></div>
+        <details class="solution-toggle"><summary>👁️ Example: Solve x<sup>2</sup> &minus; 2x &minus; 15 = 0</summary><div class="solution-content">1. Factor: (x &minus; 5)(x + 3) = 0<br>2. Set each bracket to zero:<br>&nbsp;&nbsp;x &minus; 5 = 0 &rarr; x = 5<br>&nbsp;&nbsp;x + 3 = 0 &rarr; x = &minus;3<br><br><strong>Final Answer: x = 5 or x = &minus;3</strong></div></details></div>
+        <div class="tb-section"><h3>Expert Level: Complex Algebraic Fractions</h3>
+        <details class="solution-toggle"><summary>👁️ Example (Cross-Multiply): Solve (x+5)/4 = (9&minus;x)/x</summary><div class="solution-content">1. Cross-multiply: x(x + 5) = 4(9 &minus; x)<br>2. Expand: x<sup>2</sup> + 5x = 36 &minus; 4x<br>3. Rearrange to = 0: x<sup>2</sup> + 9x &minus; 36 = 0<br>4. Factor: (x + 12)(x &minus; 3) = 0<br><br><strong>Final Answer: x = &minus;12 or x = 3</strong></div></details></div>`
+    },
+    {
+        title: chapterTitles[3],
+        desc: "Function machines, restricted inputs, finding ranges algebraically, and interval notation.",
+        body: `<div class="video-wrapper"><iframe src="https://www.youtube-nocookie.com/embed/A5kAC-L83lY" allowfullscreen></iframe></div>
+        <div class="yt-fallback"><a href="https://www.youtube.com/watch?v=A5kAC-L83lY" target="_blank">⚠️ Video not playing? Click here to watch on YouTube ↗️</a></div>
+        <div style="text-align:center; margin:15px 0;"><a href="https://www.youtube.com/results?search_query=Domain+and+Range+of+a+Function" target="_blank" class="yt-search-btn">🔍 Watch / Search on YouTube</a></div>
+        <div class="beginner-box"><h3>👶 Beginner's Concept</h3><p>Think of a function like a Vending Machine. The <strong>Domain</strong> is the list of things you can put IN. The <strong>Range</strong> is the list of things the machine can spit OUT.</p></div>
+        <div class="tb-section"><h3>Mathematical Restrictions (Domain)</h3>
+        <ul><li><strong>Fractions:</strong> Denominator &ne; 0. Set the denominator &ne; 0 and solve.</li><li><strong>Even Roots:</strong> Cannot take a square root of a negative number. Set the inside &ge; 0 and solve.</li></ul>
+        <details class="solution-toggle"><summary>👁️ Expert Example: Find the domain of f(x) = &radic;(x&minus;3) / (x&minus;8)</summary><div class="solution-content">TWO restrictions:<br>1. From the root: x &minus; 3 &ge; 0 &rarr; x &ge; 3.<br>2. From the fraction: x &minus; 8 &ne; 0 &rarr; x &ne; 8.<br><br><strong>Domain: x &ge; 3, but x &ne; 8</strong><br>(Interval notation: [3, 8) &cup; (8, &infin;))</div></details></div>
+        <div class="tb-section"><h3>Finding the Range</h3>
+        <details class="solution-toggle"><summary>👁️ Example: Find the range of y = &minus;x<sup>2</sup> + 10</summary><div class="solution-content">1. The base x<sup>2</sup> is always &ge; 0.<br>2. Therefore &minus;x<sup>2</sup> is always &le; 0.<br>3. The highest &minus;x<sup>2</sup> can be is 0. So 0 + 10 = 10.<br><br><strong>Range: y &le; 10</strong></div></details></div>`
+    },
+    {
+        title: chapterTitles[4],
+        desc: "Standard, Factored, Vertex form analysis, and Completing the Square.",
+        body: `<div class="video-wrapper"><iframe src="https://www.youtube-nocookie.com/embed/eRbgHCaWQQE" allowfullscreen></iframe></div>
+        <div class="yt-fallback"><a href="https://www.youtube.com/watch?v=eRbgHCaWQQE" target="_blank">⚠️ Video not playing? Click here to watch on YouTube ↗️</a></div>
+        <div style="text-align:center; margin:15px 0;"><a href="https://www.youtube.com/results?search_query=The+3+Quadratic+Forms" target="_blank" class="yt-search-btn">🔍 Watch / Search on YouTube</a></div>
+        <div class="beginner-box"><h3>👶 Beginner's Concept</h3><p>The three quadratic forms are like three different photographs of the same friend — each shows different information about the exact same parabola.</p></div>
+        <div class="tb-section"><h3>The Three Forms &amp; Their Superpowers</h3>
+        <table style="width:100%; text-align:left; border-collapse: collapse; margin-bottom: 20px;">
+            <tr style="border-bottom: 2px solid var(--primary);"><th style="padding:10px;">Form</th><th style="padding:10px;">Equation</th><th style="padding:10px;">What it Reveals</th></tr>
+            <tr style="border-bottom: 1px solid var(--border);"><td style="padding:10px;"><strong>Standard</strong></td><td style="padding:10px;">y = ax<sup>2</sup> + bx + c</td><td style="padding:10px;">The <strong>y-intercept</strong> is (0, c). 'a' tells you if it opens up or down.</td></tr>
+            <tr style="border-bottom: 1px solid var(--border);"><td style="padding:10px;"><strong>Factored</strong></td><td style="padding:10px;">y = a(x &minus; p)(x &minus; q)</td><td style="padding:10px;">The <strong>x-intercepts (roots)</strong> are x = p and x = q. (Flip the signs!)</td></tr>
+            <tr><td style="padding:10px;"><strong>Vertex</strong></td><td style="padding:10px;">y = a(x &minus; h)<sup>2</sup> + k</td><td style="padding:10px;">The <strong>vertex</strong> is at (h, k). Flip 'h' sign, keep 'k' sign.</td></tr>
+        </table></div>
+        <div class="tb-section"><h3>Expert Level: Completing the Square</h3>
+        <details class="solution-toggle"><summary>👁️ Example: Convert y = x<sup>2</sup> + 8x + 5 to Vertex Form</summary><div class="solution-content">1. Isolate x terms: y = (x<sup>2</sup> + 8x) + 5<br>2. Take half of b: 8/2 = 4. Square it: 4<sup>2</sup> = 16.<br>3. Add and subtract 16: y = (x<sup>2</sup> + 8x + 16 &minus; 16) + 5<br>4. Move &minus;16 outside: y = (x<sup>2</sup> + 8x + 16) &minus; 16 + 5<br>5. Factor the perfect square: y = (x + 4)<sup>2</sup> &minus; 11<br><br><strong>Vertex: (&minus;4, &minus;11)</strong></div></details></div>`
+    },
+    {
+        title: chapterTitles[5],
+        desc: "Handling trinomials when 'a' is not 1 using the AC Method, plus the Cross Method.",
+        body: `<div class="video-wrapper"><iframe src="https://www.youtube-nocookie.com/embed/0RPJqPkfG5Y" allowfullscreen></iframe></div>
+        <div class="yt-fallback"><a href="https://www.youtube.com/watch?v=0RPJqPkfG5Y" target="_blank">⚠️ Video not playing? Click here to watch on YouTube ↗️</a></div>
+        <div style="text-align:center; margin:15px 0;"><a href="https://www.youtube.com/results?search_query=Complex+Factoring+AC+Method" target="_blank" class="yt-search-btn">🔍 Watch / Search on YouTube</a></div>
+        <div class="beginner-box"><h3>👶 Beginner's Concept</h3><p>When there's a number in front of x<sup>2</sup> (like 3x<sup>2</sup>), the easy factoring rules break down. The "AC Method" is a secret code to unlock the middle term.</p></div>
+        <div class="tb-section"><h3>The AC Method (Split the Middle)</h3><div class="fundamental-box"><h4>The 4 Steps</h4><ol><li><strong>Multiply:</strong> Multiply the first number (a) and the last number (c). This is your "AC Target".</li><li><strong>Magic Numbers:</strong> Find two numbers that multiply to the AC Target AND add to the middle number (b).</li><li><strong>Split:</strong> Replace bx with your two magic numbers.</li><li><strong>Group:</strong> Cut the 4-term equation in half. Factor GCF from each half. Pull out the matching bracket.</li></ol></div>
+        <details class="solution-toggle"><summary>👁️ Example 1: Factor 2x<sup>2</sup> + 7x + 3</summary><div class="solution-content">Step 1: AC = 2 &times; 3 = 6.<br>Step 2: Magic numbers: 6 and 1 (6&times;1=6, 6+1=7).<br>Step 3: Split: 2x<sup>2</sup> + 6x + 1x + 3<br>Step 4: Left (2x<sup>2</sup>+6x): 2x(x+3). Right (1x+3): +1(x+3).<br>Matching bracket: (x+3).<br><br><strong>Final Answer: (x + 3)(2x + 1)</strong></div></details>
+        <details class="solution-toggle"><summary>👁️ Example 2 (Negative Signs): Factor 6x<sup>2</sup> &minus; x &minus; 15</summary><div class="solution-content">1. AC = 6 &times; &minus;15 = &minus;90.<br>2. Magic numbers: &minus;10 and 9 (&minus;10&times;9=&minus;90, &minus;10+9=&minus;1).<br>3. Split: 6x<sup>2</sup> &minus; 10x + 9x &minus; 15<br>4. Left: 2x(3x&minus;5). Right: +3(3x&minus;5).<br><br><strong>Final Answer: (3x &minus; 5)(2x + 3)</strong></div></details></div>`
+    },
+    {
+        title: chapterTitles[6],
+        desc: "Deriving and using the Quadratic Formula flawlessly, interpreting the Discriminant.",
+        body: `<div class="video-wrapper"><iframe src="https://www.youtube-nocookie.com/embed/IL3UCuXrUzE" allowfullscreen></iframe></div>
+        <div class="yt-fallback"><a href="https://www.youtube.com/watch?v=IL3UCuXrUzE" target="_blank">⚠️ Video not playing? Click here to watch on YouTube ↗️</a></div>
+        <div style="text-align:center; margin:15px 0;"><a href="https://www.youtube.com/results?search_query=Quadratic+Formula+Discriminant" target="_blank" class="yt-search-btn">🔍 Watch / Search on YouTube</a></div>
+        <div class="beginner-box"><h3>👶 Beginner's Concept</h3><p>The Quadratic Formula is a heavy-duty bulldozer. No matter how ugly the numbers, plug them in and it smashes through the math to hand you the exact roots every time.</p></div>
+        <div class="tb-section"><h3>The Ultimate Tool</h3><p>For ax<sup>2</sup> + bx + c = 0 that won't factor cleanly:</p><div class="fundamental-box"><strong>x = (&minus;b &plusmn; &radic;(b<sup>2</sup> &minus; 4ac)) / (2a)</strong></div><p>Always put negative numbers in parentheses when substituting to avoid sign errors!</p>
+        <details class="solution-toggle"><summary>👁️ Example: Solve 3x<sup>2</sup> &minus; 5x &minus; 7 = 0</summary><div class="solution-content">a=3, b=&minus;5, c=&minus;7<br>x = (&minus;(&minus;5) &plusmn; &radic;((&minus;5)<sup>2</sup> &minus; 4(3)(&minus;7))) / (2&times;3)<br>x = (5 &plusmn; &radic;(25 + 84)) / 6<br>x = (5 &plusmn; &radic;109) / 6<br><br><strong>Answers: x = (5 + &radic;109)/6 and x = (5 &minus; &radic;109)/6</strong></div></details></div>
+        <div class="tb-section"><h3>Expert Level: The Discriminant (&Delta;)</h3><p>&Delta; = b<sup>2</sup> &minus; 4ac (the part under the square root sign).</p>
+        <ul><li><strong>&Delta; &gt; 0:</strong> Two distinct real roots. (Parabola crosses x-axis twice).</li><li><strong>&Delta; = 0:</strong> One repeated real root. (Vertex rests on x-axis).</li><li><strong>&Delta; &lt; 0:</strong> No real roots. (Parabola floats above or below x-axis).</li></ul>
+        <details class="solution-toggle"><summary>👁️ Expert Example: Find 'k' so x<sup>2</sup> + kx + 16 = 0 has exactly ONE root.</summary><div class="solution-content">One root means &Delta; = 0.<br>k<sup>2</sup> &minus; 4(1)(16) = 0<br>k<sup>2</sup> &minus; 64 = 0 &rarr; k<sup>2</sup> = 64<br>k = &plusmn;8<br><br><strong>Answer: k = 8 or k = &minus;8</strong></div></details></div>`
+    },
+    {
+        title: chapterTitles[7],
+        desc: "How parameters alter a parabola's position, stretch, and shape on the graph.",
+        body: `<div class="video-wrapper"><iframe src="https://www.youtube-nocookie.com/embed/3B2VtQmYVqM" allowfullscreen></iframe></div>
+        <div class="yt-fallback"><a href="https://www.youtube.com/watch?v=3B2VtQmYVqM" target="_blank">⚠️ Video not playing? Click here to watch on YouTube ↗️</a></div>
+        <div style="text-align:center; margin:15px 0;"><a href="https://www.youtube.com/results?search_query=Transformations+of+Quadratic+Functions" target="_blank" class="yt-search-btn">🔍 Watch / Search on YouTube</a></div>
+        <div class="beginner-box"><h3>👶 Beginner's Concept</h3><p>The basic parabola (y = x<sup>2</sup>) is your starting character. Adding "power-ups" to its equation moves it around. Adding a number outside moves it up or down. Changing the number inside the brackets moves it left or right (opposite to what you'd expect!). A negative sign flips it upside down.</p></div>
+        <div class="tb-section"><h3>Transformation Rules: y = a(x &minus; h)<sup>2</sup> + k</h3>
+        <ul><li><strong>Vertical Shift (k):</strong> +k shifts UP, &minus;k shifts DOWN.</li><li><strong>Horizontal Shift (h):</strong> (x &minus; h)<sup>2</sup> shifts RIGHT. (x + h)<sup>2</sup> shifts LEFT. It is the <em>opposite</em> of the sign!</li><li><strong>Stretch/Compression (a):</strong> |a| &gt; 1 = narrower (steeper). 0 &lt; |a| &lt; 1 = wider (flatter).</li><li><strong>Reflection:</strong> If 'a' is negative, the graph opens downward (upside down).</li></ul>
+        <details class="solution-toggle"><summary>👁️ Example: Describe transformations for y = &minus;(1/2)(x &minus; 4)<sup>2</sup> + 7</summary><div class="solution-content">From parent y = x<sup>2</sup>:<br>1. Negative sign: Reflected (opens downward).<br>2. Factor 1/2: Vertically compressed (wider).<br>3. (x &minus; 4): Shifted RIGHT by 4 units.<br>4. + 7: Shifted UP by 7 units.</div></details></div>`
+    },
+    {
+        title: chapterTitles[8],
+        desc: "Looking at a picture of a parabola and successfully building its mathematical equation.",
+        body: `<div class="video-wrapper"><iframe src="https://www.youtube-nocookie.com/embed/Fh1pJw9xLZ8" allowfullscreen></iframe></div>
+        <div class="yt-fallback"><a href="https://www.youtube.com/watch?v=Fh1pJw9xLZ8" target="_blank">⚠️ Video not playing? Click here to watch on YouTube ↗️</a></div>
+        <div style="text-align:center; margin:15px 0;"><a href="https://www.youtube.com/results?search_query=Graph+to+Equation+Quadratic" target="_blank" class="yt-search-btn">🔍 Watch / Search on YouTube</a></div>
+        <div class="beginner-box"><h3>👶 Beginner's Concept</h3><p>You're a detective. You see a curve and need to figure out its "DNA code" (its equation). Can you see the exact vertex? Use Vertex Form. Can you see the roots? Use Factored Form. Then plug in a known point to find 'a'.</p></div>
+        <div class="tb-section"><h3>Scenario A: Given the Vertex</h3><p>Start with y = a(x &minus; h)<sup>2</sup> + k.</p>
+        <details class="solution-toggle"><summary>👁️ Example: Vertex at (&minus;1, 4), passes through (2, &minus;14)</summary><div class="solution-content">1. Sub vertex: y = a(x + 1)<sup>2</sup> + 4<br>2. Sub point (2, &minus;14): &minus;14 = a(2 + 1)<sup>2</sup> + 4<br>3. Solve: &minus;14 = 9a + 4 &rarr; &minus;18 = 9a &rarr; a = &minus;2<br><br><strong>Equation: y = &minus;2(x + 1)<sup>2</sup> + 4</strong></div></details></div>
+        <div class="tb-section"><h3>Scenario B: Given the X-Intercepts</h3><p>Start with y = a(x &minus; p)(x &minus; q).</p>
+        <details class="solution-toggle"><summary>👁️ Example: Roots at x=3 and x=&minus;2, y-intercept at y=12</summary><div class="solution-content">1. Sub roots: y = a(x &minus; 3)(x + 2)<br>2. Sub y-intercept (0, 12): 12 = a(0 &minus; 3)(0 + 2) = &minus;6a<br>3. Solve: a = &minus;2<br><br><strong>Equation: y = &minus;2(x &minus; 3)(x + 2)</strong></div></details></div>`
+    },
+    {
+        title: chapterTitles[9],
+        desc: "Using quadratics to solve for max height, optimization, economics, and domains.",
+        body: `<div class="video-wrapper"><iframe src="https://www.youtube-nocookie.com/embed/OZtqz_xw0SQ" allowfullscreen></iframe></div>
+        <div class="yt-fallback"><a href="https://www.youtube.com/watch?v=OZtqz_xw0SQ" target="_blank">⚠️ Video not playing? Click here to watch on YouTube ↗️</a></div>
+        <div style="text-align:center; margin:15px 0;"><a href="https://www.youtube.com/results?search_query=Real-World+Modeling+Quadratics" target="_blank" class="yt-search-btn">🔍 Watch / Search on YouTube</a></div>
+        <div class="beginner-box"><h3>👶 Beginner's Concept</h3><p>If you throw a ball in the air, its path is a perfect parabola! "When does it hit the ground?" = find the roots (height = 0). "What is the highest point?" = find the Vertex!</p></div>
+        <div class="tb-section"><h3>The Translation Guide</h3>
+        <ul><li><strong>"Maximum / Minimum / Highest / Lowest"</strong> &rarr; Find the Vertex using x = &minus;b / (2a).</li><li><strong>"Hits ground / Break-even / Starts at zero"</strong> &rarr; Find the roots by setting equation = 0.</li><li><strong>"Initial / Starting amount"</strong> &rarr; Find the y-intercept by setting x = 0.</li></ul>
+        <details class="solution-toggle"><summary>👁️ Example: Height h(t) = &minus;5t<sup>2</sup> + 10t + 40. Find max height and time to hit water.</summary><div class="solution-content"><strong>Part 1: Max Height (Vertex)</strong><br>t = &minus;10 / (2&times;&minus;5) = 1 second.<br>h(1) = &minus;5 + 10 + 40 = <strong>45 m</strong><br><br><strong>Part 2: Hit Water (Roots)</strong><br>&minus;5t<sup>2</sup> + 10t + 40 = 0 &rarr; divide by &minus;5 &rarr; t<sup>2</sup> &minus; 2t &minus; 8 = 0<br>Factor: (t &minus; 4)(t + 2) = 0<br>t = 4 or t = &minus;2. Reject negative.<br><strong>Hits water at t = 4 seconds.</strong></div></details>
+        <details class="solution-toggle"><summary>👁️ Expert Example: Revenue Optimization</summary><div class="solution-content">Theatre sells 100 tickets at $10. Each $1 increase (x) loses 5 tickets.<br>R(x) = (10 + x)(100 &minus; 5x)<br>Roots: x = &minus;10 and x = 20.<br>Vertex x = (&minus;10 + 20)/2 = 5.<br>Increase price by $5 &rarr; Price = $15.<br><strong>Max Revenue = $15 &times; 75 = $1125</strong></div></details></div>`
+    },
+    {
+        title: chapterTitles[10],
+        desc: "Drawing sign diagrams to solve quadratic inequalities (>, <, >=).",
+        body: `<div class="video-wrapper"><iframe src="https://www.youtube-nocookie.com/embed/ZNtzWpU80-0" allowfullscreen></iframe></div>
+        <div class="yt-fallback"><a href="https://www.youtube.com/watch?v=ZNtzWpU80-0" target="_blank">⚠️ Video not playing? Click here to watch on YouTube ↗️</a></div>
+        <div style="text-align:center; margin:15px 0;"><a href="https://www.youtube.com/results?search_query=Inequalities+%26+Sign+Diagrams" target="_blank" class="yt-search-btn">🔍 Watch / Search on YouTube</a></div>
+        <div class="beginner-box"><h3>👶 Beginner's Concept</h3><p>An inequality asks: "When is this curve above the x-axis? When is it below?" By finding the roots (where the curve crosses), we draw a quick number line (Sign Diagram) with + and &minus; to easily see the answer!</p></div>
+        <div class="tb-section"><h3>Solving Inequalities using Sign Diagrams</h3>
+        <div class="fundamental-box"><h4>The 3 Steps</h4><ol><li><strong>Find the roots:</strong> Set the equation to 0, solve, and plot the roots on a number line.</li><li><strong>Determine the shape:</strong> If the leading coefficient is positive (U-shape), signs go + &minus; +. If negative (n-shape), signs go &minus; + &minus;.</li><li><strong>Read the diagram:</strong> If &gt; 0, write the positive (+) regions. If &lt; 0, write the negative (&minus;) regions.</li></ol></div>
+        <details class="solution-toggle"><summary>👁️ Example: Solve x<sup>2</sup> &minus; 3x &minus; 10 &lt; 0</summary><div class="solution-content">1. Factor: (x &minus; 5)(x + 2) = 0 &rarr; Roots: x = 5, x = &minus;2.<br>2. Shape: Positive x<sup>2</sup> = U-shape. Signs: + &nbsp; &minus; &nbsp; +<br>3. Want &lt; 0 (negative region) = middle section.<br><br><strong>Final Answer: &minus;2 &lt; x &lt; 5</strong></div></details>
+        <details class="solution-toggle"><summary>👁️ Example: Solve 4 &minus; x<sup>2</sup> &le; 0</summary><div class="solution-content">1. Roots: (2&minus;x)(2+x) = 0 &rarr; x = 2, x = &minus;2.<br>2. Shape: Negative &minus;x<sup>2</sup> = n-shape. Signs: &minus; &nbsp; + &nbsp; &minus;<br>3. Want &le; 0 (negative or zero) = outer sections.<br><br><strong>Final Answer: x &le; &minus;2 or x &ge; 2</strong></div></details></div>`
+    }
+];
 
 // =============================================
 // MASTERY TRACKING
@@ -740,73 +897,82 @@ function markAsMastered() {
 }
 
 // =============================================
-// QUIZ DATABASES — INCLUDING NEW ALGEBRA MANIPULATION TEST
+// QUIZ DATABASES — FULLY RESTORED
 // =============================================
-const easyQuiz = [ /* ... unchanged ... */ ];
-const normalQuiz = [ /* ... unchanged ... */ ];
-const hardQuiz = [ /* ... unchanged ... */ ];
-const finalExam = [ /* ... unchanged ... */ ];
+const easyQuiz = [
+    { chapter: 0, type: 'typed', needsGraph: false, q: "Simplify: x<sup>3</sup> &times; x<sup>5</sup>", correctAnswers: ["x^8", "x8", "x⁸"], exp: "Add the exponents: 3 + 5 = 8.", hint: "When multiplying identical bases, ADD the powers." },
+    { chapter: 1, type: 'typed', needsGraph: false, q: "Expand using FOIL: (x + 2)(x + 4)", correctAnswers: ["x^2+6x+8", "x²+6x+8", "x2+6x+8"], exp: "First: x&times;x = x². Outside: 4x. Inside: 2x. Last: 8. Combine: x² + 6x + 8.", hint: "First, Outside, Inside, Last. Then combine the two middle x terms." },
+    { chapter: 0, type: 'typed', needsGraph: false, q: "Evaluate: 16<sup>1/2</sup>", correctAnswers: ["4"], exp: "A power of 1/2 is the same as a square root. &radic;16 = 4.", hint: "What number multiplied by itself equals 16?" },
+    { chapter: 1, type: 'typed', needsGraph: false, q: "Factor out the GCF: 4x<sup>2</sup> &minus; 12x", correctAnswers: ["4x(x-3)", "4x(x - 3)"], exp: "The largest number is 4, largest variable is x. Pulling out 4x leaves (x &minus; 3).", hint: "What is the biggest number AND letter that goes into both terms?" },
+    { chapter: 2, type: 'mcq', needsGraph: false, q: "Solve for x: x(x &minus; 5) = 0", opts: ["x = 0 or x = 5", "x = 5 only", "x = 0 or x = &minus;5", "x = &minus;5 only"], ans: 0, exp: "By the Null Factor Law, either the outside x is 0, or the bracket (x&minus;5) is 0.", hint: "If two things multiply to zero, one of them must be zero." },
+    { chapter: 4, type: 'typed', needsGraph: false, q: "What is the y-intercept of y = 2x<sup>2</sup> + 3x &minus; 8? (Type just the number)", correctAnswers: ["-8"], exp: "Set x = 0. Only the constant 'c' remains, which is &minus;8.", hint: "The y-intercept always happens when x is 0." },
+    { chapter: 0, type: 'typed', needsGraph: false, q: "Simplify fully: y<sup>8</sup> &divide; y<sup>2</sup>", correctAnswers: ["y^6", "y⁶", "y6"], exp: "When dividing the same base, subtract the powers: 8 &minus; 2 = 6.", hint: "Subtract the bottom power from the top power." },
+    { chapter: 7, type: 'mcq', needsGraph: false, q: "Which way does the parabola y = &minus;x<sup>2</sup> + 4 open?", opts: ["Downwards (n-shape)", "Upwards (U-shape)", "Left", "Right"], ans: 0, exp: "Because 'a' is negative, it opens downwards (sad parabola).", hint: "Look at the sign in front of x squared." },
+    { chapter: 1, type: 'typed', needsGraph: false, q: "Factor completely using Difference of Two Squares: x<sup>2</sup> &minus; 25", correctAnswers: ["(x-5)(x+5)", "(x+5)(x-5)"], exp: "Difference of Two Squares. &radic;25 = 5.", hint: "Create two brackets with opposite signs." },
+    { chapter: 3, type: 'mcq', needsGraph: false, q: "What is the restricted domain of f(x) = 5 / (x &minus; 2)?", opts: ["x &ne; 2", "x &gt; 2", "x &ne; &minus;2", "All real numbers"], ans: 0, exp: "The denominator cannot be 0. So x &minus; 2 &ne; 0, meaning x &ne; 2.", hint: "The bottom of a fraction can never be zero." },
+    { chapter: 0, type: 'typed', needsGraph: false, q: "Simplify: (x<sup>3</sup>)<sup>2</sup>", correctAnswers: ["x^6", "x⁶", "x6"], exp: "Power to a power means multiply the exponents: 3 &times; 2 = 6.", hint: "When raising an exponent to another exponent, MULTIPLY them." },
+    { chapter: 0, type: 'typed', needsGraph: false, q: "Evaluate: 2<sup>3</sup>", correctAnswers: ["8"], exp: "2 &times; 2 &times; 2 = 8", hint: "Multiply 2 by itself three times." }
+];
 
-// New formative test based on the provided PDF
+const normalQuiz = [
+    { chapter: 1, type: 'typed', needsGraph: false, q: "Factor the trinomial: x<sup>2</sup> + 7x + 10", correctAnswers: ["(x+5)(x+2)", "(x+2)(x+5)"], exp: "Numbers that multiply to 10 and add to 7 are +5 and +2.", hint: "Find two numbers that multiply to the last number and add to the middle number." },
+    { chapter: 4, type: 'typed', needsGraph: false, q: "Identify the vertex of y = 2(x &minus; 3)<sup>2</sup> + 4. Type as (x,y) with no spaces.", correctAnswers: ["(3,4)", "3,4"], exp: "In vertex form, flip the inside sign, keep the outside. Vertex is (3, 4).", hint: "Flip the sign inside the bracket, keep the sign outside." },
+    { chapter: 4, type: 'typed', needsGraph: false, q: "Convert y = (x &minus; 2)<sup>2</sup> to standard form.", correctAnswers: ["x^2-4x+4", "x²-4x+4", "x2-4x+4"], exp: "Expand (x&minus;2)(x&minus;2) using FOIL to get x² &minus; 2x &minus; 2x + 4 = x² &minus; 4x + 4.", hint: "Write it as two brackets and use FOIL." },
+    { chapter: 2, type: 'typed', needsGraph: false, q: "Solve for x: x<sup>2</sup> &minus; 9 = 0. (Write as two numbers separated by a comma, e.g. 5,-5)", correctAnswers: ["3,-3", "-3,3"], exp: "Move 9: x² = 9. Take the square root to get &plusmn;3.", hint: "Don't forget the negative square root!" },
+    { chapter: 0, type: 'typed', needsGraph: false, q: "Simplify fully: (2x<sup>2</sup>)<sup>3</sup>", correctAnswers: ["8x^6", "8x⁶", "8x6"], exp: "Cube the 2 (2&times;2&times;2=8) and multiply the powers (2&times;3=6).", hint: "The power of 3 applies to the number 2 as well!" },
+    { chapter: 2, type: 'typed', needsGraph: false, q: "Find the x-intercepts of y = x<sup>2</sup> &minus; x &minus; 12 (Write as two numbers separated by a comma)", correctAnswers: ["4,-3", "-3,4"], exp: "Factor to (x &minus; 4)(x + 3) = 0. Roots are x = 4, x = &minus;3.", hint: "Factor the equation first. Multiply to &minus;12, add to &minus;1." },
+    { chapter: 0, type: 'typed', needsGraph: false, q: "Simplify the fraction: (x<sup>2</sup> &minus; 9) / (x &minus; 3)", correctAnswers: ["x+3"], exp: "Factor top to (x&minus;3)(x+3). Cancel the (x&minus;3) from top and bottom.", hint: "Factor the top using Difference of Two Squares first." },
+    { chapter: 4, type: 'typed', needsGraph: true, eq1: "y=x^2-4x", q: "<span class='desmos-badge'>DESMOS TOOL</span> Graph y = x<sup>2</sup> &minus; 4x below. What is the minimum y-value of this parabola?", correctAnswers: ["-4"], exp: "The vertex is at (2, &minus;4). The minimum y-value is &minus;4.", hint: "Open the graph. Click the lowest point on the curve. What is the y-coordinate?" },
+    { chapter: 6, type: 'mcq', needsGraph: false, q: "If the discriminant (&Delta;) is exactly 0, what does this mean?", opts: ["The parabola touches the x-axis exactly once", "It has two real roots", "It never touches the x-axis", "The y-intercept is 0"], ans: 0, exp: "A discriminant of 0 means there is exactly 1 repeated real root.", hint: "If the &plusmn; part of the formula is 0, how many answers do you get?" },
+    { chapter: 3, type: 'mcq', needsGraph: false, q: "What is the range of y = x<sup>2</sup> + 5?", opts: ["y &ge; 5", "y &le; 5", "All real numbers", "x &ge; 5"], ans: 0, exp: "Since x² can never be negative, the lowest the equation can reach is 0 + 5 = 5.", hint: "What is the smallest possible value for anything squared?" },
+    { chapter: 1, type: 'typed', needsGraph: false, q: "Expand: (x &minus; 5)<sup>2</sup>", correctAnswers: ["x^2-10x+25", "x²-10x+25", "x2-10x+25"], exp: "(x&minus;5)(x&minus;5) = x² &minus; 5x &minus; 5x + 25 = x² &minus; 10x + 25.", hint: "Write out the bracket twice and FOIL it." },
+    { chapter: 1, type: 'typed', needsGraph: false, q: "What is the GCF of 18x<sup>2</sup> and 27x?", correctAnswers: ["9x"], exp: "The largest number dividing 18 and 27 is 9. Both share at least one 'x'. So, 9x.", hint: "Find the biggest number that divides both 18 and 27." }
+];
+
+const hardQuiz = [
+    { chapter: 5, type: 'typed', needsGraph: false, q: "Factor using the AC method: 2x<sup>2</sup> + 7x + 3", correctAnswers: ["(2x+1)(x+3)", "(x+3)(2x+1)"], exp: "a&times;c = 6. Factors of 6 adding to 7 are 6 and 1. Split: 2x² + 6x + 1x + 3. Group to get (2x+1)(x+3).", hint: "Multiply the first and last numbers. What multiplies to that, and adds to the middle?" },
+    { chapter: 5, type: 'typed', needsGraph: false, q: "Solve 2x<sup>2</sup> &minus; 5x &minus; 3 = 0 (Type the two answers separated by a comma)", correctAnswers: ["3,-0.5", "-0.5,3", "3,-1/2", "-1/2,3"], exp: "Factor to (2x + 1)(x &minus; 3) = 0. Roots are x = &minus;1/2 and x = 3.", hint: "Factor using the AC method, or use the Quadratic Formula." },
+    { chapter: 6, type: 'mcq', needsGraph: false, q: "If &Delta; = &minus;10, how many real roots does the quadratic have?", opts: ["0", "1", "2", "10"], ans: 0, exp: "A negative discriminant means you cannot take its square root, so there are no real roots.", hint: "Can you take the square root of a negative number?" },
+    { chapter: 4, type: 'typed', needsGraph: false, q: "To complete the square for x<sup>2</sup> + 6x, what number must be added to make a perfect square trinomial?", correctAnswers: ["9"], exp: "Take half of 'b' (half of 6 is 3), then square it (3² = 9).", hint: "Take half of the middle number, then square it." },
+    { chapter: 7, type: 'typed', needsGraph: false, q: "What is the equation if y = x<sup>2</sup> is shifted LEFT 3 and DOWN 4?", correctAnswers: ["y=(x+3)^2-4", "(x+3)^2-4", "y=(x+3)2-4"], exp: "Left 3 means (x+3) inside (opposite!). Down 4 means &minus;4 outside.", hint: "Inside the brackets is opposite direction. Outside is as expected." },
+    { chapter: 4, type: 'typed', needsGraph: false, q: "A parabola has x-intercepts at x = 2 and x = &minus;4. What is the axis of symmetry? (Type just the number)", correctAnswers: ["-1", "x=-1"], exp: "The axis is exactly halfway between the roots. (2 + (&minus;4)) / 2 = &minus;1.", hint: "Find the exact middle (average) of the two roots." },
+    { chapter: 7, type: 'mcq', needsGraph: false, q: "<strong>Multi-Step:</strong> Find the roots of y = x<sup>2</sup> &minus; 6x + 8. If this graph is shifted UP by 2 units, what is the new y-intercept?", opts: ["(0, 10)", "(0, 8)", "(0, 2)", "(0, 6)"], ans: 0, exp: "Original y-intercept is (0, 8). Shifting up 2 makes the new y-intercept (0, 10). The roots were a distractor!", hint: "You don't need the roots. Just look at the original y-intercept and shift it up." },
+    { chapter: 9, type: 'typed', needsGraph: false, q: "<strong>Word Problem:</strong> A rocket's height is h(t) = &minus;5t<sup>2</sup> + 20t + 25. At what time 't' does it hit the ground?", correctAnswers: ["5", "t=5"], exp: "Set h = 0. Divide by &minus;5: t² &minus; 4t &minus; 5 = 0. Factor: (t &minus; 5)(t + 1) = 0. Reject negative time, so t = 5.", hint: "Set the equation to 0 and factor. Reject the negative time answer." },
+    { chapter: 10, type: 'typed', needsGraph: false, q: "Solve the inequality: x<sup>2</sup> &minus; 16 &gt; 0. Type the positive region only (e.g. x&gt;4)", correctAnswers: ["x>4"], exp: "Roots are 4 and &minus;4. Happy parabola, so &gt; 0 on the outsides (x &gt; 4 and x &lt; &minus;4).", hint: "Where is the parabola above the x-axis?" },
+    { chapter: 2, type: 'typed', needsGraph: true, eq1: "y=x^2", eq2: "y=2x+3", q: "<span class='desmos-badge'>DESMOS</span> Graph y = x<sup>2</sup> and y = 2x + 3. What is the POSITIVE x-coordinate where they intersect?", correctAnswers: ["3", "x=3"], exp: "They cross at (&minus;1, 1) and (3, 9). The positive x-coordinate is 3.", hint: "Graph both, find where they cross, and look at the positive x value." },
+    { chapter: 6, type: 'typed', needsGraph: false, q: "Calculate the exact discriminant (&Delta;) of x<sup>2</sup> &minus; 3x + 2", correctAnswers: ["1"], exp: "b² &minus; 4ac = (&minus;3)² &minus; 4(1)(2) = 9 &minus; 8 = 1.", hint: "Use the formula b² &minus; 4ac" },
+    { chapter: 2, type: 'typed', needsGraph: false, q: "Make x the subject of the formula: y = (x + 5) / 3", correctAnswers: ["3y-5", "x=3y-5", "-5+3y"], exp: "Multiply both sides by 3: 3y = x + 5. Subtract 5: x = 3y &minus; 5.", hint: "First multiply both sides by 3 to remove the fraction." }
+];
+
+const finalExam = [
+    { chapter: 1, type: 'typed', needsGraph: false, q: "<span class='level-badge lvl-1'>Level 1-2</span> Expand the brackets: 3x(x &minus; 4)", correctAnswers: ["3x^2-12x", "3x²-12x", "3x2-12x"], exp: "Multiply 3x by x, and 3x by &minus;4.", hint: "Multiply the outside term by EVERYTHING inside the bracket." },
+    { chapter: 1, type: 'typed', needsGraph: false, q: "<span class='level-badge lvl-1'>Level 1-2</span> Factor completely: x<sup>2</sup> &minus; 16", correctAnswers: ["(x-4)(x+4)", "(x+4)(x-4)"], exp: "Difference of Two Squares. &radic;16 = 4.", hint: "Difference of squares. Two brackets with opposite signs." },
+    { chapter: 4, type: 'typed', needsGraph: false, q: "<span class='level-badge lvl-3'>Level 3-4</span> Find the y-intercept of y = &minus;3(x &minus; 1)(x + 4). Type the number only.", correctAnswers: ["12"], exp: "Set x=0: &minus;3(&minus;1)(4) = &minus;3 &times; &minus;4 = 12.", hint: "Substitute x = 0 into the equation and multiply the remaining numbers." },
+    { chapter: 0, type: 'typed', needsGraph: false, q: "<span class='level-badge lvl-3'>Level 3-4</span> Simplify fully: (x<sup>2</sup> &minus; 25) / (x + 5)", correctAnswers: ["x-5"], exp: "Factor top to (x&minus;5)(x+5). The (x+5) brackets cancel.", hint: "Factor the top first. Then cancel matching brackets." },
+    { chapter: 1, type: 'typed', needsGraph: false, q: "<span class='level-badge lvl-5'>Level 5-6</span> Factor completely (multi-step): 3x<sup>2</sup> &minus; 27", correctAnswers: ["3(x-3)(x+3)", "3(x+3)(x-3)"], exp: "Pull out GCF of 3 to get 3(x² &minus; 9). Then factor DOTS to 3(x&minus;3)(x+3).", hint: "Always look for a Greatest Common Factor before doing anything else!" },
+    { chapter: 4, type: 'typed', needsGraph: false, q: "<span class='level-badge lvl-5'>Level 5-6</span> What is the x-coordinate of the vertex for y = &minus;2x<sup>2</sup> + 12x &minus; 10?", correctAnswers: ["3", "x=3"], exp: "x = &minus;b / (2a) = &minus;12 / (2&times;&minus;2) = &minus;12 / &minus;4 = 3.", hint: "Use the formula x = &minus;b / (2a) to find the x-coordinate." },
+    { chapter: 3, type: 'mcq', needsGraph: true, eq1: "y=0.5x^2-2x-5", q: "<span class='level-badge lvl-5'>Level 5-6</span> <span class='desmos-badge'>DESMOS</span> Find the positive root of y = 0.5x<sup>2</sup> &minus; 2x &minus; 5 to 1 decimal place.", opts: ["5.7", "1.7", "7.4", "4.2"], ans: 0, exp: "Graphing shows roots at approximately &minus;1.7 and 5.7. The positive root is 5.7.", hint: "Open Desmos, look at where the curve crosses the positive right side of the x-axis." },
+    { chapter: 6, type: 'typed', needsGraph: false, q: "<span class='level-badge lvl-7'>Level 7-8</span> For what positive value of <i>k</i> does x<sup>2</sup> + kx + 9 = 0 have exactly ONE real root?", correctAnswers: ["6", "k=6"], exp: "One root means &Delta; = 0. So k² &minus; 4(1)(9) = 0. k² = 36. k = 6.", hint: "For one root, the discriminant (b² &minus; 4ac) must equal zero. Set up an equation for k." },
+    { chapter: 9, type: 'mcq', needsGraph: false, q: "<span class='level-badge lvl-7'>Level 7-8</span> <strong>Optimization:</strong> A farmer has 60 m of fencing. Area is A(x) = x(60 &minus; 2x). What is the maximum area?", opts: ["450 m²", "900 m²", "400 m²", "100 m²"], ans: 0, exp: "Expand to A(x) = &minus;2x² + 60x. Vertex: x = &minus;60/(2&times;&minus;2) = 15. A(15) = 15(60&minus;30) = 450 m².", hint: "Expand to standard form. Then use x = &minus;b / (2a) to find the maximum." },
+    { chapter: 9, type: 'mcq', needsGraph: false, q: "<span class='level-badge lvl-7'>Level 7-8</span> <strong>Economics:</strong> Revenue is R(x) = (10 + x)(100 &minus; 5x). How many $1 increases maximize revenue?", opts: ["x = 5", "x = 10", "x = 20", "x = 15"], ans: 0, exp: "Roots are &minus;10 and 20. Vertex is halfway: (&minus;10 + 20) / 2 = 5.", hint: "Find the two roots. Maximum occurs exactly halfway between them." },
+    { chapter: 8, type: 'typed', needsGraph: false, q: "<span class='level-badge lvl-7'>Level 7-8</span> A bridge arch: y = &minus;0.1(x &minus; 10)<sup>2</sup> + 10. What is the maximum height of the arch?", correctAnswers: ["10", "10m"], exp: "Vertex form! The vertex is (10, 10). The y-coordinate is the max height.", hint: "The equation is already in Vertex form. Look at the 'k' value outside the brackets." },
+    { chapter: 9, type: 'mcq', needsGraph: false, q: "<span class='level-badge lvl-7'>Level 7-8</span> <strong>Multi-Part:</strong> Balloon: h(t) = &minus;5t² + 10t + 40. Find when it hits the ground AND its max height.", opts: ["Hits ground at 4s, Max height is 45m", "Hits ground at 8s, Max height is 40m", "Hits ground at 2s, Max height is 45m", "Hits ground at 4s, Max height is 50m"], ans: 0, exp: "Set h=0: &minus;5(t&minus;4)(t+2) = 0. Ground at t=4. Vertex: t = &minus;10/&minus;10 = 1. h(1) = &minus;5+10+40 = 45m.", hint: "Set = 0 and factor for time. Use &minus;b/2a for max height." },
+    { chapter: 1, type: 'typed', needsGraph: false, q: "<span class='level-badge lvl-7'>Level 7-8</span> What is the GCF of 24x<sup>3</sup>y<sup>2</sup> and 36x<sup>2</sup>y<sup>4</sup>?", correctAnswers: ["12x^2y^2", "12x²y²", "12x2y2"], exp: "Biggest number is 12. Lowest x power is x². Lowest y power is y².", hint: "Find the largest number that divides both 24 and 36." },
+    { chapter: 2, type: 'mcq', needsGraph: true, eq1: "y=x^2-3x", eq2: "y=-x^2+5", q: "<span class='level-badge lvl-7'>Level 7-8</span> <span class='desmos-badge'>DESMOS</span> Find the intersection points of y = x<sup>2</sup> &minus; 3x and y = &minus;x<sup>2</sup> + 5.", opts: ["(&minus;1, 4) and (2.5, &minus;1.25)", "(1, &minus;2) and (&minus;2.5, &minus;1.25)", "(0, 0) and (5, 0)", "They do not intersect"], ans: 0, exp: "Graphing shows intersections at x = &minus;1 (y=4) and x = 2.5 (y=&minus;1.25).", hint: "Graph both equations. Click the grey dots where the curves cross." },
+    { chapter: 0, type: 'typed', needsGraph: false, q: "<span class='level-badge lvl-7'>Level 7-8</span> Evaluate without a calculator: 27<sup>2/3</sup>", correctAnswers: ["9"], exp: "Cube root of 27 is 3. Then square the 3 to get 9.", hint: "Take the cube root first, then square the result." }
+];
+
 const algebraManipulationQuiz = [
-    {
-        chapter: 2, // Solving Equations
-        type: 'typed',
-        needsGraph: false,
-        q: "Solve for x: <br> (2)/(x-1) + (5)/(x+3) = (2-x)/((x-1)(x+3))",
-        correctAnswers: ["1/8", "0.125", "x=1/8", "x=0.125"],
-        exp: "Multiply both sides by (x-1)(x+3): 2(x+3) + 5(x-1) = 2-x → 2x+6+5x-5 = 2-x → 7x+1 = 2-x → 8x = 1 → x = 1/8.",
-        hint: "Start by multiplying every term by the common denominator (x-1)(x+3)."
-    },
-    {
-        chapter: 2,
-        type: 'typed',
-        needsGraph: false,
-        q: "Solve for x: <br> x<sup>2</sup> - 5x + 6 = 0",
-        correctAnswers: ["2,3", "3,2", "x=2,3", "x=3,2"],
-        exp: "Factor: (x-2)(x-3)=0 → x=2 or x=3.",
-        hint: "Find two numbers that multiply to +6 and add to -5."
-    },
-    {
-        chapter: 2,
-        type: 'typed',
-        needsGraph: false,
-        q: "Solve for x: <br> (2x)/(3x+1) = 1/(x+2)",
-        correctAnswers: ["-2/5,1", "1,-2/5", "x=1, x=-2/5", "x=1,x=-0.4"],
-        exp: "Cross-multiply: 2x(x+2) = 1(3x+1) → 2x²+4x = 3x+1 → 2x²+x-1=0 → (2x-1)(x+1)=0 → x=1/2 or x=-1. Wait, check: (2x-1)(x+1)=2x²+2x-x-1=2x²+x-1 correct. So x=1/2, x=-1. However the key says 1 and -2/5? Let's double-check: if x=1, LHS=2/4=0.5, RHS=1/3 ≈0.333 not equal. So the key might have a different equation. I'll use a reliable one from the PDF: Question 7 actually says 2x/(3x+1) = 1/(x+2). The solution: cross-multiply: 2x(x+2)=3x+1 → 2x²+4x-3x-1=0 → 2x²+x-1=0 → (2x-1)(x+1)=0 → x=1/2, x=-1. I'll set those as correct answers.",
-        hint: "Cross-multiply to eliminate fractions, then rearrange into a quadratic and factor."
-    },
-    {
-        chapter: 1,
-        type: 'typed',
-        needsGraph: false,
-        q: "Simplify: (x<sup>2</sup>y<sup>3</sup>)<sup>2</sup> / (x<sup>3</sup>y<sup>2</sup>)",
-        correctAnswers: ["x y^4", "xy^4", "x*y^4", "x y4"],
-        exp: "Numerator: x^4 y^6. Divide by x^3 y^2: subtract exponents → x^(4-3) y^(6-2) = x y^4.",
-        hint: "Apply the power to each factor inside the parentheses first, then use the division rule for exponents."
-    },
-    {
-        chapter: 2,
-        type: 'typed',
-        needsGraph: false,
-        q: "Solve for x: <br> x<sup>4</sup> - 7x<sup>2</sup> + 12 = 0",
-        correctAnswers: ["2,-2,√3,-√3", "±2,±√3", "2, -2, √3, -√3", "x=±2, x=±√3"],
-        exp: "Let y = x². Then y² - 7y + 12 = 0 → (y-3)(y-4)=0 → y=3 or y=4. Back-substitute: x²=3 → x=±√3; x²=4 → x=±2.",
-        hint: "Substitute u = x² to turn it into a quadratic in u."
-    },
-    {
-        chapter: 1,
-        type: 'typed',
-        needsGraph: false,
-        q: "Expand and simplify: (2x - 3)<sup>3</sup>",
-        correctAnswers: ["8x^3-36x^2+54x-27", "8x³-36x²+54x-27"],
-        exp: "Use binomial expansion or multiply stepwise: (2x-3)² = 4x²-12x+9. Multiply by (2x-3): (4x²-12x+9)(2x-3) = 8x³-12x²-24x²+36x+18x-27 = 8x³-36x²+54x-27.",
-        hint: "First square the binomial, then multiply the result by (2x-3) again."
-    }
+    { chapter: 2, type: 'typed', needsGraph: false, q: "Solve for x: <br> (2)/(x-1) + (5)/(x+3) = (2-x)/((x-1)(x+3))", correctAnswers: ["1/8", "0.125", "x=1/8", "x=0.125"], exp: "Multiply both sides by (x-1)(x+3): 2(x+3) + 5(x-1) = 2-x → 2x+6+5x-5 = 2-x → 7x+1 = 2-x → 8x = 1 → x = 1/8.", hint: "Start by multiplying every term by the common denominator (x-1)(x+3)." },
+    { chapter: 2, type: 'typed', needsGraph: false, q: "Solve for x: <br> x<sup>2</sup> - 5x + 6 = 0", correctAnswers: ["2,3", "3,2", "x=2,3", "x=3,2"], exp: "Factor: (x-2)(x-3)=0 → x=2 or x=3.", hint: "Find two numbers that multiply to +6 and add to -5." },
+    { chapter: 2, type: 'typed', needsGraph: false, q: "Solve for x: <br> (2x)/(3x+1) = 1/(x+2)", correctAnswers: ["1/2,-1", "-1,1/2", "0.5,-1", "-1,0.5", "x=1/2,x=-1"], exp: "Cross-multiply: 2x(x+2)=3x+1 → 2x²+4x-3x-1=0 → 2x²+x-1=0 → (2x-1)(x+1)=0 → x=1/2, x=-1.", hint: "Cross-multiply to eliminate fractions, then rearrange into a quadratic and factor." },
+    { chapter: 1, type: 'typed', needsGraph: false, q: "Simplify: (x<sup>2</sup>y<sup>3</sup>)<sup>2</sup> / (x<sup>3</sup>y<sup>2</sup>)", correctAnswers: ["x y^4", "xy^4", "x*y^4", "x y4"], exp: "Numerator: x^4 y^6. Divide by x^3 y^2: subtract exponents → x^(4-3) y^(6-2) = x y^4.", hint: "Apply the power to each factor inside the parentheses first, then use the division rule for exponents." },
+    { chapter: 2, type: 'typed', needsGraph: false, q: "Solve for x: <br> x<sup>4</sup> - 7x<sup>2</sup> + 12 = 0", correctAnswers: ["2,-2,√3,-√3", "±2,±√3", "2, -2, √3, -√3", "x=±2, x=±√3"], exp: "Let y = x². Then y² - 7y + 12 = 0 → (y-3)(y-4)=0 → y=3 or y=4. Back-substitute: x²=3 → x=±√3; x²=4 → x=±2.", hint: "Substitute u = x² to turn it into a quadratic in u." },
+    { chapter: 1, type: 'typed', needsGraph: false, q: "Expand and simplify: (2x - 3)<sup>3</sup>", correctAnswers: ["8x^3-36x^2+54x-27", "8x³-36x²+54x-27"], exp: "Use binomial expansion or multiply stepwise: (2x-3)² = 4x²-12x+9. Multiply by (2x-3): (4x²-12x+9)(2x-3) = 8x³-12x²-24x²+36x+18x-27 = 8x³-36x²+54x-27.", hint: "First square the binomial, then multiply the result by (2x-3) again." }
 ];
 
 // =============================================
-// QUIZ ENGINE — UPDATED TO INCLUDE 'algebra' LEVEL
+// QUIZ ENGINE — FULLY IMPLEMENTED
 // =============================================
 let quizData = [];
 let state = [];
@@ -821,7 +987,7 @@ function loadQuizLevel(level) {
 
     document.querySelectorAll('.level-btn').forEach(btn => btn.className = 'level-btn');
     if (level === 'algebra') {
-        document.getElementById('btn-algebra').classList.add('active-final'); // reuse final style for visibility
+        document.getElementById('btn-algebra').classList.add('active-final');
     } else {
         document.getElementById(`btn-${level}`).classList.add(`active-${level}`);
     }
