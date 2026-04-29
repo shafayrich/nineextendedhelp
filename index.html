@@ -6,7 +6,6 @@
     <title>MYP 9 Extended Math: The Ultimate Learning Platform</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='75' x='5' font-size='75' font-family='Times New Roman, serif' font-style='italic' font-weight='bold' fill='%230f4c81'>fx</text></svg>">
     <style>
-        /* ========== FULL CSS ========== */
         :root {
             --primary: #0f4c81;
             --primary-hover: #1d3557;
@@ -27,7 +26,6 @@
             --level-final: #dc2626;
             --flagged: #a855f7;
         }
-
         body.dark-mode {
             --bg: #0f172a;
             --card-bg: #1e293b;
@@ -36,67 +34,52 @@
             --border: #334155;
             --unanswered: #334155;
         }
-
         * { box-sizing: border-box; margin: 0; padding: 0; }
-
         body { font-family: 'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif; line-height: 1.7; color: var(--text-main); background: var(--bg); padding: 20px; transition: background 0.3s, color 0.3s; }
-
         .app-container { max-width: 96%; width: 1800px; margin: 0 auto; position: relative; }
-
         .dark-mode-toggle { position: absolute; top: 20px; right: 20px; background: rgba(255,255,255,0.2); border: 2px solid rgba(255,255,255,0.5); color: white; padding: 10px 20px; border-radius: 50px; cursor: pointer; font-weight: bold; transition: 0.3s; z-index: 10; }
         .dark-mode-toggle:hover { background: rgba(255,255,255,0.4); }
-
         header { position: relative; text-align: center; padding: 60px 20px; background: linear-gradient(135deg, var(--primary), var(--accent)); color: white; border-radius: 16px; margin-bottom: 20px; box-shadow: 0 10px 30px rgba(15, 76, 129, 0.2); }
         header h1 { margin: 0; font-size: 2.8em; font-weight: 800; letter-spacing: -1px; }
         header p { margin: 10px 0 0 0; font-size: 1.2em; opacity: 0.9; font-weight: 300; }
-
         .global-search-container { margin-bottom: 40px; }
         .search-bar { width: 100%; padding: 20px 25px; font-size: 1.2em; border-radius: 12px; border: 2px solid var(--border); background: var(--card-bg); color: var(--text-main); box-shadow: 0 4px 20px rgba(0,0,0,0.05); transition: 0.3s; font-weight: 500; }
         .search-bar:focus { outline: none; border-color: var(--accent); box-shadow: 0 4px 25px rgba(59, 130, 246, 0.15); }
-
         .card { background: var(--card-bg); border-radius: 16px; box-shadow: 0 4px 20px rgba(0,0,0,0.04); margin-bottom: 30px; border: 1px solid var(--border); transition: background 0.3s, border-color 0.3s; overflow: hidden; }
         .accordion-btn { width: 100%; text-align: left; background: transparent; border: none; padding: 30px 40px; cursor: pointer; display: flex; justify-content: space-between; align-items: center; color: var(--primary); transition: background 0.2s; }
         .accordion-btn:hover { background: rgba(59, 130, 246, 0.05); }
         .accordion-btn h2 { margin: 0; font-size: 2em; border: none; padding: 0; display: flex; align-items: center; gap: 12px; }
         .arrow { font-size: 1.5em; transition: transform 0.3s ease; color: var(--accent); }
         .accordion-content { padding: 0 40px 40px 40px; }
-
         .glossary-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 20px; }
         .glossary-item { background: var(--bg); border: 1px solid var(--border); border-radius: 10px; padding: 20px; transition: all 0.3s ease; }
         .glossary-item:hover { border-color: var(--accent); transform: translateY(-3px); }
         .glossary-term { font-weight: 800; color: var(--accent); font-size: 1.15em; margin-bottom: 8px; display: block; text-transform: uppercase; }
         .glossary-def { font-size: 0.95em; color: var(--text-muted); margin: 0; line-height: 1.6; }
-
         .desmos-container { border-radius: 12px; overflow: hidden; border: 2px solid var(--border); background: #fff; margin-top: 15px; }
-
         .recap-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 20px; }
         .recap-box { position: relative; background: var(--bg); padding: 25px; border-radius: 12px; border-left: 6px solid var(--primary); cursor: pointer; transition: 0.3s ease; border-top: 1px solid var(--border); border-right: 1px solid var(--border); border-bottom: 1px solid var(--border); color: var(--text-main); }
         .recap-box:hover { transform: translateY(-4px); background: var(--card-bg); box-shadow: 0 10px 25px rgba(0,0,0,0.1); }
         .recap-box h3 { margin-top: 0; margin-bottom: 10px; font-size: 1.3em; padding-right: 30px; }
         .recap-box p { font-size: 0.95em; color: var(--text-muted); margin: 0 0 15px 0; }
         .click-hint { font-size: 0.85em; color: white; background: var(--primary); padding: 5px 12px; border-radius: 20px; font-weight: bold; display: inline-block; }
-
         .mastery-badge { position: absolute; top: 20px; right: 20px; font-size: 1.5em; opacity: 0.1; filter: grayscale(100%); transition: 0.3s; }
         .recap-box.mastered .mastery-badge { opacity: 1; filter: grayscale(0%); }
         .recap-box.mastered { border-left-color: var(--correct); background: rgba(16, 185, 129, 0.05); }
-
         .resource-box { background: rgba(59, 130, 246, 0.1); border-left: 6px solid var(--accent); cursor: default; }
         .resource-box:hover { transform: none; box-shadow: none; }
         .resource-box h3 { color: var(--primary); }
-
-        .level-selector { display: flex; gap: 15px; margin-bottom: 30px; flex-wrap: wrap; }
-        .level-btn { flex: 1; min-width: 200px; padding: 20px; border-radius: 12px; border: 2px solid var(--border); background: var(--bg); cursor: pointer; font-size: 1.2em; font-weight: bold; transition: 0.3s; color: var(--text-muted); display: flex; flex-direction: column; align-items: center; gap: 5px; }
-        .level-btn span { font-size: 0.8em; font-weight: normal; }
+        .level-selector { display: flex; gap: 10px; margin-bottom: 30px; flex-wrap: wrap; }
+        .level-btn { flex: 1; min-width: 160px; padding: 16px 10px; border-radius: 12px; border: 2px solid var(--border); background: var(--bg); cursor: pointer; font-size: 1em; font-weight: bold; transition: 0.3s; color: var(--text-muted); display: flex; flex-direction: column; align-items: center; gap: 4px; text-align: center; }
+        .level-btn span { font-size: 0.7em; font-weight: normal; }
         .level-btn:hover { background: var(--card-bg); transform: translateY(-3px); }
         .level-btn.active-easy { border-color: var(--level-easy); background: rgba(34, 197, 94, 0.1); color: var(--level-easy); }
         .level-btn.active-normal { border-color: var(--level-normal); background: rgba(234, 179, 8, 0.1); color: var(--level-normal); }
         .level-btn.active-hard { border-color: var(--level-hard); background: rgba(249, 115, 22, 0.1); color: var(--level-hard); }
         .level-btn.active-final { border-color: var(--level-final); background: rgba(220, 38, 38, 0.1); color: var(--level-final); }
-
         .top-tools { display: flex; justify-content: space-between; gap: 15px; margin-bottom: 20px; flex-wrap: wrap; align-items: center; }
         .tool-btn { padding: 12px 25px; border-radius: 8px; border: 2px solid var(--accent); background: var(--bg); color: var(--accent); font-weight: bold; cursor: pointer; font-size: 1em; transition: 0.2s; display: flex; align-items: center; gap: 8px; }
         .tool-btn:hover { background: var(--accent); color: white; }
-
         .timer-container { display: flex; align-items: center; gap: 15px; background: var(--bg); padding: 10px 20px; border-radius: 12px; border: 1px solid var(--border); flex-wrap: wrap; }
         .timer-display { font-size: 1.6em; font-weight: bold; font-family: monospace; padding: 5px 15px; background: #1e293b; color: #10b981; border-radius: 8px; border: 2px solid #10b981; display: flex; align-items: center; letter-spacing: 2px; }
         .timer-display.danger { color: #ef4444; border-color: #ef4444; animation: pulse 1s infinite; }
@@ -104,18 +87,15 @@
         .t-btn { padding: 10px 15px; font-size: 0.95em; font-weight: bold; border-radius: 6px; cursor: pointer; border: 1px solid var(--border); background: var(--card-bg); color: var(--text-main); transition: 0.2s; }
         .t-btn:hover:not(:disabled) { border-color: var(--accent); color: var(--accent); }
         .t-btn:disabled { opacity: 0.4; cursor: not-allowed; background: var(--unanswered); }
-
         .notes-container { display: none; width: 100%; border-radius: 12px; margin-bottom: 30px; position: relative; }
         #digital-notes { width: 100%; height: 200px; padding: 20px; font-family: monospace; font-size: 1.1em; border: 2px solid var(--border); border-radius: 12px; background: var(--bg); color: var(--text-main); resize: vertical; }
         #digital-notes:focus { outline: none; border-color: var(--accent); }
         .notes-tools { position: absolute; top: 10px; right: 20px; display: flex; gap: 8px; }
         .n-btn { padding: 6px 12px; background: var(--card-bg); border: 1px solid var(--border); border-radius: 6px; cursor: pointer; font-weight: bold; color: var(--text-main); }
         .n-btn:hover { border-color: var(--accent); }
-
         .quiz-layout { display: flex; gap: 40px; align-items: flex-start; }
         .sidebar { width: 340px; position: sticky; top: 20px; background: var(--card-bg); padding: 25px; border-radius: 16px; border: 1px solid var(--border); flex-shrink: 0; box-shadow: 0 4px 20px rgba(0,0,0,0.05); }
         .quiz-main { flex-grow: 1; min-width: 0; }
-
         .nav-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px; margin-bottom: 25px; }
         .nav-btn { aspect-ratio: 1; border: none; border-radius: 8px; font-weight: bold; cursor: pointer; transition: 0.2s; background: var(--unanswered); color: var(--text-main); font-size: 1em; position: relative; }
         .nav-btn.status-answered { background: var(--answered); color: white; }
@@ -123,47 +103,38 @@
         .nav-btn.status-incorrect { background: var(--incorrect); color: white; }
         .nav-btn.status-half { background: var(--half); color: white; }
         .nav-btn.status-flagged::after { content: '🚩'; position: absolute; top: -6px; right: -6px; font-size: 0.75em; }
-
         .sidebar-review-btn { width: 100%; padding: 12px; border-radius: 8px; border: 2px solid var(--flagged); background: rgba(168, 85, 247, 0.08); color: var(--flagged); font-weight: bold; cursor: pointer; font-size: 1em; transition: 0.2s; margin-bottom: 18px; display: flex; align-items: center; justify-content: center; gap: 8px; }
         .sidebar-review-btn:hover { background: rgba(168, 85, 247, 0.18); }
-
         .legend { display: flex; flex-direction: column; gap: 6px; font-size: 0.9em; color: var(--text-muted); }
         .legend > div { display: flex; align-items: center; gap: 8px; }
         .legend-box { width: 14px; height: 14px; border-radius: 3px; flex-shrink: 0; }
-
         .quiz-controls { display: flex; justify-content: space-between; align-items: center; background: var(--bg); padding: 20px; border-radius: 12px; margin-bottom: 30px; border: 1px solid var(--border); }
         .toggle-switch { display: flex; align-items: center; gap: 15px; background: var(--card-bg); padding: 10px 20px; border-radius: 50px; border: 2px solid var(--correct); cursor: pointer; }
         .toggle-switch input[type="checkbox"] { transform: scale(1.5); margin-right: 10px; cursor: pointer; accent-color: var(--correct); }
         #mode-label { font-size: 1em; font-weight: bold; color: var(--correct); }
-
         .question-container { border: 1px solid var(--border); padding: 40px; border-radius: 12px; margin-bottom: 30px; background: var(--card-bg); position: relative; transition: box-shadow 0.3s; }
         .question-container.flagged-q { border-left: 5px solid var(--flagged); }
         .chapter-source { position: absolute; top: 15px; right: 20px; font-size: 0.85em; font-weight: bold; color: var(--accent); background: rgba(59, 130, 246, 0.1); padding: 5px 12px; border-radius: 20px; }
         .question-text { font-size: 1.3em; font-weight: 600; margin-bottom: 25px; margin-top: 10px; line-height: 1.6; }
-
         .desmos-badge, .level-badge { padding: 4px 10px; border-radius: 6px; font-size: 0.7em; vertical-align: middle; margin-right: 12px; font-weight: bold; }
         .desmos-badge { background: #1e293b; color: #38bdf8; border: 1px solid #38bdf8; }
         .lvl-1 { background: rgba(3, 105, 161, 0.2); color: #0284c7; border: 1px solid #38bdf8; }
         .lvl-3 { background: rgba(161, 98, 7, 0.2); color: #ca8a04; border: 1px solid #facc15; }
         .lvl-5 { background: rgba(154, 52, 18, 0.2); color: #ea580c; border: 1px solid #fb923c; }
         .lvl-7 { background: rgba(153, 27, 27, 0.2); color: #dc2626; border: 1px solid #f87171; }
-
         .options { display: flex; flex-direction: column; gap: 12px; margin-bottom: 20px; }
         .option-btn { text-align: left; padding: 18px 20px; background: var(--bg); border: 2px solid var(--border); border-radius: 10px; cursor: pointer; font-size: 1.1em; color: var(--text-main); font-weight: 500; transition: 0.2s; }
         .option-btn:hover:not(:disabled) { border-color: var(--accent); }
         .option-btn.selected-option { border-color: var(--answered); background: rgba(148, 163, 184, 0.2); }
         .correct-btn { background: rgba(16, 185, 129, 0.2) !important; border-color: var(--correct) !important; color: var(--correct) !important; }
         .incorrect-btn { background: rgba(239, 68, 68, 0.2) !important; border-color: var(--incorrect) !important; color: var(--incorrect) !important; text-decoration: line-through; }
-
         .math-toolbar { display: flex; gap: 8px; margin-bottom: 10px; flex-wrap: wrap; background: var(--bg); padding: 10px; border-radius: 8px; border: 1px solid var(--border); }
         .math-btn { padding: 8px 15px; background: var(--card-bg); border: 1px solid var(--border); border-radius: 6px; cursor: pointer; font-weight: bold; font-family: monospace; font-size: 1.1em; color: var(--text-main); }
         .math-btn:hover { border-color: var(--accent); }
-
         .typed-input-container { display: flex; gap: 15px; margin-bottom: 20px; }
         .typed-input { flex-grow: 1; padding: 18px; font-size: 1.3em; font-family: monospace; border: 2px solid var(--border); border-radius: 10px; background: var(--bg); color: var(--text-main); transition: 0.3s; }
         .check-btn { padding: 15px 30px; background: var(--primary); color: white; border: none; border-radius: 10px; cursor: pointer; font-size: 1.1em; font-weight: bold; transition: 0.2s; }
         .check-btn:hover:not(:disabled) { background: var(--primary-hover); transform: translateY(-2px); }
-
         .action-row { display: flex; gap: 12px; margin-top: 20px; flex-wrap: wrap; align-items: center; }
         .action-btn { padding: 10px 20px; border-radius: 8px; border: none; font-weight: bold; cursor: pointer; transition: 0.2s; }
         .btn-hint { background: rgba(245, 158, 11, 0.2); color: #d97706; border: 1px solid #f59e0b; }
@@ -175,31 +146,24 @@
         .btn-flag { background: rgba(168, 85, 247, 0.1); color: var(--flagged); border: 1px solid var(--flagged); }
         .btn-flag:hover { background: rgba(168, 85, 247, 0.2); }
         .btn-flag.flagged-active { background: rgba(168, 85, 247, 0.25); font-weight: 900; }
-
         .hint-box { margin-top: 15px; padding: 15px 20px; background: rgba(245, 158, 11, 0.1); border-left: 5px solid var(--half); color: var(--half); border-radius: 0 8px 8px 0; display: none; font-size: 1.05em; }
-
         .feedback { margin-top: 20px; padding: 20px; border-radius: 10px; display: none; font-size: 1.1em; line-height: 1.6; }
         .feedback.show { display: block; }
         .feedback.success { background: rgba(16, 185, 129, 0.1); border-left: 6px solid var(--correct); color: var(--correct); }
         .feedback.half { background: rgba(245, 158, 11, 0.1); border-left: 6px solid var(--half); color: var(--half); }
         .feedback.error { background: rgba(239, 68, 68, 0.1); border-left: 6px solid var(--incorrect); color: var(--incorrect); }
-
         .question-desmos-wrapper { display: none; margin-top: 20px; border-radius: 10px; overflow: hidden; border: 2px solid var(--border); }
         .question-desmos-wrapper iframe { width: 100%; height: 400px; border: none; display: block; background: #fff; }
-
         .submit-area { text-align: center; margin-top: 50px; padding-top: 30px; border-top: 3px dashed var(--border); }
         .submit-btn { background: var(--primary); color: white; border: none; padding: 20px 60px; font-size: 1.5em; font-weight: bold; border-radius: 12px; cursor: pointer; transition: 0.3s; box-shadow: 0 10px 20px rgba(15, 76, 129, 0.2); }
         .submit-btn:hover { background: var(--primary-hover); transform: translateY(-3px); }
-
         #final-results { display: none; margin-top: 40px; text-align: center; padding: 40px; background: linear-gradient(135deg, #1e293b, #0f172a); color: white; border-radius: 16px; border: 2px solid var(--accent); }
         .score-display { font-size: 4.5em; font-weight: 800; color: var(--correct); margin: 15px 0; }
         .myp-grade { font-size: 2.5em; background: var(--accent); display: inline-block; padding: 15px 40px; border-radius: 50px; font-weight: bold; margin-top: 15px; }
-
         .history-board { margin-top: 40px; background: var(--bg); padding: 25px; border-radius: 12px; color: var(--text-main); text-align: left; }
         .history-board h3 { border-bottom: 2px solid var(--border); padding-bottom: 10px; margin-bottom: 15px; }
         .history-list { list-style: none; padding: 0; }
         .history-list li { padding: 15px; border-bottom: 1px solid var(--border); display: flex; justify-content: space-between; font-size: 1.1em; }
-
         /* MODALS */
         .modal-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(15, 23, 42, 0.85); z-index: 1000; backdrop-filter: blur(8px); }
         .modal-content { position: fixed; top: 5%; left: 50%; transform: translateX(-50%); background: var(--card-bg); padding: 0; border-radius: 16px; width: 95%; max-width: 1200px; height: 90vh; display: flex; flex-direction: column; overflow: hidden; z-index: 1001; box-shadow: 0 25px 50px -12px rgba(0,0,0,0.5); }
@@ -207,7 +171,6 @@
         .modal-header h2 { margin: 0; font-size: 1.8em; color: var(--primary); border: none; padding: 0; }
         .modal-body { padding: 40px; overflow-y: auto; flex-grow: 1; font-size: 1.15em; line-height: 1.8; color: var(--text-main); }
         .modal-footer { padding: 20px 35px; background: var(--bg); border-top: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 15px; }
-
         /* REVIEW MODAL */
         .review-modal-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(15, 23, 42, 0.85); z-index: 2000; backdrop-filter: blur(8px); }
         .review-modal-content { position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); background: var(--card-bg); border-radius: 16px; width: 90%; max-width: 700px; max-height: 80vh; display: flex; flex-direction: column; overflow: hidden; z-index: 2001; box-shadow: 0 25px 50px rgba(0,0,0,0.5); border: 2px solid var(--flagged); }
@@ -224,56 +187,41 @@
         .review-read-btn:hover { background: rgba(59, 130, 246, 0.2); }
         .review-jump-btn:hover { background: rgba(168, 85, 247, 0.2); }
         .review-empty { text-align: center; color: var(--text-muted); padding: 40px; font-size: 1.1em; }
-
         .close-btn { background: var(--incorrect); color: white; border: none; padding: 12px 20px; border-radius: 8px; cursor: pointer; font-weight: bold; font-size: 1.1em; transition: 0.2s; }
         .close-btn:hover { background: #dc2626; transform: scale(1.05); }
-
         .mastery-btn { background: var(--correct); color: white; border: none; padding: 12px 25px; border-radius: 8px; cursor: pointer; font-weight: bold; font-size: 1.1em; transition: 0.2s; display: flex; align-items: center; gap: 8px; }
         .mastery-btn:hover { background: #059669; transform: scale(1.05); }
-
-        /* TOAST NOTIFICATION */
         #toast-container { position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%); z-index: 9998; display: flex; flex-direction: column; align-items: center; gap: 10px; pointer-events: none; }
         .toast { background: #1e293b; color: white; padding: 14px 24px; border-radius: 50px; font-weight: bold; font-size: 1em; opacity: 0; transform: translateY(30px); transition: opacity 0.3s, transform 0.3s; box-shadow: 0 8px 25px rgba(0,0,0,0.3); border: 2px solid var(--flagged); white-space: nowrap; pointer-events: none; }
         .toast.show { opacity: 1; transform: translateY(0); }
-
-        /* VIDEO */
         .video-wrapper { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; margin-bottom: 20px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); border: 2px solid var(--border); }
         .video-wrapper iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; }
         .yt-fallback { text-align: center; margin-bottom: 30px; font-size: 0.95em; }
         .yt-fallback a { color: var(--accent); font-weight: bold; text-decoration: none; padding: 5px 15px; border-radius: 20px; background: rgba(59, 130, 246, 0.1); transition: 0.2s; display: inline-block; }
         .yt-fallback a:hover { background: rgba(59, 130, 246, 0.2); }
-
         .yt-search-btn { display: inline-block; margin-top: 10px; padding: 10px 20px; background: var(--accent); color: white !important; border-radius: 8px; font-weight: bold; text-decoration: none; transition: 0.2s; border: 1px solid var(--accent); }
         .yt-search-btn:hover { background: var(--primary); border-color: var(--primary); }
-
         .beginner-box { background: #e0f2fe; border-left: 6px solid #0284c7; padding: 20px; margin-bottom: 30px; border-radius: 0 12px 12px 0; color: #0c4a6e; }
         .beginner-box h3 { margin: 0 0 10px 0; color: #0369a1; font-size: 1.3em; display: flex; align-items: center; gap: 8px; }
-
         .tb-section { margin-bottom: 40px; }
         .tb-section h3 { color: var(--accent); border-bottom: 2px dashed var(--border); padding-bottom: 10px; margin-bottom: 20px; font-size: 1.5em; }
         .fundamental-box { background: rgba(245, 158, 11, 0.1); border-left: 5px solid var(--half); padding: 20px; margin: 20px 0; border-radius: 0 8px 8px 0; }
         .fundamental-box h4 { margin: 0 0 10px 0; color: var(--half); font-size: 1.2em; }
-
         .solution-toggle { background: rgba(59, 130, 246, 0.05); border: 1px solid var(--border); border-left: 5px solid var(--primary); margin: 20px 0; border-radius: 0 8px 8px 0; }
         .solution-toggle summary { padding: 15px 20px; font-weight: bold; cursor: pointer; color: var(--primary); outline: none; list-style: none; display: flex; align-items: center; font-size: 1.1em; }
         .solution-toggle summary::-webkit-details-marker { display: none; }
         .solution-toggle summary:hover { background: rgba(59, 130, 246, 0.1); }
         .solution-content { padding: 20px; border-top: 1px dashed var(--border); font-family: monospace; font-size: 1.05em; background: var(--card-bg); line-height: 1.8; }
-
         #confetti-container { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 9999; display: none; overflow: hidden; }
         .confetti { position: absolute; width: 10px; height: 10px; background-color: #f00; opacity: 0; }
-
         #backToTopBtn { display: none; position: fixed; bottom: 30px; right: 30px; z-index: 999; border: none; outline: none; background-color: var(--accent); color: white; cursor: pointer; padding: 15px 25px; border-radius: 50px; font-size: 1.1em; font-weight: bold; box-shadow: 0 4px 15px rgba(0,0,0,0.3); transition: background-color 0.3s, transform 0.3s; }
         #backToTopBtn:hover { background-color: var(--primary); transform: translateY(-5px); }
-
         @keyframes fall { 0% { opacity: 1; transform: translateY(-10vh) rotate(0deg); } 100% { opacity: 1; transform: translateY(110vh) rotate(720deg); } }
         @keyframes pulse { 0% { transform: scale(1); } 50% { transform: scale(1.05); } 100% { transform: scale(1); } }
-
         @media (max-width: 1200px) { .quiz-layout { flex-direction: column; } .sidebar { width: 100%; position: static; margin-bottom: 30px; } .level-selector { flex-direction: column; } .top-tools { flex-direction: column; align-items: stretch; } .timer-container { justify-content: center; } }
     </style>
 </head>
 <body>
-
 <button id="backToTopBtn" onclick="scrollToTop()">⬆️ Top</button>
 <div id="toast-container"></div>
 <div id="confetti-container"></div>
@@ -322,7 +270,6 @@
         </button>
         <div class="accordion-content" id="glossary-content" style="display: block;">
             <div class="glossary-grid" id="glossary-grid">
-                <!-- All glossary items unchanged -->
                 <div class="glossary-item"><span class="glossary-term">Vertex / Vertices</span><p class="glossary-def">The highest (maximum) or lowest (minimum) turning point of a parabola. Found exactly on the axis of symmetry.</p></div>
                 <div class="glossary-item"><span class="glossary-term">Roots / X-Intercepts</span><p class="glossary-def">The points where a graph crosses the x-axis. Also known as "solutions" or "zeros" because they occur where y = 0.</p></div>
                 <div class="glossary-item"><span class="glossary-term">Y-Intercept</span><p class="glossary-def">The specific point where the graph crosses the y-axis (where x = 0). In y = ax<sup>2</sup> + bx + c, the y-intercept is 'c'.</p></div>
@@ -457,240 +404,39 @@
 </div>
 
 <script>
-// =============================================
-// WEB AUDIO API — VOLUME REDUCED (ULTRA-FAINT)
-// =============================================
+// ==================== WEB AUDIO (low volume) ====================
 let audioCtx = null;
-
-function getAudioContext() {
-    if (!audioCtx) {
-        try { audioCtx = new (window.AudioContext || window.webkitAudioContext)(); } catch(e) {}
-    }
-    return audioCtx;
-}
-
-function playTone(freq, type, gainVal, duration, startDelay) {
-    const ctx = getAudioContext();
-    if (!ctx) return;
-    const osc = ctx.createOscillator();
-    const gainNode = ctx.createGain();
-    osc.connect(gainNode);
-    gainNode.connect(ctx.destination);
-    osc.type = type || 'sine';
-    osc.frequency.setValueAtTime(freq, ctx.currentTime + (startDelay || 0));
-    gainNode.gain.setValueAtTime(gainVal || 0.02, ctx.currentTime + (startDelay || 0));
-    gainNode.gain.exponentialRampToValueAtTime(0.0001, ctx.currentTime + (startDelay || 0) + duration);
-    osc.start(ctx.currentTime + (startDelay || 0));
-    osc.stop(ctx.currentTime + (startDelay || 0) + duration + 0.05);
-}
-
+function getAudioContext() { if (!audioCtx) { try { audioCtx = new (window.AudioContext || window.webkitAudioContext)(); } catch(e) {} } return audioCtx; }
+function playTone(freq, type, gainVal, duration, startDelay) { const ctx = getAudioContext(); if (!ctx) return; const osc = ctx.createOscillator(); const gainNode = ctx.createGain(); osc.connect(gainNode); gainNode.connect(ctx.destination); osc.type = type || 'sine'; osc.frequency.setValueAtTime(freq, ctx.currentTime + (startDelay || 0)); gainNode.gain.setValueAtTime(gainVal || 0.02, ctx.currentTime + (startDelay || 0)); gainNode.gain.exponentialRampToValueAtTime(0.0001, ctx.currentTime + (startDelay || 0) + duration); osc.start(ctx.currentTime + (startDelay || 0)); osc.stop(ctx.currentTime + (startDelay || 0) + duration + 0.05); }
 function playClick() { playTone(880, 'sine', 0.015, 0.06, 0); }
+function playCorrect() { playTone(523, 'sine', 0.025, 0.15, 0); playTone(659, 'sine', 0.025, 0.15, 0.12); playTone(784, 'sine', 0.03, 0.22, 0.24); }
+function playIncorrect() { playTone(300, 'sawtooth', 0.02, 0.18, 0); playTone(240, 'sawtooth', 0.02, 0.18, 0.14); }
+function playVictoryChord() { const notes = [261.6, 329.6, 392, 523, 659, 784, 1047]; notes.forEach((freq, i) => playTone(freq, 'sine', 0.035, 0.5, i * 0.08)); }
 
-function playCorrect() {
-    playTone(523, 'sine', 0.025, 0.15, 0);
-    playTone(659, 'sine', 0.025, 0.15, 0.12);
-    playTone(784, 'sine', 0.03, 0.22, 0.24);
-}
-
-function playIncorrect() {
-    playTone(300, 'sawtooth', 0.02, 0.18, 0);
-    playTone(240, 'sawtooth', 0.02, 0.18, 0.14);
-}
-
-function playVictoryChord() {
-    const notes = [261.6, 329.6, 392, 523, 659, 784, 1047];
-    notes.forEach((freq, i) => playTone(freq, 'sine', 0.035, 0.5, i * 0.08));
-}
-
-// =============================================
-// TOAST NOTIFICATIONS
-// =============================================
-function showToast(message, color) {
-    playClick();
-    const container = document.getElementById('toast-container');
-    const toast = document.createElement('div');
-    toast.className = 'toast';
-    toast.innerText = message;
-    if (color) toast.style.borderColor = color;
-    container.appendChild(toast);
-    requestAnimationFrame(() => {
-        requestAnimationFrame(() => { toast.classList.add('show'); });
-    });
-    setTimeout(() => {
-        toast.classList.remove('show');
-        setTimeout(() => toast.remove(), 400);
-    }, 2600);
-}
-
-// =============================================
-// ACCORDION
-// =============================================
-function toggleAccordion(contentId, arrowId) {
-    playClick();
-    const content = document.getElementById(contentId);
-    const arrow = document.getElementById(arrowId);
-    if (content.style.display === 'none' || content.style.display === '') {
-        content.style.display = 'block';
-        arrow.style.transform = 'rotate(0deg)';
-    } else {
-        content.style.display = 'none';
-        arrow.style.transform = 'rotate(-90deg)';
-    }
-}
-
-// =============================================
-// GLOBAL SEARCH
-// =============================================
-function globalSearch() {
-    let search = document.getElementById('global-search').value.toLowerCase();
-    let gItems = document.querySelectorAll('.glossary-item');
-    let gMatch = false;
-    gItems.forEach(item => {
-        let text = item.innerText.toLowerCase();
-        if (text.includes(search)) { item.style.display = 'block'; gMatch = true; }
-        else { item.style.display = 'none'; }
-    });
-    if (gMatch && search !== '') {
-        document.getElementById('glossary-content').style.display = 'block';
-        document.getElementById('arrow-glossary').style.transform = 'rotate(0deg)';
-    }
-    let tItems = document.querySelectorAll('.recap-box:not(.resource-box)');
-    let tMatch = false;
-    tItems.forEach(item => {
-        let text = item.innerText.toLowerCase();
-        if (text.includes(search)) { item.style.display = 'block'; tMatch = true; }
-        else { item.style.display = 'none'; }
-    });
-    if (tMatch && search !== '') {
-        document.getElementById('textbook-content').style.display = 'block';
-        document.getElementById('arrow-textbook').style.transform = 'rotate(0deg)';
-    }
-}
-
-// =============================================
-// BACK TO TOP
-// =============================================
-let mybutton = document.getElementById('backToTopBtn');
-window.onscroll = function() {
-    if (document.body.scrollTop > 400 || document.documentElement.scrollTop > 400) mybutton.style.display = 'block';
-    else mybutton.style.display = 'none';
-};
+// ==================== TOAST, ACCORDION, SEARCH, DARK MODE, NOTES ====================
+function showToast(message, color) { playClick(); const container = document.getElementById('toast-container'); const toast = document.createElement('div'); toast.className = 'toast'; toast.innerText = message; if (color) toast.style.borderColor = color; container.appendChild(toast); requestAnimationFrame(() => { requestAnimationFrame(() => { toast.classList.add('show'); }); }); setTimeout(() => { toast.classList.remove('show'); setTimeout(() => toast.remove(), 400); }, 2600); }
+function toggleAccordion(contentId, arrowId) { playClick(); const content = document.getElementById(contentId); const arrow = document.getElementById(arrowId); if (content.style.display === 'none' || content.style.display === '') { content.style.display = 'block'; arrow.style.transform = 'rotate(0deg)'; } else { content.style.display = 'none'; arrow.style.transform = 'rotate(-90deg)'; } }
+function globalSearch() { let search = document.getElementById('global-search').value.toLowerCase(); let gItems = document.querySelectorAll('.glossary-item'); let gMatch = false; gItems.forEach(item => { let text = item.innerText.toLowerCase(); if (text.includes(search)) { item.style.display = 'block'; gMatch = true; } else { item.style.display = 'none'; } }); if (gMatch && search !== '') { document.getElementById('glossary-content').style.display = 'block'; document.getElementById('arrow-glossary').style.transform = 'rotate(0deg)'; } let tItems = document.querySelectorAll('.recap-box:not(.resource-box)'); let tMatch = false; tItems.forEach(item => { let text = item.innerText.toLowerCase(); if (text.includes(search)) { item.style.display = 'block'; tMatch = true; } else { item.style.display = 'none'; } }); if (tMatch && search !== '') { document.getElementById('textbook-content').style.display = 'block'; document.getElementById('arrow-textbook').style.transform = 'rotate(0deg)'; } }
+let mybutton = document.getElementById('backToTopBtn'); window.onscroll = function() { if (document.body.scrollTop > 400 || document.documentElement.scrollTop > 400) mybutton.style.display = 'block'; else mybutton.style.display = 'none'; };
 function scrollToTop() { window.scrollTo({ top: 0, behavior: 'smooth' }); }
-
-// =============================================
-// DARK MODE
-// =============================================
 function toggleDarkMode() { playClick(); document.body.classList.toggle('dark-mode'); }
-
-// =============================================
-// DIGITAL NOTES
-// =============================================
 function clearNotes() { document.getElementById('digital-notes').value = ''; }
-function toggleNotes() {
-    playClick();
-    let el = document.getElementById('notes-container');
-    if (el.style.display === 'block') { el.style.display = 'none'; }
-    else { el.style.display = 'block'; document.getElementById('digital-notes').focus(); }
-}
+function toggleNotes() { playClick(); let el = document.getElementById('notes-container'); if (el.style.display === 'block') { el.style.display = 'none'; } else { el.style.display = 'block'; document.getElementById('digital-notes').focus(); } }
 
-// =============================================
-// TIMER
-// =============================================
-let timerInterval;
-let timeRemaining;
-let timerRunning = false;
-let timerLocked = false;
-let currentMode = 'easy';
-
+// ==================== TIMER ====================
+let timerInterval; let timeRemaining; let timerRunning = false; let timerLocked = false; let currentMode = 'easy';
 let defaultTimes = { 'easy': 15, 'normal': 25, 'hard': 35, 'final': 45, 'algebra': 30 };
+function initTimer(minutes) { clearInterval(timerInterval); timerRunning = false; timerLocked = false; timeRemaining = minutes * 60; document.getElementById('btn-timer-start').innerText = '▶️ Start'; document.getElementById('btn-timer-edit').disabled = false; document.getElementById('btn-timer-lock').disabled = false; document.getElementById('timer-display').classList.remove('danger'); updateTimerDisplay(); }
+function toggleTimer() { if (timerRunning) { clearInterval(timerInterval); timerRunning = false; document.getElementById('btn-timer-start').innerText = '▶️ Resume'; } else { timerRunning = true; document.getElementById('btn-timer-start').innerText = '⏸️ Pause'; timerInterval = setInterval(() => { timeRemaining--; updateTimerDisplay(); if (timeRemaining <= 300 && timeRemaining > 0) document.getElementById('timer-display').classList.add('danger'); if (timeRemaining <= 0) { clearInterval(timerInterval); timerRunning = false; document.getElementById('timer-display').innerText = '00:00'; alert("Time's up! Submitting quiz automatically."); submitQuiz(); } }, 1000); } }
+function updateTimerDisplay() { let display = document.getElementById('timer-display'); let m = Math.floor(timeRemaining / 60); let s = timeRemaining % 60; display.innerText = `${m < 10 ? '0' : ''}${m}:${s < 10 ? '0' : ''}${s}`; }
+function promptCustomTime() { if (timerLocked) return; let t = prompt('Enter minutes for this quiz:', Math.floor(timeRemaining / 60) || defaultTimes[currentMode]); if (t !== null && !isNaN(t) && t > 0) { defaultTimes[currentMode] = parseInt(t); initTimer(parseInt(t)); } }
+function lockTimer() { if (timerLocked) return; if (confirm('Are you sure you want to completely LOCK the timer? You will not be able to edit or pause the time once locked!')) { timerLocked = true; document.getElementById('btn-timer-edit').disabled = true; document.getElementById('btn-timer-lock').disabled = true; if (!timerRunning) toggleTimer(); } }
+function stopTimer() { clearInterval(timerInterval); timerRunning = false; document.getElementById('btn-timer-start').innerText = '▶️ Start'; }
 
-function initTimer(minutes) {
-    clearInterval(timerInterval);
-    timerRunning = false;
-    timerLocked = false;
-    timeRemaining = minutes * 60;
-    document.getElementById('btn-timer-start').innerText = '▶️ Start';
-    document.getElementById('btn-timer-edit').disabled = false;
-    document.getElementById('btn-timer-lock').disabled = false;
-    document.getElementById('timer-display').classList.remove('danger');
-    updateTimerDisplay();
-}
+// ==================== CONFETTI ====================
+function launchConfetti() { const container = document.getElementById('confetti-container'); container.style.display = 'block'; container.innerHTML = ''; const colors = ['#3b82f6', '#10b981', '#f59e0b', '#ef4444', '#8b5cf6']; for (let i = 0; i < 150; i++) { let conf = document.createElement('div'); conf.className = 'confetti'; conf.style.left = Math.random() * 100 + 'vw'; conf.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)]; conf.style.animation = `fall ${Math.random() * 3 + 2}s linear forwards`; conf.style.animationDelay = Math.random() * 2 + 's'; container.appendChild(conf); } setTimeout(() => { container.style.display = 'none'; }, 6000); }
 
-function toggleTimer() {
-    if (timerRunning) {
-        clearInterval(timerInterval);
-        timerRunning = false;
-        document.getElementById('btn-timer-start').innerText = '▶️ Resume';
-    } else {
-        timerRunning = true;
-        document.getElementById('btn-timer-start').innerText = '⏸️ Pause';
-        timerInterval = setInterval(() => {
-            timeRemaining--;
-            updateTimerDisplay();
-            if (timeRemaining <= 300 && timeRemaining > 0) document.getElementById('timer-display').classList.add('danger');
-            if (timeRemaining <= 0) {
-                clearInterval(timerInterval);
-                timerRunning = false;
-                document.getElementById('timer-display').innerText = '00:00';
-                alert("Time's up! Submitting quiz automatically.");
-                submitQuiz();
-            }
-        }, 1000);
-    }
-}
-
-function updateTimerDisplay() {
-    let display = document.getElementById('timer-display');
-    let m = Math.floor(timeRemaining / 60);
-    let s = timeRemaining % 60;
-    display.innerText = `${m < 10 ? '0' : ''}${m}:${s < 10 ? '0' : ''}${s}`;
-}
-
-function promptCustomTime() {
-    if (timerLocked) return;
-    let t = prompt('Enter minutes for this quiz:', Math.floor(timeRemaining / 60) || defaultTimes[currentMode]);
-    if (t !== null && !isNaN(t) && t > 0) { defaultTimes[currentMode] = parseInt(t); initTimer(parseInt(t)); }
-}
-
-function lockTimer() {
-    if (timerLocked) return;
-    if (confirm('Are you sure you want to completely LOCK the timer? You will not be able to edit or pause the time once locked!')) {
-        timerLocked = true;
-        document.getElementById('btn-timer-edit').disabled = true;
-        document.getElementById('btn-timer-lock').disabled = true;
-        if (!timerRunning) toggleTimer();
-    }
-}
-
-function stopTimer() {
-    clearInterval(timerInterval);
-    timerRunning = false;
-    document.getElementById('btn-timer-start').innerText = '▶️ Start';
-}
-
-// =============================================
-// CONFETTI
-// =============================================
-function launchConfetti() {
-    const container = document.getElementById('confetti-container');
-    container.style.display = 'block';
-    container.innerHTML = '';
-    const colors = ['#3b82f6', '#10b981', '#f59e0b', '#ef4444', '#8b5cf6'];
-    for (let i = 0; i < 150; i++) {
-        let conf = document.createElement('div');
-        conf.className = 'confetti';
-        conf.style.left = Math.random() * 100 + 'vw';
-        conf.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
-        conf.style.animation = `fall ${Math.random() * 3 + 2}s linear forwards`;
-        conf.style.animationDelay = Math.random() * 2 + 's';
-        container.appendChild(conf);
-    }
-    setTimeout(() => { container.style.display = 'none'; }, 6000);
-}
-
-// =============================================
-// CHAPTER TITLES
-// =============================================
+// ==================== CHAPTER TITLES & Enriched MODAL CONTENT ====================
 const chapterTitles = [
     "1. Algebraic Fractions & Indices",
     "2. Factoring Basics",
@@ -705,10 +451,8 @@ const chapterTitles = [
     "11. Inequalities & Signs"
 ];
 
-// =============================================
-// MODAL CONTENT — FULLY RESTORED (ALL 11 CHAPTERS)
-// =============================================
 const modalContent = [
+    // Chapter 1 – enriched with additional index law examples and algebraic fractions
     {
         title: chapterTitles[0],
         desc: "Core exponent rules, negative/fractional indices, and simplifying complex algebraic fractions.",
@@ -730,8 +474,21 @@ const modalContent = [
         <details class="solution-toggle"><summary>👁️ Example: Evaluate 27<sup>&minus;2/3</sup></summary><div class="solution-content">1. Deal with the negative: 1 / 27<sup>2/3</sup><br>2. Root on bottom: Cube root of 27 is 3 (since 3&times;3&times;3 = 27).<br>3. Power on top: 3<sup>2</sup> = 9.<br><br><strong>Final Answer: 1/9</strong></div></details></div>
         <div class="tb-section"><h3>Simplifying Algebraic Fractions</h3>
         <div class="fundamental-box"><h4>THE GOLDEN RULE OF FRACTIONS</h4><p>You can <strong>NEVER</strong> cancel individual terms separated by a plus (+) or minus (&minus;) sign. You must fully factor the numerator and denominator, and ONLY cancel matching multiplied brackets.</p></div>
-        <details class="solution-toggle"><summary>👁️ Example: Simplify (x<sup>2</sup> + 5x + 6) &divide; (x<sup>2</sup> &minus; 4)</summary><div class="solution-content">1. Factor Numerator (Trinomial): (x + 2)(x + 3)<br>2. Factor Denominator (DOTS): (x &minus; 2)(x + 2)<br>3. Rewrite: [(x + 2)(x + 3)] / [(x &minus; 2)(x + 2)]<br>4. Cancel matching (x + 2) brackets.<br><br><strong>Final Answer: (x + 3) / (x &minus; 2)</strong></div></details></div>`
+        <details class="solution-toggle"><summary>👁️ Example: Simplify (x<sup>2</sup> + 5x + 6) &divide; (x<sup>2</sup> &minus; 4)</summary><div class="solution-content">1. Factor Numerator (Trinomial): (x + 2)(x + 3)<br>2. Factor Denominator (DOTS): (x &minus; 2)(x + 2)<br>3. Rewrite: [(x + 2)(x + 3)] / [(x &minus; 2)(x + 2)]<br>4. Cancel matching (x + 2) brackets.<br><br><strong>Final Answer: (x + 3) / (x &minus; 2)</strong></div></details></div>
+        <div class="tb-section"><h3>More Index Law Practice (from Teacher Notes)</h3>
+        <p><strong>Product of powers:</strong> Simplify a<sup>3</sup> × a<sup>n</sup> → a<sup>3+n</sup>.</p>
+        <p><strong>Power of a product:</strong> (2m<sup>3</sup>n<sup>2</sup>)<sup>5</sup> = 2<sup>5</sup> m<sup>15</sup> n<sup>10</sup> = 32 m<sup>15</sup> n<sup>10</sup>.</p>
+        <p><strong>Quotient of powers:</strong> (2c/d)<sup>5</sup> = 2<sup>5</sup> c<sup>5</sup> / d<sup>5</sup> = 32c<sup>5</sup> / d<sup>5</sup>.</p>
+        <p><strong>Zero exponent:</strong> 74 ÷ 74 = 1.</p>
+        <p><strong>Negative exponents:</strong> 2<sup>3</sup> ÷ 2<sup>5</sup> = 2<sup>-2</sup> = 1/2<sup>2</sup> = 1/4.</p>
+        <details class="solution-toggle"><summary>👁️ Simplify 18m<sup>7</sup>a<sup>3</sup> / (4m<sup>4</sup>a<sup>3</sup>)</summary><div class="solution-content">Divide coefficients: 18/4 = 9/2. Subtract exponents: m<sup>7-4</sup>=m<sup>3</sup>, a<sup>3-3</sup>=a<sup>0</sup>=1. Result: (9 m<sup>3</sup>)/2.</div></details>
+        <p><strong>Adding algebraic fractions (same denominator):</strong> 5/a + 4/a = 9/a.</p>
+        <p><strong>Different denominators:</strong> x/a + 3/b = (bx + 3a)/(ab).</p>
+        <p><strong>Multiplying:</strong> a/2 × b/3 = ab/6. Multiply and cancel: (a/4b)×(3b/2a)×(4/c) = (a·3b·4)/(4b·2a·c) = 3/c after cancelling.</p>
+        <p><strong>Dividing:</strong> a<sup>3</sup>/4 ÷ a<sup>2</sup>/(3b) = (a<sup>3</sup>/4)×(3b/a<sup>2</sup>) = (3ab)/4.</p>
+        </div>`
     },
+    // Chapter 2 – enriched with substitution, rearranging, distributive law, factoring trinomials a=1, DOTS
     {
         title: chapterTitles[1],
         desc: "Mastering the GCF, perfect squares, grouping, and multi-step factoring.",
@@ -739,18 +496,30 @@ const modalContent = [
         <div class="yt-fallback"><a href="https://www.youtube.com/watch?v=D3a8NnpQ2vU" target="_blank">⚠️ Video not playing? Click here to watch on YouTube ↗️</a></div>
         <div style="text-align:center; margin:15px 0;"><a href="https://www.youtube.com/results?search_query=Factoring+Basics" target="_blank" class="yt-search-btn">🔍 Watch / Search on YouTube</a></div>
         <div class="beginner-box"><h3>👶 Beginner's Concept</h3><p>If "Expanding" is baking a cake (mixing all the ingredients together), then "Factoring" is un-baking the cake. You are figuring out what original brackets were multiplied together to create the current expression.</p></div>
-        <div class="tb-section"><h3>Expression vs. Equation</h3><p>An <strong>Expression</strong> (like x<sup>2</sup> + 5x + 6) has NO equals sign. You cannot "solve" it — you can only <strong>factor</strong> it into (x+2)(x+3).</p></div>
+        <div class="tb-section"><h3>Algebraic Substitution</h3>
+        <p>If w=3, x=1, y=-2, evaluate (5w-2x)/(y-x) = (15-2)/(-2-1) = 13/(-3) = -13/3.</p>
+        <p>Evaluate (xy+w)/(y-x) = ((1)(-2)+3)/(-2-1) = (1)/(-3) = -1/3.</p></div>
+        <div class="tb-section"><h3>Rearranging Formulae</h3>
+        <p>Make y the subject of 9x + 3y = x + 4 → 3y = -8x + 4 → y = (-8x+4)/3.</p>
+        <p>Make y the subject of 3x - 2y = 6 → -2y = -3x + 6 → y = (3x-6)/2.</p></div>
+        <div class="tb-section"><h3>The Distributive Law</h3>
+        <p>a(b + c) = ab + ac.</p>
+        <details class="solution-toggle"><summary>👁️ Expand and simplify: 2x(3 - x) + x<sup>2</sup></summary><div class="solution-content">= 6x - 2x<sup>2</sup> + x<sup>2</sup> = 6x - x<sup>2</sup>.</div></details>
+        <details class="solution-toggle"><summary>👁️ Expand: 5(2x - 1) - (2x + 3)</summary><div class="solution-content">= 10x - 5 - 2x - 3 = 8x - 8.</div></details></div>
         <div class="tb-section"><h3>Technique 1: Greatest Common Factor (GCF)</h3><div class="fundamental-box"><h4>Always Check This First!</h4><p>Look for the largest number and the highest power of variables that divide evenly into EVERY term.</p></div>
-        <details class="solution-toggle"><summary>👁️ Example: Factor 12x<sup>3</sup>y<sup>2</sup> &minus; 18x<sup>2</sup>y<sup>3</sup></summary><div class="solution-content">1. Biggest number dividing 12 and 18 is <strong>6</strong>.<br>2. Lowest power of x is <strong>x<sup>2</sup></strong>.<br>3. Lowest power of y is <strong>y<sup>2</sup></strong>.<br><br><strong>Final Answer: 6x<sup>2</sup>y<sup>2</sup>(2x &minus; 3y)</strong></div></details></div>
-        <div class="tb-section"><h3>Technique 2: Basic Trinomials (x<sup>2</sup> + bx + c)</h3><p>Find two numbers that <strong>MULTIPLY</strong> to the last number (c) and <strong>ADD</strong> to the middle number (b).</p>
-        <details class="solution-toggle"><summary>👁️ Example: Factor x<sup>2</sup> &minus; 8x + 15</summary><div class="solution-content">1. Multiply to +15: (&minus;3) &times; (&minus;5) = +15 ✓<br>2. Add to &minus;8: (&minus;3) + (&minus;5) = &minus;8 ✓<br><br><strong>Final Answer: (x &minus; 3)(x &minus; 5)</strong></div></details></div>
-        <div class="tb-section"><h3>Technique 3: Difference of Two Squares (DOTS)</h3><p>Used for two terms with a minus sign where both are perfect squares: <strong>a<sup>2</sup> &minus; b<sup>2</sup> = (a &minus; b)(a + b)</strong></p>
-        <details class="solution-toggle"><summary>👁️ Example: Factor 25x<sup>2</sup> &minus; 49y<sup>2</sup></summary><div class="solution-content">1. Square root of 25x<sup>2</sup> is 5x.<br>2. Square root of 49y<sup>2</sup> is 7y.<br><br><strong>Final Answer: (5x &minus; 7y)(5x + 7y)</strong></div></details></div>
-        <div class="tb-section"><h3>Expert Level: Factoring by Grouping (4 Terms)</h3>
-        <details class="solution-toggle"><summary>👁️ Example: Factor x<sup>3</sup> + 3x<sup>2</sup> + 2x + 6</summary><div class="solution-content">1. Group into halves: (x<sup>3</sup> + 3x<sup>2</sup>) and (2x + 6).<br>2. Factor left: x<sup>2</sup>(x + 3).<br>3. Factor right: +2(x + 3).<br>4. Pull out matching (x + 3) bracket.<br><br><strong>Final Answer: (x + 3)(x<sup>2</sup> + 2)</strong></div></details></div>
-        <div class="tb-section"><h3>Expert Level: Multi-Step Factoring</h3>
-        <details class="solution-toggle"><summary>👁️ Example: Factor fully 3x<sup>3</sup> &minus; 27x</summary><div class="solution-content">1. Pull out GCF of 3x: 3x(x<sup>2</sup> &minus; 9).<br>2. The bracket is DOTS! Factor (x<sup>2</sup> &minus; 9) into (x&minus;3)(x+3).<br><br><strong>Final Answer: 3x(x &minus; 3)(x + 3)</strong></div></details></div>`
+        <details class="solution-toggle"><summary>👁️ Factor: -3x<sup>2</sup> - 15x</summary><div class="solution-content">GCF is -3x. -3x(x + 5).</div></details>
+        <details class="solution-toggle"><summary>👁️ Factor: 4x<sup>2</sup> - 8x</summary><div class="solution-content">GCF 4x: 4x(x - 2).</div></details></div>
+        <div class="tb-section"><h3>Technique 2: Basic Trinomials (x<sup>2</sup> + bx + c)</h3>
+        <p>Find two numbers that MULTIPLY to the last number (c) and ADD to the middle number (b).</p>
+        <details class="solution-toggle"><summary>👁️ Factor: x<sup>2</sup> - 8x + 15</summary><div class="solution-content">Numbers: -3 and -5. (x-3)(x-5).</div></details>
+        <details class="solution-toggle"><summary>👁️ Factor: x<sup>2</sup> - 7x - 8</summary><div class="solution-content">Numbers: -8 and 1. (x-8)(x+1).</div></details></div>
+        <div class="tb-section"><h3>Technique 3: Difference of Two Squares (DOTS)</h3>
+        <p>a<sup>2</sup> - b<sup>2</sup> = (a - b)(a + b). e.g., x<sup>2</sup> - 25 = (x-5)(x+5).</p>
+        <details class="solution-toggle"><summary>👁️ Factor: (x-4)<sup>2</sup> - 5x + 20</summary><div class="solution-content">First, note -5x+20 = -5(x-4). So (x-4)<sup>2</sup> - 5(x-4) = (x-4)[(x-4)-5] = (x-4)(x-9).</div></details></div>
+        <div class="tb-section"><h3>Factoring by Grouping (4 Terms)</h3>
+        <details class="solution-toggle"><summary>👁️ Factor: x<sup>3</sup> + 3x<sup>2</sup> + 2x + 6</summary><div class="solution-content">Group: (x<sup>3</sup>+3x<sup>2</sup>) + (2x+6) = x<sup>2</sup>(x+3) + 2(x+3) = (x+3)(x<sup>2</sup>+2).</div></details></div>`
     },
+    // Chapter 3 – solving equations, rational equations, null factor law
     {
         title: chapterTitles[2],
         desc: "The Balance Scale method, complex fractions, taking roots, and the Null Factor Law.",
@@ -758,13 +527,21 @@ const modalContent = [
         <div class="yt-fallback"><a href="https://www.youtube.com/watch?v=i7idZfS8t8w" target="_blank">⚠️ Video not playing? Click here to watch on YouTube ↗️</a></div>
         <div style="text-align:center; margin:15px 0;"><a href="https://www.youtube.com/results?search_query=Solving+Equations+Null+Factor+Law" target="_blank" class="yt-search-btn">🔍 Watch / Search on YouTube</a></div>
         <div class="beginner-box"><h3>👶 Beginner's Concept</h3><p>Imagine I have two hidden numbers. I tell you that if you multiply them together, the answer is ZERO. You instantly know: one of those numbers MUST be zero! That is the entire secret to the Null Factor Law.</p></div>
-        <div class="tb-section"><h3>Solving by Taking Square Roots</h3><p>If there is no 'x' term (only an x<sup>2</sup> term), isolate the x<sup>2</sup> and take the square root. <strong>CRITICAL:</strong> Always include the &plusmn; sign!</p>
-        <details class="solution-toggle"><summary>👁️ Example: Solve 2x<sup>2</sup> &minus; 50 = 0</summary><div class="solution-content">1. Isolate x<sup>2</sup>: 2x<sup>2</sup> = 50 &rarr; x<sup>2</sup> = 25.<br>2. Square root both sides: x = &plusmn;&radic;25.<br><br><strong>Final Answer: x = 5 or x = &minus;5</strong></div></details></div>
-        <div class="tb-section"><h3>The Null Factor Law</h3><div class="fundamental-box"><h4>The 5 Steps to Solve Quadratics</h4><ol><li>Rearrange so one side equals zero.</li><li>Fully factorise the other side.</li><li>Apply the Null Factor Law: if A &times; B = 0, then A = 0 or B = 0.</li><li>Solve the resulting linear equations.</li><li>Check at least one solution.</li></ol></div>
-        <details class="solution-toggle"><summary>👁️ Example: Solve x<sup>2</sup> &minus; 2x &minus; 15 = 0</summary><div class="solution-content">1. Factor: (x &minus; 5)(x + 3) = 0<br>2. Set each bracket to zero:<br>&nbsp;&nbsp;x &minus; 5 = 0 &rarr; x = 5<br>&nbsp;&nbsp;x + 3 = 0 &rarr; x = &minus;3<br><br><strong>Final Answer: x = 5 or x = &minus;3</strong></div></details></div>
-        <div class="tb-section"><h3>Expert Level: Complex Algebraic Fractions</h3>
-        <details class="solution-toggle"><summary>👁️ Example (Cross-Multiply): Solve (x+5)/4 = (9&minus;x)/x</summary><div class="solution-content">1. Cross-multiply: x(x + 5) = 4(9 &minus; x)<br>2. Expand: x<sup>2</sup> + 5x = 36 &minus; 4x<br>3. Rearrange to = 0: x<sup>2</sup> + 9x &minus; 36 = 0<br>4. Factor: (x + 12)(x &minus; 3) = 0<br><br><strong>Final Answer: x = &minus;12 or x = 3</strong></div></details></div>`
+        <div class="tb-section"><h3>Solving Rational Equations</h3>
+        <details class="solution-toggle"><summary>👁️ Solve: (2x+3)/4 = (x-2)/3</summary><div class="solution-content">Cross-multiply: 3(2x+3) = 4(x-2) → 6x+9 = 4x-8 → 2x = -17 → x = -8.5.</div></details>
+        <details class="solution-toggle"><summary>👁️ Solve: 4/(3x) = -5/6</summary><div class="solution-content">Cross-multiply: 24 = -15x → x = -24/15 = -8/5.</div></details>
+        <details class="solution-toggle"><summary>👁️ Solve: 5/(x+2) = 2/(x-1)</summary><div class="solution-content">5(x-1) = 2(x+2) → 5x-5 = 2x+4 → 3x = 9 → x = 3.</div></details>
+        <details class="solution-toggle"><summary>👁️ Solve: 1/x - 2/(x+1) = (x+4)/(x(x+1))</summary><div class="solution-content">Combine LHS: (x+1 - 2x)/(x(x+1)) = (-x+1)/(x(x+1)). Set equal to RHS: (-x+1)/(x(x+1)) = (x+4)/(x(x+1)) → -x+1 = x+4 → -2x = 3 → x = -3/2.</div></details></div>
+        <div class="tb-section"><h3>Solving by Taking Square Roots</h3>
+        <details class="solution-toggle"><summary>👁️ Solve: 2x<sup>2</sup> - 50 = 0</summary><div class="solution-content">Isolate: 2x<sup>2</sup> = 50 → x<sup>2</sup> = 25 → x = &plusmn;5.</div></details></div>
+        <div class="tb-section"><h3>The Null Factor Law</h3>
+        <p>If (3x-1)(2x+4)=0, then either 3x-1=0 (x=1/3) or 2x+4=0 (x=-2).</p>
+        <p>If (x-1)(2x-1)=0, then x=1 or x=1/2.</p>
+        <p>Steps: 1. Rearrange to zero. 2. Factorise. 3. Apply Null Factor Law. 4. Solve linear equations. 5. Check.</p>
+        <details class="solution-toggle"><summary>👁️ Solve: x<sup>2</sup> + 3x = 28</summary><div class="solution-content">x<sup>2</sup> + 3x - 28 = 0 → (x+7)(x-4)=0 → x=-7 or x=4.</div></details>
+        <details class="solution-toggle"><summary>👁️ Solve: 5x<sup>2</sup> = 3x + 2</summary><div class="solution-content">5x<sup>2</sup> - 3x - 2 = 0 → (5x+2)(x-1)=0 → x=-2/5 or x=1.</div></details></div>`
     },
+    // Chapter 4 – Domain, Range, Vertical Line Test, Sign Diagrams
     {
         title: chapterTitles[3],
         desc: "Function machines, restricted inputs, finding ranges algebraically, and interval notation.",
@@ -772,12 +549,16 @@ const modalContent = [
         <div class="yt-fallback"><a href="https://www.youtube.com/watch?v=A5kAC-L83lY" target="_blank">⚠️ Video not playing? Click here to watch on YouTube ↗️</a></div>
         <div style="text-align:center; margin:15px 0;"><a href="https://www.youtube.com/results?search_query=Domain+and+Range+of+a+Function" target="_blank" class="yt-search-btn">🔍 Watch / Search on YouTube</a></div>
         <div class="beginner-box"><h3>👶 Beginner's Concept</h3><p>Think of a function like a Vending Machine. The <strong>Domain</strong> is the list of things you can put IN. The <strong>Range</strong> is the list of things the machine can spit OUT.</p></div>
-        <div class="tb-section"><h3>Mathematical Restrictions (Domain)</h3>
-        <ul><li><strong>Fractions:</strong> Denominator &ne; 0. Set the denominator &ne; 0 and solve.</li><li><strong>Even Roots:</strong> Cannot take a square root of a negative number. Set the inside &ge; 0 and solve.</li></ul>
-        <details class="solution-toggle"><summary>👁️ Expert Example: Find the domain of f(x) = &radic;(x&minus;3) / (x&minus;8)</summary><div class="solution-content">TWO restrictions:<br>1. From the root: x &minus; 3 &ge; 0 &rarr; x &ge; 3.<br>2. From the fraction: x &minus; 8 &ne; 0 &rarr; x &ne; 8.<br><br><strong>Domain: x &ge; 3, but x &ne; 8</strong><br>(Interval notation: [3, 8) &cup; (8, &infin;))</div></details></div>
-        <div class="tb-section"><h3>Finding the Range</h3>
-        <details class="solution-toggle"><summary>👁️ Example: Find the range of y = &minus;x<sup>2</sup> + 10</summary><div class="solution-content">1. The base x<sup>2</sup> is always &ge; 0.<br>2. Therefore &minus;x<sup>2</sup> is always &le; 0.<br>3. The highest &minus;x<sup>2</sup> can be is 0. So 0 + 10 = 10.<br><br><strong>Range: y &le; 10</strong></div></details></div>`
+        <div class="tb-section"><h3>Vertical Line Test</h3><p>A relation is a function if any vertical line cuts its graph no more than once. Example graphs and solutions are shown in the teacher slides.</p></div>
+        <div class="tb-section"><h3>Function Notation</h3>
+        <p>y = 4x + 2 can be written as f(x) = 4x + 2. Evaluate f(0) = 2, f(1) = 6, f(-2) = -6.</p>
+        <p>If f(x) = 2x<sup>2</sup> + 5x - 3, find f(-x) = 2x<sup>2</sup> - 5x - 3, and f(x+1) = 2x<sup>2</sup> + 9x + 4.</p></div>
+        <div class="tb-section"><h3>Domain & Range</h3>
+        <p>From graphs: domain and range are expressed in set notation. Example: a graph with domain {x | x ≥ -1} and range {y | y ≤ 3}.</p></div>
+        <div class="tb-section"><h3>Sign Diagrams</h3>
+        <p>A sign diagram indicates where a function is positive, negative, zero, or undefined. Use a solid dot for zeros and a dashed line for undefined locations. See example graph and corresponding sign diagram.</p></div>`
     },
+    // Chapter 5 – The 3 Quadratic Forms – includes investigation notes and vertex form discovery
     {
         title: chapterTitles[4],
         desc: "Standard, Factored, Vertex form analysis, and Completing the Square.",
@@ -792,9 +573,18 @@ const modalContent = [
             <tr style="border-bottom: 1px solid var(--border);"><td style="padding:10px;"><strong>Factored</strong></td><td style="padding:10px;">y = a(x &minus; p)(x &minus; q)</td><td style="padding:10px;">The <strong>x-intercepts (roots)</strong> are x = p and x = q. (Flip the signs!)</td></tr>
             <tr><td style="padding:10px;"><strong>Vertex</strong></td><td style="padding:10px;">y = a(x &minus; h)<sup>2</sup> + k</td><td style="padding:10px;">The <strong>vertex</strong> is at (h, k). Flip 'h' sign, keep 'k' sign.</td></tr>
         </table></div>
+        <div class="tb-section"><h3>Investigation Recap (Teacher Notes)</h3>
+        <p>In the Desmos investigation, we observed that:</p>
+        <ul>
+            <li>Standard form f(x) = ax<sup>2</sup> + bx + c gives the y-intercept (0,c) and the axis of symmetry x = -b/(2a).</li>
+            <li>Vertex form f(x) = a(x-h)<sup>2</sup> + k gives the vertex (h,k) directly.</li>
+            <li>Factored form f(x) = a(x-p)(x-q) gives the x-intercepts (p,0) and (q,0).</li>
+        </ul>
+        <p>Example: f(x) = 3x<sup>2</sup> + 2x - 6 is standard; its y-intercept is (0,-6). f(x) = 3(x-4)(x-6) is factored; x-ints are 4 and 6. f(x) = -9(2x-1)(x+4) opens downward with x-ints 1/2 and -4.</p></div>
         <div class="tb-section"><h3>Expert Level: Completing the Square</h3>
-        <details class="solution-toggle"><summary>👁️ Example: Convert y = x<sup>2</sup> + 8x + 5 to Vertex Form</summary><div class="solution-content">1. Isolate x terms: y = (x<sup>2</sup> + 8x) + 5<br>2. Take half of b: 8/2 = 4. Square it: 4<sup>2</sup> = 16.<br>3. Add and subtract 16: y = (x<sup>2</sup> + 8x + 16 &minus; 16) + 5<br>4. Move &minus;16 outside: y = (x<sup>2</sup> + 8x + 16) &minus; 16 + 5<br>5. Factor the perfect square: y = (x + 4)<sup>2</sup> &minus; 11<br><br><strong>Vertex: (&minus;4, &minus;11)</strong></div></details></div>`
+        <details class="solution-toggle"><summary>👁️ Convert y = x<sup>2</sup> + 8x + 5 to Vertex Form</summary><div class="solution-content">1. Isolate x terms: y = (x<sup>2</sup> + 8x) + 5<br>2. Take half of b: 8/2 = 4. Square it: 16.<br>3. Add and subtract 16: y = (x<sup>2</sup> + 8x + 16 - 16) + 5<br>4. Move -16 outside: y = (x<sup>2</sup> + 8x + 16) - 16 + 5<br>5. Factor the perfect square: y = (x + 4)<sup>2</sup> - 11<br><br><strong>Vertex: (-4, -11)</strong></div></details></div>`
     },
+    // Chapter 6 – Complex Factoring, AC Method, Null Factor with a≠1
     {
         title: chapterTitles[5],
         desc: "Handling trinomials when 'a' is not 1 using the AC Method, plus the Cross Method.",
@@ -802,34 +592,58 @@ const modalContent = [
         <div class="yt-fallback"><a href="https://www.youtube.com/watch?v=0RPJqPkfG5Y" target="_blank">⚠️ Video not playing? Click here to watch on YouTube ↗️</a></div>
         <div style="text-align:center; margin:15px 0;"><a href="https://www.youtube.com/results?search_query=Complex+Factoring+AC+Method" target="_blank" class="yt-search-btn">🔍 Watch / Search on YouTube</a></div>
         <div class="beginner-box"><h3>👶 Beginner's Concept</h3><p>When there's a number in front of x<sup>2</sup> (like 3x<sup>2</sup>), the easy factoring rules break down. The "AC Method" is a secret code to unlock the middle term.</p></div>
-        <div class="tb-section"><h3>The AC Method (Split the Middle)</h3><div class="fundamental-box"><h4>The 4 Steps</h4><ol><li><strong>Multiply:</strong> Multiply the first number (a) and the last number (c). This is your "AC Target".</li><li><strong>Magic Numbers:</strong> Find two numbers that multiply to the AC Target AND add to the middle number (b).</li><li><strong>Split:</strong> Replace bx with your two magic numbers.</li><li><strong>Group:</strong> Cut the 4-term equation in half. Factor GCF from each half. Pull out the matching bracket.</li></ol></div>
-        <details class="solution-toggle"><summary>👁️ Example 1: Factor 2x<sup>2</sup> + 7x + 3</summary><div class="solution-content">Step 1: AC = 2 &times; 3 = 6.<br>Step 2: Magic numbers: 6 and 1 (6&times;1=6, 6+1=7).<br>Step 3: Split: 2x<sup>2</sup> + 6x + 1x + 3<br>Step 4: Left (2x<sup>2</sup>+6x): 2x(x+3). Right (1x+3): +1(x+3).<br>Matching bracket: (x+3).<br><br><strong>Final Answer: (x + 3)(2x + 1)</strong></div></details>
-        <details class="solution-toggle"><summary>👁️ Example 2 (Negative Signs): Factor 6x<sup>2</sup> &minus; x &minus; 15</summary><div class="solution-content">1. AC = 6 &times; &minus;15 = &minus;90.<br>2. Magic numbers: &minus;10 and 9 (&minus;10&times;9=&minus;90, &minus;10+9=&minus;1).<br>3. Split: 6x<sup>2</sup> &minus; 10x + 9x &minus; 15<br>4. Left: 2x(3x&minus;5). Right: +3(3x&minus;5).<br><br><strong>Final Answer: (3x &minus; 5)(2x + 3)</strong></div></details></div>`
+        <div class="tb-section"><h3>The AC Method (Split the Middle)</h3><div class="fundamental-box"><h4>The 4 Steps</h4><ol><li><strong>Multiply:</strong> Multiply the first number (a) and the last number (c). This is your "AC Target".</li><li><strong>Magic Numbers:</strong> Find two numbers that multiply to the AC Target AND add to the middle number (b).</li><li><strong>Split:</strong> Replace bx with your two magic numbers.</li><li><strong>Group:</strong> Cut the 4‑term equation in half. Factor GCF from each half. Pull out the matching bracket.</li></ol></div>
+        <details class="solution-toggle"><summary>👁️ Example 1: Factor 2x<sup>2</sup> + 7x + 3</summary><div class="solution-content">Step 1: AC = 2 × 3 = 6.<br>Step 2: Magic numbers: 6 and 1 (6×1=6, 6+1=7).<br>Step 3: Split: 2x<sup>2</sup> + 6x + 1x + 3<br>Step 4: Left (2x<sup>2</sup>+6x): 2x(x+3). Right (1x+3): +1(x+3).<br>Matching bracket: (x+3).<br><br><strong>Final Answer: (x + 3)(2x + 1)</strong></div></details>
+        <details class="solution-toggle"><summary>👁️ Example 2 (Negative Signs): Factor 6x<sup>2</sup> &minus; x &minus; 15</summary><div class="solution-content">1. AC = 6 × &minus;15 = &minus;90.<br>2. Magic numbers: &minus;10 and 9 (&minus;10×9=&minus;90, &minus;10+9=&minus;1).<br>3. Split: 6x<sup>2</sup> &minus; 10x + 9x &minus; 15<br>4. Left: 2x(3x&minus;5). Right: +3(3x&minus;5).<br><br><strong>Final Answer: (3x &minus; 5)(2x + 3)</strong></div></details></div>
+        <div class="tb-section"><h3>Factoring where a ≠ 1 – Teacher Notes</h3>
+        <details class="solution-toggle"><summary>👁️ Factor: 2x<sup>2</sup> - x - 10</summary><div class="solution-content">AC = -20. Magic numbers: -5 and 4. Split: 2x<sup>2</sup> -5x +4x -10 = x(2x-5) + 2(2x-5) = (2x-5)(x+2).</div></details>
+        <details class="solution-toggle"><summary>👁️ Factor: 5x<sup>2</sup> - 5x - 30</summary><div class="solution-content">First factor out 5: 5(x<sup>2</sup> - x - 6) = 5(x-3)(x+2).</div></details>
+        <div class="tb-section"><h3>Solving by Factoring (Null Factor Law)</h3>
+        <p>After factoring, apply the Null Factor Law: if (ax+b)(cx+d)=0, then ax+b=0 or cx+d=0.</p>
+        <details class="solution-toggle"><summary>👁️ Solve: (x+5)/4 = (9-x)/x</summary><div class="solution-content">Cross-multiply: x(x+5)=4(9-x) → x<sup>2</sup>+5x = 36-4x → x<sup>2</sup>+9x-36=0 → (x+12)(x-3)=0 → x=-12 or x=3.</div></details></div>`
     },
+    // Chapter 7 – Quadratic Formula, Axis of Symmetry, Vertex Form
     {
         title: chapterTitles[6],
         desc: "Deriving and using the Quadratic Formula flawlessly, interpreting the Discriminant.",
         body: `<div class="video-wrapper"><iframe src="https://www.youtube-nocookie.com/embed/IL3UCuXrUzE" allowfullscreen></iframe></div>
         <div class="yt-fallback"><a href="https://www.youtube.com/watch?v=IL3UCuXrUzE" target="_blank">⚠️ Video not playing? Click here to watch on YouTube ↗️</a></div>
         <div style="text-align:center; margin:15px 0;"><a href="https://www.youtube.com/results?search_query=Quadratic+Formula+Discriminant" target="_blank" class="yt-search-btn">🔍 Watch / Search on YouTube</a></div>
-        <div class="beginner-box"><h3>👶 Beginner's Concept</h3><p>The Quadratic Formula is a heavy-duty bulldozer. No matter how ugly the numbers, plug them in and it smashes through the math to hand you the exact roots every time.</p></div>
-        <div class="tb-section"><h3>The Ultimate Tool</h3><p>For ax<sup>2</sup> + bx + c = 0 that won't factor cleanly:</p><div class="fundamental-box"><strong>x = (&minus;b &plusmn; &radic;(b<sup>2</sup> &minus; 4ac)) / (2a)</strong></div><p>Always put negative numbers in parentheses when substituting to avoid sign errors!</p>
-        <details class="solution-toggle"><summary>👁️ Example: Solve 3x<sup>2</sup> &minus; 5x &minus; 7 = 0</summary><div class="solution-content">a=3, b=&minus;5, c=&minus;7<br>x = (&minus;(&minus;5) &plusmn; &radic;((&minus;5)<sup>2</sup> &minus; 4(3)(&minus;7))) / (2&times;3)<br>x = (5 &plusmn; &radic;(25 + 84)) / 6<br>x = (5 &plusmn; &radic;109) / 6<br><br><strong>Answers: x = (5 + &radic;109)/6 and x = (5 &minus; &radic;109)/6</strong></div></details></div>
-        <div class="tb-section"><h3>Expert Level: The Discriminant (&Delta;)</h3><p>&Delta; = b<sup>2</sup> &minus; 4ac (the part under the square root sign).</p>
-        <ul><li><strong>&Delta; &gt; 0:</strong> Two distinct real roots. (Parabola crosses x-axis twice).</li><li><strong>&Delta; = 0:</strong> One repeated real root. (Vertex rests on x-axis).</li><li><strong>&Delta; &lt; 0:</strong> No real roots. (Parabola floats above or below x-axis).</li></ul>
-        <details class="solution-toggle"><summary>👁️ Expert Example: Find 'k' so x<sup>2</sup> + kx + 16 = 0 has exactly ONE root.</summary><div class="solution-content">One root means &Delta; = 0.<br>k<sup>2</sup> &minus; 4(1)(16) = 0<br>k<sup>2</sup> &minus; 64 = 0 &rarr; k<sup>2</sup> = 64<br>k = &plusmn;8<br><br><strong>Answer: k = 8 or k = &minus;8</strong></div></details></div>`
+        <div class="beginner-box"><h3>👶 Beginner's Concept</h3><p>The Quadratic Formula is a heavy‑duty bulldozer. No matter how ugly the numbers, plug them in and it smashes through the math to hand you the exact roots every time.</p></div>
+        <div class="tb-section"><h3>The Quadratic Formula</h3>
+        <p>For ax<sup>2</sup> + bx + c = 0, x = (&minus;b ± √(b<sup>2</sup> &minus; 4ac)) / (2a).</p>
+        <details class="solution-toggle"><summary>👁️ Solve: x<sup>2</sup> - 2x - 2 = 0</summary><div class="solution-content">a=1, b=-2, c=-2. x = (2 ± √(4+8))/2 = (2 ± √12)/2 = 1 ± √3.</div></details>
+        <details class="solution-toggle"><summary>👁️ Solve: 2x<sup>2</sup> + 3x - 4 = 0</summary><div class="solution-content">x = (-3 ± √(9+32))/4 = (-3 ± √41)/4.</div></details>
+        <div class="tb-section"><h3>Axis of Symmetry and Vertex</h3>
+        <p>From the formula, the axis of symmetry is x = -b/(2a). Use this to find the vertex.</p>
+        <details class="solution-toggle"><summary>👁️ Convert y = -2x<sup>2</sup> + 8x - 4 to vertex form</summary><div class="solution-content">Axis: x = -8/(2×-2) = 2. Substitute x=2: y = -8 + 16 - 4 = 4. Vertex (2,4). Vertex form: y = -2(x-2)<sup>2</sup> + 4.</div></details>
+        <details class="solution-toggle"><summary>👁️ Convert y = x<sup>2</sup> + 4x + 3 to vertex form</summary><div class="solution-content">x = -4/2 = -2. y = 4 - 8 + 3 = -1. Vertex (-2,-1). Vertex form: y = (x+2)<sup>2</sup> - 1.</div></details>
+        <div class="tb-section"><h3>Discriminant (&Delta; = b<sup>2</sup> - 4ac)</h3>
+        <ul><li>&Delta; > 0: two real distinct roots</li><li>&Delta; = 0: one real repeated root</li><li>&Delta; < 0: no real roots</li></ul>
+        <details class="solution-toggle"><summary>👁️ Find k so x<sup>2</sup> + kx + 16 = 0 has one root</summary><div class="solution-content">One root ⇒ Δ=0 → k<sup>2</sup> - 64 = 0 → k = ±8.</div></details></div>`
     },
+    // Chapter 8 – Transformations
     {
         title: chapterTitles[7],
         desc: "How parameters alter a parabola's position, stretch, and shape on the graph.",
         body: `<div class="video-wrapper"><iframe src="https://www.youtube-nocookie.com/embed/3B2VtQmYVqM" allowfullscreen></iframe></div>
         <div class="yt-fallback"><a href="https://www.youtube.com/watch?v=3B2VtQmYVqM" target="_blank">⚠️ Video not playing? Click here to watch on YouTube ↗️</a></div>
         <div style="text-align:center; margin:15px 0;"><a href="https://www.youtube.com/results?search_query=Transformations+of+Quadratic+Functions" target="_blank" class="yt-search-btn">🔍 Watch / Search on YouTube</a></div>
-        <div class="beginner-box"><h3>👶 Beginner's Concept</h3><p>The basic parabola (y = x<sup>2</sup>) is your starting character. Adding "power-ups" to its equation moves it around. Adding a number outside moves it up or down. Changing the number inside the brackets moves it left or right (opposite to what you'd expect!). A negative sign flips it upside down.</p></div>
+        <div class="beginner-box"><h3>👶 Beginner's Concept</h3><p>The basic parabola (y = x<sup>2</sup>) is your starting character. Adding "power‑ups" to its equation moves it around. Adding a number outside moves it up or down. Changing the number inside the brackets moves it left or right (opposite to what you'd expect!). A negative sign flips it upside down.</p></div>
         <div class="tb-section"><h3>Transformation Rules: y = a(x &minus; h)<sup>2</sup> + k</h3>
-        <ul><li><strong>Vertical Shift (k):</strong> +k shifts UP, &minus;k shifts DOWN.</li><li><strong>Horizontal Shift (h):</strong> (x &minus; h)<sup>2</sup> shifts RIGHT. (x + h)<sup>2</sup> shifts LEFT. It is the <em>opposite</em> of the sign!</li><li><strong>Stretch/Compression (a):</strong> |a| &gt; 1 = narrower (steeper). 0 &lt; |a| &lt; 1 = wider (flatter).</li><li><strong>Reflection:</strong> If 'a' is negative, the graph opens downward (upside down).</li></ul>
-        <details class="solution-toggle"><summary>👁️ Example: Describe transformations for y = &minus;(1/2)(x &minus; 4)<sup>2</sup> + 7</summary><div class="solution-content">From parent y = x<sup>2</sup>:<br>1. Negative sign: Reflected (opens downward).<br>2. Factor 1/2: Vertically compressed (wider).<br>3. (x &minus; 4): Shifted RIGHT by 4 units.<br>4. + 7: Shifted UP by 7 units.</div></details></div>`
+        <ul>
+            <li><strong>Vertical Shift (k):</strong> +k shifts UP, &minus;k shifts DOWN.</li>
+            <li><strong>Horizontal Shift (h):</strong> (x &minus; h)<sup>2</sup> shifts RIGHT. (x + h)<sup>2</sup> shifts LEFT. It is the <em>opposite</em> of the sign!</li>
+            <li><strong>Stretch/Compression (a):</strong> |a| > 1 = narrower. 0 < |a| < 1 = wider.</li>
+            <li><strong>Reflection:</strong> If 'a' is negative, the graph opens downward.</li>
+        </ul>
+        <details class="solution-toggle"><summary>👁️ Sketch y = x<sup>2</sup> + 3 and state vertex</summary><div class="solution-content">The graph is y = x<sup>2</sup> shifted UP by 3. Vertex at (0,3).</div></details>
+        <details class="solution-toggle"><summary>👁️ Sketch y = (x + 3)<sup>2</sup></summary><div class="solution-content">Shift LEFT by 3. Vertex (-3,0).</div></details>
+        <details class="solution-toggle"><summary>👁️ Sketch y = (x - 2)<sup>2</sup> + 3</summary><div class="solution-content">Shift RIGHT 2, UP 3. Vertex (2,3).</div></details>
+        <details class="solution-toggle"><summary>👁️ Sketch y = -(x - 2)<sup>2</sup> - 3</summary><div class="solution-content">Reflected (opens down), shifted RIGHT 2, DOWN 3. Vertex (2,-3).</div></details>
+        <details class="solution-toggle"><summary>👁️ Write y = x<sup>2</sup> + 2x + 5 in vertex form and sketch</summary><div class="solution-content">Complete the square: y = (x+1)<sup>2</sup> + 4. Vertex (-1,4).</div></details></div>`
     },
+    // Chapter 9 – Graph to Equation, points on quadratic
     {
         title: chapterTitles[8],
         desc: "Looking at a picture of a parabola and successfully building its mathematical equation.",
@@ -837,11 +651,17 @@ const modalContent = [
         <div class="yt-fallback"><a href="https://www.youtube.com/watch?v=Fh1pJw9xLZ8" target="_blank">⚠️ Video not playing? Click here to watch on YouTube ↗️</a></div>
         <div style="text-align:center; margin:15px 0;"><a href="https://www.youtube.com/results?search_query=Graph+to+Equation+Quadratic" target="_blank" class="yt-search-btn">🔍 Watch / Search on YouTube</a></div>
         <div class="beginner-box"><h3>👶 Beginner's Concept</h3><p>You're a detective. You see a curve and need to figure out its "DNA code" (its equation). Can you see the exact vertex? Use Vertex Form. Can you see the roots? Use Factored Form. Then plug in a known point to find 'a'.</p></div>
-        <div class="tb-section"><h3>Scenario A: Given the Vertex</h3><p>Start with y = a(x &minus; h)<sup>2</sup> + k.</p>
-        <details class="solution-toggle"><summary>👁️ Example: Vertex at (&minus;1, 4), passes through (2, &minus;14)</summary><div class="solution-content">1. Sub vertex: y = a(x + 1)<sup>2</sup> + 4<br>2. Sub point (2, &minus;14): &minus;14 = a(2 + 1)<sup>2</sup> + 4<br>3. Solve: &minus;14 = 9a + 4 &rarr; &minus;18 = 9a &rarr; a = &minus;2<br><br><strong>Equation: y = &minus;2(x + 1)<sup>2</sup> + 4</strong></div></details></div>
-        <div class="tb-section"><h3>Scenario B: Given the X-Intercepts</h3><p>Start with y = a(x &minus; p)(x &minus; q).</p>
-        <details class="solution-toggle"><summary>👁️ Example: Roots at x=3 and x=&minus;2, y-intercept at y=12</summary><div class="solution-content">1. Sub roots: y = a(x &minus; 3)(x + 2)<br>2. Sub y-intercept (0, 12): 12 = a(0 &minus; 3)(0 + 2) = &minus;6a<br>3. Solve: a = &minus;2<br><br><strong>Equation: y = &minus;2(x &minus; 3)(x + 2)</strong></div></details></div>`
+        <div class="tb-section"><h3>Scenario A: Given the Vertex</h3>
+        <p>Start with y = a(x &minus; h)<sup>2</sup> + k.</p>
+        <details class="solution-toggle"><summary>👁️ Vertex at (&minus;1, 4), passes through (2, &minus;14)</summary><div class="solution-content">y = a(x + 1)<sup>2</sup> + 4. Sub (2,-14): -14 = a(3)<sup>2</sup>+4 → -18 = 9a → a = -2. Equation: y = -2(x+1)<sup>2</sup>+4.</div></details>
+        <div class="tb-section"><h3>Scenario B: Given the X‑Intercepts</h3>
+        <p>Start with y = a(x &minus; p)(x &minus; q).</p>
+        <details class="solution-toggle"><summary>👁️ Roots at x=3 and x=&minus;2, y-intercept at y=12</summary><div class="solution-content">y = a(x-3)(x+2). Sub (0,12): 12 = a(-3)(2) = -6a → a = -2. Equation: y = -2(x-3)(x+2).</div></details>
+        <div class="tb-section"><h3>Points on a Quadratic</h3>
+        <p>Given y = x<sup>2</sup> + 3, check if (1,4) lies on it: LHS = 1<sup>2</sup>+3 = 4, yes. (2,6): 4+3 = 7, no.</p>
+        <p>To make (2,3) lie on y = x<sup>2</sup> + k, set 3 = 4 + k ⇒ k = -1, so equation becomes y = x<sup>2</sup> - 1.</p></div>`
     },
+    // Chapter 10 – Real‑World Modeling
     {
         title: chapterTitles[9],
         desc: "Using quadratics to solve for max height, optimization, economics, and domains.",
@@ -850,29 +670,27 @@ const modalContent = [
         <div style="text-align:center; margin:15px 0;"><a href="https://www.youtube.com/results?search_query=Real-World+Modeling+Quadratics" target="_blank" class="yt-search-btn">🔍 Watch / Search on YouTube</a></div>
         <div class="beginner-box"><h3>👶 Beginner's Concept</h3><p>If you throw a ball in the air, its path is a perfect parabola! "When does it hit the ground?" = find the roots (height = 0). "What is the highest point?" = find the Vertex!</p></div>
         <div class="tb-section"><h3>The Translation Guide</h3>
-        <ul><li><strong>"Maximum / Minimum / Highest / Lowest"</strong> &rarr; Find the Vertex using x = &minus;b / (2a).</li><li><strong>"Hits ground / Break-even / Starts at zero"</strong> &rarr; Find the roots by setting equation = 0.</li><li><strong>"Initial / Starting amount"</strong> &rarr; Find the y-intercept by setting x = 0.</li></ul>
-        <details class="solution-toggle"><summary>👁️ Example: Height h(t) = &minus;5t<sup>2</sup> + 10t + 40. Find max height and time to hit water.</summary><div class="solution-content"><strong>Part 1: Max Height (Vertex)</strong><br>t = &minus;10 / (2&times;&minus;5) = 1 second.<br>h(1) = &minus;5 + 10 + 40 = <strong>45 m</strong><br><br><strong>Part 2: Hit Water (Roots)</strong><br>&minus;5t<sup>2</sup> + 10t + 40 = 0 &rarr; divide by &minus;5 &rarr; t<sup>2</sup> &minus; 2t &minus; 8 = 0<br>Factor: (t &minus; 4)(t + 2) = 0<br>t = 4 or t = &minus;2. Reject negative.<br><strong>Hits water at t = 4 seconds.</strong></div></details>
-        <details class="solution-toggle"><summary>👁️ Expert Example: Revenue Optimization</summary><div class="solution-content">Theatre sells 100 tickets at $10. Each $1 increase (x) loses 5 tickets.<br>R(x) = (10 + x)(100 &minus; 5x)<br>Roots: x = &minus;10 and x = 20.<br>Vertex x = (&minus;10 + 20)/2 = 5.<br>Increase price by $5 &rarr; Price = $15.<br><strong>Max Revenue = $15 &times; 75 = $1125</strong></div></details></div>`
+        <ul><li><strong>"Maximum / Minimum"</strong> &rarr; Vertex using x = &minus;b/(2a).</li><li><strong>"Hits ground / Break‑even"</strong> &rarr; Set equation = 0 and solve.</li><li><strong>"Initial / Starting amount"</strong> &rarr; y‑intercept (x = 0).</li></ul>
+        <details class="solution-toggle"><summary>👁️ Rocket height h(t) = &minus;5t<sup>2</sup> + 20t + 25</summary><div class="solution-content">Hit ground: set 0, divide by -5: t<sup>2</sup> - 4t - 5 = 0 → (t-5)(t+1)=0 → t=5 (reject -1). Max height at vertex t = -20/-10 = 2, h(2)= -20+40+25 = 45 m.</div></details>
+        <details class="solution-toggle"><summary>👁️ Revenue Maximization</summary><div class="solution-content">Theatre: price = 10+x, tickets = 100-5x. Revenue R = (10+x)(100-5x). Roots x=-10, x=20. Vertex x = 5, so optimal increase is $5, price = $15.</div></details></div>`
     },
+    // Chapter 11 – Inequalities & Sign Diagrams
     {
         title: chapterTitles[10],
         desc: "Drawing sign diagrams to solve quadratic inequalities (>, <, >=).",
         body: `<div class="video-wrapper"><iframe src="https://www.youtube-nocookie.com/embed/ZNtzWpU80-0" allowfullscreen></iframe></div>
         <div class="yt-fallback"><a href="https://www.youtube.com/watch?v=ZNtzWpU80-0" target="_blank">⚠️ Video not playing? Click here to watch on YouTube ↗️</a></div>
         <div style="text-align:center; margin:15px 0;"><a href="https://www.youtube.com/results?search_query=Inequalities+%26+Sign+Diagrams" target="_blank" class="yt-search-btn">🔍 Watch / Search on YouTube</a></div>
-        <div class="beginner-box"><h3>👶 Beginner's Concept</h3><p>An inequality asks: "When is this curve above the x-axis? When is it below?" By finding the roots (where the curve crosses), we draw a quick number line (Sign Diagram) with + and &minus; to easily see the answer!</p></div>
+        <div class="beginner-box"><h3>👶 Beginner's Concept</h3><p>An inequality asks: "When is this curve above the x‑axis? When is it below?" By finding the roots (where the curve crosses), we draw a quick number line (Sign Diagram) with + and &minus; to easily see the answer!</p></div>
         <div class="tb-section"><h3>Solving Inequalities using Sign Diagrams</h3>
-        <div class="fundamental-box"><h4>The 3 Steps</h4><ol><li><strong>Find the roots:</strong> Set the equation to 0, solve, and plot the roots on a number line.</li><li><strong>Determine the shape:</strong> If the leading coefficient is positive (U-shape), signs go + &minus; +. If negative (n-shape), signs go &minus; + &minus;.</li><li><strong>Read the diagram:</strong> If &gt; 0, write the positive (+) regions. If &lt; 0, write the negative (&minus;) regions.</li></ol></div>
-        <details class="solution-toggle"><summary>👁️ Example: Solve x<sup>2</sup> &minus; 3x &minus; 10 &lt; 0</summary><div class="solution-content">1. Factor: (x &minus; 5)(x + 2) = 0 &rarr; Roots: x = 5, x = &minus;2.<br>2. Shape: Positive x<sup>2</sup> = U-shape. Signs: + &nbsp; &minus; &nbsp; +<br>3. Want &lt; 0 (negative region) = middle section.<br><br><strong>Final Answer: &minus;2 &lt; x &lt; 5</strong></div></details>
-        <details class="solution-toggle"><summary>👁️ Example: Solve 4 &minus; x<sup>2</sup> &le; 0</summary><div class="solution-content">1. Roots: (2&minus;x)(2+x) = 0 &rarr; x = 2, x = &minus;2.<br>2. Shape: Negative &minus;x<sup>2</sup> = n-shape. Signs: &minus; &nbsp; + &nbsp; &minus;<br>3. Want &le; 0 (negative or zero) = outer sections.<br><br><strong>Final Answer: x &le; &minus;2 or x &ge; 2</strong></div></details></div>`
+        <div class="fundamental-box"><h4>The 3 Steps</h4><ol><li>Find the roots.</li><li>Determine the shape (positive a = U‑shape: + - +; negative a = n‑shape: - + -).</li><li>Read the diagram: >0 take + regions; <0 take - regions.</li></ol></div>
+        <details class="solution-toggle"><summary>👁️ Solve x<sup>2</sup> - 3x - 10 < 0</summary><div class="solution-content">Roots: (x-5)(x+2)=0 → x=5, -2. Positive x<sup>2</sup> → signs: + - +. Want negative → middle: -2 < x < 5.</div></details>
+        <details class="solution-toggle"><summary>👁️ Solve 4 - x<sup>2</sup> ≤ 0</summary><div class="solution-content">Roots: (2-x)(2+x)=0 → x=2, -2. Negative leading → signs: - + -. Want ≤0 → outer: x ≤ -2 or x ≥ 2.</div></details></div>`
     }
 ];
 
-// =============================================
-// MASTERY TRACKING
-// =============================================
+// ==================== MASTERY TRACKING ====================
 let currentTopicIndex = 0;
-
 function renderTextbook() {
     const grid = document.getElementById('learning-grid');
     grid.innerHTML = '';
@@ -887,7 +705,6 @@ function renderTextbook() {
         </div>`;
     });
 }
-
 function markAsMastered() {
     let mastery = JSON.parse(localStorage.getItem('mypMastery')) || {};
     mastery[currentTopicIndex] = true;
@@ -896,9 +713,7 @@ function markAsMastered() {
     closeModal();
 }
 
-// =============================================
-// QUIZ DATABASES — FULLY RESTORED
-// =============================================
+// ==================== QUIZ DATABASES (FULL) ====================
 const easyQuiz = [
     { chapter: 0, type: 'typed', needsGraph: false, q: "Simplify: x<sup>3</sup> &times; x<sup>5</sup>", correctAnswers: ["x^8", "x8", "x⁸"], exp: "Add the exponents: 3 + 5 = 8.", hint: "When multiplying identical bases, ADD the powers." },
     { chapter: 1, type: 'typed', needsGraph: false, q: "Expand using FOIL: (x + 2)(x + 4)", correctAnswers: ["x^2+6x+8", "x²+6x+8", "x2+6x+8"], exp: "First: x&times;x = x². Outside: 4x. Inside: 2x. Last: 8. Combine: x² + 6x + 8.", hint: "First, Outside, Inside, Last. Then combine the two middle x terms." },
@@ -963,17 +778,15 @@ const finalExam = [
 ];
 
 const algebraManipulationQuiz = [
-    { chapter: 2, type: 'typed', needsGraph: false, q: "Solve for x: <br> (2)/(x-1) + (5)/(x+3) = (2-x)/((x-1)(x+3))", correctAnswers: ["1/8", "0.125", "x=1/8", "x=0.125"], exp: "Multiply both sides by (x-1)(x+3): 2(x+3) + 5(x-1) = 2-x → 2x+6+5x-5 = 2-x → 7x+1 = 2-x → 8x = 1 → x = 1/8.", hint: "Start by multiplying every term by the common denominator (x-1)(x+3)." },
-    { chapter: 2, type: 'typed', needsGraph: false, q: "Solve for x: <br> x<sup>2</sup> - 5x + 6 = 0", correctAnswers: ["2,3", "3,2", "x=2,3", "x=3,2"], exp: "Factor: (x-2)(x-3)=0 → x=2 or x=3.", hint: "Find two numbers that multiply to +6 and add to -5." },
-    { chapter: 2, type: 'typed', needsGraph: false, q: "Solve for x: <br> (2x)/(3x+1) = 1/(x+2)", correctAnswers: ["1/2,-1", "-1,1/2", "0.5,-1", "-1,0.5", "x=1/2,x=-1"], exp: "Cross-multiply: 2x(x+2)=3x+1 → 2x²+4x-3x-1=0 → 2x²+x-1=0 → (2x-1)(x+1)=0 → x=1/2, x=-1.", hint: "Cross-multiply to eliminate fractions, then rearrange into a quadratic and factor." },
+    { chapter: 2, type: 'typed', needsGraph: false, q: "Solve for x: (2)/(x-1) + (5)/(x+3) = (2-x)/((x-1)(x+3))", correctAnswers: ["1/8", "0.125", "x=1/8", "x=0.125"], exp: "Multiply both sides by (x-1)(x+3): 2(x+3) + 5(x-1) = 2-x → 2x+6+5x-5 = 2-x → 7x+1 = 2-x → 8x = 1 → x = 1/8.", hint: "Start by multiplying every term by the common denominator." },
+    { chapter: 2, type: 'typed', needsGraph: false, q: "Solve for x: x<sup>2</sup> - 5x + 6 = 0", correctAnswers: ["2,3", "3,2", "x=2,3", "x=3,2"], exp: "Factor: (x-2)(x-3)=0 → x=2 or x=3.", hint: "Find two numbers that multiply to +6 and add to -5." },
+    { chapter: 2, type: 'typed', needsGraph: false, q: "Solve for x: (2x)/(3x+1) = 1/(x+2)", correctAnswers: ["1/2,-1", "-1,1/2", "0.5,-1", "-1,0.5", "x=1/2,x=-1"], exp: "Cross-multiply: 2x(x+2)=3x+1 → 2x²+4x-3x-1=0 → 2x²+x-1=0 → (2x-1)(x+1)=0 → x=1/2, x=-1.", hint: "Cross-multiply to eliminate fractions, then rearrange into a quadratic and factor." },
     { chapter: 1, type: 'typed', needsGraph: false, q: "Simplify: (x<sup>2</sup>y<sup>3</sup>)<sup>2</sup> / (x<sup>3</sup>y<sup>2</sup>)", correctAnswers: ["x y^4", "xy^4", "x*y^4", "x y4"], exp: "Numerator: x^4 y^6. Divide by x^3 y^2: subtract exponents → x^(4-3) y^(6-2) = x y^4.", hint: "Apply the power to each factor inside the parentheses first, then use the division rule for exponents." },
-    { chapter: 2, type: 'typed', needsGraph: false, q: "Solve for x: <br> x<sup>4</sup> - 7x<sup>2</sup> + 12 = 0", correctAnswers: ["2,-2,√3,-√3", "±2,±√3", "2, -2, √3, -√3", "x=±2, x=±√3"], exp: "Let y = x². Then y² - 7y + 12 = 0 → (y-3)(y-4)=0 → y=3 or y=4. Back-substitute: x²=3 → x=±√3; x²=4 → x=±2.", hint: "Substitute u = x² to turn it into a quadratic in u." },
+    { chapter: 2, type: 'typed', needsGraph: false, q: "Solve for x: x<sup>4</sup> - 7x<sup>2</sup> + 12 = 0", correctAnswers: ["2,-2,√3,-√3", "±2,±√3", "2, -2, √3, -√3", "x=±2, x=±√3"], exp: "Let u = x². Then u² - 7u + 12 = 0 → (u-3)(u-4)=0 → u=3,4. x²=3 → x=±√3; x²=4 → x=±2.", hint: "Substitute u = x² to turn it into a quadratic in u." },
     { chapter: 1, type: 'typed', needsGraph: false, q: "Expand and simplify: (2x - 3)<sup>3</sup>", correctAnswers: ["8x^3-36x^2+54x-27", "8x³-36x²+54x-27"], exp: "Use binomial expansion or multiply stepwise: (2x-3)² = 4x²-12x+9. Multiply by (2x-3): (4x²-12x+9)(2x-3) = 8x³-12x²-24x²+36x+18x-27 = 8x³-36x²+54x-27.", hint: "First square the binomial, then multiply the result by (2x-3) again." }
 ];
 
-// =============================================
-// QUIZ ENGINE — FULLY IMPLEMENTED
-// =============================================
+// ==================== QUIZ ENGINE (FULL) ====================
 let quizData = [];
 let state = [];
 let immediateFeedback = true;
@@ -1128,9 +941,7 @@ function renderQuestions() {
     });
 }
 
-// =============================================
-// FLAG FOR REVIEW SYSTEM
-// =============================================
+// ==================== FLAG FOR REVIEW SYSTEM ====================
 function toggleFlag(qIndex) {
     playClick();
     if (flaggedQuestions.has(qIndex)) {
@@ -1180,13 +991,9 @@ function closeReviewModal() {
     document.getElementById('reviewModalOverlay').style.display = 'none';
 }
 
-document.getElementById('reviewModalOverlay').addEventListener('click', function(e) {
-    if (e.target === this) closeReviewModal();
-});
+document.getElementById('reviewModalOverlay').addEventListener('click', function(e) { if (e.target === this) closeReviewModal(); });
 
-// =============================================
-// QUIZ INTERACTION
-// =============================================
+// ==================== QUIZ INTERACTION ====================
 function insertSymbol(qIndex, sym) {
     if (state[qIndex].isEvaluated) return;
     const input = document.getElementById(`input-${qIndex}`);
@@ -1194,93 +1001,25 @@ function insertSymbol(qIndex, sym) {
     input.focus();
     trackTypedAnswer(qIndex);
 }
-
-function handleEnter(e, qIndex) {
-    if (e.key === 'Enter') { e.preventDefault(); checkTypedAnswer(qIndex); }
-}
-
+function handleEnter(e, qIndex) { if (e.key === 'Enter') { e.preventDefault(); checkTypedAnswer(qIndex); } }
 function trackTypedAnswer(qIndex) {
     const val = document.getElementById(`input-${qIndex}`).value;
     state[qIndex].userText = val.trim() !== '' ? val : null;
     if (!immediateFeedback) updateNavStyles();
 }
-
 function checkTypedAnswer(qIndex) {
     if (state[qIndex].isEvaluated) return;
     const val = document.getElementById(`input-${qIndex}`).value;
     if (val.trim() === '') return;
     state[qIndex].userText = val;
-    if (immediateFeedback) {
-        evaluateQuestion(qIndex);
-    } else {
-        updateNavStyles();
-        const btn = document.getElementById(`check-btn-${qIndex}`);
-        if (btn) { btn.innerText = 'Saved ✓'; btn.style.background = 'var(--answered)'; }
-    }
+    if (immediateFeedback) { evaluateQuestion(qIndex); } else { updateNavStyles(); const btn = document.getElementById(`check-btn-${qIndex}`); if (btn) { btn.innerText = 'Saved ✓'; btn.style.background = 'var(--answered)'; } }
 }
-
-function scrollToQ(index) {
-    const el = document.getElementById('q-' + index);
-    if (!el) return;
-    el.scrollIntoView({ behavior: 'smooth', block: 'center' });
-    el.style.boxShadow = '0 0 0 4px rgba(59,130,246,0.4)';
-    setTimeout(() => el.style.boxShadow = '', 1500);
-}
-
-function toggleFeedbackMode() {
-    playClick();
-    immediateFeedback = document.getElementById('mode-toggle').checked;
-    const label = document.getElementById('mode-label');
-    if (immediateFeedback) { label.innerText = 'ON: Immediate Feedback'; label.style.color = 'var(--correct)'; }
-    else { label.innerText = 'OFF: Test Mode (Hidden)'; label.style.color = 'var(--text-muted)'; }
-}
-
-function useHint(qIndex) {
-    if (state[qIndex].isEvaluated) return;
-    playClick();
-    state[qIndex].hintUsed = true;
-    document.getElementById(`hint-box-${qIndex}`).style.display = 'block';
-    document.getElementById(`show-ans-btn-${qIndex}`).style.display = 'inline-block';
-    const hintBtn = document.getElementById(`actions-${qIndex}`).querySelector('.btn-hint');
-    if (hintBtn) { hintBtn.disabled = true; hintBtn.innerText = 'Hint Used'; }
-}
-
-function useAnswer(qIndex) {
-    if (state[qIndex].isEvaluated) return;
-    state[qIndex].answerShown = true;
-    state[qIndex].selected = null;
-    state[qIndex].userText = null;
-    evaluateQuestion(qIndex);
-}
-
-function toggleSpecificDesmos(qIndex) {
-    playClick();
-    const wrap = document.getElementById(`q-desmos-wrap-${qIndex}`);
-    const iframe = document.getElementById(`calc-frame-${qIndex}`);
-    const qData = quizData[qIndex];
-    if (wrap.style.display === 'block') {
-        wrap.style.display = 'none';
-    } else {
-        wrap.style.display = 'block';
-        if (iframe.src.includes('about:blank') || iframe.src === '') {
-            let eqParams = '';
-            if (qData.eq1) eqParams += '&expression=' + encodeURIComponent(qData.eq1);
-            if (qData.eq2) eqParams += '&expression=' + encodeURIComponent(qData.eq2);
-            iframe.src = 'https://www.desmos.com/calculator?hideExpressions=false' + eqParams;
-        }
-    }
-}
-
-function selectOption(qIndex, optIndex) {
-    if (state[qIndex].isEvaluated) return;
-    playClick();
-    state[qIndex].selected = optIndex;
-    const allBtns = document.getElementById(`q-${qIndex}`).querySelectorAll('.option-btn');
-    allBtns.forEach(b => b.classList.remove('selected-option'));
-    document.getElementById(`opt-${qIndex}-${optIndex}`).classList.add('selected-option');
-    if (immediateFeedback) evaluateQuestion(qIndex);
-    else updateNavStyles();
-}
+function scrollToQ(index) { const el = document.getElementById('q-' + index); if (!el) return; el.scrollIntoView({ behavior: 'smooth', block: 'center' }); el.style.boxShadow = '0 0 0 4px rgba(59,130,246,0.4)'; setTimeout(() => el.style.boxShadow = '', 1500); }
+function toggleFeedbackMode() { playClick(); immediateFeedback = document.getElementById('mode-toggle').checked; const label = document.getElementById('mode-label'); if (immediateFeedback) { label.innerText = 'ON: Immediate Feedback'; label.style.color = 'var(--correct)'; } else { label.innerText = 'OFF: Test Mode (Hidden)'; label.style.color = 'var(--text-muted)'; } }
+function useHint(qIndex) { if (state[qIndex].isEvaluated) return; playClick(); state[qIndex].hintUsed = true; document.getElementById(`hint-box-${qIndex}`).style.display = 'block'; document.getElementById(`show-ans-btn-${qIndex}`).style.display = 'inline-block'; const hintBtn = document.getElementById(`actions-${qIndex}`).querySelector('.btn-hint'); if (hintBtn) { hintBtn.disabled = true; hintBtn.innerText = 'Hint Used'; } }
+function useAnswer(qIndex) { if (state[qIndex].isEvaluated) return; state[qIndex].answerShown = true; state[qIndex].selected = null; state[qIndex].userText = null; evaluateQuestion(qIndex); }
+function toggleSpecificDesmos(qIndex) { playClick(); const wrap = document.getElementById(`q-desmos-wrap-${qIndex}`); const iframe = document.getElementById(`calc-frame-${qIndex}`); const qData = quizData[qIndex]; if (wrap.style.display === 'block') { wrap.style.display = 'none'; } else { wrap.style.display = 'block'; if (iframe.src.includes('about:blank') || iframe.src === '') { let eqParams = ''; if (qData.eq1) eqParams += '&expression=' + encodeURIComponent(qData.eq1); if (qData.eq2) eqParams += '&expression=' + encodeURIComponent(qData.eq2); iframe.src = 'https://www.desmos.com/calculator?hideExpressions=false' + eqParams; } } }
+function selectOption(qIndex, optIndex) { if (state[qIndex].isEvaluated) return; playClick(); state[qIndex].selected = optIndex; const allBtns = document.getElementById(`q-${qIndex}`).querySelectorAll('.option-btn'); allBtns.forEach(b => b.classList.remove('selected-option')); document.getElementById(`opt-${qIndex}-${optIndex}`).classList.add('selected-option'); if (immediateFeedback) evaluateQuestion(qIndex); else updateNavStyles(); }
 
 function evaluateQuestion(qIndex) {
     let s = state[qIndex];
@@ -1374,12 +1113,8 @@ function submitQuiz() {
     document.getElementById('final-score').innerText = total;
     document.getElementById('myp-score').innerText = mypGrade;
 
-    if (mypGrade >= 7 && currentMode === 'final') {
-        launchConfetti();
-        playVictoryChord();
-    } else if (mypGrade >= 6) {
-        playCorrect();
-    }
+    if (mypGrade >= 7 && currentMode === 'final') { launchConfetti(); playVictoryChord(); }
+    else if (mypGrade >= 6) { playCorrect(); }
 
     saveProgress(currentMode, total, mypGrade);
     loadProgress();
@@ -1401,30 +1136,23 @@ function getMYP(score, totalQs) {
     return 0;
 }
 
-// =============================================
-// LOCAL STORAGE
-// =============================================
+// ==================== LOCAL STORAGE ====================
 function saveProgress(mode, score, myp) {
     let history = JSON.parse(localStorage.getItem('mypMathHistory')) || [];
     history.unshift({ mode: mode.toUpperCase(), score: score, myp: myp, date: new Date().toLocaleDateString() });
     if (history.length > 5) history.pop();
     localStorage.setItem('mypMathHistory', JSON.stringify(history));
 }
-
 function loadProgress() {
     let history = JSON.parse(localStorage.getItem('mypMathHistory')) || [];
     let list = document.getElementById('history-list');
     if (!list) return;
     list.innerHTML = '';
     if (history.length === 0) { list.innerHTML = '<li>No past attempts found. Take a test!</li>'; return; }
-    history.forEach(h => {
-        list.innerHTML += `<li><span>📅 ${h.date} — <strong>${h.mode}</strong></span> <span>Score: ${h.score} | <strong>Level ${h.myp}</strong></span></li>`;
-    });
+    history.forEach(h => { list.innerHTML += `<li><span>📅 ${h.date} — <strong>${h.mode}</strong></span> <span>Score: ${h.score} | <strong>Level ${h.myp}</strong></span></li>`; });
 }
 
-// =============================================
-// LEARNING MODULE MODAL
-// =============================================
+// ==================== LEARNING MODULE MODAL ====================
 window.openModal = function(index) {
     playClick();
     currentTopicIndex = index;
@@ -1434,20 +1162,14 @@ window.openModal = function(index) {
     document.body.style.overflow = 'hidden';
     document.getElementById('modalBody').scrollTop = 0;
 };
-
 window.closeModal = function() {
     document.getElementById('modalOverlay').style.display = 'none';
     document.body.style.overflow = 'auto';
     document.getElementById('modalBody').innerHTML = '';
 };
+document.getElementById('modalOverlay').addEventListener('click', function(e) { if (e.target === this) closeModal(); });
 
-document.getElementById('modalOverlay').addEventListener('click', function(e) {
-    if (e.target === this) closeModal();
-});
-
-// =============================================
-// SYNCHRONOUS STABLE INITIALIZATION
-// =============================================
+// ==================== SYNCHRONOUS INITIALIZATION ====================
 window.onload = function() {
     loadQuizLevel('easy');
     renderTextbook();
