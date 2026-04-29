@@ -7,32 +7,10 @@
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='75' x='5' font-size='75' font-family='Times New Roman, serif' font-style='italic' font-weight='bold' fill='%230f4c81'>fx</text></svg>">
     <style>
         :root {
-            --primary: #0f4c81;
-            --primary-hover: #1d3557;
-            --bg: #f0f4f8;
-            --card-bg: #ffffff;
-            --text-main: #1e293b;
-            --text-muted: #64748b;
-            --correct: #10b981;
-            --incorrect: #ef4444;
-            --half: #f59e0b;
-            --accent: #3b82f6;
-            --answered: #94a3b8;
-            --unanswered: #e2e8f0;
-            --border: #e2e8f0;
-            --level-easy: #22c55e;
-            --level-normal: #eab308;
-            --level-hard: #f97316;
-            --level-final: #dc2626;
-            --flagged: #a855f7;
+            --primary: #0f4c81; --primary-hover: #1d3557; --bg: #f0f4f8; --card-bg: #ffffff; --text-main: #1e293b; --text-muted: #64748b; --correct: #10b981; --incorrect: #ef4444; --half: #f59e0b; --accent: #3b82f6; --answered: #94a3b8; --unanswered: #e2e8f0; --border: #e2e8f0; --level-easy: #22c55e; --level-normal: #eab308; --level-hard: #f97316; --level-final: #dc2626; --flagged: #a855f7;
         }
         body.dark-mode {
-            --bg: #0f172a;
-            --card-bg: #1e293b;
-            --text-main: #f8fafc;
-            --text-muted: #94a3b8;
-            --border: #334155;
-            --unanswered: #334155;
+            --bg: #0f172a; --card-bg: #1e293b; --text-main: #f8fafc; --text-muted: #94a3b8; --border: #334155; --unanswered: #334155;
         }
         * { box-sizing: border-box; margin: 0; padding: 0; }
         body { font-family: 'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif; line-height: 1.7; color: var(--text-main); background: var(--bg); padding: 20px; transition: background 0.3s, color 0.3s; }
@@ -116,12 +94,6 @@
         .question-container.flagged-q { border-left: 5px solid var(--flagged); }
         .chapter-source { position: absolute; top: 15px; right: 20px; font-size: 0.85em; font-weight: bold; color: var(--accent); background: rgba(59, 130, 246, 0.1); padding: 5px 12px; border-radius: 20px; }
         .question-text { font-size: 1.3em; font-weight: 600; margin-bottom: 25px; margin-top: 10px; line-height: 1.6; }
-        .desmos-badge, .level-badge { padding: 4px 10px; border-radius: 6px; font-size: 0.7em; vertical-align: middle; margin-right: 12px; font-weight: bold; }
-        .desmos-badge { background: #1e293b; color: #38bdf8; border: 1px solid #38bdf8; }
-        .lvl-1 { background: rgba(3, 105, 161, 0.2); color: #0284c7; border: 1px solid #38bdf8; }
-        .lvl-3 { background: rgba(161, 98, 7, 0.2); color: #ca8a04; border: 1px solid #facc15; }
-        .lvl-5 { background: rgba(154, 52, 18, 0.2); color: #ea580c; border: 1px solid #fb923c; }
-        .lvl-7 { background: rgba(153, 27, 27, 0.2); color: #dc2626; border: 1px solid #f87171; }
         .options { display: flex; flex-direction: column; gap: 12px; margin-bottom: 20px; }
         .option-btn { text-align: left; padding: 18px 20px; background: var(--bg); border: 2px solid var(--border); border-radius: 10px; cursor: pointer; font-size: 1.1em; color: var(--text-main); font-weight: 500; transition: 0.2s; }
         .option-btn:hover:not(:disabled) { border-color: var(--accent); }
@@ -171,7 +143,6 @@
         .modal-header h2 { margin: 0; font-size: 1.8em; color: var(--primary); border: none; padding: 0; }
         .modal-body { padding: 40px; overflow-y: auto; flex-grow: 1; font-size: 1.15em; line-height: 1.8; color: var(--text-main); }
         .modal-footer { padding: 20px 35px; background: var(--bg); border-top: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 15px; }
-        /* REVIEW MODAL */
         .review-modal-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(15, 23, 42, 0.85); z-index: 2000; backdrop-filter: blur(8px); }
         .review-modal-content { position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); background: var(--card-bg); border-radius: 16px; width: 90%; max-width: 700px; max-height: 80vh; display: flex; flex-direction: column; overflow: hidden; z-index: 2001; box-shadow: 0 25px 50px rgba(0,0,0,0.5); border: 2px solid var(--flagged); }
         .review-modal-header { padding: 20px 30px; background: rgba(168, 85, 247, 0.1); border-bottom: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; }
@@ -191,8 +162,6 @@
         .close-btn:hover { background: #dc2626; transform: scale(1.05); }
         .mastery-btn { background: var(--correct); color: white; border: none; padding: 12px 25px; border-radius: 8px; cursor: pointer; font-weight: bold; font-size: 1.1em; transition: 0.2s; display: flex; align-items: center; gap: 8px; }
         .mastery-btn:hover { background: #059669; transform: scale(1.05); }
-        .teacher-notes-box { background: #fff3cd; border-left: 6px solid #ffc107; padding: 25px; margin: 25px 0; border-radius: 8px; }
-        .teacher-notes-box h3 { color: #856404; margin: 0 0 15px 0; }
         #toast-container { position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%); z-index: 9998; display: flex; flex-direction: column; align-items: center; gap: 10px; pointer-events: none; }
         .toast { background: #1e293b; color: white; padding: 14px 24px; border-radius: 50px; font-weight: bold; font-size: 1em; opacity: 0; transform: translateY(30px); transition: opacity 0.3s, transform 0.3s; box-shadow: 0 8px 25px rgba(0,0,0,0.3); border: 2px solid var(--flagged); white-space: nowrap; pointer-events: none; }
         .toast.show { opacity: 1; transform: translateY(0); }
@@ -204,16 +173,10 @@
         .yt-search-btn { display: inline-block; margin-top: 10px; padding: 10px 20px; background: var(--accent); color: white !important; border-radius: 8px; font-weight: bold; text-decoration: none; transition: 0.2s; border: 1px solid var(--accent); }
         .yt-search-btn:hover { background: var(--primary); border-color: var(--primary); }
         .beginner-box { background: #e0f2fe; border-left: 6px solid #0284c7; padding: 20px; margin-bottom: 30px; border-radius: 0 12px 12px 0; color: #0c4a6e; }
-        .beginner-box h3 { margin: 0 0 10px 0; color: #0369a1; font-size: 1.3em; display: flex; align-items: center; gap: 8px; }
-        .tb-section { margin-bottom: 40px; }
-        .tb-section h3 { color: var(--accent); border-bottom: 2px dashed var(--border); padding-bottom: 10px; margin-bottom: 20px; font-size: 1.5em; }
-        .fundamental-box { background: rgba(245, 158, 11, 0.1); border-left: 5px solid var(--half); padding: 20px; margin: 20px 0; border-radius: 0 8px 8px 0; }
-        .fundamental-box h4 { margin: 0 0 10px 0; color: var(--half); font-size: 1.2em; }
-        .solution-toggle { background: rgba(59, 130, 246, 0.05); border: 1px solid var(--border); border-left: 5px solid var(--primary); margin: 20px 0; border-radius: 0 8px 8px 0; }
-        .solution-toggle summary { padding: 15px 20px; font-weight: bold; cursor: pointer; color: var(--primary); outline: none; list-style: none; display: flex; align-items: center; font-size: 1.1em; }
-        .solution-toggle summary::-webkit-details-marker { display: none; }
-        .solution-toggle summary:hover { background: rgba(59, 130, 246, 0.1); }
-        .solution-content { padding: 20px; border-top: 1px dashed var(--border); font-family: monospace; font-size: 1.05em; background: var(--card-bg); line-height: 1.8; }
+        .lesson-step { background: #f8fafc; border-left: 6px solid var(--accent); padding: 20px; margin: 20px 0; border-radius: 8px; }
+        .example-box { background: #fff; border: 1px solid var(--border); border-radius: 10px; padding: 20px; margin: 25px 0; box-shadow: 0 2px 8px rgba(0,0,0,0.04); }
+        .example-box h4 { margin: 0 0 10px 0; color: var(--primary); font-size: 1.2em; }
+        .solution-box { background: #f5f7fa; border-radius: 8px; padding: 15px; margin-top: 15px; font-family: 'Courier New', monospace; font-size: 1em; white-space: pre-wrap; }
         #confetti-container { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 9999; display: none; overflow: hidden; }
         .confetti { position: absolute; width: 10px; height: 10px; background-color: #f00; opacity: 0; }
         #backToTopBtn { display: none; position: fixed; bottom: 30px; right: 30px; z-index: 999; border: none; outline: none; background-color: var(--accent); color: white; cursor: pointer; padding: 15px 25px; border-radius: 50px; font-size: 1.1em; font-weight: bold; box-shadow: 0 4px 15px rgba(0,0,0,0.3); transition: background-color 0.3s, transform 0.3s; }
@@ -227,8 +190,6 @@
 <button id="backToTopBtn" onclick="scrollToTop()">⬆️ Top</button>
 <div id="toast-container"></div>
 <div id="confetti-container"></div>
-
-<!-- REVIEW MODAL -->
 <div class="review-modal-overlay" id="reviewModalOverlay">
     <div class="review-modal-content">
         <div class="review-modal-header">
@@ -238,8 +199,6 @@
         <div class="review-modal-body" id="reviewModalBody"></div>
     </div>
 </div>
-
-<!-- LEARNING CHAPTER MODAL -->
 <div class="modal-overlay" id="modalOverlay">
     <div class="modal-content">
         <div class="modal-header">
@@ -260,134 +219,13 @@
         <h1>MYP 9 Extended Math</h1>
         <p>Interactive Learning Module, Adaptive Mastery Quiz &amp; Graphing Toolkit</p>
     </header>
-
     <div class="global-search-container">
         <input type="text" id="global-search" class="search-bar" placeholder="🔍 Global Search: Filter the entire guide (Glossary terms, Textbook chapters...)" onkeyup="globalSearch()">
     </div>
-
-    <div class="card" id="glossary-wrapper">
-        <button class="accordion-btn" onclick="toggleAccordion('glossary-content', 'arrow-glossary')">
-            <h2>📖 Core Dictionary &amp; Glossary</h2>
-            <span class="arrow" id="arrow-glossary" style="transform: rotate(0deg);">▼</span>
-        </button>
-        <div class="accordion-content" id="glossary-content" style="display: block;">
-            <div class="glossary-grid" id="glossary-grid">
-                <!-- (Glossary items unchanged) --><div class="glossary-item"><span class="glossary-term">Vertex / Vertices</span><p class="glossary-def">The highest (maximum) or lowest (minimum) turning point of a parabola. Found exactly on the axis of symmetry.</p></div><div class="glossary-item"><span class="glossary-term">Roots / X-Intercepts</span><p class="glossary-def">The points where a graph crosses the x-axis. Also known as "solutions" or "zeros" because they occur where y = 0.</p></div><div class="glossary-item"><span class="glossary-term">Y-Intercept</span><p class="glossary-def">The specific point where the graph crosses the y-axis (where x = 0). In y = ax<sup>2</sup> + bx + c, the y-intercept is 'c'.</p></div><div class="glossary-item"><span class="glossary-term">Domain</span><p class="glossary-def">The complete set of all possible <i>input values</i> (x-values) that a function can accept without breaking mathematical rules.</p></div><div class="glossary-item"><span class="glossary-term">Range</span><p class="glossary-def">The complete set of all possible resulting <i>output values</i> (y-values) that a function produces.</p></div><div class="glossary-item"><span class="glossary-term">Parabola</span><p class="glossary-def">The perfectly symmetrical U-shaped or upside-down U-shaped curve created when graphing a quadratic equation.</p></div><div class="glossary-item"><span class="glossary-term">Discriminant (&Delta;)</span><p class="glossary-def">The expression b<sup>2</sup> - 4ac (found inside the square root of the quadratic formula). It reveals exactly how many roots the equation has.</p></div><div class="glossary-item"><span class="glossary-term">Coefficient</span><p class="glossary-def">The number explicitly multiplying a variable. In the term 5x<sup>2</sup>, the coefficient is 5. If it's just x<sup>2</sup>, the coefficient is an invisible 1.</p></div><div class="glossary-item"><span class="glossary-term">GCF</span><p class="glossary-def">Greatest Common Factor. The largest shared number or variable that divides evenly into all terms of an expression.</p></div><div class="glossary-item"><span class="glossary-term">Indices / Exponents</span><p class="glossary-def">A superscript number indicating how many times a base is multiplied by itself (e.g., in x<sup>3</sup>, 3 is the index).</p></div><div class="glossary-item"><span class="glossary-term">Axis of Symmetry</span><p class="glossary-def">The invisible vertical mirror line dividing a parabola perfectly in half. Calculated using the formula x = -b / (2a).</p></div><div class="glossary-item"><span class="glossary-term">Asymptote</span><p class="glossary-def">An invisible line that a graph continually approaches but never physically touches or crosses.</p></div><div class="glossary-item"><span class="glossary-term">Binomial</span><p class="glossary-def">An algebraic expression containing exactly two terms, usually connected by a plus or minus (e.g., x + 4).</p></div><div class="glossary-item"><span class="glossary-term">Factorise</span><p class="glossary-def">The reverse of expanding. Taking an expanded expression and compressing it back into multiplied brackets.</p></div><div class="glossary-item"><span class="glossary-term">Inequality</span><p class="glossary-def">A mathematical statement comparing two quantities that are not equal, using symbols like &lt;, &gt;, &le;, or &ge;.</p></div><div class="glossary-item"><span class="glossary-term">Sign Diagram</span><p class="glossary-def">A 1D number line used to determine where a function is positive (+) or negative (-) by testing intervals between roots.</p></div>
-            </div>
-        </div>
-    </div>
-
-    <div class="card" id="desmos-wrapper">
-        <button class="accordion-btn" onclick="toggleAccordion('desmos-content', 'arrow-desmos')">
-            <h2>📈 Global Graphing Sandbox (Desmos)</h2>
-            <span class="arrow" id="arrow-desmos" style="transform: rotate(-90deg);">▼</span>
-        </button>
-        <div class="accordion-content" id="desmos-content" style="display: none;">
-            <p style="color: var(--text-muted); margin-bottom: 20px; font-size: 1.1em;">Use this sandbox to visually test equations, verify your vertex forms, or experiment before starting the quiz.</p>
-            <div class="desmos-container">
-                <iframe src="https://www.desmos.com/calculator?hideExpressions=false" width="100%" height="500px" frameborder="0"></iframe>
-            </div>
-        </div>
-    </div>
-
-    <div class="card" id="textbook-wrapper">
-        <button class="accordion-btn" onclick="toggleAccordion('textbook-content', 'arrow-textbook')">
-            <h2>📚 Learning Module &amp; Extended Syllabus</h2>
-            <span class="arrow" id="arrow-textbook" style="transform: rotate(0deg);">▼</span>
-        </button>
-        <div class="accordion-content" id="textbook-content" style="display: block;">
-            <p style="color: var(--text-muted); margin-bottom: 20px; font-size: 1.1em;">Click on any chapter to watch the video lesson, view step-by-step examples, and mark your progress.</p>
-            <div class="recap-grid" id="learning-grid"></div>
-            <div class="recap-box resource-box" style="margin-top: 30px; border-left-color: var(--accent);">
-                <h3>🔗 Additional Course Resources</h3>
-                <p><strong>Textbook Reference:</strong> Haese &amp; Harris MYP 5 Plus (See Toddle for Chapter 9B)</p>
-                <p style="margin-top:15px; font-weight: bold; color: var(--text-main);">Verified Study Links:</p>
-                <ul style="margin-left: 20px; line-height: 2; margin-bottom: 10px;">
-                    <li><a href="https://www.khanacademy.org/math/algebra/x2f8bb11595b61c86:quadratic-functions-equations" target="_blank" style="color: var(--accent); font-weight: bold; text-decoration: none;">Khan Academy: Complete Quadratics Course ↗️</a></li>
-                    <li><a href="https://www.desmos.com/calculator" target="_blank" style="color: var(--accent); font-weight: bold; text-decoration: none;">Desmos Official Graphing Calculator ↗️</a></li>
-                    <li><a href="https://www.mathsisfun.com/algebra/quadratic-equation.html" target="_blank" style="color: var(--accent); font-weight: bold; text-decoration: none;">MathsIsFun: Simple Quadratic Equations Guide ↗️</a></li>
-                    <li><a href="https://tutorial.math.lamar.edu/Classes/Alg/SolveQuadraticEqns.aspx" target="_blank" style="color: var(--accent); font-weight: bold; text-decoration: none;">Paul's Online Math Notes: Advanced Solving ↗️</a></li>
-                </ul>
-            </div>
-        </div>
-    </div>
-
-    <div class="card" id="exam-wrapper">
-        <button class="accordion-btn" onclick="toggleAccordion('exam-content', 'arrow-exam')">
-            <h2>📝 Mastery Exam Simulator</h2>
-            <span class="arrow" id="arrow-exam" style="transform: rotate(0deg);">▼</span>
-        </button>
-        <div class="accordion-content" id="exam-content" style="display: block;">
-            <div class="level-selector">
-                <button class="level-btn" id="btn-easy" onclick="loadQuizLevel('easy')">🟢 Easy Mode <span>10 Randomised Questions</span></button>
-                <button class="level-btn" id="btn-normal" onclick="loadQuizLevel('normal')">🟡 Normal Mode <span>10 Randomised Questions</span></button>
-                <button class="level-btn" id="btn-hard" onclick="loadQuizLevel('hard')">🟠 Hard Mode <span>10 Randomised Questions</span></button>
-                <button class="level-btn" id="btn-final" onclick="loadQuizLevel('final')">🔴 Final MYP Exam <span>12 Randomised Questions</span></button>
-                <button class="level-btn" id="btn-algebra" onclick="loadQuizLevel('algebra')">📝 Algebra Manipulation Formative <span>6 Questions</span></button>
-            </div>
-
-            <div class="top-tools">
-                <button class="tool-btn" onclick="toggleNotes()">📝 Toggle Digital Notes</button>
-                <div class="timer-container">
-                    <div class="timer-display" id="timer-display">45:00</div>
-                    <div class="timer-controls">
-                        <button class="t-btn" id="btn-timer-start" onclick="toggleTimer()">▶️ Start</button>
-                        <button class="t-btn" id="btn-timer-edit" onclick="promptCustomTime()" title="Change Timer">⚙️ Edit</button>
-                        <button class="t-btn" id="btn-timer-lock" onclick="lockTimer()" title="Lock Timer settings">🔒 Lock</button>
-                    </div>
-                </div>
-            </div>
-
-            <div class="notes-container" id="notes-container">
-                <textarea id="digital-notes" placeholder="Type your rough work, steps, and notes here..."></textarea>
-                <div class="notes-tools">
-                    <button class="n-btn" onclick="clearNotes()">Clear Notes</button>
-                    <button class="n-btn" onclick="toggleNotes()">Close</button>
-                </div>
-            </div>
-
-            <div class="quiz-controls">
-                <div><strong>Feedback Control:</strong> <span style="color: var(--text-muted);">Toggle Immediate vs. Hidden Test Mode</span></div>
-                <label class="toggle-switch">
-                    <input type="checkbox" id="mode-toggle" checked onchange="toggleFeedbackMode()">
-                    <span id="mode-label">ON: Immediate Feedback</span>
-                </label>
-            </div>
-
-            <div class="quiz-layout">
-                <div class="sidebar">
-                    <h3 id="sidebar-title" style="margin-bottom:15px;">Question Navigator</h3>
-                    <button class="sidebar-review-btn" onclick="openReviewModal()">🚩 View Review List</button>
-                    <div class="nav-grid" id="nav-grid"></div>
-                    <div class="legend">
-                        <div><div class="legend-box" style="background: var(--unanswered);"></div> Unanswered</div>
-                        <div><div class="legend-box" style="background: var(--answered);"></div> Answered</div>
-                        <div><div class="legend-box" style="background: var(--correct);"></div> Correct (1 pt)</div>
-                        <div><div class="legend-box" style="background: var(--half);"></div> Half Correct (0.5)</div>
-                        <div><div class="legend-box" style="background: var(--incorrect);"></div> Incorrect (0)</div>
-                        <div><span style="font-size:1em;">🚩</span> Flagged for Review</div>
-                    </div>
-                </div>
-
-                <div class="quiz-main">
-                    <div id="quiz-container"></div>
-                    <div class="submit-area" id="submit-area" style="display:none;">
-                        <button class="submit-btn" onclick="submitQuiz()">Submit Test &amp; Calculate Grade</button>
-                        <div id="final-results">
-                            <h2>Assessment Complete!</h2>
-                            <div class="score-display"><span id="final-score">0</span> / <span id="total-score-display">0</span></div>
-                            <p style="color: #94a3b8; font-size: 1.3em; margin-bottom: 5px;">MYP Grade Classification:</p>
-                            <div class="myp-grade">Level <span id="myp-score">0</span></div>
-                            <div class="history-board">
-                                <h3>💾 Past Results History</h3>
-                                <ul class="history-list" id="history-list"></ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+    <div class="card" id="glossary-wrapper"><button class="accordion-btn" onclick="toggleAccordion('glossary-content','arrow-glossary')"><h2>📖 Core Dictionary &amp; Glossary</h2><span class="arrow" id="arrow-glossary" style="transform: rotate(0deg);">▼</span></button><div class="accordion-content" id="glossary-content" style="display: block;"><div class="glossary-grid" id="glossary-grid"></div></div></div>
+    <div class="card" id="desmos-wrapper"><button class="accordion-btn" onclick="toggleAccordion('desmos-content','arrow-desmos')"><h2>📈 Global Graphing Sandbox (Desmos)</h2><span class="arrow" id="arrow-desmos" style="transform: rotate(-90deg);">▼</span></button><div class="accordion-content" id="desmos-content" style="display: none;"><p style="color: var(--text-muted); margin-bottom: 20px; font-size: 1.1em;">Use this sandbox to visually test equations, verify your vertex forms, or experiment before starting the quiz.</p><div class="desmos-container"><iframe src="https://www.desmos.com/calculator?hideExpressions=false" width="100%" height="500px" frameborder="0"></iframe></div></div></div>
+    <div class="card" id="textbook-wrapper"><button class="accordion-btn" onclick="toggleAccordion('textbook-content','arrow-textbook')"><h2>📚 Learning Module &amp; Extended Syllabus</h2><span class="arrow" id="arrow-textbook" style="transform: rotate(0deg);">▼</span></button><div class="accordion-content" id="textbook-content" style="display: block;"><p style="color: var(--text-muted); margin-bottom: 20px; font-size: 1.1em;">Click on any chapter to watch the video lesson, view step-by-step examples, and mark your progress.</p><div class="recap-grid" id="learning-grid"></div></div></div>
+    <div class="card" id="exam-wrapper"><button class="accordion-btn" onclick="toggleAccordion('exam-content','arrow-exam')"><h2>📝 Mastery Exam Simulator</h2><span class="arrow" id="arrow-exam" style="transform: rotate(0deg);">▼</span></button><div class="accordion-content" id="exam-content" style="display: block;"><div class="level-selector"><button class="level-btn" id="btn-easy" onclick="loadQuizLevel('easy')">🟢 Easy Mode <span>10 Randomised Questions</span></button><button class="level-btn" id="btn-normal" onclick="loadQuizLevel('normal')">🟡 Normal Mode <span>10 Randomised Questions</span></button><button class="level-btn" id="btn-hard" onclick="loadQuizLevel('hard')">🟠 Hard Mode <span>10 Randomised Questions</span></button><button class="level-btn" id="btn-final" onclick="loadQuizLevel('final')">🔴 Final MYP Exam <span>12 Randomised Questions</span></button><button class="level-btn" id="btn-algebra" onclick="loadQuizLevel('algebra')">📝 Algebra Manipulation Formative <span>6 Questions</span></button></div><div class="top-tools"><button class="tool-btn" onclick="toggleNotes()">📝 Toggle Digital Notes</button><div class="timer-container"><div class="timer-display" id="timer-display">45:00</div><div class="timer-controls"><button class="t-btn" id="btn-timer-start" onclick="toggleTimer()">▶️ Start</button><button class="t-btn" id="btn-timer-edit" onclick="promptCustomTime()" title="Change Timer">⚙️ Edit</button><button class="t-btn" id="btn-timer-lock" onclick="lockTimer()" title="Lock Timer settings">🔒 Lock</button></div></div></div><div class="notes-container" id="notes-container"><textarea id="digital-notes" placeholder="Type your rough work, steps, and notes here..."></textarea><div class="notes-tools"><button class="n-btn" onclick="clearNotes()">Clear Notes</button><button class="n-btn" onclick="toggleNotes()">Close</button></div></div><div class="quiz-controls"><div><strong>Feedback Control:</strong> <span style="color: var(--text-muted);">Toggle Immediate vs. Hidden Test Mode</span></div><label class="toggle-switch"><input type="checkbox" id="mode-toggle" checked onchange="toggleFeedbackMode()"><span id="mode-label">ON: Immediate Feedback</span></label></div><div class="quiz-layout"><div class="sidebar"><h3 id="sidebar-title" style="margin-bottom:15px;">Question Navigator</h3><button class="sidebar-review-btn" onclick="openReviewModal()">🚩 View Review List</button><div class="nav-grid" id="nav-grid"></div><div class="legend"><div><div class="legend-box" style="background: var(--unanswered);"></div> Unanswered</div><div><div class="legend-box" style="background: var(--answered);"></div> Answered</div><div><div class="legend-box" style="background: var(--correct);"></div> Correct (1 pt)</div><div><div class="legend-box" style="background: var(--half);"></div> Half Correct (0.5)</div><div><div class="legend-box" style="background: var(--incorrect);"></div> Incorrect (0)</div><div><span style="font-size:1em;">🚩</span> Flagged for Review</div></div></div><div class="quiz-main"><div id="quiz-container"></div><div class="submit-area" id="submit-area" style="display:none;"><button class="submit-btn" onclick="submitQuiz()">Submit Test &amp; Calculate Grade</button><div id="final-results"><h2>Assessment Complete!</h2><div class="score-display"><span id="final-score">0</span> / <span id="total-score-display">0</span></div><p style="color: #94a3b8; font-size: 1.3em; margin-bottom: 5px;">MYP Grade Classification:</p><div class="myp-grade">Level <span id="myp-score">0</span></div><div class="history-board"><h3>💾 Past Results History</h3><ul class="history-list" id="history-list"></ul></div></div></div></div></div></div></div>
 </div>
 
 <script>
@@ -438,394 +276,347 @@ const chapterTitles = [
     "11. Inequalities & Signs"
 ];
 
-// ==================== MODAL CONTENT – ENRICHED WITH TEACHER NOTES (yellow boxes) ====================
+// ==================== MODAL CONTENT – KHAN ACADEMY STYLE LESSONS (ALL 11 CHAPTERS) ====================
 const modalContent = [
+    // Chapter 1
     {
         title: chapterTitles[0],
         desc: "Core exponent rules, negative/fractional indices, and simplifying complex algebraic fractions.",
-        body: `
-        <div class="video-wrapper"><iframe src="https://www.youtube-nocookie.com/embed/NuccqpiUHrk" allowfullscreen></iframe></div>
-        <div class="yt-fallback"><a href="https://www.youtube.com/watch?v=NuccqpiUHrk" target="_blank">⚠️ Video not playing? Click here to watch on YouTube ↗️</a></div>
-        <div style="text-align:center; margin:15px 0;"><a href="https://www.youtube.com/results?search_query=Algebraic+Fractions+%26+Indices" target="_blank" class="yt-search-btn">🔍 Watch / Search on YouTube</a></div>
-        <div class="beginner-box"><h3>👶 Beginner's Concept</h3><p>Think of exponents (indices) like a math shortcut. Instead of writing "x" multiplied by itself 5 times, we write x<sup>5</sup>. When we multiply terms with the same base, we just add the shortcuts! When we divide, we subtract them.</p></div>
-
-        <div class="teacher-notes-box">
-            <h3>📝 Teacher Notes & Detailed Examples</h3>
-            <div class="tb-section"><h3>The Core Rules of Exponents</h3>
-            <ul>
-                <li><strong>Multiplication Rule:</strong> a<sup>m</sup> × a<sup>n</sup> = a<sup>m+n</sup></li>
-                <li><strong>Division Rule:</strong> a<sup>m</sup> ÷ a<sup>n</sup> = a<sup>m−n</sup></li>
-                <li><strong>Power to a Power:</strong> (a<sup>m</sup>)<sup>n</sup> = a<sup>mn</sup></li>
-                <li><strong>Zero Power Rule:</strong> a<sup>0</sup> = 1</li>
-            </ul>
-            <details class="solution-toggle"><summary>👁 Example: Simplify (3x<sup>2</sup>y<sup>4</sup>)<sup>3</sup></summary><div class="solution-content">... = 27x<sup>6</sup>y<sup>12</sup></div></details></div>
-            <div class="tb-section"><h3>Advanced: Negative & Fractional Indices</h3>
-            <p><strong>Negative Indices:</strong> a<sup>-n</sup> = 1/a<sup>n</sup></p>
-            <p><strong>Fractional Indices:</strong> a<sup>m/n</sup> = <sup>n</sup>√(a<sup>m</sup>)</p>
-            <details class="solution-toggle"><summary>👁 Evaluate 27<sup>−2/3</sup></summary><div class="solution-content">... = 1/9</div></details></div>
-            <div class="tb-section"><h3>More Index Law Practice (from Teacher Notes)</h3>
-            <p>Product of powers: a<sup>3</sup> × a<sup>n</sup> = a<sup>3+n</sup></p>
-            <p>Power of a product: (2m<sup>3</sup>n<sup>2</sup>)<sup>5</sup> = 32 m<sup>15</sup> n<sup>10</sup></p>
-            <p>Quotient of powers: (2c/d)<sup>5</sup> = 32c<sup>5</sup>/d<sup>5</sup></p>
-            <p>Zero exponent: 74 ÷ 74 = 1</p>
-            <p>Negative exponents: 2<sup>3</sup> ÷ 2<sup>5</sup> = 2<sup>−2</sup> = 1/4</p>
-            <details class="solution-toggle"><summary>👁 Simplify 18m<sup>7</sup>a<sup>3</sup> / (4m<sup>4</sup>a<sup>3</sup>)</summary><div class="solution-content">9m<sup>3</sup>/2</div></details></div>
-            <div class="tb-section"><h3>Algebraic Fractions</h3>
-            <p>Same denominator: 5/a + 4/a = 9/a</p>
-            <p>Different denominators: x/a + 3/b = (bx+3a)/(ab)</p>
-            <p>Multiply: (a/4b)×(3b/2a)×(4/c) = 3/c (cancel)</p>
-            <p>Divide: a<sup>3</sup>/4 ÷ a<sup>2</sup>/(3b) = 3ab/4</p>
-            <details class="solution-toggle"><summary>👁 Simplify (x+5)/4 = (9-x)/x</summary><div class="solution-content">Cross-multiply: x(x+5)=4(9-x) → x<sup>2</sup>+5x=36-4x → x<sup>2</sup>+9x-36=0 → (x+12)(x-3)=0 → x=-12 or 3</div></details></div>
-        </div>
-        `
+        body: `<div class="video-wrapper"><iframe src="https://www.youtube-nocookie.com/embed/NuccqpiUHrk" allowfullscreen></iframe></div><div class="yt-fallback"><a href="https://www.youtube.com/watch?v=NuccqpiUHrk" target="_blank">⚠️ Video not playing? Click here to watch on YouTube ↗️</a></div><div style="text-align:center; margin:15px 0;"><a href="https://www.youtube.com/results?search_query=Algebraic+Fractions+%26+Indices" target="_blank" class="yt-search-btn">🔍 Watch / Search on YouTube</a></div><div class="beginner-box"><h3>👶 What are Indices?</h3><p>Indices (also called exponents or powers) are a way of writing repeated multiplication in a shorter way.<br>For example, <b>x<sup>5</sup></b> means <b>x</b> multiplied by itself 5 times: x × x × x × x × x.</p></div>
+        <h2>📘 Understanding the Index Laws</h2>
+        <div class="lesson-step"><h3>1. Multiplying Powers (Same Base)</h3><p>When you multiply two powers that have the same base, you <strong>add</strong> the exponents.</p><p>Rule: <b>a<sup>m</sup> × a<sup>n</sup> = a<sup>m+n</sup></b></p></div>
+        <div class="lesson-step"><h3>2. Dividing Powers (Same Base)</h3><p>When you divide two powers with the same base, you <strong>subtract</strong> the exponents.</p><p>Rule: <b>a<sup>m</sup> ÷ a<sup>n</sup> = a<sup>m−n</sup></b></p></div>
+        <div class="lesson-step"><h3>3. Power of a Power</h3><p>When you raise a power to another power, you <strong>multiply</strong> the exponents.</p><p>Rule: <b>(a<sup>m</sup>)<sup>n</sup> = a<sup>m×n</sup></b></p></div>
+        <div class="lesson-step"><h3>4. Zero Power</h3><p>Any non‑zero number raised to the power of 0 equals 1.</p><p>Rule: <b>a<sup>0</sup> = 1</b> (as long as a ≠ 0)</p></div>
+        <div class="lesson-step"><h3>5. Negative Indices</h3><p>A negative exponent means “one over” the base raised to the positive exponent.</p><p>Rule: <b>a<sup>−n</sup> = 1 / a<sup>n</sup></b></p></div>
+        <div class="lesson-step"><h3>6. Fractional Indices</h3><p>An exponent that is a fraction represents a root. The denominator is the root, and the numerator is the power.</p><p>Rule: <b>a<sup>m/n</sup> = <sup>n</sup>√(a<sup>m</sup>)</b></p></div>
+        <h2>🔍 Worked Examples</h2>
+        <div class="example-box"><h4>Example 1 – Multiplying Powers</h4><p>Simplify: x<sup>3</sup> × x<sup>5</sup></p><div class="solution-box">x<sup>3</sup> × x<sup>5</sup> = x<sup>3+5</sup> = x<sup>8</sup></div></div>
+        <div class="example-box"><h4>Example 2 – Dividing Powers</h4><p>Simplify: y<sup>8</sup> ÷ y<sup>2</sup></p><div class="solution-box">y<sup>8</sup> ÷ y<sup>2</sup> = y<sup>8−2</sup> = y<sup>6</sup></div></div>
+        <div class="example-box"><h4>Example 3 – Power of a Power</h4><p>Simplify: (x<sup>3</sup>)<sup>2</sup></p><div class="solution-box">(x<sup>3</sup>)<sup>2</sup> = x<sup>3×2</sup> = x<sup>6</sup></div></div>
+        <div class="example-box"><h4>Example 4 – Zero Power</h4><p>Evaluate: 74 ÷ 74</p><div class="solution-box">74 ÷ 74 = 1</div></div>
+        <div class="example-box"><h4>Example 5 – Negative Indices</h4><p>Write without negative indices: x<sup>−3</sup></p><div class="solution-box">x<sup>−3</sup> = 1 / x<sup>3</sup></div></div>
+        <div class="example-box"><h4>Example 6 – Fractional Indices</h4><p>Evaluate: 27<sup>2/3</sup></p><div class="solution-box">Cube root of 27 is 3, then square: 3<sup>2</sup> = 9</div></div>
+        <h2>📐 Algebraic Fractions</h2>
+        <p>We can combine fractions that contain algebra using the same methods as with numbers.</p>
+        <div class="lesson-step"><h3>Adding / Subtracting</h3><p>Same denominator: <b>5/a + 4/a = 9/a</b><br>Different denominator: <b>x/a + 3/b = (bx + 3a) / (ab)</b></p></div>
+        <div class="lesson-step"><h3>Multiplying</h3><p>Multiply straight across: <b>(a/2) × (b/3) = ab/6</b></p></div>
+        <div class="lesson-step"><h3>Dividing</h3><p>Flip the second fraction and multiply: <b>(a<sup>3</sup>/4) ÷ (a<sup>2</sup>/(3b)) = (a<sup>3</sup>/4) × (3b/a<sup>2</sup>) = 3ab/4</b></p></div>
+        <details class="solution-toggle"><summary>➕ More Practice Examples</summary><div class="solution-content"><p><b>Simplify (3x<sup>2</sup>y<sup>4</sup>)<sup>3</sup></b> → 27x<sup>6</sup>y<sup>12</sup><br><b>Evaluate 27<sup>−2/3</sup></b> → 1/9<br><b>Simplify (x<sup>2</sup>+5x+6) / (x<sup>2</sup>−4)</b> → (x+3)/(x−2)<br><b>Solve (x+5)/4 = (9−x)/x</b> → x = −12 or x = 3</p></div></details>`
     },
+    // Chapter 2
     {
         title: chapterTitles[1],
         desc: "Mastering the GCF, perfect squares, grouping, and multi-step factoring.",
-        body: `
-        <div class="video-wrapper"><iframe src="https://www.youtube-nocookie.com/embed/D3a8NnpQ2vU" allowfullscreen></iframe></div>
-        <div class="yt-fallback"><a href="https://www.youtube.com/watch?v=D3a8NnpQ2vU" target="_blank">⚠️ Video not playing? Click here to watch on YouTube ↗️</a></div>
-        <div style="text-align:center; margin:15px 0;"><a href="https://www.youtube.com/results?search_query=Factoring+Basics" target="_blank" class="yt-search-btn">🔍 Watch / Search on YouTube</a></div>
-        <div class="beginner-box"><h3>👶 Beginner's Concept</h3><p>If "Expanding" is baking a cake, "Factoring" is un-baking the cake.</p></div>
-
-        <div class="teacher-notes-box">
-            <h3>📝 Teacher Notes & Detailed Examples</h3>
-            <div class="tb-section"><h3>Algebraic Substitution</h3>
-            <p>If w=3, x=1, y=-2, evaluate (5w-2x)/(y-x) = -13/3 and (xy+w)/(y-x) = -1/3</p></div>
-            <div class="tb-section"><h3>Rearranging Formulae</h3>
-            <p>Make y subject of 9x+3y=x+4 → y = (-8x+4)/3</p>
-            <p>Make y subject of 3x-2y=6 → y = (3x-6)/2</p></div>
-            <div class="tb-section"><h3>The Distributive Law</h3>
-            <p>a(b+c)=ab+ac</p>
-            <details class="solution-toggle"><summary>👁 Expand: 2x(3-x)+x<sup>2</sup></summary><div class="solution-content">6x - 2x<sup>2</sup> + x<sup>2</sup> = 6x - x<sup>2</sup></div></details>
-            <details class="solution-toggle"><summary>👁 5(2x-1)-(2x+3)</summary><div class="solution-content">8x - 8</div></details></div>
-            <div class="tb-section"><h3>GCF & Factoring Trinomials</h3>
-            <details class="solution-toggle"><summary>Factor -3x<sup>2</sup>-15x</summary><div class="solution-content">-3x(x+5)</div></details>
-            <details class="solution-toggle"><summary>x<sup>2</sup>-8x+15</summary><div class="solution-content">(x-3)(x-5)</div></details>
-            <details class="solution-toggle"><summary>x<sup>2</sup>-7x-8</summary><div class="solution-content">(x-8)(x+1)</div></details>
-            <details class="solution-toggle"><summary>DOTS: 25x<sup>2</sup>-49y<sup>2</sup></summary><div class="solution-content">(5x-7y)(5x+7y)</div></details>
-            <details class="solution-toggle"><summary>Grouping: x<sup>3</sup>+3x<sup>2</sup>+2x+6</summary><div class="solution-content">(x+3)(x<sup>2</sup>+2)</div></details>
-            <details class="solution-toggle"><summary>Multi-step: 3x<sup>3</sup>-27x</summary><div class="solution-content">3x(x-3)(x+3)</div></details>
-            </div>
-        </div>
-        `
+        body: `<div class="video-wrapper"><iframe src="https://www.youtube-nocookie.com/embed/D3a8NnpQ2vU" allowfullscreen></iframe></div><div class="yt-fallback"><a href="https://www.youtube.com/watch?v=D3a8NnpQ2vU" target="_blank">⚠️ Video not playing? Click here to watch on YouTube ↗️</a></div><div style="text-align:center; margin:15px 0;"><a href="https://www.youtube.com/results?search_query=Factoring+Basics" target="_blank" class="yt-search-btn">🔍 Watch / Search on YouTube</a></div><div class="beginner-box"><h3>👶 What is Factoring?</h3><p>Factoring is the reverse of expanding. You start with a sum of terms and write it as a product.</p></div>
+        <h2>📘 Factoring Techniques</h2>
+        <div class="lesson-step"><h3>1. Greatest Common Factor (GCF)</h3><p>Pull out the largest factor that divides every term.</p><p>Example: <b>4x<sup>2</sup> − 12x = 4x(x − 3)</b></p></div>
+        <div class="lesson-step"><h3>2. Basic Trinomials (x<sup>2</sup> + bx + c)</h3><p>Find two numbers that multiply to c and add to b.</p><p>Example: <b>x<sup>2</sup> − 8x + 15 = (x−3)(x−5)</b></p></div>
+        <div class="lesson-step"><h3>3. Difference of Two Squares (DOTS)</h3><p>a<sup>2</sup> − b<sup>2</sup> = (a−b)(a+b).</p><p>Example: <b>x<sup>2</sup> − 25 = (x−5)(x+5)</b></p></div>
+        <div class="lesson-step"><h3>4. Factoring by Grouping (4 terms)</h3><p>Group terms into pairs, factor each pair, then factor out the common binomial.</p><p>Example: <b>x<sup>3</sup> + 3x<sup>2</sup> + 2x + 6 = (x+3)(x<sup>2</sup>+2)</b></p></div>
+        <div class="lesson-step"><h3>5. Multi‑Step Factoring</h3><p>Sometimes you need to combine techniques (e.g., GCF then DOTS).</p><p>Example: <b>3x<sup>3</sup> − 27x = 3x(x<sup>2</sup>−9) = 3x(x−3)(x+3)</b></p></div>
+        <h2>🔍 Worked Examples</h2>
+        <div class="example-box"><h4>Example 1 – GCF</h4><p>Factor: −3x<sup>2</sup> − 15x</p><div class="solution-box">−3x(x + 5)</div></div>
+        <div class="example-box"><h4>Example 2 – Trinomial</h4><p>Factor: x<sup>2</sup> − 7x − 8</p><div class="solution-box">(x−8)(x+1)</div></div>
+        <div class="example-box"><h4>Example 3 – DOTS</h4><p>Factor: 25x<sup>2</sup> − 49y<sup>2</sup></p><div class="solution-box">(5x−7y)(5x+7y)</div></div>
+        <div class="example-box"><h4>Example 4 – Grouping</h4><p>Factor: 12x<sup>3</sup> + 8x<sup>2</sup> + 9x + 6</p><div class="solution-box">(3x+2)(4x<sup>2</sup>+3)</div></div>
+        <div class="example-box"><h4>Example 5 – Multi‑Step</h4><p>Factor fully: 2x<sup>2</sup> − 8</p><div class="solution-box">2(x<sup>2</sup>−4) = 2(x−2)(x+2)</div></div>
+        <details class="solution-toggle"><summary>➕ More Practice Examples</summary><div class="solution-content"><p><b>Factor (x−4)<sup>2</sup> − 5x + 20</b> → (x−4)(x−9)<br><b>Factor 6x<sup>2</sup>y<sup>3</sup> − 9x<sup>3</sup>y<sup>2</sup></b> → 3x<sup>2</sup>y<sup>2</sup>(2y−3x)</p></div></details>`
     },
+    // Chapter 3
     {
         title: chapterTitles[2],
         desc: "The Balance Scale method, complex fractions, taking roots, and the Null Factor Law.",
-        body: `
-        <div class="video-wrapper"><iframe src="https://www.youtube-nocookie.com/embed/i7idZfS8t8w" allowfullscreen></iframe></div>
-        <div class="yt-fallback"><a href="https://www.youtube.com/watch?v=i7idZfS8t8w" target="_blank">⚠️ Video not playing? Click here to watch on YouTube ↗️</a></div>
-        <div style="text-align:center; margin:15px 0;"><a href="https://www.youtube.com/results?search_query=Solving+Equations+Null+Factor+Law" target="_blank" class="yt-search-btn">🔍 Watch / Search on YouTube</a></div>
-        <div class="beginner-box"><h3>👶 Beginner's Concept</h3><p>If two things multiply to zero, one must be zero!</p></div>
-
-        <div class="teacher-notes-box">
-            <h3>📝 Teacher Notes & Detailed Examples</h3>
-            <div class="tb-section"><h3>Solving Rational Equations</h3>
-            <details class="solution-toggle"><summary>👁 (2x+3)/4 = (x-2)/3</summary><div class="solution-content">... x = -8.5</div></details>
-            <details class="solution-toggle"><summary>4/(3x) = -5/6</summary><div class="solution-content">x = -8/5</div></details>
-            <details class="solution-toggle"><summary>5/(x+2) = 2/(x-1)</summary><div class="solution-content">x = 3</div></details>
-            <details class="solution-toggle"><summary>1/x - 2/(x+1) = (x+4)/(x(x+1))</summary><div class="solution-content">x = -3/2</div></details></div>
-            <div class="tb-section"><h3>Square Roots and Null Factor</h3>
-            <details class="solution-toggle"><summary>2x<sup>2</sup>-50=0</summary><div class="solution-content">x = ±5</div></details>
-            <details class="solution-toggle"><summary>(3x-1)(2x+4)=0</summary><div class="solution-content">x=1/3 or x=-2</div></details>
-            <details class="solution-toggle"><summary>x<sup>2</sup>+3x=28</summary><div class="solution-content">x=-7 or 4</div></details>
-            <details class="solution-toggle"><summary>5x<sup>2</sup>=3x+2</summary><div class="solution-content">x=-2/5 or 1</div></details></div>
-        </div>
-        `
+        body: `<div class="video-wrapper"><iframe src="https://www.youtube-nocookie.com/embed/i7idZfS8t8w" allowfullscreen></iframe></div><div class="yt-fallback"><a href="https://www.youtube.com/watch?v=i7idZfS8t8w" target="_blank">⚠️ Video not playing? Click here to watch on YouTube ↗️</a></div><div style="text-align:center; margin:15px 0;"><a href="https://www.youtube.com/results?search_query=Solving+Equations+Null+Factor+Law" target="_blank" class="yt-search-btn">🔍 Watch / Search on YouTube</a></div><div class="beginner-box"><h3>👶 Solving Equations</h3><p>An equation is like a balance scale—whatever you do to one side, do to the other.</p></div>
+        <h2>📘 Solving Quadratic Equations</h2>
+        <div class="lesson-step"><h3>1. Taking Square Roots</h3><p>If the equation has only an x<sup>2</sup> term, isolate it and take the square root of both sides. Remember the ± sign.</p><p>Example: <b>2x<sup>2</sup> − 50 = 0 → x = ±5</b></p></div>
+        <div class="lesson-step"><h3>2. The Null Factor Law</h3><p>If the product of two expressions is zero, at least one of them must be zero.</p><p>If <b>(x−a)(x−b)=0</b>, then <b>x=a</b> or <b>x=b</b>.</p></div>
+        <div class="lesson-step"><h3>3. Solving Rational Equations</h3><p>Multiply both sides by the common denominator to eliminate fractions.</p><p>Example: <b>(2x+3)/4 = (x−2)/3</b> → cross-multiply → 3(2x+3)=4(x−2) → 6x+9=4x−8 → 2x=−17 → x=−8.5</p></div>
+        <h2>🔍 Worked Examples</h2>
+        <div class="example-box"><h4>Example 1 – Square Root</h4><p>Solve: x<sup>2</sup> − 9 = 0</p><div class="solution-box">x = ±3</div></div>
+        <div class="example-box"><h4>Example 2 – Null Factor</h4><p>Solve: (x−1)(2x−1)=0</p><div class="solution-box">x = 1 or x = 1/2</div></div>
+        <div class="example-box"><h4>Example 3 – Null Factor (quadratic)</h4><p>Solve: x<sup>2</sup> + 3x = 28</p><div class="solution-box">x<sup>2</sup>+3x−28=0 → (x+7)(x−4)=0 → x=−7 or x=4</div></div>
+        <div class="example-box"><h4>Example 4 – Rational</h4><p>Solve: 5/(x+2) = 2/(x−1)</p><div class="solution-box">5(x−1)=2(x+2) → 5x−5=2x+4 → 3x=9 → x=3</div></div>
+        <div class="example-box"><h4>Example 5 – Cross‑Multiply</h4><p>Solve: 4/(3x) = −5/6</p><div class="solution-box">24 = −15x → x = −8/5</div></div>
+        <details class="solution-toggle"><summary>➕ More Practice Examples</summary><div class="solution-content"><p><b>1/x − 2/(x+1) = (x+4)/(x(x+1))</b> → x = −3/2<br><b>5x<sup>2</sup> = 3x + 2</b> → x = −2/5 or x = 1</p></div></details>`
     },
+    // Chapter 4
     {
         title: chapterTitles[3],
         desc: "Function machines, restricted inputs, finding ranges algebraically, and interval notation.",
-        body: `
-        <div class="video-wrapper"><iframe src="https://www.youtube-nocookie.com/embed/A5kAC-L83lY" allowfullscreen></iframe></div>
-        <div class="yt-fallback"><a href="https://www.youtube.com/watch?v=A5kAC-L83lY" target="_blank">⚠️ Video not playing? Click here to watch on YouTube ↗️</a></div>
-        <div style="text-align:center; margin:15px 0;"><a href="https://www.youtube.com/results?search_query=Domain+and+Range+of+a+Function" target="_blank" class="yt-search-btn">🔍 Watch / Search on YouTube</a></div>
-        <div class="beginner-box"><h3>👶 Beginner's Concept</h3><p>Domain = allowed inputs, Range = possible outputs.</p></div>
-
-        <div class="teacher-notes-box">
-            <h3>📝 Teacher Notes & Detailed Examples</h3>
-            <div class="tb-section"><h3>Vertical Line Test</h3><p>A relation is a function if any vertical line cuts the graph at most once. See slides for examples.</p></div>
-            <div class="tb-section"><h3>Function Notation</h3>
-            <p>f(x)=2x+3 → f(0)=3, f(-1)=1</p>
-            <p>f(x)=2x<sup>2</sup>+5x-3 → f(-x)=2x<sup>2</sup>-5x-3, f(x+1)=2x<sup>2</sup>+9x+4</p></div>
-            <div class="tb-section"><h3>Domain & Range from Graphs</h3>
-            <p>Examples: {x | x ≥ -1}, {y | y ≤ 3}</p></div>
-            <div class="tb-section"><h3>Sign Diagrams</h3>
-            <p>Use a number line to show where f(x) is positive, negative, zero, or undefined.</p></div>
-        </div>
-        `
+        body: `<div class="video-wrapper"><iframe src="https://www.youtube-nocookie.com/embed/A5kAC-L83lY" allowfullscreen></iframe></div><div class="yt-fallback"><a href="https://www.youtube.com/watch?v=A5kAC-L83lY" target="_blank">⚠️ Video not playing? Click here to watch on YouTube ↗️</a></div><div style="text-align:center; margin:15px 0;"><a href="https://www.youtube.com/results?search_query=Domain+and+Range+of+a+Function" target="_blank" class="yt-search-btn">🔍 Watch / Search on YouTube</a></div><div class="beginner-box"><h3>👶 What is a Function?</h3><p>A function is like a machine: you put a number in, it applies a rule, and gives you an output.</p></div>
+        <h2>📘 Domain and Range</h2>
+        <div class="lesson-step"><h3>1. Domain</h3><p>The set of all allowed input values (x). Look out for denominators that become zero and even roots of negative numbers.</p><p>Example: <b>f(x)=5/(x−2) → domain: x ≠ 2</b></p></div>
+        <div class="lesson-step"><h3>2. Range</h3><p>The set of all possible output values (y). For quadratics, think about the vertex as the maximum or minimum.</p><p>Example: <b>y = x<sup>2</sup> + 5 → range: y ≥ 5</b></p></div>
+        <div class="lesson-step"><h3>3. Vertical Line Test</h3><p>A graph represents a function if no vertical line crosses it more than once.</p></div>
+        <div class="lesson-step"><h3>4. Function Notation</h3><p>Instead of y = 2x+3 we write f(x) = 2x+3. Evaluate by substituting: f(0)=3.</p></div>
+        <h2>🔍 Worked Examples</h2>
+        <div class="example-box"><h4>Example 1 – Domain</h4><p>Find the domain of f(x)=√(x−3)/(x−8)</p><div class="solution-box">x ≥ 3 and x ≠ 8</div></div>
+        <div class="example-box"><h4>Example 2 – Range</h4><p>Find the range of y = −x<sup>2</sup> + 10</p><div class="solution-box">y ≤ 10</div></div>
+        <div class="example-box"><h4>Example 3 – Function Notation</h4><p>If f(x)=2x<sup>2</sup>+5x−3, find f(−2)</p><div class="solution-box">−5</div></div>
+        <div class="example-box"><h4>Example 4 – Sign Diagram</h4><p>For the graph shown, the sign diagram marks where f(x)>0, f(x)<0, and f(x)=0.</p></div>
+        <details class="solution-toggle"><summary>➕ More Practice Examples</summary><div class="solution-content"><p><b>Find domain of f(x)=1/(x+4)</b> → x ≠ −4<br><b>Find range of y = (x−1)<sup>2</sup> + 2</b> → y ≥ 2</p></div></details>`
     },
+    // Chapter 5
     {
         title: chapterTitles[4],
         desc: "Standard, Factored, Vertex form analysis, and Completing the Square.",
-        body: `
-        <div class="video-wrapper"><iframe src="https://www.youtube-nocookie.com/embed/eRbgHCaWQQE" allowfullscreen></iframe></div>
-        <div class="yt-fallback"><a href="https://www.youtube.com/watch?v=eRbgHCaWQQE" target="_blank">⚠️ Video not playing? Click here to watch on YouTube ↗️</a></div>
-        <div style="text-align:center; margin:15px 0;"><a href="https://www.youtube.com/results?search_query=The+3+Quadratic+Forms" target="_blank" class="yt-search-btn">🔍 Watch / Search on YouTube</a></div>
-        <div class="beginner-box"><h3>👶 Beginner's Concept</h3><p>Three different photos of the same parabola.</p></div>
-
-        <div class="teacher-notes-box">
-            <h3>📝 Teacher Notes & Investigation Recap</h3>
-            <div class="tb-section"><h3>The Three Forms</h3>
-            <table style="width:100%; text-align:left; border-collapse: collapse; margin-bottom: 20px;">
-                <tr><th>Form</th><th>Equation</th><th>Reveals</th></tr>
-                <tr><td>Standard</td><td>y=ax<sup>2</sup>+bx+c</td><td>y-intercept (0,c)</td></tr>
-                <tr><td>Factored</td><td>y=a(x-p)(x-q)</td><td>x-intercepts p,q</td></tr>
-                <tr><td>Vertex</td><td>y=a(x-h)<sup>2</sup>+k</td><td>vertex (h,k)</td></tr>
-            </table></div>
-            <div class="tb-section"><h3>Desmos Investigation Observations</h3>
-            <ul>
-                <li>Standard: y-intercept and axis of symmetry x=-b/(2a)</li>
-                <li>Vertex: vertex (h,k) directly</li>
-                <li>Factored: x-intercepts</li>
-            </ul>
-            <p>Example: f(x)=3x<sup>2</sup>+2x-6 standard → y-intercept (0,-6)</p>
-            <p>f(x)=3(x-4)(x-6) factored → x-ints 4,6</p>
-            <p>f(x)=-9(2x-1)(x+4) opens down, x-ints 1/2, -4</p></div>
-            <div class="tb-section"><h3>Completing the Square</h3>
-            <details class="solution-toggle"><summary>Convert y=x<sup>2</sup>+8x+5 to vertex form</summary><div class="solution-content">y=(x+4)<sup>2</sup>-11</div></details></div>
-        </div>
-        `
+        body: `<div class="video-wrapper"><iframe src="https://www.youtube-nocookie.com/embed/eRbgHCaWQQE" allowfullscreen></iframe></div><div class="yt-fallback"><a href="https://www.youtube.com/watch?v=eRbgHCaWQQE" target="_blank">⚠️ Video not playing? Click here to watch on YouTube ↗️</a></div><div style="text-align:center; margin:15px 0;"><a href="https://www.youtube.com/results?search_query=The+3+Quadratic+Forms" target="_blank" class="yt-search-btn">🔍 Watch / Search on YouTube</a></div><div class="beginner-box"><h3>👶 The Three Forms</h3><p>A quadratic can be written in three different ways, each giving different information about its graph.</p></div>
+        <h2>📘 The Three Quadratic Forms</h2>
+        <div class="lesson-step"><h3>1. Standard Form: y = ax<sup>2</sup> + bx + c</h3><p>Reveals the <strong>y‑intercept</strong> (0,c) and the direction of opening (a>0 up, a<0 down).</p></div>
+        <div class="lesson-step"><h3>2. Factored Form: y = a(x−p)(x−q)</h3><p>Reveals the <strong>x‑intercepts</strong> (p and q).</p></div>
+        <div class="lesson-step"><h3>3. Vertex Form: y = a(x−h)<sup>2</sup> + k</h3><p>Reveals the <strong>vertex</strong> (h,k).</p></div>
+        <div class="lesson-step"><h3>Completing the Square</h3><p>Used to convert standard form to vertex form. Steps: 1. isolate x‑terms, 2. take half of b and square it, 3. add and subtract that square, 4. factor the perfect square.</p><p>Example: <b>y = x<sup>2</sup> + 8x + 5 → y = (x+4)<sup>2</sup> − 11</b></p></div>
+        <h2>🔍 Worked Examples</h2>
+        <div class="example-box"><h4>Example 1 – Identify features</h4><p>y = 2(x−3)<sup>2</sup>+4 → vertex (3,4), opens up, a=2</p></div>
+        <div class="example-box"><h4>Example 2 – From graph</h4><p>A parabola with roots 2 and −4 and y‑intercept 8 → equation y = −(x−2)(x+4) (after solving for a)</p></div>
+        <div class="example-box"><h4>Example 3 – Complete the square</h4><p>y = x<sup>2</sup> + 6x + 1 → y = (x+3)<sup>2</sup> − 8</p></div>
+        <div class="example-box"><h4>Example 4 – Vertex form from standard</h4><p>y = −2x<sup>2</sup> + 12x − 10 → y = −2(x−3)<sup>2</sup> + 8</p></div>
+        <details class="solution-toggle"><summary>➕ More Practice Examples</summary><div class="solution-content"><p><b>Convert y = x<sup>2</sup> + 4x + 3 to vertex form</b> → (x+2)<sup>2</sup> − 1<br><b>Find the vertex of y = 3x<sup>2</sup> − 6x + 2</b> → (1,−1)</p></div></details>`
     },
+    // Chapter 6
     {
         title: chapterTitles[5],
         desc: "Handling trinomials when 'a' is not 1 using the AC Method, plus the Cross Method.",
-        body: `
-        <div class="video-wrapper"><iframe src="https://www.youtube-nocookie.com/embed/0RPJqPkfG5Y" allowfullscreen></iframe></div>
-        <div class="yt-fallback"><a href="https://www.youtube.com/watch?v=0RPJqPkfG5Y" target="_blank">⚠️ Video not playing? Click here to watch on YouTube ↗️</a></div>
-        <div style="text-align:center; margin:15px 0;"><a href="https://www.youtube.com/results?search_query=Complex+Factoring+AC+Method" target="_blank" class="yt-search-btn">🔍 Watch / Search on YouTube</a></div>
-        <div class="beginner-box"><h3>👶 Beginner's Concept</h3><p>AC Method: multiply a×c, find magic numbers, split and group.</p></div>
-
-        <div class="teacher-notes-box">
-            <h3>📝 Teacher Notes & Detailed Examples</h3>
-            <div class="tb-section"><h3>AC Method Steps</h3>
-            <ol><li>Multiply a×c</li><li>Find two numbers that multiply to AC and add to b</li><li>Split bx</li><li>Group and factor</li></ol>
-            <details class="solution-toggle"><summary>Factor 2x<sup>2</sup>+7x+3</summary><div class="solution-content">(2x+1)(x+3)</div></details>
-            <details class="solution-toggle"><summary>Factor 6x<sup>2</sup>-x-15</summary><div class="solution-content">(3x-5)(2x+3)</div></details>
-            <details class="solution-toggle"><summary>2x<sup>2</sup>-x-10</summary><div class="solution-content">(2x-5)(x+2)</div></details>
-            <details class="solution-toggle"><summary>5x<sup>2</sup>-5x-30</summary><div class="solution-content">5(x-3)(x+2)</div></details></div>
-            <div class="tb-section"><h3>Solving by Factoring</h3>
-            <details class="solution-toggle"><summary>(x+5)/4 = (9-x)/x</summary><div class="solution-content">Cross-mult: x<sup>2</sup>+9x-36=0 → x=-12 or 3</div></details></div>
-        </div>
-        `
+        body: `<div class="video-wrapper"><iframe src="https://www.youtube-nocookie.com/embed/0RPJqPkfG5Y" allowfullscreen></iframe></div><div class="yt-fallback"><a href="https://www.youtube.com/watch?v=0RPJqPkfG5Y" target="_blank">⚠️ Video not playing? Click here to watch on YouTube ↗️</a></div><div style="text-align:center; margin:15px 0;"><a href="https://www.youtube.com/results?search_query=Complex+Factoring+AC+Method" target="_blank" class="yt-search-btn">🔍 Watch / Search on YouTube</a></div><div class="beginner-box"><h3>👶 When a ≠ 1</h3><p>The simple factoring rules break down when the coefficient of x<sup>2</sup> isn't 1. The AC Method helps us split the middle term.</p></div>
+        <h2>📘 The AC Method (Split the Middle)</h2>
+        <div class="lesson-step"><h3>Steps</h3><ol><li>Multiply a and c.</li><li>Find two numbers that multiply to that product and add to b.</li><li>Split the middle term bx using those two numbers.</li><li>Group and factor.</li></ol></div>
+        <h2>🔍 Worked Examples</h2>
+        <div class="example-box"><h4>Example 1</h4><p>Factor: 2x<sup>2</sup> + 7x + 3</p><div class="solution-box">a·c=6, numbers 6 and 1 → split: 2x<sup>2</sup>+6x+1x+3 = 2x(x+3)+1(x+3) = (2x+1)(x+3)</div></div>
+        <div class="example-box"><h4>Example 2</h4><p>Factor: 6x<sup>2</sup> − x − 15</p><div class="solution-box">ac=−90, numbers −10 and 9 → split: 6x<sup>2</sup>−10x+9x−15 = 2x(3x−5)+3(3x−5) = (3x−5)(2x+3)</div></div>
+        <div class="example-box"><h4>Example 3</h4><p>Factor: 2x<sup>2</sup> − x − 10</p><div class="solution-box">ac=−20, numbers −5 and 4 → (2x−5)(x+2)</div></div>
+        <div class="example-box"><h4>Example 4</h4><p>Factor: 5x<sup>2</sup> − 5x − 30</p><div class="solution-box">First factor out 5: 5(x<sup>2</sup>−x−6) = 5(x−3)(x+2)</div></div>
+        <div class="example-box"><h4>Example 5 – Solving</h4><p>Solve: 2x<sup>2</sup> − 5x − 3 = 0</p><div class="solution-box">Factor: (2x+1)(x−3)=0 → x=−1/2 or x=3</div></div>
+        <details class="solution-toggle"><summary>➕ More Practice Examples</summary><div class="solution-content"><p><b>Factor 3x<sup>2</sup> − 11x + 6</b> → (3x−2)(x−3)<br><b>Solve (x+5)/4 = (9−x)/x</b> → x=−12 or x=3</p></div></details>`
     },
+    // Chapter 7
     {
         title: chapterTitles[6],
         desc: "Deriving and using the Quadratic Formula flawlessly, interpreting the Discriminant.",
-        body: `
-        <div class="video-wrapper"><iframe src="https://www.youtube-nocookie.com/embed/IL3UCuXrUzE" allowfullscreen></iframe></div>
-        <div class="yt-fallback"><a href="https://www.youtube.com/watch?v=IL3UCuXrUzE" target="_blank">⚠️ Video not playing? Click here to watch on YouTube ↗️</a></div>
-        <div style="text-align:center; margin:15px 0;"><a href="https://www.youtube.com/results?search_query=Quadratic+Formula+Discriminant" target="_blank" class="yt-search-btn">🔍 Watch / Search on YouTube</a></div>
-        <div class="beginner-box"><h3>👶 Beginner's Concept</h3><p>The Quadratic Formula is a bulldozer that solves any quadratic.</p></div>
-
-        <div class="teacher-notes-box">
-            <h3>📝 Teacher Notes & Detailed Examples</h3>
-            <div class="tb-section"><h3>Quadratic Formula</h3>
-            <p>x = (-b ± √(b<sup>2</sup>-4ac)) / (2a)</p>
-            <details class="solution-toggle"><summary>x<sup>2</sup>-2x-2=0</summary><div class="solution-content">x = 1 ± √3</div></details>
-            <details class="solution-toggle"><summary>2x<sup>2</sup>+3x-4=0</summary><div class="solution-content">x = (-3 ± √41)/4</div></details></div>
-            <div class="tb-section"><h3>Axis of Symmetry & Vertex</h3>
-            <p>Axis: x = -b/(2a)</p>
-            <details class="solution-toggle"><summary>Convert y=-2x<sup>2</sup>+8x-4 to vertex form</summary><div class="solution-content">Vertex (2,4) → y=-2(x-2)<sup>2</sup>+4</div></details>
-            <details class="solution-toggle"><summary>y=x<sup>2</sup>+4x+3</summary><div class="solution-content">Vertex (-2,-1) → y=(x+2)<sup>2</sup>-1</div></details>
-            <div class="tb-section"><h3>Discriminant</h3>
-            <p>Δ=b<sup>2</sup>-4ac: >0 two roots, =0 one root, <0 no real roots</p>
-            <details class="solution-toggle"><summary>Find k so x<sup>2</sup>+kx+16=0 has one root</summary><div class="solution-content">k=±8</div></details></div>
-        </div>
-        </div>`
+        body: `<div class="video-wrapper"><iframe src="https://www.youtube-nocookie.com/embed/IL3UCuXrUzE" allowfullscreen></iframe></div><div class="yt-fallback"><a href="https://www.youtube.com/watch?v=IL3UCuXrUzE" target="_blank">⚠️ Video not playing? Click here to watch on YouTube ↗️</a></div><div style="text-align:center; margin:15px 0;"><a href="https://www.youtube.com/results?search_query=Quadratic+Formula+Discriminant" target="_blank" class="yt-search-btn">🔍 Watch / Search on YouTube</a></div><div class="beginner-box"><h3>👶 The Quadratic Formula</h3><p>When factoring is too difficult, the quadratic formula always works: <b>x = [−b ± √(b<sup>2</sup>−4ac)] / (2a)</b>.</p></div>
+        <h2>📘 Using the Formula</h2>
+        <div class="lesson-step"><h3>1. Identify a, b, c</h3><p>From the standard form ax<sup>2</sup>+bx+c=0.</p></div>
+        <div class="lesson-step"><h3>2. Substitute carefully</h3><p>Put negative numbers in parentheses.</p></div>
+        <div class="lesson-step"><h3>3. Simplify</h3><p>Evaluate under the square root (the discriminant) first.</p></div>
+        <div class="lesson-step"><h3>4. Discriminant (Δ = b<sup>2</sup>−4ac)</h3><p>Δ > 0 → two real roots, Δ = 0 → one real root, Δ < 0 → no real roots.</p></div>
+        <div class="lesson-step"><h3>5. Vertex and Axis of Symmetry</h3><p>Axis: x = −b/(2a). Vertex: plug that x into the equation.</p></div>
+        <h2>🔍 Worked Examples</h2>
+        <div class="example-box"><h4>Example 1</h4><p>Solve: x<sup>2</sup> − 2x − 2 = 0</p><div class="solution-box">a=1,b=−2,c=−2 → x = (2±√(4+8))/2 = 1±√3</div></div>
+        <div class="example-box"><h4>Example 2</h4><p>Solve: 2x<sup>2</sup> + 3x − 4 = 0</p><div class="solution-box">x = (−3±√(9+32))/4 = (−3±√41)/4</div></div>
+        <div class="example-box"><h4>Example 3 – Discriminant</h4><p>How many real roots for 3x<sup>2</sup> − 5x + 7 = 0?</p><div class="solution-box">Δ = 25−84 = −59 → no real roots</div></div>
+        <div class="example-box"><h4>Example 4 – Vertex</h4><p>Find vertex of y = −x<sup>2</sup> + 6x − 5</p><div class="solution-box">x = −6/(−2) = 3, y = −9+18−5=4 → (3,4)</div></div>
+        <div class="example-box"><h4>Example 5 – Convert to vertex form</h4><p>y = x<sup>2</sup> + 4x + 3</p><div class="solution-box">x = −4/2 = −2, y = 4−8+3 = −1 → y = (x+2)<sup>2</sup> − 1</div></div>
+        <details class="solution-toggle"><summary>➕ More Practice Examples</summary><div class="solution-content"><p><b>Find k so x<sup>2</sup>+kx+16=0 has one root</b> → k=±8<br><b>Use the formula for 5x<sup>2</sup>−x−2=0</b> → x = (1±√41)/10</p></div></details>`
     },
+    // Chapter 8
     {
         title: chapterTitles[7],
         desc: "How parameters alter a parabola's position, stretch, and shape on the graph.",
-        body: `
-        <div class="video-wrapper"><iframe src="https://www.youtube-nocookie.com/embed/3B2VtQmYVqM" allowfullscreen></iframe></div>
-        <div class="yt-fallback"><a href="https://www.youtube.com/watch?v=3B2VtQmYVqM" target="_blank">⚠️ Video not playing? Click here to watch on YouTube ↗️</a></div>
-        <div style="text-align:center; margin:15px 0;"><a href="https://www.youtube.com/results?search_query=Transformations+of+Quadratic+Functions" target="_blank" class="yt-search-btn">🔍 Watch / Search on YouTube</a></div>
-        <div class="beginner-box"><h3>👶 Beginner's Concept</h3><p>Shift up/down, left/right, flip, stretch.</p></div>
-
-        <div class="teacher-notes-box">
-            <h3>📝 Teacher Notes & Detailed Examples</h3>
-            <div class="tb-section"><h3>Transformation Rules</h3>
-            <ul>
-                <li>k: +up, -down</li>
-                <li>h: (x-h) right, (x+h) left</li>
-                <li>a: |a|>1 narrower, 0<|a|<1 wider, negative opens down</li>
-            </ul>
-            <details class="solution-toggle"><summary>Sketch y=x<sup>2</sup>+3</summary><div class="solution-content">Vertex (0,3)</div></details>
-            <details class="solution-toggle"><summary>y=(x+3)<sup>2</sup></summary><div class="solution-content">Vertex (-3,0)</div></details>
-            <details class="solution-toggle"><summary>y=(x-2)<sup>2</sup>+3</summary><div class="solution-content">Vertex (2,3)</div></details>
-            <details class="solution-toggle"><summary>y=-(x-2)<sup>2</sup>-3</summary><div class="solution-content">Opens down, vertex (2,-3)</div></details>
-            <details class="solution-toggle"><summary>y=x<sup>2</sup>+2x+5 vertex form</summary><div class="solution-content">(x+1)<sup>2</sup>+4, vertex (-1,4)</div></details></div>
-        </div>
-        </div>`
+        body: `<div class="video-wrapper"><iframe src="https://www.youtube-nocookie.com/embed/3B2VtQmYVqM" allowfullscreen></iframe></div><div class="yt-fallback"><a href="https://www.youtube.com/watch?v=3B2VtQmYVqM" target="_blank">⚠️ Video not playing? Click here to watch on YouTube ↗️</a></div><div style="text-align:center; margin:15px 0;"><a href="https://www.youtube.com/results?search_query=Transformations+of+Quadratic+Functions" target="_blank" class="yt-search-btn">🔍 Watch / Search on YouTube</a></div><div class="beginner-box"><h3>👶 Transforming Parabolas</h3><p>We can move and stretch the basic parabola y=x<sup>2</sup> by changing numbers in the equation.</p></div>
+        <h2>📘 Transformation Rules</h2>
+        <div class="lesson-step"><h3>Vertical Shift (k)</h3><p>y = x<sup>2</sup> + k shifts the graph up (if k>0) or down (if k<0).</p></div>
+        <div class="lesson-step"><h3>Horizontal Shift (h)</h3><p>y = (x−h)<sup>2</sup> shifts right (h>0) or left (h<0) – opposite of the sign!</p></div>
+        <div class="lesson-step"><h3>Stretch/Compression (a)</h3><p>y = a·x<sup>2</sup> : if |a|>1 the graph is narrower, if 0<|a|<1 it is wider.</p></div>
+        <div class="lesson-step"><h3>Reflection</h3><p>If a is negative, the parabola opens downward (upside‑down U).</p></div>
+        <h2>🔍 Worked Examples</h2>
+        <div class="example-box"><h4>Example 1 – Vertical Shift</h4><p>Sketch y = x<sup>2</sup> + 3</p><div class="solution-box">Vertex (0,3), same shape as y=x<sup>2</sup> shifted up 3.</div></div>
+        <div class="example-box"><h4>Example 2 – Horizontal Shift</h4><p>y = (x+3)<sup>2</sup></p><div class="solution-box">Vertex (−3,0), shifted left 3.</div></div>
+        <div class="example-box"><h4>Example 3 – Both Shifts</h4><p>y = (x−2)<sup>2</sup> + 3</p><div class="solution-box">Vertex (2,3), shifted right 2 and up 3.</div></div>
+        <div class="example-box"><h4>Example 4 – Reflection and Shift</h4><p>y = −(x−2)<sup>2</sup> − 3</p><div class="solution-box">Opens downward, vertex (2,−3).</div></div>
+        <div class="example-box"><h4>Example 5 – Stretch</h4><p>y = 2(x+1)<sup>2</sup></p><div class="solution-box">Narrower, vertex (−1,0).</div></div>
+        <details class="solution-toggle"><summary>➕ More Practice Examples</summary><div class="solution-content"><p><b>Describe transformation for y = −(1/2)(x−4)<sup>2</sup>+7</b> → reflected, wider, right 4, up 7<br><b>Write y = x<sup>2</sup>+2x+5 in vertex form</b> → (x+1)<sup>2</sup>+4</p></div></details>`
     },
+    // Chapter 9
     {
         title: chapterTitles[8],
         desc: "Looking at a picture of a parabola and successfully building its mathematical equation.",
-        body: `
-        <div class="video-wrapper"><iframe src="https://www.youtube-nocookie.com/embed/Fh1pJw9xLZ8" allowfullscreen></iframe></div>
-        <div class="yt-fallback"><a href="https://www.youtube.com/watch?v=Fh1pJw9xLZ8" target="_blank">⚠️ Video not playing? Click here to watch on YouTube ↗️</a></div>
-        <div style="text-align:center; margin:15px 0;"><a href="https://www.youtube.com/results?search_query=Graph+to+Equation+Quadratic" target="_blank" class="yt-search-btn">🔍 Watch / Search on YouTube</a></div>
-        <div class="beginner-box"><h3>👶 Beginner's Concept</h3><p>Detective work: read the graph to write the equation.</p></div>
-
-        <div class="teacher-notes-box">
-            <h3>📝 Teacher Notes & Detailed Examples</h3>
-            <div class="tb-section"><h3>Given the Vertex</h3>
-            <details class="solution-toggle"><summary>Vertex (-1,4), passes (2,-14)</summary><div class="solution-content">y=-2(x+1)<sup>2</sup>+4</div></details></div>
-            <div class="tb-section"><h3>Given the X‑Intercepts</h3>
-            <details class="solution-toggle"><summary>Roots 3 and -2, y-int 12</summary><div class="solution-content">y=-2(x-3)(x+2)</div></details></div>
-            <div class="tb-section"><h3>Points on a Quadratic</h3>
-            <p>Check if (1,4) lies on y=x<sup>2</sup>+3: 1+3=4 yes.</p>
-            <p>To make (2,3) lie on y=x<sup>2</sup>+k, k=-1 → y=x<sup>2</sup>-1</p></div>
-        </div>
-        </div>`
+        body: `<div class="video-wrapper"><iframe src="https://www.youtube-nocookie.com/embed/Fh1pJw9xLZ8" allowfullscreen></iframe></div><div class="yt-fallback"><a href="https://www.youtube.com/watch?v=Fh1pJw9xLZ8" target="_blank">⚠️ Video not playing? Click here to watch on YouTube ↗️</a></div><div style="text-align:center; margin:15px 0;"><a href="https://www.youtube.com/results?search_query=Graph+to+Equation+Quadratic" target="_blank" class="yt-search-btn">🔍 Watch / Search on YouTube</a></div><div class="beginner-box"><h3>👶 From Graph to Equation</h3><p>We can read the key features from a parabola's graph and write its equation.</p></div>
+        <h2>📘 Building the Equation</h2>
+        <div class="lesson-step"><h3>Scenario A: Vertex Known</h3><p>Use vertex form: y = a(x−h)<sup>2</sup> + k. Substitute another point to find a.</p></div>
+        <div class="lesson-step"><h3>Scenario B: x‑intercepts Known</h3><p>Use factored form: y = a(x−p)(x−q). Use another point to find a.</p></div>
+        <div class="lesson-step"><h3>Checking Points</h3><p>Substitute the x‑coordinate into the equation to see if the y‑value matches.</p></div>
+        <h2>🔍 Worked Examples</h2>
+        <div class="example-box"><h4>Example 1 – Vertex + point</h4><p>Vertex (−1,4), passes through (2,−14)</p><div class="solution-box">y = a(x+1)<sup>2</sup>+4 → −14 = a(3)<sup>2</sup>+4 → a=−2 → y = −2(x+1)<sup>2</sup>+4</div></div>
+        <div class="example-box"><h4>Example 2 – x‑intercepts + point</h4><p>Roots 3 and −2, y‑intercept 12</p><div class="solution-box">y = a(x−3)(x+2) → 12 = a(−3)(2) → a=−2 → y = −2(x−3)(x+2)</div></div>
+        <div class="example-box"><h4>Example 3 – Does a point lie on the curve?</h4><p>Check if (1,4) lies on y = x<sup>2</sup> + 3</p><div class="solution-box">1<sup>2</sup>+3=4 → yes</div></div>
+        <div class="example-box"><h4>Example 4 – Make a point lie on the curve</h4><p>What k makes (2,3) lie on y = x<sup>2</sup> + k?</p><div class="solution-box">3 = 4 + k → k = −1, so y = x<sup>2</sup> − 1</div></div>
+        <details class="solution-toggle"><summary>➕ More Practice Examples</summary><div class="solution-content"><p><b>Write equation for parabola with vertex (0,−3) passing through (2,5)</b> → y = 2x<sup>2</sup>−3<br><b>Find a if roots are −1 and 5 and the maximum value is 8</b> → a = −1/2</p></div></details>`
     },
+    // Chapter 10
     {
         title: chapterTitles[9],
         desc: "Using quadratics to solve for max height, optimization, economics, and domains.",
-        body: `
-        <div class="video-wrapper"><iframe src="https://www.youtube-nocookie.com/embed/OZtqz_xw0SQ" allowfullscreen></iframe></div>
-        <div class="yt-fallback"><a href="https://www.youtube.com/watch?v=OZtqz_xw0SQ" target="_blank">⚠️ Video not playing? Click here to watch on YouTube ↗️</a></div>
-        <div style="text-align:center; margin:15px 0;"><a href="https://www.youtube.com/results?search_query=Real-World+Modeling+Quadratics" target="_blank" class="yt-search-btn">🔍 Watch / Search on YouTube</a></div>
-        <div class="beginner-box"><h3>👶 Beginner's Concept</h3><p>Parabolas model projectiles, profits, and fences.</p></div>
-
-        <div class="teacher-notes-box">
-            <h3>📝 Teacher Notes & Detailed Examples</h3>
-            <div class="tb-section"><h3>Projectile Motion</h3>
-            <details class="solution-toggle"><summary>h(t)=-5t<sup>2</sup>+20t+25</summary><div class="solution-content">Hits ground at t=5s, max height 45m at t=2s</div></details></div>
-            <div class="tb-section"><h3>Revenue Optimization</h3>
-            <details class="solution-toggle"><summary>Theatre: price 10+x, tickets 100-5x</summary><div class="solution-content">Max revenue at x=5, price $15</div></details></div>
-        </div>
-        </div>`
+        body: `<div class="video-wrapper"><iframe src="https://www.youtube-nocookie.com/embed/OZtqz_xw0SQ" allowfullscreen></iframe></div><div class="yt-fallback"><a href="https://www.youtube.com/watch?v=OZtqz_xw0SQ" target="_blank">⚠️ Video not playing? Click here to watch on YouTube ↗️</a></div><div style="text-align:center; margin:15px 0;"><a href="https://www.youtube.com/results?search_query=Real-World+Modeling+Quadratics" target="_blank" class="yt-search-btn">🔍 Watch / Search on YouTube</a></div><div class="beginner-box"><h3>👶 Real‑World Parabolas</h3><p>Many real‑life situations can be modeled by quadratic functions – like the path of a ball or a business's profit.</p></div>
+        <h2>📘 Modeling Problems</h2>
+        <div class="lesson-step"><h3>1. Projectile Motion</h3><p>Height is often given by h(t) = −gt<sup>2</sup> + v<sub>0</sub>t + h<sub>0</sub>. The maximum height is at the vertex, and hitting the ground means finding the roots.</p></div>
+        <div class="lesson-step"><h3>2. Optimization (Max/Min)</h3><p>For a quadratic function, the maximum or minimum value occurs at the vertex.</p></div>
+        <h2>🔍 Worked Examples</h2>
+        <div class="example-box"><h4>Example 1 – Rocket</h4><p>h(t) = −5t<sup>2</sup> + 20t + 25. When does it hit the ground? What is max height?</p><div class="solution-box">Set h=0: −5t<sup>2</sup>+20t+25=0 → t=5 (reject −1). Vertex at t=2, h=45m.</div></div>
+        <div class="example-box"><h4>Example 2 – Revenue</h4><p>Theatre: price = 10 + x, tickets sold = 100 − 5x. Revenue R = (10+x)(100−5x). Find price for max revenue.</p><div class="solution-box">Roots x=−10,20 → vertex x=5, so increase by $5 → price $15.</div></div>
+        <div class="example-box"><h4>Example 3 – Area</h4><p>Farmer has 60m fencing for three sides of a rectangle against a wall. Area A = x(60−2x). Find max area.</p><div class="solution-box">Vertex x = 15, A(15)= 15·30 = 450 m<sup>2</sup>.</div></div>
+        <details class="solution-toggle"><summary>➕ More Practice Examples</summary><div class="solution-content"><p><b>Object dropped from 100m: h=100−4.9t<sup>2</sup>. When does it hit ground?</b> → t ≈ 4.52s<br><b>Profit P = −2x<sup>2</sup> + 80x − 300. Number of items for max profit?</b> → x=20</p></div></details>`
     },
+    // Chapter 11
     {
         title: chapterTitles[10],
         desc: "Drawing sign diagrams to solve quadratic inequalities (>, <, >=).",
-        body: `
-        <div class="video-wrapper"><iframe src="https://www.youtube-nocookie.com/embed/ZNtzWpU80-0" allowfullscreen></iframe></div>
-        <div class="yt-fallback"><a href="https://www.youtube.com/watch?v=ZNtzWpU80-0" target="_blank">⚠️ Video not playing? Click here to watch on YouTube ↗️</a></div>
-        <div style="text-align:center; margin:15px 0;"><a href="https://www.youtube.com/results?search_query=Inequalities+%26+Sign+Diagrams" target="_blank" class="yt-search-btn">🔍 Watch / Search on YouTube</a></div>
-        <div class="beginner-box"><h3>👶 Beginner's Concept</h3><p>Sign diagram = number line showing where function is + or -.</p></div>
-
-        <div class="teacher-notes-box">
-            <h3>📝 Teacher Notes & Detailed Examples</h3>
-            <div class="tb-section"><h3>Solving Inequalities</h3>
-            <details class="solution-toggle"><summary>x<sup>2</sup>-3x-10 < 0</summary><div class="solution-content">-2 < x < 5</div></details>
-            <details class="solution-toggle"><summary>4-x<sup>2</sup> ≤ 0</summary><div class="solution-content">x ≤ -2 or x ≥ 2</div></details></div>
-        </div>
-        </div>`
+        body: `<div class="video-wrapper"><iframe src="https://www.youtube-nocookie.com/embed/ZNtzWpU80-0" allowfullscreen></iframe></div><div class="yt-fallback"><a href="https://www.youtube.com/watch?v=ZNtzWpU80-0" target="_blank">⚠️ Video not playing? Click here to watch on YouTube ↗️</a></div><div style="text-align:center; margin:15px 0;"><a href="https://www.youtube.com/results?search_query=Inequalities+%26+Sign+Diagrams" target="_blank" class="yt-search-btn">🔍 Watch / Search on YouTube</a></div><div class="beginner-box"><h3>👶 Solving Inequalities</h3><p>A quadratic inequality asks: for which x‑values is the parabola above or below the x‑axis?</p></div>
+        <h2>📘 Sign Diagrams</h2>
+        <div class="lesson-step"><h3>1. Find the Roots</h3><p>Solve the corresponding equation = 0 to find where the graph crosses the x‑axis.</p></div>
+        <div class="lesson-step"><h3>2. Determine the Shape</h3><p>If the leading coefficient a > 0, the parabola is ∪‑shaped (signs: + − +). If a < 0, it's ∩‑shaped (signs: − + −).</p></div>
+        <div class="lesson-step"><h3>3. Read the Solution</h3><p>For > 0, take the + regions. For < 0, take the − regions. Include the roots if the inequality is ≥ or ≤.</p></div>
+        <h2>🔍 Worked Examples</h2>
+        <div class="example-box"><h4>Example 1</h4><p>Solve: x<sup>2</sup> − 3x − 10 < 0</p><div class="solution-box">Roots: x=5, x=−2. ∪‑shape → signs + − + → negative between roots → −2 < x < 5</div></div>
+        <div class="example-box"><h4>Example 2</h4><p>Solve: 4 − x<sup>2</sup> ≤ 0</p><div class="solution-box">Rewrite as −x<sup>2</sup>+4 ≤ 0. Roots: x=±2. ∩‑shape → signs − + − → ≤0 on outer regions → x ≤ −2 or x ≥ 2</div></div>
+        <div class="example-box"><h4>Example 3</h4><p>Solve: x<sup>2</sup> − 16 > 0</p><div class="solution-box">Roots: ±4. ∪‑shape → >0 outside → x < −4 or x > 4</div></div>
+        <div class="example-box"><h4>Example 4</h4><p>Solve: x<sup>2</sup> − 5x + 6 ≤ 0</p><div class="solution-box">Roots: 2,3. ∪‑shape → ≤0 between → 2 ≤ x ≤ 3</div></div>
+        <details class="solution-toggle"><summary>➕ More Practice Examples</summary><div class="solution-content"><p><b>Solve x<sup>2</sup>−4x−5 ≤ 0</b> → −1 ≤ x ≤ 5<br><b>Solve 2x<sup>2</sup>−3x−2 > 0</b> → x < −1/2 or x > 2</p></div></details>`
     }
 ];
 
-// ==================== MASTERY TRACKING ====================
+// ==================== GLOSSARY & MASTERY ====================
+const glossaryItems = [
+    { term: "Vertex / Vertices", def: "The highest (maximum) or lowest (minimum) turning point of a parabola." },
+    { term: "Roots / X-Intercepts", def: "Points where the graph crosses the x-axis (where y = 0)." },
+    { term: "Y-Intercept", def: "The point where the graph crosses the y-axis (where x = 0). In y = ax<sup>2</sup> + bx + c, it's (0, c)." },
+    { term: "Domain", def: "The set of all possible input values (x-values) for a function." },
+    { term: "Range", def: "The set of all possible output values (y-values) a function can produce." },
+    { term: "Parabola", def: "The U-shaped (or upside-down U) graph of a quadratic function." },
+    { term: "Discriminant (Δ)", def: "b<sup>2</sup> − 4ac – tells how many real roots a quadratic equation has." },
+    { term: "Coefficient", def: "The number multiplying a variable, e.g., in 5x<sup>2</sup>, 5 is the coefficient." },
+    { term: "GCF", def: "Greatest Common Factor – the largest factor shared by all terms." },
+    { term: "Indices / Exponents", def: "A superscript showing repeated multiplication (e.g., x<sup>3</sup> = x·x·x)." },
+    { term: "Axis of Symmetry", def: "The vertical line that divides a parabola into two mirror images; x = −b/(2a)." },
+    { term: "Binomial", def: "An algebraic expression with two terms, e.g., x + 4." },
+    { term: "Factorise", def: "The reverse of expanding: writing an expression as a product of brackets." },
+    { term: "Inequality", def: "A statement comparing two values using <, >, ≤, ≥." },
+    { term: "Sign Diagram", def: "A number line showing where a function is positive, negative, zero, or undefined." }
+];
+(function renderGlossary() {
+    const grid = document.getElementById('glossary-grid');
+    grid.innerHTML = glossaryItems.map(i => `<div class="glossary-item"><span class="glossary-term">${i.term}</span><p class="glossary-def">${i.def}</p></div>`).join('');
+})();
+
 let currentTopicIndex = 0;
-function renderTextbook() { const grid = document.getElementById('learning-grid'); grid.innerHTML=''; let mastery=JSON.parse(localStorage.getItem('mypMastery'))||{}; modalContent.forEach((module,i)=>{ let isMastered=mastery[i]?'mastered':''; grid.innerHTML+=`<div class="recap-box ${isMastered}" onclick="openModal(${i})"><span class="mastery-badge">✅</span><h3>${module.title}</h3><p>${module.desc}</p><span class="click-hint">Start Module &rarr;</span></div>`; }); }
-function markAsMastered() { let mastery=JSON.parse(localStorage.getItem('mypMastery'))||{}; mastery[currentTopicIndex]=true; localStorage.setItem('mypMastery',JSON.stringify(mastery)); renderTextbook(); closeModal(); }
+function renderTextbook() {
+    const grid = document.getElementById('learning-grid');
+    grid.innerHTML = modalContent.map((m,i) => {
+        let mastery = JSON.parse(localStorage.getItem('mypMastery')) || {};
+        let cls = mastery[i] ? 'mastered' : '';
+        return `<div class="recap-box ${cls}" onclick="openModal(${i})"><span class="mastery-badge">✅</span><h3>${m.title}</h3><p>${m.desc}</p><span class="click-hint">Start Module &rarr;</span></div>`;
+    }).join('');
+}
+function markAsMastered() {
+    let mastery = JSON.parse(localStorage.getItem('mypMastery')) || {};
+    mastery[currentTopicIndex] = true;
+    localStorage.setItem('mypMastery', JSON.stringify(mastery));
+    renderTextbook();
+    closeModal();
+}
 
 // ==================== QUIZ POOLS ====================
 const easyPool = [
-    { chapter:0,type:'typed',needsGraph:false,q:"Simplify: x<sup>3</sup> × x<sup>5</sup>",correctAnswers:["x^8","x8","x⁸"],exp:"Add the exponents: 3+5=8.",hint:"Add the powers."},
+    { chapter:0,type:'typed',needsGraph:false,q:"Simplify: x<sup>3</sup> × x<sup>5</sup>",correctAnswers:["x^8","x8","x⁸"],exp:"Add exponents: 3+5=8.",hint:"Add the powers."},
     { chapter:1,type:'typed',needsGraph:false,q:"Expand: (x+2)(x+4)",correctAnswers:["x^2+6x+8","x²+6x+8","x2+6x+8"],exp:"FOIL: x² + 6x + 8.",hint:"First Outside Inside Last."},
-    { chapter:0,type:'typed',needsGraph:false,q:"Evaluate: 16<sup>1/2</sup>",correctAnswers:["4"],exp:"Square root of 16 is 4.",hint:"What number multiplied by itself equals 16?"},
-    { chapter:1,type:'typed',needsGraph:false,q:"Factor out the GCF: 4x<sup>2</sup> - 12x",correctAnswers:["4x(x-3)","4x(x - 3)"],exp:"4x is common.",hint:"Biggest number and variable that divides both."},
+    { chapter:0,type:'typed',needsGraph:false,q:"Evaluate: 16<sup>1/2</sup>",correctAnswers:["4"],exp:"Square root of 16 is 4.",hint:"What number squared equals 16?"},
+    { chapter:1,type:'typed',needsGraph:false,q:"Factor out the GCF: 4x<sup>2</sup> - 12x",correctAnswers:["4x(x-3)","4x(x - 3)"],exp:"4x is common.",hint:"Biggest number and variable."},
     { chapter:2,type:'mcq',needsGraph:false,q:"Solve: x(x-5)=0",opts:["x=0 or x=5","x=5 only","x=0 or x=-5","x=-5 only"],ans:0,exp:"Null Factor Law.",hint:"If product zero, one factor zero."},
     { chapter:4,type:'typed',needsGraph:false,q:"What is the y-intercept of y=2x<sup>2</sup>+3x-8?",correctAnswers:["-8"],exp:"Set x=0.",hint:"Constant term."},
     { chapter:0,type:'typed',needsGraph:false,q:"Simplify: y<sup>8</sup> ÷ y<sup>2</sup>",correctAnswers:["y^6","y⁶","y6"],exp:"Subtract exponents.",hint:"8 - 2 = ?"},
-    { chapter:7,type:'mcq',needsGraph:false,q:"Which way does y=-x<sup>2</sup>+4 open?",opts:["Downwards","Upwards","Left","Right"],ans:0,exp:"Negative a opens down.",hint:"Look at the sign of x²."},
+    { chapter:7,type:'mcq',needsGraph:false,q:"Which way does y=-x<sup>2</sup>+4 open?",opts:["Downwards","Upwards","Left","Right"],ans:0,exp:"Negative a opens down.",hint:"Sign of x²."},
     { chapter:1,type:'typed',needsGraph:false,q:"Factor DOTS: x<sup>2</sup>-25",correctAnswers:["(x-5)(x+5)","(x+5)(x-5)"],exp:"Difference of squares.",hint:"√25=5."},
-    { chapter:3,type:'mcq',needsGraph:false,q:"Domain of f(x)=5/(x-2)?",opts:["x ≠ 2","x > 2","x ≠ -2","All real numbers"],ans:0,exp:"Denominator cannot be zero.",hint:"Bottom of fraction ≠ 0."},
+    { chapter:3,type:'mcq',needsGraph:false,q:"Domain of f(x)=5/(x-2)?",opts:["x ≠ 2","x > 2","x ≠ -2","All real"],ans:0,exp:"Denominator can't be zero.",hint:"Bottom ≠ 0."},
     { chapter:0,type:'typed',needsGraph:false,q:"Simplify: (x<sup>3</sup>)<sup>2</sup>",correctAnswers:["x^6","x⁶","x6"],exp:"Multiply exponents.",hint:"3 × 2 = ?"},
     { chapter:0,type:'typed',needsGraph:false,q:"Evaluate: 2<sup>3</sup>",correctAnswers:["8"],exp:"2×2×2=8.",hint:"2 cubed."},
-    { chapter:0,type:'typed',needsGraph:false,q:"Simplify: a<sup>2</sup> × a<sup>4</sup>",correctAnswers:["a^6","a⁶","a6"],exp:"Add exponents: 2+4=6.",hint:"Same base, add powers."},
+    { chapter:0,type:'typed',needsGraph:false,q:"Simplify: a<sup>2</sup> × a<sup>4</sup>",correctAnswers:["a^6","a⁶","a6"],exp:"Add exponents.",hint:"Same base."},
     { chapter:1,type:'typed',needsGraph:false,q:"Expand: (x-5)<sup>2</sup>",correctAnswers:["x^2-10x+25","x²-10x+25"],exp:"(x-5)(x-5) = x²-10x+25.",hint:"FOIL."},
-    { chapter:2,type:'typed',needsGraph:false,q:"Solve: x<sup>2</sup>-9=0 (two numbers, comma)",correctAnswers:["3,-3","-3,3"],exp:"x = ±3.",hint:"Take square root, don't forget ±."},
-    { chapter:2,type:'typed',needsGraph:false,q:"Find x-intercepts of y=(x-4)(x+3)",correctAnswers:["4,-3","-3,4"],exp:"Roots are 4 and -3.",hint:"Set each bracket to zero."},
-    { chapter:1,type:'typed',needsGraph:false,q:"What is the GCF of 18x<sup>2</sup> and 27x?",correctAnswers:["9x"],exp:"9 divides 18 and 27, both have x.",hint:"Biggest number and common variable."},
-    { chapter:4,type:'typed',needsGraph:true,eq1:"y=x^2-4x",q:"<span class='desmos-badge'>DESMOS</span> Minimum y-value of y=x<sup>2</sup>-4x?",correctAnswers:["-4"],exp:"Vertex at (2,-4).",hint:"Graph it, find lowest point."},
-    { chapter:6,type:'mcq',needsGraph:false,q:"If discriminant Δ=0, what does it mean?",opts:["One real root","Two real roots","No real roots","y-intercept zero"],ans:0,exp:"Exactly one repeated root.",hint:"±√0 = 0."},
-    { chapter:0,type:'typed',needsGraph:false,q:"Write as single fraction: a/2 × b/3",correctAnswers:["ab/6"],exp:"Multiply numerators and denominators.",hint:"Straight multiply."}
+    { chapter:2,type:'typed',needsGraph:false,q:"Solve: x<sup>2</sup>-9=0",correctAnswers:["3,-3","-3,3"],exp:"x = ±3.",hint:"Square root."},
+    { chapter:2,type:'typed',needsGraph:false,q:"x-intercepts of y=(x-4)(x+3)",correctAnswers:["4,-3","-3,4"],exp:"Set brackets to zero.",hint:"Roots."},
+    { chapter:1,type:'typed',needsGraph:false,q:"GCF of 18x<sup>2</sup> and 27x?",correctAnswers:["9x"],exp:"9 and x common.",hint:"Largest common."},
+    { chapter:4,type:'typed',needsGraph:true,eq1:"y=x^2-4x",q:"<span class='desmos-badge'>DESMOS</span> Minimum y-value of y=x<sup>2</sup>-4x?",correctAnswers:["-4"],exp:"Vertex (2,-4).",hint:"Graph it."},
+    { chapter:6,type:'mcq',needsGraph:false,q:"Δ=0 means?",opts:["One real root","Two real roots","No real roots","y-intercept zero"],ans:0,exp:"Exactly one.",hint:"±√0=0."},
+    { chapter:0,type:'typed',needsGraph:false,q:"Simplify: a/2 × b/3",correctAnswers:["ab/6"],exp:"Multiply straight.",hint:"Fractions."}
 ];
 
 const normalPool = [
-    { chapter:1,type:'typed',needsGraph:false,q:"Factor: x<sup>2</sup>+7x+10",correctAnswers:["(x+5)(x+2)","(x+2)(x+5)"],exp:"Numbers +5 and +2.",hint:"Multiply to 10, add to 7."},
-    { chapter:4,type:'typed',needsGraph:false,q:"Vertex of y=2(x-3)<sup>2</sup>+4",correctAnswers:["(3,4)","3,4"],exp:"Flip inside sign, keep outside.",hint:"Vertex form."},
-    { chapter:4,type:'typed',needsGraph:false,q:"Convert y=(x-2)<sup>2</sup> to standard form",correctAnswers:["x^2-4x+4","x²-4x+4","x2-4x+4"],exp:"Expand: x²-4x+4.",hint:"FOIL (x-2)(x-2)."},
-    { chapter:2,type:'typed',needsGraph:false,q:"Solve: x<sup>2</sup>-9=0 (two numbers)",correctAnswers:["3,-3","-3,3"],exp:"x=±3.",hint:"Square root."},
-    { chapter:0,type:'typed',needsGraph:false,q:"Simplify: (2x<sup>2</sup>)<sup>3</sup>",correctAnswers:["8x^6","8x⁶","8x6"],exp:"Cube 2 and multiply powers.",hint:"Apply power to coefficient and exponent."},
-    { chapter:2,type:'typed',needsGraph:false,q:"Find x-intercepts of y=x<sup>2</sup>-x-12",correctAnswers:["4,-3","-3,4"],exp:"Factor: (x-4)(x+3).",hint:"Multiply to -12, add to -1."},
-    { chapter:0,type:'typed',needsGraph:false,q:"Simplify: (x<sup>2</sup>-9)/(x-3)",correctAnswers:["x+3"],exp:"Factor top, cancel.",hint:"Difference of squares."},
-    { chapter:4,type:'typed',needsGraph:true,eq1:"y=x^2-4x",q:"<span class='desmos-badge'>DESMOS</span> Minimum y-value?",correctAnswers:["-4"],exp:"Vertex (2,-4).",hint:"Find vertex."},
-    { chapter:6,type:'mcq',needsGraph:false,q:"If Δ=0, what does it mean?",opts:["One repeated root","Two distinct roots","No real roots","y-intercept zero"],ans:0,exp:"Discriminant zero.",hint:"Perfect square."},
-    { chapter:3,type:'mcq',needsGraph:false,q:"Range of y=x<sup>2</sup>+5?",opts:["y ≥ 5","y ≤ 5","All real","x ≥ 5"],ans:0,exp:"x²≥0, so minimum 5.",hint:"Smallest value of x²."},
-    { chapter:1,type:'typed',needsGraph:false,q:"Expand: (x-5)<sup>2</sup>",correctAnswers:["x^2-10x+25","x²-10x+25"],exp:"Perfect square.",hint:"FOIL"},
-    { chapter:1,type:'typed',needsGraph:false,q:"GCF of 18x<sup>2</sup> and 27x?",correctAnswers:["9x"],exp:"9 and x common.",hint:"Find largest common divisor."},
-    { chapter:4,type:'typed',needsGraph:false,q:"Vertex of y=-(x+2)<sup>2</sup>+5",correctAnswers:["(-2,5)","-2,5"],exp:"Inside sign flip, outside keep.",hint:"Vertex form."},
+    { chapter:1,type:'typed',needsGraph:false,q:"Factor: x<sup>2</sup>+7x+10",correctAnswers:["(x+5)(x+2)","(x+2)(x+5)"],exp:"+5 and +2.",hint:"Multiply to 10, add to 7."},
+    { chapter:4,type:'typed',needsGraph:false,q:"Vertex of y=2(x-3)<sup>2</sup>+4",correctAnswers:["(3,4)","3,4"],exp:"Flip inside, keep outside.",hint:"Vertex form."},
+    { chapter:4,type:'typed',needsGraph:false,q:"Convert y=(x-2)<sup>2</sup> to standard",correctAnswers:["x^2-4x+4","x²-4x+4"],exp:"Expand: x²-4x+4.",hint:"FOIL."},
+    { chapter:2,type:'typed',needsGraph:false,q:"Solve: x<sup>2</sup>-9=0",correctAnswers:["3,-3","-3,3"],exp:"±3.",hint:"Square root."},
+    { chapter:0,type:'typed',needsGraph:false,q:"Simplify: (2x<sup>2</sup>)<sup>3</sup>",correctAnswers:["8x^6","8x⁶","8x6"],exp:"Cube 2 and multiply powers.",hint:"Apply to coefficient and exponent."},
+    { chapter:2,type:'typed',needsGraph:false,q:"x-intercepts of y=x<sup>2</sup>-x-12",correctAnswers:["4,-3","-3,4"],exp:"Factor (x-4)(x+3).",hint:"Multiply to -12, add to -1."},
+    { chapter:0,type:'typed',needsGraph:false,q:"Simplify: (x<sup>2</sup>-9)/(x-3)",correctAnswers:["x+3"],exp:"Factor top, cancel.",hint:"DOTS."},
+    { chapter:4,type:'typed',needsGraph:true,eq1:"y=x^2-4x",q:"<span class='desmos-badge'>DESMOS</span> Minimum y-value?",correctAnswers:["-4"],exp:"Vertex (2,-4).",hint:"Vertex."},
+    { chapter:6,type:'mcq',needsGraph:false,q:"Δ=0 means?",opts:["One repeated root","Two distinct roots","No real roots","y-intercept zero"],ans:0,exp:"Discriminant zero.",hint:"Perfect square."},
+    { chapter:3,type:'mcq',needsGraph:false,q:"Range of y=x<sup>2</sup>+5?",opts:["y ≥ 5","y ≤ 5","All real","x ≥ 5"],ans:0,exp:"x²≥0, so min 5.",hint:"Smallest value of x²."},
+    { chapter:1,type:'typed',needsGraph:false,q:"Expand: (x-5)<sup>2</sup>",correctAnswers:["x^2-10x+25","x²-10x+25"],exp:"Perfect square.",hint:"FOIL."},
+    { chapter:1,type:'typed',needsGraph:false,q:"GCF of 18x<sup>2</sup> and 27x?",correctAnswers:["9x"],exp:"9 and x.",hint:"Largest common."},
+    { chapter:4,type:'typed',needsGraph:false,q:"Vertex of y=-(x+2)<sup>2</sup>+5",correctAnswers:["(-2,5)","-2,5"],exp:"Inside sign flip.",hint:"Vertex form."},
     { chapter:2,type:'typed',needsGraph:false,q:"Solve: 5x<sup>2</sup>=3x+2",correctAnswers:["-0.4,1","1,-0.4","-2/5,1","1,-2/5"],exp:"Rearrange and factor.",hint:"Move all to one side."},
     { chapter:1,type:'typed',needsGraph:false,q:"Factor DOTS: 4x<sup>2</sup>-9",correctAnswers:["(2x-3)(2x+3)","(2x+3)(2x-3)"],exp:"a=2x, b=3.",hint:"Square roots."},
     { chapter:3,type:'typed',needsGraph:false,q:"If f(x)=2x+3, find f(-1)",correctAnswers:["1"],exp:"2(-1)+3=1.",hint:"Substitute."},
     { chapter:0,type:'typed',needsGraph:false,q:"Write without negative: x<sup>-2</sup>",correctAnswers:["1/x^2","1/x²"],exp:"Reciprocal.",hint:"Move to denominator."},
     { chapter:2,type:'mcq',needsGraph:false,q:"Solutions to (x+2)(x-5)=0?",opts:["x=-2,5","x=2,-5","x=2,5","x=-2,-5"],ans:0,exp:"Set each to zero.",hint:"Null Factor Law."},
-    { chapter:4,type:'typed',needsGraph:false,q:"Axis of symmetry of y=x<sup>2</sup>+6x+5",correctAnswers:["-3","x=-3"],exp:"x=-b/(2a) = -3.",hint:"Use formula."},
+    { chapter:4,type:'typed',needsGraph:false,q:"Axis of symmetry of y=x<sup>2</sup>+6x+5",correctAnswers:["-3","x=-3"],exp:"x=-b/(2a) = -3.",hint:"Formula."},
     { chapter:0,type:'typed',needsGraph:false,q:"Simplify (3a<sup>2</sup>)<sup>2</sup>",correctAnswers:["9a^4","9a⁴"],exp:"Square 3 and multiply exponents.",hint:"Power of product."}
 ];
 
 const hardPool = [
-    { chapter:5,type:'typed',needsGraph:false,q:"Factor AC: 2x<sup>2</sup>+7x+3",correctAnswers:["(2x+1)(x+3)","(x+3)(2x+1)"],exp:"AC=6, numbers 6,1.",hint:"Split 7x into 6x+x."},
-    { chapter:5,type:'typed',needsGraph:false,q:"Solve: 2x<sup>2</sup>-5x-3=0",correctAnswers:["3,-0.5","-0.5,3","3,-1/2","-1/2,3"],exp:"Factor: (2x+1)(x-3).",hint:"AC method."},
+    { chapter:5,type:'typed',needsGraph:false,q:"Factor AC: 2x<sup>2</sup>+7x+3",correctAnswers:["(2x+1)(x+3)","(x+3)(2x+1)"],exp:"AC=6, numbers 6,1.",hint:"Split 7x."},
+    { chapter:5,type:'typed',needsGraph:false,q:"Solve: 2x<sup>2</sup>-5x-3=0",correctAnswers:["3,-0.5","-0.5,3","3,-1/2","-1/2,3"],exp:"(2x+1)(x-3).",hint:"AC method."},
     { chapter:6,type:'mcq',needsGraph:false,q:"Δ = -10, how many real roots?",opts:["0","1","2","10"],ans:0,exp:"Negative discriminant.",hint:"Can't sqrt negative."},
-    { chapter:4,type:'typed',needsGraph:false,q:"Complete square: x<sup>2</sup>+6x needs what?",correctAnswers:["9"],exp:"Half 6 squared =9.",hint:"(b/2)²."},
-    { chapter:7,type:'typed',needsGraph:false,q:"Shift y=x<sup>2</sup> LEFT 3 and DOWN 4",correctAnswers:["y=(x+3)^2-4","(x+3)^2-4"],exp:"Left 3 = (x+3), down 4 = -4.",hint:"Inside opposite, outside same."},
-    { chapter:4,type:'typed',needsGraph:false,q:"Axis of symmetry of roots 2 and -4",correctAnswers:["-1","x=-1"],exp:"Midpoint: (2+-4)/2 = -1.",hint:"Average roots."},
+    { chapter:4,type:'typed',needsGraph:false,q:"Complete square: x<sup>2</sup>+6x needs?",correctAnswers:["9"],exp:"Half 6 squared.",hint:"(b/2)²."},
+    { chapter:7,type:'typed',needsGraph:false,q:"Shift y=x<sup>2</sup> LEFT 3 and DOWN 4",correctAnswers:["y=(x+3)^2-4","(x+3)^2-4"],exp:"Left 3=(x+3), down 4=-4.",hint:"Inside opposite, outside same."},
+    { chapter:4,type:'typed',needsGraph:false,q:"Axis of symmetry of roots 2 and -4",correctAnswers:["-1","x=-1"],exp:"Midpoint.",hint:"Average."},
     { chapter:7,type:'mcq',needsGraph:false,q:"Roots of y=x<sup>2</sup>-6x+8, then shift UP 2: new y-int?",opts:["(0,10)","(0,8)","(0,2)","(0,6)"],ans:0,exp:"Original y-int 8, up 2 →10.",hint:"Don't need roots."},
-    { chapter:9,type:'typed',needsGraph:false,q:"Rocket h(t)=-5t<sup>2</sup>+20t+25, hit ground?",correctAnswers:["5","t=5"],exp:"Set 0, factor, t=5.",hint:"Solve quadratic, reject negative."},
-    { chapter:10,type:'typed',needsGraph:false,q:"Solve inequality: x<sup>2</sup>-16 > 0, positive region only",correctAnswers:["x>4"],exp:"Roots ±4, U shape, >0 outside.",hint:"Sign diagram."},
+    { chapter:9,type:'typed',needsGraph:false,q:"Rocket h(t)=-5t<sup>2</sup>+20t+25, hit ground?",correctAnswers:["5","t=5"],exp:"Set 0, factor, t=5.",hint:"Reject negative."},
+    { chapter:10,type:'typed',needsGraph:false,q:"Solve inequality: x<sup>2</sup>-16 > 0, positive region only",correctAnswers:["x>4"],exp:"Roots ±4, >0 outside.",hint:"Sign diagram."},
     { chapter:2,type:'typed',needsGraph:true,eq1:"y=x^2",eq2:"y=2x+3",q:"<span class='desmos-badge'>DESMOS</span> Positive x intersection?",correctAnswers:["3","x=3"],exp:"Intersect at x=3.",hint:"Graph both."},
     { chapter:6,type:'typed',needsGraph:false,q:"Discriminant of x<sup>2</sup>-3x+2",correctAnswers:["1"],exp:"9-8=1.",hint:"b²-4ac."},
     { chapter:2,type:'typed',needsGraph:false,q:"Make x subject: y=(x+5)/3",correctAnswers:["3y-5","x=3y-5"],exp:"Multiply by 3, subtract 5.",hint:"Reverse operations."},
-    { chapter:5,type:'typed',needsGraph:false,q:"Factor AC: 3x<sup>2</sup>-11x+6",correctAnswers:["(3x-2)(x-3)","(x-3)(3x-2)"],exp:"AC=18, numbers -9,-2.",hint:"Split -11x."},
-    { chapter:7,type:'typed',needsGraph:false,q:"Vertex of y=-x<sup>2</sup>+6x-5",correctAnswers:["(3,4)","3,4"],exp:"x=-b/(2a)=3, y=4.",hint:"Use axis formula."},
-    { chapter:8,type:'typed',needsGraph:false,q:"What is 'a' if parabola passes (1,2) and vertex (3,6)?",correctAnswers:["-1"],exp:"Sub vertex form y=a(x-3)²+6, use point.",hint:"Vertex form."},
-    { chapter:9,type:'mcq',needsGraph:false,q:"Max area of rectangle with 60m fence, one side wall: A=x(60-2x) max?",opts:["450","900","400","100"],ans:0,exp:"Vertex x=15, area=450.",hint:"Expand and find vertex."},
-    { chapter:10,type:'typed',needsGraph:false,q:"Solve: x<sup>2</sup>-5x+6 ≤ 0",correctAnswers:["2≤x≤3","2<=x<=3","[2,3]"],exp:"Roots 2,3, U shape, ≤0 between.",hint:"Sign diagram."},
+    { chapter:5,type:'typed',needsGraph:false,q:"Factor AC: 3x<sup>2</sup>-11x+6",correctAnswers:["(3x-2)(x-3)","(x-3)(3x-2)"],exp:"AC=18, nums -9,-2.",hint:"Split -11x."},
+    { chapter:7,type:'typed',needsGraph:false,q:"Vertex of y=-x<sup>2</sup>+6x-5",correctAnswers:["(3,4)","3,4"],exp:"x=-b/(2a)=3, y=4.",hint:"Axis formula."},
+    { chapter:8,type:'typed',needsGraph:false,q:"'a' if parabola passes (1,2) and vertex (3,6)?",correctAnswers:["-1"],exp:"Sub vertex form.",hint:"Vertex form."},
+    { chapter:9,type:'mcq',needsGraph:false,q:"Max area rectangle 60m fence, one side wall: A=x(60-2x) max?",opts:["450","900","400","100"],ans:0,exp:"Vertex x=15.",hint:"Expand, find vertex."},
+    { chapter:10,type:'typed',needsGraph:false,q:"Solve: x<sup>2</sup>-5x+6 ≤ 0",correctAnswers:["2≤x≤3","2<=x<=3","[2,3]"],exp:"Roots 2,3, between.",hint:"Sign diagram."},
     { chapter:1,type:'typed',needsGraph:false,q:"Factor fully: 2x<sup>2</sup>-8",correctAnswers:["2(x-2)(x+2)","2(x+2)(x-2)"],exp:"Factor 2, then DOTS.",hint:"Common factor first."},
-    { chapter:4,type:'typed',needsGraph:false,q:"Domain of √(x+5)?",correctAnswers:["x≥-5","x>=-5"],exp:"Inside must be ≥0.",hint:"No negative under root."},
-    { chapter:3,type:'typed',needsGraph:false,q:"f(x)=3x-4, find f(2a+1)",correctAnswers:["6a-1"],exp:"3(2a+1)-4 = 6a+3-4 = 6a-1.",hint:"Substitute."}
+    { chapter:4,type:'typed',needsGraph:false,q:"Domain of √(x+5)?",correctAnswers:["x≥-5","x>=-5"],exp:"Inside ≥0.",hint:"No negative under root."},
+    { chapter:3,type:'typed',needsGraph:false,q:"f(x)=3x-4, find f(2a+1)",correctAnswers:["6a-1"],exp:"3(2a+1)-4 = 6a-1.",hint:"Substitute."}
 ];
 
 const finalPool = [
     { chapter:1,type:'typed',needsGraph:false,q:"<span class='level-badge lvl-1'>L1-2</span> Expand: 3x(x-4)",correctAnswers:["3x^2-12x","3x²-12x"],exp:"Multiply through.",hint:"Distribute."},
     { chapter:1,type:'typed',needsGraph:false,q:"<span class='level-badge lvl-1'>L1-2</span> Factor DOTS: x<sup>2</sup>-16",correctAnswers:["(x-4)(x+4)","(x+4)(x-4)"],exp:"Difference of squares.",hint:"√16=4."},
-    { chapter:4,type:'typed',needsGraph:false,q:"<span class='level-badge lvl-3'>L3-4</span> Find y-intercept of y=-3(x-1)(x+4)",correctAnswers:["12"],exp:"Set x=0: -3(-1)(4)=12.",hint:"Multiply numbers."},
+    { chapter:4,type:'typed',needsGraph:false,q:"<span class='level-badge lvl-3'>L3-4</span> Find y-intercept of y=-3(x-1)(x+4)",correctAnswers:["12"],exp:"Set x=0.",hint:"Multiply numbers."},
     { chapter:0,type:'typed',needsGraph:false,q:"<span class='level-badge lvl-3'>L3-4</span> Simplify: (x<sup>2</sup>-25)/(x+5)",correctAnswers:["x-5"],exp:"Factor top, cancel.",hint:"DOTS."},
     { chapter:1,type:'typed',needsGraph:false,q:"<span class='level-badge lvl-5'>L5-6</span> Factor: 3x<sup>2</sup>-27",correctAnswers:["3(x-3)(x+3)","3(x+3)(x-3)"],exp:"GCF 3, then DOTS.",hint:"Common factor first."},
     { chapter:4,type:'typed',needsGraph:false,q:"<span class='level-badge lvl-5'>L5-6</span> x-coordinate vertex y=-2x<sup>2</sup>+12x-10",correctAnswers:["3","x=3"],exp:"x=-b/(2a)=3.",hint:"Formula."},
-    { chapter:3,type:'mcq',needsGraph:true,eq1:"y=0.5x^2-2x-5",q:"<span class='level-badge lvl-5'>L5-6</span><span class='desmos-badge'>DESMOS</span> Positive root of y=0.5x<sup>2</sup>-2x-5 to 1 dp?",opts:["5.7","1.7","7.4","4.2"],ans:0,exp:"Graph shows ≈5.7.",hint:"Look at right side."},
+    { chapter:3,type:'mcq',needsGraph:true,eq1:"y=0.5x^2-2x-5",q:"<span class='level-badge lvl-5'>L5-6</span><span class='desmos-badge'>DESMOS</span> Positive root to 1 dp?",opts:["5.7","1.7","7.4","4.2"],ans:0,exp:"Graph shows ≈5.7.",hint:"Right side."},
     { chapter:6,type:'typed',needsGraph:false,q:"<span class='level-badge lvl-7'>L7-8</span> Positive k so x<sup>2</sup>+kx+9=0 has one root?",correctAnswers:["6","k=6"],exp:"Δ=0 ⇒ k²=36.",hint:"Discriminant zero."},
-    { chapter:9,type:'mcq',needsGraph:false,q:"<span class='level-badge lvl-7'>L7-8</span> Farmer fence 60m, A=x(60-2x): max area?",opts:["450 m²","900 m²","400 m²","100 m²"],ans:0,exp:"Vertex at x=15, area=450.",hint:"Expand and find vertex."},
-    { chapter:9,type:'mcq',needsGraph:false,q:"<span class='level-badge lvl-7'>L7-8</span> Revenue R(x)=(10+x)(100-5x): max increase?",opts:["$5","$10","$20","$15"],ans:0,exp:"Vertex at x=5.",hint:"Halfway between roots."},
-    { chapter:8,type:'typed',needsGraph:false,q:"<span class='level-badge lvl-7'>L7-8</span> Max height of y=-0.1(x-10)<sup>2</sup>+10",correctAnswers:["10","10m"],exp:"Vertex form, k=10.",hint:"Vertex y-coordinate."},
-    { chapter:9,type:'mcq',needsGraph:false,q:"<span class='level-badge lvl-7'>L7-8</span> Balloon h(t)=-5t²+10t+40: ground & max?",opts:["4s & 45m","8s & 40m","2s & 45m","4s & 50m"],ans:0,exp:"Set 0 ⇒ t=4s; vertex t=1 h=45.",hint:"Factor and vertex."},
-    { chapter:1,type:'typed',needsGraph:false,q:"<span class='level-badge lvl-7'>L7-8</span> GCF of 24x³y² and 36x²y⁴",correctAnswers:["12x^2y^2","12x²y²"],exp:"12, x², y².",hint:"Largest common divisor."},
-    { chapter:2,type:'mcq',needsGraph:true,eq1:"y=x^2-3x",eq2:"y=-x^2+5",q:"<span class='level-badge lvl-7'>L7-8</span><span class='desmos-badge'>DESMOS</span> Intersections of y=x²-3x and y=-x²+5?",opts:["(-1,4) & (2.5,-1.25)","(1,-2) & (-2.5,-1.25)","(0,0) & (5,0)","none"],ans:0,exp:"Coordinates as shown.",hint:"Graph both."},
-    { chapter:0,type:'typed',needsGraph:false,q:"<span class='level-badge lvl-7'>L7-8</span> Evaluate: 27<sup>2/3</sup>",correctAnswers:["9"],exp:"Cube root 27=3, then square =9.",hint:"Root then power."},
+    { chapter:9,type:'mcq',needsGraph:false,q:"<span class='level-badge lvl-7'>L7-8</span> Farmer 60m, A=x(60-2x): max area?",opts:["450 m²","900 m²","400 m²","100 m²"],ans:0,exp:"Vertex x=15.",hint:"Expand, vertex."},
+    { chapter:9,type:'mcq',needsGraph:false,q:"<span class='level-badge lvl-7'>L7-8</span> Revenue R(x)=(10+x)(100-5x): max increase?",opts:["$5","$10","$20","$15"],ans:0,exp:"Vertex x=5.",hint:"Halfway between roots."},
+    { chapter:8,type:'typed',needsGraph:false,q:"<span class='level-badge lvl-7'>L7-8</span> Max height y=-0.1(x-10)<sup>2</sup>+10",correctAnswers:["10","10m"],exp:"Vertex form, k=10.",hint:"Vertex y-coordinate."},
+    { chapter:9,type:'mcq',needsGraph:false,q:"<span class='level-badge lvl-7'>L7-8</span> Balloon h(t)=-5t²+10t+40: ground & max?",opts:["4s & 45m","8s & 40m","2s & 45m","4s & 50m"],ans:0,exp:"t=4s, vertex t=1 h=45.",hint:"Factor, vertex."},
+    { chapter:1,type:'typed',needsGraph:false,q:"<span class='level-badge lvl-7'>L7-8</span> GCF 24x³y² and 36x²y⁴",correctAnswers:["12x^2y^2","12x²y²"],exp:"12, x², y².",hint:"Largest common."},
+    { chapter:2,type:'mcq',needsGraph:true,eq1:"y=x^2-3x",eq2:"y=-x^2+5",q:"<span class='level-badge lvl-7'>L7-8</span><span class='desmos-badge'>DESMOS</span> Intersections?",opts:["(-1,4) & (2.5,-1.25)","(1,-2) & (-2.5,-1.25)","(0,0) & (5,0)","none"],ans:0,exp:"As shown.",hint:"Graph both."},
+    { chapter:0,type:'typed',needsGraph:false,q:"<span class='level-badge lvl-7'>L7-8</span> Evaluate: 27<sup>2/3</sup>",correctAnswers:["9"],exp:"Cube root 27=3, square=9.",hint:"Root then power."},
     { chapter:4,type:'typed',needsGraph:false,q:"<span class='level-badge lvl-3'>L3-4</span> Domain of f(x)=√(x-3)/(x-8)?",correctAnswers:["x≥3, x≠8","x≥3, x=8"],exp:"Root: x≥3; denom: x≠8.",hint:"Two restrictions."},
     { chapter:5,type:'typed',needsGraph:false,q:"<span class='level-badge lvl-5'>L5-6</span> Convert y=x²+8x+5 to vertex form",correctAnswers:["(x+4)^2-11","y=(x+4)^2-11"],exp:"Complete square.",hint:"Half of b squared."},
-    { chapter:7,type:'typed',needsGraph:false,q:"<span class='level-badge lvl-7'>L7-8</span> Value of 'a' if parabola with vertex (2,5) passes through (4,9)?",correctAnswers:["1"],exp:"y=a(x-2)²+5, sub (4,9): 9=a(4)+5 → a=1.",hint:"Vertex form."},
-    { chapter:10,type:'mcq',needsGraph:false,q:"<span class='level-badge lvl-7'>L7-8</span> Solve: x²-4x-5 ≤ 0",opts:["-1 ≤ x ≤ 5","x ≤ -1 or x ≥ 5","-5 ≤ x ≤ 1","x ≤ -5 or x ≥ -1"],ans:0,exp:"Roots -1,5, opens up.",hint:"Factor and sign diagram."},
+    { chapter:7,type:'typed',needsGraph:false,q:"<span class='level-badge lvl-7'>L7-8</span> 'a' if vertex (2,5) passes through (4,9)?",correctAnswers:["1"],exp:"a(x-2)²+5, sub (4,9).",hint:"Vertex form."},
+    { chapter:10,type:'mcq',needsGraph:false,q:"<span class='level-badge lvl-7'>L7-8</span> Solve: x²-4x-5 ≤ 0",opts:["-1 ≤ x ≤ 5","x ≤ -1 or x ≥ 5","-5 ≤ x ≤ 1","x ≤ -5 or x ≥ -1"],ans:0,exp:"Roots -1,5, opens up.",hint:"Factor, sign diagram."},
     { chapter:3,type:'typed',needsGraph:false,q:"<span class='level-badge lvl-1'>L1-2</span> If f(x)=2x-5, find f(3)",correctAnswers:["1"],exp:"2(3)-5=1.",hint:"Substitute."}
 ];
 
 const algebraPool = [
     { chapter:2,type:'typed',needsGraph:false,q:"Solve: (2)/(x-1) + (5)/(x+3) = (2-x)/((x-1)(x+3))",correctAnswers:["1/8","0.125","x=1/8","x=0.125"],exp:"Multiply by (x-1)(x+3): 7x+1=2-x → 8x=1.",hint:"Multiply by common denominator."},
-    { chapter:2,type:'typed',needsGraph:false,q:"Solve: x<sup>2</sup> - 5x + 6 = 0",correctAnswers:["2,3","3,2","x=2,3","x=3,2"],exp:"Factor: (x-2)(x-3)=0.",hint:"Numbers that multiply to 6, add to -5."},
-    { chapter:2,type:'typed',needsGraph:false,q:"Solve: (2x)/(3x+1) = 1/(x+2)",correctAnswers:["1/2,-1","-1,1/2","0.5,-1","-1,0.5","x=1/2,x=-1"],exp:"Cross-mult: 2x²+4x=3x+1 → 2x²+x-1=0 → (2x-1)(x+1)=0.",hint:"Cross-multiply then factor."},
-    { chapter:1,type:'typed',needsGraph:false,q:"Simplify: (x<sup>2</sup>y<sup>3</sup>)<sup>2</sup> / (x<sup>3</sup>y<sup>2</sup>)",correctAnswers:["x y^4","xy^4","x*y^4","x y4"],exp:"Numerator: x⁴y⁶. Divide: x y⁴.",hint:"Apply power then subtract exponents."},
-    { chapter:2,type:'typed',needsGraph:false,q:"Solve: x<sup>4</sup> - 7x<sup>2</sup> + 12 = 0",correctAnswers:["2,-2,√3,-√3","±2,±√3","2, -2, √3, -√3","x=±2, x=±√3"],exp:"Let u=x². u²-7u+12=0 → u=3,4. x=±√3, ±2.",hint:"Substitute u = x²."},
-    { chapter:1,type:'typed',needsGraph:false,q:"Expand: (2x - 3)<sup>3</sup>",correctAnswers:["8x^3-36x^2+54x-27","8x³-36x²+54x-27"],exp:"Cube binomial.",hint:"Square first, then multiply by (2x-3)."}
+    { chapter:2,type:'typed',needsGraph:false,q:"Solve: x<sup>2</sup> - 5x + 6 = 0",correctAnswers:["2,3","3,2","x=2,3","x=3,2"],exp:"(x-2)(x-3)=0.",hint:"Multiply to 6, add to -5."},
+    { chapter:2,type:'typed',needsGraph:false,q:"Solve: (2x)/(3x+1) = 1/(x+2)",correctAnswers:["1/2,-1","-1,1/2","0.5,-1","-1,0.5","x=1/2,x=-1"],exp:"Cross-multiply, then factor.",hint:"2x(x+2)=3x+1."},
+    { chapter:1,type:'typed',needsGraph:false,q:"Simplify: (x<sup>2</sup>y<sup>3</sup>)<sup>2</sup> / (x<sup>3</sup>y<sup>2</sup>)",correctAnswers:["x y^4","xy^4","x*y^4","x y4"],exp:"Numerator: x⁴y⁶. Divide: x y⁴.",hint:"Subtract exponents."},
+    { chapter:2,type:'typed',needsGraph:false,q:"Solve: x<sup>4</sup> - 7x<sup>2</sup> + 12 = 0",correctAnswers:["2,-2,√3,-√3","±2,±√3","2, -2, √3, -√3","x=±2, x=±√3"],exp:"Let u=x². u²-7u+12=0 → u=3,4.",hint:"Substitute u=x²."},
+    { chapter:1,type:'typed',needsGraph:false,q:"Expand: (2x - 3)<sup>3</sup>",correctAnswers:["8x^3-36x^2+54x-27","8x³-36x²+54x-27"],exp:"Cube binomial.",hint:"Square first, then multiply."}
 ];
 
-// ==================== QUIZ ENGINE (random subset) ====================
+// ==================== QUIZ ENGINE (unchanged) ====================
 let quizData=[],state=[],immediateFeedback=true,flaggedQuestions=new Set();
 const questionCounts={easy:10,normal:10,hard:10,final:12,algebra:6};
 
@@ -864,7 +655,6 @@ function renderNav(){const g=document.getElementById('nav-grid');g.innerHTML='';
 function updateNavStyles(){for(let i=0;i<quizData.length;i++){let b=document.getElementById('nav-btn-'+i);if(!b)continue;let s=state[i];b.className='nav-btn';if(s.isEvaluated){if(s.points===1)b.classList.add('status-correct');else if(s.points===0.5)b.classList.add('status-half');else b.classList.add('status-incorrect');}else if(s.selected!==null||s.userText!==null){b.classList.add('status-answered');}if(flaggedQuestions.has(i))b.classList.add('status-flagged');}}
 function renderQuestions(){const c=document.getElementById('quiz-container');c.innerHTML='';quizData.forEach((qData,qi)=>{const d=document.createElement('div');d.className='question-container';d.id='q-'+qi;let ch=chapterTitles[qData.chapter]||'Algebraic Manipulation';let h=`<div class="chapter-source">📘 Chapter ${qData.chapter+1}: ${ch}</div><div class="question-text">Q${qi+1}. ${qData.q}</div>`;if(qData.type==='typed'){h+=`<div class="math-toolbar"><span>Math:</span><button class="math-btn" onclick="insertSymbol(${qi}, 'x')">x</button><button class="math-btn" onclick="insertSymbol(${qi}, 'y')">y</button><button class="math-btn" onclick="insertSymbol(${qi}, '^2')">x²</button><button class="math-btn" onclick="insertSymbol(${qi}, '^3')">x³</button><button class="math-btn" onclick="insertSymbol(${qi}, '(')">(</button><button class="math-btn" onclick="insertSymbol(${qi},')')">)</button><button class="math-btn" onclick="insertSymbol(${qi},'+')">+</button><button class="math-btn" onclick="insertSymbol(${qi},'-')">−</button><button class="math-btn" onclick="insertSymbol(${qi},'>')">&gt;</button><button class="math-btn" onclick="insertSymbol(${qi},'<')">&lt;</button></div><div class="typed-input-container"><input type="text" class="typed-input" id="input-${qi}" placeholder="Type your answer..." onkeypress="handleEnter(event,${qi})" oninput="trackTypedAnswer(${qi})"><button class="check-btn" id="check-btn-${qi}" onclick="checkTypedAnswer(${qi})">Check Answer</button></div>`;}else{h+=`<div class="options">`;qData.opts.forEach((o,oi)=>{h+=`<button class="option-btn" id="opt-${qi}-${oi}" onclick="selectOption(${qi},${oi})">${o}</button>`;});h+=`</div>`;}h+=`<div class="action-row" id="actions-${qi}"><button class="action-btn btn-read-chapter" onclick="openModal(${qData.chapter})">📖 Read Chapter</button><button class="action-btn btn-hint" onclick="useHint(${qi})">💡 Hint (&minus;0.5 pts)</button><button class="action-btn btn-answer" id="show-ans-btn-${qi}" onclick="useAnswer(${qi})">⚠️ Show Answer (0 pts)</button><button class="action-btn btn-flag" id="flag-btn-${qi}" onclick="toggleFlag(${qi})">🚩 Flag</button>`;if(qData.needsGraph)h+=`<button class="action-btn btn-desmos" style="display:inline-block;" onclick="toggleSpecificDesmos(${qi})">📊 Open Desmos</button>`;h+=`</div><div class="hint-box" style="display:none;" id="hint-box-${qi}">${qData.hint}</div><div class="feedback" id="feedback-${qi}"></div>`;if(qData.needsGraph)h+=`<div class="question-desmos-wrapper" id="q-desmos-wrap-${qi}"><iframe id="calc-frame-${qi}" src="about:blank"></iframe></div>`;d.innerHTML=h;c.appendChild(d);});}
 
-// ... rest of quiz engine (flag, review, input, evaluation, submit, getMYP, etc.) identical to previous version ...
 function toggleFlag(qIndex) { playClick(); if (flaggedQuestions.has(qIndex)) { flaggedQuestions.delete(qIndex); document.getElementById(`flag-btn-${qIndex}`).classList.remove('flagged-active'); document.getElementById(`flag-btn-${qIndex}`).innerText='🚩 Flag'; document.getElementById('q-'+qIndex).classList.remove('flagged-q'); showToast(`Q${qIndex+1} unflagged`,'#94a3b8'); } else { flaggedQuestions.add(qIndex); document.getElementById(`flag-btn-${qIndex}`).classList.add('flagged-active'); document.getElementById(`flag-btn-${qIndex}`).innerText='🚩 Flagged'; document.getElementById('q-'+qIndex).classList.add('flagged-q'); showToast(`🚩 Q${qIndex+1} flagged for review!`,'#a855f7'); } updateNavStyles(); }
 function openReviewModal() { playClick(); const overlay=document.getElementById('reviewModalOverlay'); const body=document.getElementById('reviewModalBody'); if (flaggedQuestions.size===0) { body.innerHTML=`<div class="review-empty">No questions flagged yet.<br>Click the 🚩 Flag button on any question to add it here.</div>`; } else { body.innerHTML=''; [...flaggedQuestions].sort((a,b)=>a-b).forEach(qIndex=>{ const qData=quizData[qIndex]; const chTitle=chapterTitles[qData.chapter]||'Algebraic Manipulation'; const item=document.createElement('div'); item.className='review-item'; item.innerHTML=`<div class="review-item-title">Q${qIndex+1} — ${qData.type==='mcq'?'Multiple Choice':'Written Answer'}</div><div class="review-item-chapter">📘 Chapter ${qData.chapter+1}: ${chTitle}</div><div class="review-item-btns"><button class="review-item-btn review-read-btn" onclick="closeReviewModal();openModal(${qData.chapter})">📖 Read Chapter</button><button class="review-item-btn review-jump-btn" onclick="closeReviewModal();scrollToQ(${qIndex})">⬇️ Jump to Q${qIndex+1}</button></div>`; body.appendChild(item); }); } overlay.style.display='block'; }
 function closeReviewModal(){document.getElementById('reviewModalOverlay').style.display='none';}
@@ -920,12 +710,24 @@ function saveProgress(mode,score,myp){let history=JSON.parse(localStorage.getIte
 function loadProgress(){let history=JSON.parse(localStorage.getItem('mypMathHistory'))||[];let list=document.getElementById('history-list');if(!list)return;list.innerHTML='';if(history.length===0){list.innerHTML='<li>No past attempts found. Take a test!</li>';return;}history.forEach(h=>{list.innerHTML+=`<li><span>📅 ${h.date} — <strong>${h.mode}</strong></span> <span>Score: ${h.score} | <strong>Level ${h.myp}</strong></span></li>`;});}
 
 // ==================== LEARNING MODULE MODAL ====================
-window.openModal=function(index){playClick();currentTopicIndex=index;document.getElementById('modalTitle').innerText=modalContent[index].title;document.getElementById('modalBody').innerHTML=modalContent[index].body;document.getElementById('modalOverlay').style.display='block';document.body.style.overflow='hidden';document.getElementById('modalBody').scrollTop=0;};
+window.openModal=function(index){
+    playClick();
+    currentTopicIndex=index;
+    document.getElementById('modalTitle').innerText=modalContent[index].title;
+    document.getElementById('modalBody').innerHTML=modalContent[index].body;
+    document.getElementById('modalOverlay').style.display='block';
+    document.body.style.overflow='hidden';
+    document.getElementById('modalBody').scrollTop=0;
+};
 window.closeModal=function(){document.getElementById('modalOverlay').style.display='none';document.body.style.overflow='auto';document.getElementById('modalBody').innerHTML='';};
 document.getElementById('modalOverlay').addEventListener('click',function(e){if(e.target===this)closeModal();});
 
 // ==================== INIT ====================
-window.onload=function(){loadQuizLevel('easy');renderTextbook();loadProgress();};
+window.onload=function(){
+    loadQuizLevel('easy');
+    renderTextbook();
+    loadProgress();
+};
 </script>
 </body>
 </html>
