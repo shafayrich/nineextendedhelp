@@ -6,40 +6,11 @@
     <title>MYP 9 Extended Math: The Ultimate Learning Platform</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='75' x='5' font-size='75' font-family='Times New Roman, serif' font-style='italic' font-weight='bold' fill='%230f4c81'>fx</text></svg>">
     <style>
-        /* ========== CSS VARIABLES ========== */
         :root {
-            --primary: #0f4c81;
-            --primary-hover: #1d3557;
-            --bg: #f0f4f8;
-            --card-bg: #ffffff;
-            --text-main: #1e293b;
-            --text-muted: #64748b;
-            --correct: #10b981;
-            --incorrect: #ef4444;
-            --half: #f59e0b;
-            --accent: #3b82f6;
-            --answered: #94a3b8;
-            --unanswered: #e2e8f0;
-            --border: #e2e8f0;
-            --level-easy: #22c55e;
-            --level-normal: #eab308;
-            --level-hard: #f97316;
-            --level-final: #dc2626;
-            --flagged: #a855f7;
-            --example-bg: #ffffff;
-            --solution-bg: #f8fafc;
-            --lesson-bg: #f8fafc;
+            --primary: #0f4c81; --primary-hover: #1d3557; --bg: #f0f4f8; --card-bg: #ffffff; --text-main: #1e293b; --text-muted: #64748b; --correct: #10b981; --incorrect: #ef4444; --half: #f59e0b; --accent: #3b82f6; --answered: #94a3b8; --unanswered: #e2e8f0; --border: #e2e8f0; --level-easy: #22c55e; --level-normal: #eab308; --level-hard: #f97316; --level-final: #dc2626; --flagged: #a855f7; --example-bg: #ffffff; --solution-bg: #f8fafc; --lesson-bg: #f8fafc;
         }
         body.dark-mode {
-            --bg: #0f172a;
-            --card-bg: #1e293b;
-            --text-main: #f8fafc;
-            --text-muted: #94a3b8;
-            --border: #334155;
-            --unanswered: #334155;
-            --example-bg: #1e293b;
-            --solution-bg: #0f172a;
-            --lesson-bg: #1e293b;
+            --bg: #0f172a; --card-bg: #1e293b; --text-main: #f8fafc; --text-muted: #94a3b8; --border: #334155; --unanswered: #334155; --example-bg: #1e293b; --solution-bg: #0f172a; --lesson-bg: #1e293b;
         }
         * { box-sizing: border-box; margin: 0; padding: 0; }
         body { font-family: 'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif; line-height: 1.7; color: var(--text-main); background: var(--bg); padding: 20px; transition: background 0.3s, color 0.3s; }
@@ -135,12 +106,12 @@
         .typed-input { flex-grow: 1; padding: 18px; font-size: 1.3em; font-family: monospace; border: 2px solid var(--border); border-radius: 10px; background: var(--bg); color: var(--text-main); transition: 0.3s; }
         .check-btn { padding: 15px 30px; background: var(--primary); color: white; border: none; border-radius: 10px; cursor: pointer; font-size: 1.1em; font-weight: bold; transition: 0.2s; }
         .check-btn:hover:not(:disabled) { background: var(--primary-hover); transform: translateY(-2px); }
-        .action-row { display: flex; gap: 12px; margin-top: 20px; flex-wrap: wrap; align-items: center; }
+        .action-row { display: flex; gap: 10px; margin-top: 20px; flex-wrap: wrap; align-items: center; }
         .action-btn { padding: 10px 20px; border-radius: 8px; border: none; font-weight: bold; cursor: pointer; transition: 0.2s; font-size: 0.95em; }
         .btn-hint { background: rgba(245, 158, 11, 0.2); color: #d97706; border: 1px solid #f59e0b; }
         .btn-hint:hover:not(:disabled) { background: rgba(245, 158, 11, 0.3); }
-        .btn-solution { background: rgba(168, 85, 247, 0.15); color: var(--flagged); border: 1px solid var(--flagged); }
-        .btn-solution:hover:not(:disabled) { background: rgba(168, 85, 247, 0.25); }
+        .btn-solution { background: rgba(239, 68, 68, 0.15); color: #dc2626; border: 1px solid #ef4444; }
+        .btn-solution:hover:not(:disabled) { background: rgba(239, 68, 68, 0.25); }
         .btn-read-chapter { background: rgba(59, 130, 246, 0.1); color: var(--accent); border: 1px solid var(--accent); }
         .btn-read-chapter:hover { background: rgba(59, 130, 246, 0.2); }
         .btn-flag { background: rgba(168, 85, 247, 0.1); color: var(--flagged); border: 1px solid var(--flagged); }
@@ -169,6 +140,26 @@
         .modal-header h2 { margin: 0; font-size: 1.8em; color: var(--primary); border: none; padding: 0; }
         .modal-body { padding: 40px; overflow-y: auto; flex-grow: 1; font-size: 1.15em; line-height: 1.8; color: var(--text-main); }
         .modal-footer { padding: 20px 35px; background: var(--bg); border-top: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 15px; }
+        /* TIMER MODAL */
+        .timer-modal-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(15, 23, 42, 0.9); z-index: 3000; backdrop-filter: blur(10px); }
+        .timer-modal { position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); background: var(--card-bg); border-radius: 20px; padding: 40px; text-align: center; z-index: 3001; box-shadow: 0 25px 50px rgba(0,0,0,0.5); border: 3px solid var(--incorrect); width: 90%; max-width: 500px; }
+        .timer-modal h2 { font-size: 2em; margin-bottom: 15px; color: var(--incorrect); }
+        .timer-modal p { font-size: 1.2em; color: var(--text-muted); margin-bottom: 25px; }
+        .timer-modal-btn { padding: 15px 40px; background: var(--incorrect); color: white; border: none; border-radius: 10px; font-size: 1.2em; font-weight: bold; cursor: pointer; transition: 0.2s; }
+        .timer-modal-btn:hover { background: #dc2626; transform: scale(1.05); }
+        /* CUSTOM TIME MODAL */
+        .time-modal-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(15, 23, 42, 0.85); z-index: 3000; backdrop-filter: blur(8px); }
+        .time-modal { position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); background: var(--card-bg); border-radius: 20px; padding: 35px; text-align: center; z-index: 3001; box-shadow: 0 25px 50px rgba(0,0,0,0.5); border: 2px solid var(--accent); width: 90%; max-width: 450px; }
+        .time-modal h3 { margin-bottom: 20px; color: var(--text-main); }
+        .time-modal input { width: 80%; padding: 12px 20px; font-size: 1.2em; border-radius: 8px; border: 2px solid var(--border); background: var(--bg); color: var(--text-main); text-align: center; margin-bottom: 20px; }
+        .time-modal input:focus { outline: none; border-color: var(--accent); }
+        .time-modal-btns { display: flex; gap: 12px; justify-content: center; }
+        .time-modal-btn { padding: 12px 30px; border-radius: 8px; font-weight: bold; cursor: pointer; font-size: 1.1em; border: none; transition: 0.2s; }
+        .time-set-btn { background: var(--accent); color: white; }
+        .time-set-btn:hover { background: var(--primary); }
+        .time-cancel-btn { background: var(--bg); color: var(--text-main); border: 1px solid var(--border); }
+        .time-cancel-btn:hover { background: var(--border); }
+        /* REVIEW MODAL */
         .review-modal-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(15, 23, 42, 0.85); z-index: 2000; backdrop-filter: blur(8px); }
         .review-modal-content { position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); background: var(--card-bg); border-radius: 16px; width: 90%; max-width: 700px; max-height: 80vh; display: flex; flex-direction: column; overflow: hidden; z-index: 2001; box-shadow: 0 25px 50px rgba(0,0,0,0.5); border: 2px solid var(--flagged); }
         .review-modal-header { padding: 20px 30px; background: rgba(168, 85, 247, 0.1); border-bottom: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; }
@@ -199,7 +190,6 @@
         .yt-search-btn { display: inline-block; margin-top: 10px; padding: 10px 20px; background: var(--accent); color: white !important; border-radius: 8px; font-weight: bold; text-decoration: none; transition: 0.2s; border: 1px solid var(--accent); }
         .yt-search-btn:hover { background: var(--primary); border-color: var(--primary); }
         .beginner-box { background: #e0f2fe; border-left: 6px solid #0284c7; padding: 20px; margin-bottom: 30px; border-radius: 0 12px 12px 0; color: #0c4a6e; }
-        .beginner-box h3 { margin: 0 0 10px 0; color: #0369a1; font-size: 1.3em; display: flex; align-items: center; gap: 8px; }
         .lesson-step { background: var(--lesson-bg); border-left: 6px solid var(--accent); padding: 20px; margin: 20px 0; border-radius: 8px; }
         .example-box { background: var(--example-bg); border: 1px solid var(--border); border-radius: 10px; padding: 20px; margin: 25px 0; box-shadow: 0 2px 8px rgba(0,0,0,0.04); }
         .example-box h4 { margin: 0 0 10px 0; color: var(--primary); font-size: 1.2em; }
@@ -218,13 +208,31 @@
 <div id="toast-container"></div>
 <div id="confetti-container"></div>
 
+<!-- TIMER MODAL -->
+<div class="timer-modal-overlay" id="timerModalOverlay">
+    <div class="timer-modal">
+        <h2>⏰ Time's Up!</h2>
+        <p>Your time has expired. Click below to submit your quiz.</p>
+        <button class="timer-modal-btn" onclick="handleTimerSubmit()">Submit Now</button>
+    </div>
+</div>
+
+<!-- CUSTOM TIME MODAL -->
+<div class="time-modal-overlay" id="timeModalOverlay">
+    <div class="time-modal">
+        <h3>⚙️ Set Custom Time (minutes)</h3>
+        <input type="number" id="customTimeInput" placeholder="Enter minutes..." min="1" max="120" value="30">
+        <div class="time-modal-btns">
+            <button class="time-modal-btn time-set-btn" onclick="setCustomTime()">Set</button>
+            <button class="time-modal-btn time-cancel-btn" onclick="closeTimeModal()">Cancel</button>
+        </div>
+    </div>
+</div>
+
 <!-- REVIEW MODAL -->
 <div class="review-modal-overlay" id="reviewModalOverlay">
     <div class="review-modal-content">
-        <div class="review-modal-header">
-            <h2>🚩 Flagged Questions Review List</h2>
-            <button class="close-btn" onclick="closeReviewModal()">Close &times;</button>
-        </div>
+        <div class="review-modal-header"><h2>🚩 Flagged Questions Review List</h2><button class="close-btn" onclick="closeReviewModal()">Close &times;</button></div>
         <div class="review-modal-body" id="reviewModalBody"></div>
     </div>
 </div>
@@ -232,124 +240,19 @@
 <!-- LEARNING CHAPTER MODAL -->
 <div class="modal-overlay" id="modalOverlay">
     <div class="modal-content">
-        <div class="modal-header">
-            <h2 id="modalTitle">Topic Title</h2>
-            <button class="close-btn" onclick="closeModal()">Close &times;</button>
-        </div>
+        <div class="modal-header"><h2 id="modalTitle">Topic Title</h2><button class="close-btn" onclick="closeModal()">Close &times;</button></div>
         <div class="modal-body" id="modalBody"></div>
-        <div class="modal-footer">
-            <span style="color: var(--text-muted); font-size: 0.9em;">Make sure you understand the examples before proceeding.</span>
-            <button class="mastery-btn" id="btn-mastery" onclick="markAsMastered()">Mark Topic as Mastered ✅</button>
-        </div>
+        <div class="modal-footer"><span style="color: var(--text-muted);">Make sure you understand the examples before proceeding.</span><button class="mastery-btn" onclick="markAsMastered()">Mark Topic as Mastered ✅</button></div>
     </div>
 </div>
 
 <div class="app-container">
     <button class="dark-mode-toggle" onclick="toggleDarkMode()">🌙 Dark Mode</button>
-    <header>
-        <h1>MYP 9 Extended Math</h1>
-        <p>Interactive Learning Module, Adaptive Mastery Quiz &amp; Graphing Toolkit</p>
-    </header>
-
-    <div class="global-search-container">
-        <input type="text" id="global-search" class="search-bar" placeholder="🔍 Global Search: Filter the entire guide (Glossary terms, Textbook chapters...)" onkeyup="globalSearch()">
-    </div>
-
-    <!-- GLOSSARY CARD -->
-    <div class="card" id="glossary-wrapper">
-        <button class="accordion-btn" onclick="toggleAccordion('glossary-content','arrow-glossary')">
-            <h2>📖 Core Dictionary & Glossary</h2>
-            <span class="arrow" id="arrow-glossary" style="transform: rotate(0deg);">▼</span>
-        </button>
-        <div class="accordion-content" id="glossary-content" style="display: block;">
-            <div class="glossary-grid" id="glossary-grid"></div>
-        </div>
-    </div>
-
-    <!-- TEXTBOOK MODULES CARD -->
-    <div class="card" id="textbook-wrapper">
-        <button class="accordion-btn" onclick="toggleAccordion('textbook-content','arrow-textbook')">
-            <h2>📚 Learning Module & Extended Syllabus</h2>
-            <span class="arrow" id="arrow-textbook" style="transform: rotate(0deg);">▼</span>
-        </button>
-        <div class="accordion-content" id="textbook-content" style="display: block;">
-            <p style="color: var(--text-muted); margin-bottom: 20px; font-size: 1.1em;">Click on any chapter to watch the video lesson, view step-by-step examples, and mark your progress.</p>
-            <div class="recap-grid" id="learning-grid"></div>
-        </div>
-    </div>
-
-    <!-- EXAM SIMULATOR CARD -->
-    <div class="card" id="exam-wrapper">
-        <button class="accordion-btn" onclick="toggleAccordion('exam-content','arrow-exam')">
-            <h2>📝 Mastery Exam Simulator</h2>
-            <span class="arrow" id="arrow-exam" style="transform: rotate(0deg);">▼</span>
-        </button>
-        <div class="accordion-content" id="exam-content" style="display: block;">
-            <div class="level-selector">
-                <button class="level-btn" id="btn-easy" onclick="loadQuizLevel('easy')">🟢 Easy <span>10 Randomised Qs</span></button>
-                <button class="level-btn" id="btn-normal" onclick="loadQuizLevel('normal')">🟡 Normal <span>10 Randomised Qs</span></button>
-                <button class="level-btn" id="btn-hard" onclick="loadQuizLevel('hard')">🟠 Hard <span>10 Randomised Qs</span></button>
-                <button class="level-btn" id="btn-final" onclick="loadQuizLevel('final')">🔴 Final <span>12 Randomised Qs</span></button>
-                <button class="level-btn" id="btn-algebra" onclick="loadQuizLevel('algebra')">📝 Algebra Formative <span>6 Qs</span></button>
-            </div>
-            <div class="top-tools">
-                <button class="tool-btn" onclick="toggleNotes()">📝 Toggle Digital Notes</button>
-                <div class="timer-container">
-                    <div class="timer-display" id="timer-display">45:00</div>
-                    <div class="timer-controls">
-                        <button class="t-btn" id="btn-timer-start" onclick="toggleTimer()">▶️ Start</button>
-                        <button class="t-btn" id="btn-timer-edit" onclick="promptCustomTime()" title="Change Timer">⚙️ Edit</button>
-                        <button class="t-btn" id="btn-timer-lock" onclick="lockTimer()" title="Lock Timer settings">🔒 Lock</button>
-                    </div>
-                </div>
-            </div>
-            <div class="notes-container" id="notes-container">
-                <textarea id="digital-notes" placeholder="Type your rough work, steps, and notes here..."></textarea>
-                <div class="notes-tools">
-                    <button class="n-btn" onclick="clearNotes()">Clear Notes</button>
-                    <button class="n-btn" onclick="toggleNotes()">Close</button>
-                </div>
-            </div>
-            <div class="quiz-controls">
-                <div><strong>Feedback Control:</strong> <span style="color: var(--text-muted);">Toggle Immediate vs. Hidden Test Mode</span></div>
-                <label class="toggle-switch">
-                    <input type="checkbox" id="mode-toggle" checked onchange="toggleFeedbackMode()">
-                    <span id="mode-label">ON: Immediate Feedback</span>
-                </label>
-            </div>
-            <div class="quiz-layout">
-                <div class="sidebar">
-                    <h3 id="sidebar-title" style="margin-bottom:15px;">Question Navigator</h3>
-                    <button class="sidebar-review-btn" onclick="openReviewModal()">🚩 View Review List</button>
-                    <div class="nav-grid" id="nav-grid"></div>
-                    <div class="legend">
-                        <div><div class="legend-box" style="background: var(--unanswered);"></div> Unanswered</div>
-                        <div><div class="legend-box" style="background: var(--answered);"></div> Answered</div>
-                        <div><div class="legend-box" style="background: var(--correct);"></div> Correct (1 pt)</div>
-                        <div><div class="legend-box" style="background: var(--half);"></div> Half Correct (0.5)</div>
-                        <div><div class="legend-box" style="background: var(--incorrect);"></div> Incorrect (0)</div>
-                        <div><span style="font-size:1em;">🚩</span> Flagged for Review</div>
-                    </div>
-                </div>
-                <div class="quiz-main">
-                    <div id="quiz-container"></div>
-                    <div class="submit-area" id="submit-area" style="display:none;">
-                        <button class="submit-btn" onclick="submitQuiz()">Submit Test &amp; Calculate Grade</button>
-                        <div id="final-results">
-                            <h2>Assessment Complete!</h2>
-                            <div class="score-display"><span id="final-score">0</span> / <span id="total-score-display">0</span></div>
-                            <p style="color: #94a3b8; font-size: 1.3em; margin-bottom: 5px;">MYP Grade Classification:</p>
-                            <div class="myp-grade">Level <span id="myp-score">0</span></div>
-                            <div class="history-board">
-                                <h3>💾 Past Results History</h3>
-                                <ul class="history-list" id="history-list"></ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+    <header><h1>MYP 9 Extended Math</h1><p>Interactive Learning Module, Adaptive Mastery Quiz &amp; Graphing Toolkit</p></header>
+    <div class="global-search-container"><input type="text" id="global-search" class="search-bar" placeholder="🔍 Global Search: Filter the entire guide..." onkeyup="globalSearch()"></div>
+    <div class="card" id="glossary-wrapper"><button class="accordion-btn" onclick="toggleAccordion('glossary-content','arrow-glossary')"><h2>📖 Core Dictionary & Glossary</h2><span class="arrow" id="arrow-glossary">▼</span></button><div class="accordion-content" id="glossary-content"><div class="glossary-grid" id="glossary-grid"></div></div></div>
+    <div class="card" id="textbook-wrapper"><button class="accordion-btn" onclick="toggleAccordion('textbook-content','arrow-textbook')"><h2>📚 Learning Module & Extended Syllabus</h2><span class="arrow" id="arrow-textbook">▼</span></button><div class="accordion-content" id="textbook-content"><p style="color:var(--text-muted);margin-bottom:20px;">Click any chapter to watch the video lesson, view examples, and mark progress.</p><div class="recap-grid" id="learning-grid"></div></div></div>
+    <div class="card" id="exam-wrapper"><button class="accordion-btn" onclick="toggleAccordion('exam-content','arrow-exam')"><h2>📝 Mastery Exam Simulator</h2><span class="arrow" id="arrow-exam">▼</span></button><div class="accordion-content" id="exam-content"><div class="level-selector"><button class="level-btn" id="btn-easy" onclick="loadQuizLevel('easy')">🟢 Easy <span>10 Random Qs</span></button><button class="level-btn" id="btn-normal" onclick="loadQuizLevel('normal')">🟡 Normal <span>10 Random Qs</span></button><button class="level-btn" id="btn-hard" onclick="loadQuizLevel('hard')">🟠 Hard <span>10 Random Qs</span></button><button class="level-btn" id="btn-final" onclick="loadQuizLevel('final')">🔴 Final <span>12 Random Qs</span></button><button class="level-btn" id="btn-algebra" onclick="loadQuizLevel('algebra')">📝 Algebra Formative <span>6 Qs</span></button></div><div class="top-tools"><button class="tool-btn" onclick="toggleNotes()">📝 Toggle Digital Notes</button><div class="timer-container"><div class="timer-display" id="timer-display">45:00</div><div class="timer-controls"><button class="t-btn" id="btn-timer-start" onclick="toggleTimer()">▶️ Start</button><button class="t-btn" id="btn-timer-edit" onclick="openTimeModal()">⚙️ Edit</button><button class="t-btn" id="btn-timer-lock" onclick="lockTimer()">🔒 Lock</button></div></div></div><div class="notes-container" id="notes-container"><textarea id="digital-notes" placeholder="Type your rough work, steps, and notes here..."></textarea><div class="notes-tools"><button class="n-btn" onclick="clearNotes()">Clear</button><button class="n-btn" onclick="toggleNotes()">Close</button></div></div><div class="quiz-controls"><div><strong>Feedback:</strong> <span style="color:var(--text-muted)">Immediate vs. Hidden</span></div><label class="toggle-switch"><input type="checkbox" id="mode-toggle" checked onchange="toggleFeedbackMode()"><span id="mode-label">ON: Immediate Feedback</span></label></div><div class="quiz-layout"><div class="sidebar"><h3 id="sidebar-title">Question Navigator</h3><button class="sidebar-review-btn" onclick="openReviewModal()">🚩 View Review List</button><div class="nav-grid" id="nav-grid"></div><div class="legend"><div><div class="legend-box" style="background:var(--unanswered)"></div> Unanswered</div><div><div class="legend-box" style="background:var(--answered)"></div> Answered</div><div><div class="legend-box" style="background:var(--correct)"></div> Correct (1 pt)</div><div><div class="legend-box" style="background:var(--half)"></div> Half (0.5)</div><div><div class="legend-box" style="background:var(--incorrect)"></div> Incorrect (0)</div><div>🚩 Flagged</div></div></div><div class="quiz-main"><div id="quiz-container"></div><div class="submit-area" id="submit-area" style="display:none;"><button class="submit-btn" onclick="submitQuiz()">Submit Test &amp; Calculate Grade</button><div id="final-results"><h2>Assessment Complete!</h2><div class="score-display"><span id="final-score">0</span> / <span id="total-score-display">0</span></div><p style="color:#94a3b8;">MYP Grade Classification:</p><div class="myp-grade">Level <span id="myp-score">0</span></div><div class="history-board"><h3>💾 Past Results</h3><ul class="history-list" id="history-list"></ul></div></div></div></div></div></div></div>
 </div>
 
 <script>
@@ -372,90 +275,158 @@ function toggleDarkMode() { playClick(); document.body.classList.toggle('dark-mo
 function clearNotes() { document.getElementById('digital-notes').value = ''; }
 function toggleNotes() { playClick(); let el = document.getElementById('notes-container'); if (el.style.display === 'block') { el.style.display = 'none'; } else { el.style.display = 'block'; document.getElementById('digital-notes').focus(); } }
 
+// ==================== CUSTOM TIME MODAL ====================
+function openTimeModal() { if (timerLocked) return; document.getElementById('customTimeInput').value = Math.floor(timeRemaining / 60) || defaultTimes[currentMode]; document.getElementById('timeModalOverlay').style.display = 'block'; }
+function closeTimeModal() { document.getElementById('timeModalOverlay').style.display = 'none'; }
+function setCustomTime() { let t = parseInt(document.getElementById('customTimeInput').value); if (!isNaN(t) && t > 0) { defaultTimes[currentMode] = t; initTimer(t); } closeTimeModal(); }
+document.getElementById('timeModalOverlay').addEventListener('click', function(e) { if (e.target === this) closeTimeModal(); });
+
 // ==================== TIMER ====================
 let timerInterval; let timeRemaining; let timerRunning = false; let timerLocked = false; let currentMode = 'easy';
 let defaultTimes = { 'easy': 15, 'normal': 25, 'hard': 35, 'final': 45, 'algebra': 30 };
 function initTimer(minutes) { clearInterval(timerInterval); timerRunning = false; timerLocked = false; timeRemaining = minutes * 60; document.getElementById('btn-timer-start').innerText = '▶️ Start'; document.getElementById('btn-timer-edit').disabled = false; document.getElementById('btn-timer-lock').disabled = false; document.getElementById('timer-display').classList.remove('danger'); updateTimerDisplay(); }
-function toggleTimer() { if (timerRunning) { clearInterval(timerInterval); timerRunning = false; document.getElementById('btn-timer-start').innerText = '▶️ Resume'; } else { timerRunning = true; document.getElementById('btn-timer-start').innerText = '⏸️ Pause'; timerInterval = setInterval(() => { timeRemaining--; updateTimerDisplay(); if (timeRemaining <= 300 && timeRemaining > 0) document.getElementById('timer-display').classList.add('danger'); if (timeRemaining <= 0) { clearInterval(timerInterval); timerRunning = false; document.getElementById('timer-display').innerText = '00:00'; alert("Time's up! Submitting quiz automatically."); submitQuiz(); } }, 1000); } }
+function toggleTimer() { if (timerRunning) { clearInterval(timerInterval); timerRunning = false; document.getElementById('btn-timer-start').innerText = '▶️ Resume'; } else { timerRunning = true; document.getElementById('btn-timer-start').innerText = '⏸️ Pause'; timerInterval = setInterval(() => { timeRemaining--; updateTimerDisplay(); if (timeRemaining <= 300 && timeRemaining > 0) document.getElementById('timer-display').classList.add('danger'); if (timeRemaining <= 0) { clearInterval(timerInterval); timerRunning = false; document.getElementById('timer-display').innerText = '00:00'; document.getElementById('timerModalOverlay').style.display = 'block'; } }, 1000); } }
 function updateTimerDisplay() { let display = document.getElementById('timer-display'); let m = Math.floor(timeRemaining / 60); let s = timeRemaining % 60; display.innerText = `${m < 10 ? '0' : ''}${m}:${s < 10 ? '0' : ''}${s}`; }
-function promptCustomTime() { if (timerLocked) return; let t = prompt('Enter minutes for this quiz:', Math.floor(timeRemaining / 60) || defaultTimes[currentMode]); if (t !== null && !isNaN(t) && t > 0) { defaultTimes[currentMode] = parseInt(t); initTimer(parseInt(t)); } }
-function lockTimer() { if (timerLocked) return; if (confirm('Are you sure you want to completely LOCK the timer? You will not be able to edit or pause the time once locked!')) { timerLocked = true; document.getElementById('btn-timer-edit').disabled = true; document.getElementById('btn-timer-lock').disabled = true; if (!timerRunning) toggleTimer(); } }
+function handleTimerSubmit() { document.getElementById('timerModalOverlay').style.display = 'none'; submitQuiz(); }
+function lockTimer() { if (timerLocked) return; if (confirm('Lock the timer? You won\'t be able to edit or pause it!')) { timerLocked = true; document.getElementById('btn-timer-edit').disabled = true; document.getElementById('btn-timer-lock').disabled = true; if (!timerRunning) toggleTimer(); } }
 function stopTimer() { clearInterval(timerInterval); timerRunning = false; document.getElementById('btn-timer-start').innerText = '▶️ Start'; }
+document.getElementById('timerModalOverlay').addEventListener('click', function(e) { if (e.target === this && timeRemaining <= 0) { /* keep open */ } });
 
 // ==================== CONFETTI ====================
 function launchConfetti() { const container = document.getElementById('confetti-container'); container.style.display = 'block'; container.innerHTML = ''; const colors = ['#3b82f6', '#10b981', '#f59e0b', '#ef4444', '#8b5cf6']; for (let i = 0; i < 150; i++) { let conf = document.createElement('div'); conf.className = 'confetti'; conf.style.left = Math.random() * 100 + 'vw'; conf.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)]; conf.style.animation = `fall ${Math.random() * 3 + 2}s linear forwards`; conf.style.animationDelay = Math.random() * 2 + 's'; container.appendChild(conf); } setTimeout(() => { container.style.display = 'none'; }, 6000); }
 
 // ==================== GLOSSARY ====================
 const glossaryItems = [
-    { term: "Vertex", def: "Turning point of a parabola." },
-    { term: "Roots / X-Intercepts", def: "Where graph crosses the x‑axis (y = 0)." },
-    { term: "Y‑Intercept", def: "Where graph crosses the y‑axis (x = 0)." },
-    { term: "Domain", def: "Allowed input values (x)." },
-    { term: "Range", def: "Possible output values (y)." },
-    { term: "Parabola", def: "U‑shaped graph of a quadratic." },
-    { term: "Discriminant (Δ)", def: "b<sup>2</sup> − 4ac – tells how many real roots." },
-    { term: "Coefficient", def: "Number multiplying a variable, e.g., 5 in 5x<sup>2</sup>." },
-    { term: "GCF", def: "Greatest Common Factor." },
-    { term: "Indices / Exponents", def: "Shorthand for repeated multiplication." },
-    { term: "Axis of Symmetry", def: "Vertical line dividing parabola in half; x = −b/(2a)." },
-    { term: "Binomial", def: "Two‑term expression, e.g., x + 4." },
-    { term: "Factorise", def: "Write an expression as a product of brackets." },
-    { term: "Inequality", def: "Comparison using <, >, ≤, ≥." },
-    { term: "Sign Diagram", def: "Number line showing where a function is +, −, or zero." }
+    { term: "Vertex", def: "Turning point of a parabola." }, { term: "Roots / X-Intercepts", def: "Where graph crosses x‑axis (y = 0)." }, { term: "Y‑Intercept", def: "Where graph crosses y‑axis (x = 0)." }, { term: "Domain", def: "Allowed input values (x)." }, { term: "Range", def: "Possible output values (y)." }, { term: "Parabola", def: "U‑shaped graph of a quadratic." }, { term: "Discriminant (Δ)", def: "b² − 4ac – tells how many real roots." }, { term: "Coefficient", def: "Number multiplying a variable." }, { term: "GCF", def: "Greatest Common Factor." }, { term: "Indices / Exponents", def: "Shorthand for repeated multiplication." }, { term: "Axis of Symmetry", def: "Line dividing parabola; x = −b/(2a)." }, { term: "Binomial", def: "Two‑term expression, e.g. x + 4." }, { term: "Factorise", def: "Write expression as product of brackets." }, { term: "Inequality", def: "Comparison using <, >, ≤, ≥." }, { term: "Sign Diagram", def: "Number line showing +, −, or zero." }
 ];
-(function renderGlossary() {
-    const grid = document.getElementById('glossary-grid');
-    grid.innerHTML = glossaryItems.map(i => `<div class="glossary-item"><span class="glossary-term">${i.term}</span><p class="glossary-def">${i.def}</p></div>`).join('');
-})();
+(function renderGlossary() { document.getElementById('glossary-grid').innerHTML = glossaryItems.map(i => `<div class="glossary-item"><span class="glossary-term">${i.term}</span><p class="glossary-def">${i.def}</p></div>`).join(''); })();
 
 // ==================== CHAPTER TITLES ====================
-const chapterTitles = [
-    "1. Algebraic Fractions & Indices",
-    "2. Factoring Basics",
-    "3. Solving Equations",
-    "4. Domain & Range",
-    "5. The 3 Quadratic Forms",
-    "6. Complex Factoring",
-    "7. Formula & Discriminant",
-    "8. Transformations",
-    "9. Graph to Equation",
-    "10. Real‑World Modeling",
-    "11. Inequalities & Signs"
-];
+const chapterTitles = [ "1. Algebraic Fractions & Indices", "2. Factoring Basics", "3. Solving Equations", "4. Domain & Range", "5. The 3 Quadratic Forms", "6. Complex Factoring", "7. Formula & Discriminant", "8. Transformations", "9. Graph to Equation", "10. Real‑World Modeling", "11. Inequalities & Signs" ];
 
-// ==================== MODAL CONTENT – DETAILED EXAMPLES (same as previous, unchanged) ====================
-const modalContent = [ /* ... same as previous response ... */ ];
-// (For brevity, the full modalContent is omitted here but it is exactly the enriched version from the previous answer.)
-// In the actual file, it's fully present.
+// ==================== MODAL CONTENT (All 11 Chapters – Enriched) ====================
+const modalContent = [
+    { title: chapterTitles[0], desc: "Core exponent rules, negative/fractional indices, simplifying algebraic fractions.", body: `<div class="video-wrapper"><iframe src="https://www.youtube-nocookie.com/embed/NuccqpiUHrk" allowfullscreen></iframe></div><div class="yt-fallback"><a href="https://www.youtube.com/watch?v=NuccqpiUHrk" target="_blank">⚠️ Video not playing? Click to watch on YouTube ↗️</a></div><div style="text-align:center;margin:15px 0;"><a href="https://www.youtube.com/results?search_query=Algebraic+Fractions+%26+Indices" target="_blank" class="yt-search-btn">🔍 Watch / Search on YouTube</a></div><div class="beginner-box"><h3>👶 What are Indices?</h3><p>Indices (exponents) show repeated multiplication. x<sup>5</sup> = x·x·x·x·x</p></div><h2>📘 Index Laws</h2><div class="lesson-step"><h3>Multiplying (same base)</h3><p>Add exponents: a<sup>m</sup> × a<sup>n</sup> = a<sup>m+n</sup></p></div><div class="lesson-step"><h3>Dividing (same base)</h3><p>Subtract exponents: a<sup>m</sup> ÷ a<sup>n</sup> = a<sup>m−n</sup></p></div><div class="lesson-step"><h3>Power of a power</h3><p>Multiply exponents: (a<sup>m</sup>)<sup>n</sup> = a<sup>mn</sup></p></div><div class="lesson-step"><h3>Zero & Negative</h3><p>a<sup>0</sup> = 1; a<sup>−n</sup> = 1/a<sup>n</sup></p></div><h2>🔍 Worked Examples</h2><div class="example-box"><h4>Example 1 – Multiply</h4><p>Simplify: x<sup>3</sup> × x<sup>5</sup></p><div class="solution-box">Same base x → add exponents: 3+5=8 → x⁸</div></div><div class="example-box"><h4>Example 2 – Divide</h4><p>Simplify: y<sup>8</sup> ÷ y<sup>2</sup></p><div class="solution-box">Same base y → subtract: 8−2=6 → y⁶</div></div><div class="example-box"><h4>Example 3 – Power of a power</h4><p>Simplify: (x<sup>3</sup>)<sup>2</sup></p><div class="solution-box">Multiply exponents: 3×2=6 → x⁶</div></div><div class="example-box"><h4>Example 4 – Fractional</h4><p>Evaluate: 27<sup>2/3</sup></p><div class="solution-box">Denominator 3 = cube root of 27 = 3. Numerator 2 = square: 3² = 9.</div></div><div class="example-box"><h4>Example 5 – Negative</h4><p>Write without negative: x<sup>−3</sup></p><div class="solution-box">a<sup>−n</sup> = 1/a<sup>n</sup> → 1/x³</div></div><div class="example-box"><h4>Example 6 – Algebraic Fraction</h4><p>Simplify: (x²+5x+6)/(x²−4)</p><div class="solution-box">Factor numerator: (x+2)(x+3). Denominator DOTS: (x−2)(x+2). Cancel (x+2) → (x+3)/(x−2)</div></div>` },
+    { title: chapterTitles[1], desc: "Mastering GCF, perfect squares, grouping, and multi‑step factoring.", body: `<div class="video-wrapper"><iframe src="https://www.youtube-nocookie.com/embed/D3a8NnpQ2vU" allowfullscreen></iframe></div><div class="yt-fallback"><a href="https://www.youtube.com/watch?v=D3a8NnpQ2vU" target="_blank">⚠️ Video not playing? Click to watch ↗️</a></div><div style="text-align:center;margin:15px 0;"><a href="https://www.youtube.com/results?search_query=Factoring+Basics" target="_blank" class="yt-search-btn">🔍 Watch / Search on YouTube</a></div><div class="beginner-box"><h3>👶 What is Factoring?</h3><p>Factoring turns a sum into a product – the reverse of expanding.</p></div><h2>🔍 Worked Examples</h2><div class="example-box"><h4>Example 1 – GCF</h4><p>Factor: 4x² − 12x</p><div class="solution-box">GCF of 4x² and 12x is 4x. → 4x(x − 3)</div></div><div class="example-box"><h4>Example 2 – Trinomial</h4><p>Factor: x² − 8x + 15</p><div class="solution-box">Numbers multiplying to +15 and adding to −8: −3, −5 → (x−3)(x−5)</div></div><div class="example-box"><h4>Example 3 – DOTS</h4><p>Factor: 25x² − 49y²</p><div class="solution-box">a²−b² = (a−b)(a+b). a=5x, b=7y → (5x−7y)(5x+7y)</div></div><div class="example-box"><h4>Example 4 – Grouping</h4><p>Factor: x³ + 3x² + 2x + 6</p><div class="solution-box">Group: (x³+3x²)+(2x+6) = x²(x+3)+2(x+3) = (x+3)(x²+2)</div></div><div class="example-box"><h4>Example 5 – Multi‑Step</h4><p>Factor fully: 3x³ − 27x</p><div class="solution-box">GCF 3x: 3x(x²−9). DOTS: 3x(x−3)(x+3)</div></div>` },
+    { title: chapterTitles[2], desc: "Balance Scale method, complex fractions, taking roots, Null Factor Law.", body: `<div class="video-wrapper"><iframe src="https://www.youtube-nocookie.com/embed/i7idZfS8t8w" allowfullscreen></iframe></div><div class="yt-fallback"><a href="https://www.youtube.com/watch?v=i7idZfS8t8w" target="_blank">⚠️ Video not playing? Click ↗️</a></div><div style="text-align:center;margin:15px 0;"><a href="https://www.youtube.com/results?search_query=Solving+Equations+Null+Factor+Law" target="_blank" class="yt-search-btn">🔍 Watch / Search on YouTube</a></div><div class="beginner-box"><h3>👶 Null Factor Law</h3><p>If product = 0, at least one factor must be 0.</p></div><h2>🔍 Worked Examples</h2><div class="example-box"><h4>Example 1 – Simple</h4><p>Solve: (x−3)(x+2)=0</p><div class="solution-box">Set each bracket = 0 → x=3 or x=−2</div></div><div class="example-box"><h4>Example 2 – Rearrange</h4><p>Solve: x² + 3x = 28</p><div class="solution-box">x²+3x−28=0 → (x+7)(x−4)=0 → x=−7 or x=4</div></div><div class="example-box"><h4>Example 3 – Rational</h4><p>Solve: 5/(x+2) = 2/(x−1)</p><div class="solution-box">Cross‑multiply: 5(x−1)=2(x+2) → 5x−5=2x+4 → 3x=9 → x=3</div></div><div class="example-box"><h4>Example 4 – Square Root</h4><p>Solve: 2x² − 50 = 0</p><div class="solution-box">2x²=50 → x²=25 → x=±5</div></div>` },
+    { title: chapterTitles[3], desc: "Function machines, restricted inputs, ranges algebraically, interval notation.", body: `<div class="video-wrapper"><iframe src="https://www.youtube-nocookie.com/embed/A5kAC-L83lY" allowfullscreen></iframe></div><div class="yt-fallback"><a href="https://www.youtube.com/watch?v=A5kAC-L83lY" target="_blank">⚠️ Video not playing? Click ↗️</a></div><div style="text-align:center;margin:15px 0;"><a href="https://www.youtube.com/results?search_query=Domain+and+Range+of+a+Function" target="_blank" class="yt-search-btn">🔍 Watch / Search on YouTube</a></div><div class="beginner-box"><h3>👶 Domain & Range</h3><p>Domain = allowed inputs (x). Range = possible outputs (y).</p></div><h2>🔍 Worked Examples</h2><div class="example-box"><h4>Example 1 – Domain Restriction</h4><p>Find domain of f(x)=5/(x−2)</p><div class="solution-box">Denominator ≠ 0 → x−2≠0 → x≠2. Domain: all reals except 2.</div></div><div class="example-box"><h4>Example 2 – Range of Quadratic</h4><p>Find range of y=x²+5</p><div class="solution-box">x²≥0, so smallest y is 0+5=5. Range: y≥5.</div></div><div class="example-box"><h4>Example 3 – Function Notation</h4><p>If f(x)=2x²+5x−3, find f(−2)</p><div class="solution-box">Substitute: 2(−2)²+5(−2)−3 = 8−10−3 = −5</div></div>` },
+    { title: chapterTitles[4], desc: "Standard, Factored, Vertex form analysis, Completing the Square.", body: `<div class="video-wrapper"><iframe src="https://www.youtube-nocookie.com/embed/eRbgHCaWQQE" allowfullscreen></iframe></div><div class="yt-fallback"><a href="https://www.youtube.com/watch?v=eRbgHCaWQQE" target="_blank">⚠️ Video not playing? Click ↗️</a></div><div style="text-align:center;margin:15px 0;"><a href="https://www.youtube.com/results?search_query=The+3+Quadratic+Forms" target="_blank" class="yt-search-btn">🔍 Watch / Search on YouTube</a></div><div class="beginner-box"><h3>👶 Three Forms</h3><p>Standard = y‑intercept. Factored = x‑intercepts. Vertex = turning point.</p></div><h2>🔍 Worked Examples</h2><div class="example-box"><h4>Example 1 – Completing the Square</h4><p>Convert y=x²+8x+5 to vertex form</p><div class="solution-box">Half of 8 is 4, square 16. y=(x²+8x+16−16)+5 = (x+4)²−11. Vertex: (−4,−11)</div></div><div class="example-box"><h4>Example 2 – Factored Form</h4><p>Parabola with roots 3,−2 and y‑intercept 12</p><div class="solution-box">y=a(x−3)(x+2). Plug (0,12): 12=a(−3)(2)=−6a → a=−2. y=−2(x−3)(x+2)</div></div><div class="example-box"><h4>Example 3 – Vertex Form</h4><p>Identify vertex of y=−(x+5)²+7</p><div class="solution-box">y=a(x−h)²+k → h=−5, k=7. Vertex: (−5,7)</div></div>` },
+    { title: chapterTitles[5], desc: "Handling trinomials when a ≠ 1 using the AC Method.", body: `<div class="video-wrapper"><iframe src="https://www.youtube-nocookie.com/embed/0RPJqPkfG5Y" allowfullscreen></iframe></div><div class="yt-fallback"><a href="https://www.youtube.com/watch?v=0RPJqPkfG5Y" target="_blank">⚠️ Video not playing? Click ↗️</a></div><div style="text-align:center;margin:15px 0;"><a href="https://www.youtube.com/results?search_query=Complex+Factoring+AC+Method" target="_blank" class="yt-search-btn">🔍 Watch / Search on YouTube</a></div><div class="beginner-box"><h3>👶 AC Method</h3><p>Multiply a×c, find magic numbers, split the middle term, group.</p></div><h2>🔍 Worked Examples</h2><div class="example-box"><h4>Example 1 – 2x²+7x+3</h4><div class="solution-box">a·c=6. Numbers 6,1 (multiply to 6, add to 7). Split: 2x²+6x+x+3 = 2x(x+3)+1(x+3) = (2x+1)(x+3)</div></div><div class="example-box"><h4>Example 2 – 6x²−x−15</h4><div class="solution-box">a·c=−90. Numbers −10,9. Split: 6x²−10x+9x−15 = 2x(3x−5)+3(3x−5) = (3x−5)(2x+3)</div></div><div class="example-box"><h4>Example 3 – Solve 2x²−5x−3=0</h4><div class="solution-box">Factor: (2x+1)(x−3)=0 → x=−1/2 or x=3</div></div>` },
+    { title: chapterTitles[6], desc: "Quadratic Formula, Discriminant, Vertex from formula.", body: `<div class="video-wrapper"><iframe src="https://www.youtube-nocookie.com/embed/IL3UCuXrUzE" allowfullscreen></iframe></div><div class="yt-fallback"><a href="https://www.youtube.com/watch?v=IL3UCuXrUzE" target="_blank">⚠️ Video not playing? Click ↗️</a></div><div style="text-align:center;margin:15px 0;"><a href="https://www.youtube.com/results?search_query=Quadratic+Formula+Discriminant" target="_blank" class="yt-search-btn">🔍 Watch / Search on YouTube</a></div><div class="beginner-box"><h3>👶 Quadratic Formula</h3><p>x = [−b ± √(b²−4ac)] / (2a)</p></div><h2>🔍 Worked Examples</h2><div class="example-box"><h4>Example 1 – Use Formula</h4><p>Solve: 3x²−5x−7=0</p><div class="solution-box">a=3,b=−5,c=−7. x = [5 ± √(25+84)]/6 = [5 ± √109]/6</div></div><div class="example-box"><h4>Example 2 – Discriminant</h4><p>How many real roots for x²+4x+5=0?</p><div class="solution-box">Δ=16−20=−4 < 0 → no real roots</div></div><div class="example-box"><h4>Example 3 – Vertex</h4><p>Vertex of y=−2x²+12x−10</p><div class="solution-box">x=−b/(2a)=−12/(−4)=3. y=4. Vertex: (3,4)</div></div>` },
+    { title: chapterTitles[7], desc: "How parameters alter a parabola's position, stretch, shape.", body: `<div class="video-wrapper"><iframe src="https://www.youtube-nocookie.com/embed/3B2VtQmYVqM" allowfullscreen></iframe></div><div class="yt-fallback"><a href="https://www.youtube.com/watch?v=3B2VtQmYVqM" target="_blank">⚠️ Video not playing? Click ↗️</a></div><div style="text-align:center;margin:15px 0;"><a href="https://www.youtube.com/results?search_query=Transformations+Quadratic+Functions" target="_blank" class="yt-search-btn">🔍 Watch / Search on YouTube</a></div><div class="beginner-box"><h3>👶 Moving the Parabola</h3><p>y=a(x−h)²+k: shift right h, up k. a<0 flips.</p></div><h2>🔍 Worked Examples</h2><div class="example-box"><h4>Example 1 – Vertical Shift</h4><p>Graph y=x²+3</p><div class="solution-box">Shift up 3. Vertex: (0,3)</div></div><div class="example-box"><h4>Example 2 – Horizontal</h4><p>Graph y=(x+3)²</p><div class="solution-box">(x+3) = shift LEFT 3. Vertex: (−3,0)</div></div><div class="example-box"><h4>Example 3 – Both</h4><p>Graph y=−(x−2)²+4</p><div class="solution-box">Opens down (a=−1). Right 2, up 4. Vertex: (2,4)</div></div>` },
+    { title: chapterTitles[8], desc: "Building an equation from a parabola's picture.", body: `<div class="video-wrapper"><iframe src="https://www.youtube-nocookie.com/embed/Fh1pJw9xLZ8" allowfullscreen></iframe></div><div class="yt-fallback"><a href="https://www.youtube.com/watch?v=Fh1pJw9xLZ8" target="_blank">⚠️ Video not playing? Click ↗️</a></div><div style="text-align:center;margin:15px 0;"><a href="https://www.youtube.com/results?search_query=Graph+to+Equation+Quadratic" target="_blank" class="yt-search-btn">🔍 Watch / Search on YouTube</a></div><div class="beginner-box"><h3>👶 Detective Work</h3><p>Read key features from the graph to write the equation.</p></div><h2>🔍 Worked Examples</h2><div class="example-box"><h4>Example 1 – Given Vertex</h4><p>Vertex (−1,4), passes (2,−14)</p><div class="solution-box">y=a(x+1)²+4. Plug (2,−14): −14=a(9)+4 → a=−2 → y=−2(x+1)²+4</div></div><div class="example-box"><h4>Example 2 – Given Roots</h4><p>Roots 3,−2, y‑intercept 12</p><div class="solution-box">y=a(x−3)(x+2). (0,12): 12=a(−3)(2)→a=−2 → y=−2(x−3)(x+2)</div></div>` },
+    { title: chapterTitles[9], desc: "Using quadratics for max height, optimization, economics.", body: `<div class="video-wrapper"><iframe src="https://www.youtube-nocookie.com/embed/OZtqz_xw0SQ" allowfullscreen></iframe></div><div class="yt-fallback"><a href="https://www.youtube.com/watch?v=OZtqz_xw0SQ" target="_blank">⚠️ Video not playing? Click ↗️</a></div><div style="text-align:center;margin:15px 0;"><a href="https://www.youtube.com/results?search_query=Real-World+Modeling+Quadratics" target="_blank" class="yt-search-btn">🔍 Watch / Search on YouTube</a></div><div class="beginner-box"><h3>👶 Real‑World Parabolas</h3><p>Projectiles, profits, and areas are modelled by quadratics.</p></div><h2>🔍 Worked Examples</h2><div class="example-box"><h4>Example 1 – Rocket</h4><p>h(t)=−5t²+20t+25. Max height?</p><div class="solution-box">Vertex: t=−b/(2a)=−20/(−10)=2. h(2)=45m.</div></div><div class="example-box"><h4>Example 2 – Revenue</h4><p>R(x)=(10+x)(100−5x). Max revenue?</p><div class="solution-box">Roots −10,20 → vertex x=5. Price $15.</div></div>` },
+    { title: chapterTitles[10], desc: "Sign diagrams to solve quadratic inequalities.", body: `<div class="video-wrapper"><iframe src="https://www.youtube-nocookie.com/embed/ZNtzWpU80-0" allowfullscreen></iframe></div><div class="yt-fallback"><a href="https://www.youtube.com/watch?v=ZNtzWpU80-0" target="_blank">⚠️ Video not playing? Click ↗️</a></div><div style="text-align:center;margin:15px 0;"><a href="https://www.youtube.com/results?search_query=Inequalities+%26+Sign+Diagrams" target="_blank" class="yt-search-btn">🔍 Watch / Search on YouTube</a></div><div class="beginner-box"><h3>👶 Sign Diagrams</h3><p>Number line showing +, − regions of a quadratic.</p></div><h2>🔍 Worked Examples</h2><div class="example-box"><h4>Example 1</h4><p>Solve: x²−3x−10 < 0</p><div class="solution-box">Roots 5,−2. U‑shape → <0 between roots: −2<x<5</div></div><div class="example-box"><h4>Example 2</h4><p>Solve: 4−x² ≤ 0</p><div class="solution-box">Roots ±2. n‑shape → ≤0 outside: x≤−2 or x≥2</div></div>` }
+];
 
 // ==================== MASTERY TRACKING ====================
 let currentTopicIndex = 0;
-function renderTextbook() {
-    const grid = document.getElementById('learning-grid');
-    grid.innerHTML = modalContent.map((m,i) => {
-        let mastery = JSON.parse(localStorage.getItem('mypMastery')) || {};
-        let cls = mastery[i] ? 'mastered' : '';
-        return `<div class="recap-box ${cls}" onclick="openModal(${i})"><span class="mastery-badge">✅</span><h3>${m.title}</h3><p>${m.desc}</p><span class="click-hint">Start Module →</span></div>`;
-    }).join('');
-}
-function markAsMastered() {
-    let mastery = JSON.parse(localStorage.getItem('mypMastery')) || {};
-    mastery[currentTopicIndex] = true;
-    localStorage.setItem('mypMastery', JSON.stringify(mastery));
-    renderTextbook();
-    closeModal();
-}
+function renderTextbook() { const g = document.getElementById('learning-grid'); g.innerHTML = modalContent.map((m,i) => { let mastery = JSON.parse(localStorage.getItem('mypMastery')) || {}; let cls = mastery[i] ? 'mastered' : ''; return `<div class="recap-box ${cls}" onclick="openModal(${i})"><span class="mastery-badge">✅</span><h3>${m.title}</h3><p>${m.desc}</p><span class="click-hint">Start Module →</span></div>`; }).join(''); }
+function markAsMastered() { let mastery = JSON.parse(localStorage.getItem('mypMastery')) || {}; mastery[currentTopicIndex] = true; localStorage.setItem('mypMastery', JSON.stringify(mastery)); renderTextbook(); closeModal(); }
 
-// ==================== QUIZ POOLS (with steps) ====================
-// (Same as before, all questions have a "steps" array for the solution button)
-const easyPool = [ /* ... */ ];
-const normalPool = [ /* ... */ ];
-const hardPool = [ /* ... */ ];
-const finalPool = [ /* ... */ ];
-const algebraPool = [ /* ... */ ];
-// Full pools are identical to the enriched version from the last answer.
+// ==================== QUIZ POOLS (20 each, 4‑step solutions) ====================
+const easyPool = [
+    { chapter:0, type:'typed', q:"Simplify: x<sup>3</sup> × x<sup>5</sup>", correctAnswers:["x^8","x8","x⁸"], hint:"Add the powers.", steps:["1. Both terms have base x.","2. Multiply → add exponents: 3+5=8.","3. Result: x⁸.","4. Final answer: x⁸."] },
+    { chapter:1, type:'typed', q:"Expand: (x+2)(x+4)", correctAnswers:["x^2+6x+8","x²+6x+8"], hint:"FOIL.", steps:["1. First: x·x = x².","2. Outside: 4x. Inside: 2x.","3. Last: 8. Combine: 4x+2x=6x.","4. Final: x²+6x+8."] },
+    { chapter:0, type:'typed', q:"Evaluate: 16<sup>1/2</sup>", correctAnswers:["4"], hint:"Square root.", steps:["1. Exponent 1/2 means square root.","2. Think: what number × itself = 16?","3. 4 × 4 = 16.","4. Answer: 4."] },
+    { chapter:1, type:'typed', q:"Factor GCF: 4x<sup>2</sup> − 12x", correctAnswers:["4x(x-3)","4x(x - 3)"], hint:"Find the common factor.", steps:["1. GCF of 4 and 12 is 4.","2. Both terms have at least one x.","3. Factor out 4x: 4x(x − 3).","4. Check: 4x·x=4x², 4x·(−3)=−12x ✓"] },
+    { chapter:2, type:'mcq', q:"Solve: x(x−5)=0", opts:["x=0 or x=5","x=5 only","x=0 or x=−5","x=−5 only"], ans:0, hint:"Null Factor Law.", steps:["1. Product = 0 → one factor must be 0.","2. Either x=0.","3. Or x−5=0 → x=5.","4. Solutions: x=0, x=5."] },
+    { chapter:0, type:'typed', q:"Simplify: y<sup>8</sup> ÷ y<sup>2</sup>", correctAnswers:["y^6","y⁶","y6"], hint:"Subtract exponents.", steps:["1. Same base y.","2. Divide → subtract: 8−2=6.","3. Result: y⁶.","4. Final: y⁶."] },
+    { chapter:1, type:'typed', q:"Factor DOTS: x<sup>2</sup>−25", correctAnswers:["(x-5)(x+5)","(x+5)(x-5)"], hint:"Difference of squares.", steps:["1. Pattern: a²−b² = (a−b)(a+b).","2. Here a=x, b=5.","3. Write: (x−5)(x+5).","4. Final answer."] },
+    { chapter:0, type:'typed', q:"Simplify: (x<sup>3</sup>)<sup>2</sup>", correctAnswers:["x^6","x⁶","x6"], hint:"Multiply exponents.", steps:["1. Power of a power: multiply.","2. 3 × 2 = 6.","3. Result: x⁶.","4. Final: x⁶."] },
+    { chapter:0, type:'typed', q:"Evaluate: 2<sup>3</sup>", correctAnswers:["8"], hint:"2 cubed.", steps:["1. 2³ = 2×2×2.","2. 2×2=4.","3. 4×2=8.","4. Answer: 8."] },
+    { chapter:3, type:'mcq', q:"Domain of f(x)=5/(x−2)?", opts:["x ≠ 2","x > 2","x ≠ −2","All real"], ans:0, hint:"Denominator ≠ 0.", steps:["1. Fraction undefined when bottom = 0.","2. Set x−2=0 → x=2.","3. So x cannot be 2.","4. Domain: all real x except 2."] },
+    { chapter:2, type:'typed', q:"Solve: x<sup>2</sup>−9=0", correctAnswers:["3,-3","-3,3"], hint:"Square root.", steps:["1. Add 9: x²=9.","2. Take square root.","3. Remember ± : x=±3.","4. Answers: 3, −3."] },
+    { chapter:1, type:'typed', q:"Expand: (x−5)<sup>2</sup>", correctAnswers:["x^2-10x+25","x²-10x+25"], hint:"FOIL (x−5)(x−5).", steps:["1. Write as (x−5)(x−5).","2. First: x². Outside: −5x. Inside: −5x.","3. Last: 25. Combine −5x−5x = −10x.","4. Final: x²−10x+25."] },
+    { chapter:4, type:'typed', q:"y‑intercept of y=2x<sup>2</sup>+3x−8?", correctAnswers:["-8"], hint:"Set x=0.", steps:["1. y‑intercept is where x=0.","2. Substitute: 2(0)+3(0)−8.","3. =−8.","4. Answer: −8."] },
+    { chapter:0, type:'typed', q:"Simplify: a<sup>2</sup> × a<sup>4</sup>", correctAnswers:["a^6","a⁶","a6"], hint:"Add exponents.", steps:["1. Same base a.","2. Multiply → add: 2+4=6.","3. a⁶.","4. Final: a⁶."] },
+    { chapter:2, type:'typed', q:"x‑intercepts of y=(x−4)(x+3)", correctAnswers:["4,-3","-3,4"], hint:"Set each bracket = 0.", steps:["1. x−4=0 → x=4.","2. x+3=0 → x=−3.","3. x‑intercepts: (4,0) & (−3,0).","4. Answers: 4, −3."] },
+    { chapter:1, type:'typed', q:"GCF of 18x<sup>2</sup> and 27x?", correctAnswers:["9x"], hint:"Biggest common.", steps:["1. Factors of 18: 1,2,3,6,9,18.","2. Factors of 27: 1,3,9,27. Largest common: 9.","3. Both have x.","4. GCF: 9x."] },
+    { chapter:4, type:'typed', q:"Minimum y‑value of y=x<sup>2</sup>−4x?", correctAnswers:["-4"], hint:"Find vertex.", steps:["1. x = −b/(2a) = 4/2 = 2.","2. y = 4−8 = −4.","3. Minimum is −4.","4. Answer: −4."] },
+    { chapter:0, type:'typed', q:"Simplify: a/2 × b/3", correctAnswers:["ab/6"], hint:"Multiply fractions.", steps:["1. Multiply numerators: a·b = ab.","2. Multiply denominators: 2·3 = 6.","3. Result: ab/6.","4. Final: ab/6."] },
+    { chapter:6, type:'mcq', q:"Δ=0 means?", opts:["One real root","Two real roots","No real roots","y‑int zero"], ans:0, hint:"Perfect square.", steps:["1. Δ = b²−4ac.","2. Δ=0 → square root part = 0.","3. Only one solution: x=−b/(2a).","4. One real (repeated) root."] },
+    { chapter:7, type:'mcq', q:"Which way does y=−x<sup>2</sup>+4 open?", opts:["Downwards","Upwards","Left","Right"], ans:0, hint:"Sign of a.", steps:["1. Coefficient a = −1.","2. a < 0 → opens downward.","3. (n‑shaped).","4. Downwards."] }
+];
 
-// ==================== QUIZ ENGINE (Updated with useSolution) ====================
+const normalPool = [
+    { chapter:1, type:'typed', q:"Factor: x<sup>2</sup>+7x+10", correctAnswers:["(x+5)(x+2)","(x+2)(x+5)"], hint:"Multiply to 10, add to 7.", steps:["1. Need numbers × to 10, + to 7.","2. 5 and 2 work.","3. Write (x+5)(x+2).","4. Final answer."] },
+    { chapter:4, type:'typed', q:"Vertex of y=2(x−3)<sup>2</sup>+4", correctAnswers:["(3,4)","3,4"], hint:"Vertex form.", steps:["1. Form: y=a(x−h)²+k.","2. h=3 (flip sign), k=4.","3. Vertex: (3,4).","4. Answer: (3,4)."] },
+    { chapter:4, type:'typed', q:"Convert y=(x−2)<sup>2</sup> to standard", correctAnswers:["x^2-4x+4","x²-4x+4"], hint:"Expand.", steps:["1. (x−2)(x−2).","2. FOIL: x²−2x−2x+4.","3. Combine: x²−4x+4.","4. Final."] },
+    { chapter:2, type:'typed', q:"Solve: x<sup>2</sup>−9=0", correctAnswers:["3,-3","-3,3"], hint:"Square root.", steps:["1. x²=9.","2. x=±√9.","3. x=±3.","4. Answers: 3, −3."] },
+    { chapter:0, type:'typed', q:"Simplify: (2x<sup>2</sup>)<sup>3</sup>", correctAnswers:["8x^6","8x⁶","8x6"], hint:"Apply to coefficient and exponent.", steps:["1. Cube 2: 8.","2. Multiply exponents: (x²)³ = x⁶.","3. 8x⁶.","4. Final."] },
+    { chapter:2, type:'typed', q:"x‑intercepts of y=x<sup>2</sup>−x−12", correctAnswers:["4,-3","-3,4"], hint:"Factor.", steps:["1. Multiply to −12, add to −1 → −4,3.","2. Factor: (x−4)(x+3).","3. Roots: 4, −3.","4. Answers."] },
+    { chapter:0, type:'typed', q:"Simplify: (x<sup>2</sup>−9)/(x−3)", correctAnswers:["x+3"], hint:"Factor top.", steps:["1. Top: (x−3)(x+3).","2. Cancel (x−3).","3. Left: x+3.","4. Final."] },
+    { chapter:1, type:'typed', q:"Expand: (x−5)<sup>2</sup>", correctAnswers:["x^2-10x+25","x²-10x+25"], hint:"Perfect square.", steps:["1. (x−5)(x−5).","2. x²−5x−5x+25.","3. x²−10x+25.","4. Final."] },
+    { chapter:4, type:'typed', q:"Vertex of y=−(x+2)<sup>2</sup>+5", correctAnswers:["(-2,5)","−2,5"], hint:"Vertex form.", steps:["1. y=a(x−h)²+k.","2. a=−1, h=−2, k=5.","3. Vertex: (−2,5).","4. Answer."] },
+    { chapter:2, type:'typed', q:"Solve: 5x<sup>2</sup>=3x+2", correctAnswers:["-0.4,1","1,-0.4","-2/5,1","1,-2/5"], hint:"Rearrange & factor.", steps:["1. 5x²−3x−2=0.","2. AC method: a·c=−10, numbers −5,2.","3. Split: 5x²−5x+2x−2 = (5x+2)(x−1).","4. x=−2/5, x=1."] },
+    { chapter:1, type:'typed', q:"Factor DOTS: 4x<sup>2</sup>−9", correctAnswers:["(2x-3)(2x+3)","(2x+3)(2x-3)"], hint:"Square roots.", steps:["1. √4x²=2x, √9=3.","2. (2x−3)(2x+3).","3. Check: 4x²−9 ✓.","4. Final."] },
+    { chapter:3, type:'typed', q:"If f(x)=2x+3, find f(−1)", correctAnswers:["1"], hint:"Substitute.", steps:["1. Replace x with −1.","2. 2(−1)+3.","3. −2+3=1.","4. Answer: 1."] },
+    { chapter:0, type:'typed', q:"Write without negative: x<sup>−2</sup>", correctAnswers:["1/x^2","1/x²"], hint:"Reciprocal.", steps:["1. a⁻ⁿ = 1/aⁿ.","2. x⁻² = 1/x².","3. Done.","4. Final: 1/x²."] },
+    { chapter:1, type:'typed', q:"GCF of 18x<sup>2</sup> and 27x?", correctAnswers:["9x"], hint:"Largest common.", steps:["1. 18 & 27 → GCF 9.","2. Both have x.","3. 9x.","4. Answer."] },
+    { chapter:4, type:'typed', q:"Axis of symmetry of y=x<sup>2</sup>+6x+5", correctAnswers:["-3","x=-3"], hint:"Formula.", steps:["1. x=−b/(2a).","2. a=1,b=6 → x=−6/2=−3.","3. Axis: x=−3.","4. Answer."] },
+    { chapter:0, type:'typed', q:"Simplify (3a<sup>2</sup>)<sup>2</sup>", correctAnswers:["9a^4","9a⁴"], hint:"Power of product.", steps:["1. 3²=9.","2. (a²)²=a⁴.","3. 9a⁴.","4. Final."] },
+    { chapter:2, type:'mcq', q:"Solutions to (x+2)(x−5)=0?", opts:["x=−2,5","x=2,−5","x=2,5","x=−2,−5"], ans:0, hint:"Set each = 0.", steps:["1. x+2=0 → x=−2.","2. x−5=0 → x=5.","3. Solutions: −2, 5.","4. Answer."] },
+    { chapter:3, type:'mcq', q:"Range of y=x<sup>2</sup>+5?", opts:["y ≥ 5","y ≤ 5","All real","x ≥ 5"], ans:0, hint:"Smallest x² is 0.", steps:["1. x² ≥ 0 always.","2. Minimum y = 0+5=5.","3. So y ≥ 5.","4. Answer."] },
+    { chapter:6, type:'mcq', q:"Δ=0 means?", opts:["One repeated root","Two distinct roots","No roots","y‑int zero"], ans:0, hint:"Perfect square.", steps:["1. Δ=0 → √0=0.","2. Only x=−b/(2a).","3. One repeated real root.","4. Answer."] },
+    { chapter:4, type:'typed', q:"Vertex of y=−(x+2)<sup>2</sup>+5", correctAnswers:["(-2,5)","−2,5"], hint:"Vertex form.", steps:["1. h=−2, k=5.","2. Vertex: (−2,5).","3. Done.","4. Answer."] }
+];
+
+const hardPool = [
+    { chapter:5, type:'typed', q:"Factor AC: 2x<sup>2</sup>+7x+3", correctAnswers:["(2x+1)(x+3)","(x+3)(2x+1)"], hint:"AC=6, numbers 6,1.", steps:["1. a·c=6. Need ×6, +7 → 6,1.","2. Split: 2x²+6x+x+3.","3. Group: 2x(x+3)+1(x+3).","4. (2x+1)(x+3)."] },
+    { chapter:5, type:'typed', q:"Solve: 2x<sup>2</sup>−5x−3=0", correctAnswers:["3,-0.5","-0.5,3","3,-1/2","-1/2,3"], hint:"AC method.", steps:["1. Factor: (2x+1)(x−3)=0.","2. 2x+1=0 → x=−1/2.","3. x−3=0 → x=3.","4. Answers: −1/2, 3."] },
+    { chapter:6, type:'mcq', q:"Δ = −10, how many real roots?", opts:["0","1","2","10"], ans:0, hint:"Negative Δ.", steps:["1. Δ < 0.","2. Can't take √ of negative.","3. No real roots.","4. Answer: 0."] },
+    { chapter:4, type:'typed', q:"Complete square: x<sup>2</sup>+6x needs?", correctAnswers:["9"], hint:"Half b, square.", steps:["1. b=6, half = 3.","2. 3² = 9.","3. x²+6x+9 = (x+3)².","4. Need 9."] },
+    { chapter:7, type:'typed', q:"Shift y=x<sup>2</sup> LEFT 3 & DOWN 4", correctAnswers:["y=(x+3)^2-4","(x+3)^2-4"], hint:"Opposite inside.", steps:["1. Left 3 → (x+3).","2. Down 4 → −4.","3. y=(x+3)²−4.","4. Answer."] },
+    { chapter:4, type:'typed', q:"Axis of symmetry of roots 2 & −4", correctAnswers:["-1","x=-1"], hint:"Midpoint.", steps:["1. Midpoint = (2+(−4))/2.","2. = −2/2 = −1.","3. Axis: x=−1.","4. Answer."] },
+    { chapter:7, type:'mcq', q:"Roots y=x<sup>2</sup>−6x+8, shift UP 2: new y‑int?", opts:["(0,10)","(0,8)","(0,2)","(0,6)"], ans:0, hint:"Original + 2.", steps:["1. Original y‑int: set x=0 → y=8.","2. Shift up 2: 8+2=10.","3. New y‑int: (0,10).","4. Answer."] },
+    { chapter:9, type:'typed', q:"Rocket h=−5t<sup>2</sup>+20t+25, hit ground?", correctAnswers:["5","t=5"], hint:"Set h=0.", steps:["1. −5t²+20t+25=0.","2. ÷−5: t²−4t−5=0.","3. (t−5)(t+1)=0 → t=5.","4. Answer: 5s."] },
+    { chapter:10, type:'typed', q:"Solve: x<sup>2</sup>−16 > 0, positive only", correctAnswers:["x>4"], hint:"Sign diagram.", steps:["1. Roots ±4.","2. U‑shape, >0 outside.","3. Positive region: x>4.","4. Answer: x>4."] },
+    { chapter:6, type:'typed', q:"Discriminant of x<sup>2</sup>−3x+2", correctAnswers:["1"], hint:"b²−4ac.", steps:["1. a=1,b=−3,c=2.","2. Δ = 9−4·1·2.","3. = 9−8 = 1.","4. Answer: 1."] },
+    { chapter:2, type:'typed', q:"Make x subject: y=(x+5)/3", correctAnswers:["3y-5","x=3y-5"], hint:"Reverse.", steps:["1. ×3: 3y=x+5.","2. −5: x=3y−5.","3. Done.","4. Answer."] },
+    { chapter:5, type:'typed', q:"Factor AC: 3x<sup>2</sup>−11x+6", correctAnswers:["(3x-2)(x-3)","(x-3)(3x-2)"], hint:"AC=18, −9,−2.", steps:["1. a·c=18, need ×18, +−11 → −9,−2.","2. Split: 3x²−9x−2x+6.","3. Group: 3x(x−3)−2(x−3).","4. (3x−2)(x−3)."] },
+    { chapter:7, type:'typed', q:"Vertex of y=−x<sup>2</sup>+6x−5", correctAnswers:["(3,4)","3,4"], hint:"Axis formula.", steps:["1. x=−b/(2a)=−6/(−2)=3.","2. y=−9+18−5=4.","3. Vertex: (3,4).","4. Answer."] },
+    { chapter:8, type:'typed', q:"'a' if vertex (3,6) passes (1,2)?", correctAnswers:["-1"], hint:"Vertex form.", steps:["1. y=a(x−3)²+6.","2. Plug (1,2): 2=a(4)+6.","3. 4a=−4 → a=−1.","4. Answer: −1."] },
+    { chapter:9, type:'mcq', q:"Max area: 60m fence, A=x(60−2x)?", opts:["450","900","400","100"], ans:0, hint:"Vertex.", steps:["1. A=−2x²+60x.","2. Vertex x=15.","3. A=15·30=450.","4. Answer: 450 m²."] },
+    { chapter:10, type:'typed', q:"Solve: x<sup>2</sup>−5x+6 ≤ 0", correctAnswers:["2≤x≤3","2<=x<=3","[2,3]"], hint:"Between roots.", steps:["1. Roots 2,3.","2. U‑shape, ≤0 between.","3. 2 ≤ x ≤ 3.","4. Answer."] },
+    { chapter:1, type:'typed', q:"Factor fully: 2x<sup>2</sup>−8", correctAnswers:["2(x-2)(x+2)","2(x+2)(x-2)"], hint:"GCF then DOTS.", steps:["1. GCF 2: 2(x²−4).","2. x²−4=(x−2)(x+2).","3. 2(x−2)(x+2).","4. Answer."] },
+    { chapter:4, type:'typed', q:"Domain of √(x+5)?", correctAnswers:["x≥-5","x>=-5"], hint:"Inside ≥0.", steps:["1. Need x+5 ≥ 0.","2. x ≥ −5.","3. Domain: x ≥ −5.","4. Answer."] },
+    { chapter:3, type:'typed', q:"f(x)=3x−4, find f(2a+1)", correctAnswers:["6a-1"], hint:"Substitute.", steps:["1. 3(2a+1)−4.","2. 6a+3−4.","3. 6a−1.","4. Answer."] },
+    { chapter:6, type:'mcq', q:"Δ>0 means?", opts:["Two distinct roots","One root","No roots","y‑int zero"], ans:0, hint:"Positive Δ.", steps:["1. Δ > 0.","2. Two different √ values.","3. Two distinct real roots.","4. Answer."] }
+];
+
+const finalPool = [
+    { chapter:1, type:'typed', q:"<span class='level-badge lvl-1'>L1-2</span> Expand: 3x(x−4)", correctAnswers:["3x^2-12x","3x²-12x"], hint:"Distribute.", steps:["1. 3x·x = 3x².","2. 3x·(−4) = −12x.","3. 3x²−12x.","4. Answer."] },
+    { chapter:1, type:'typed', q:"<span class='level-badge lvl-1'>L1-2</span> Factor DOTS: x<sup>2</sup>−16", correctAnswers:["(x-4)(x+4)","(x+4)(x-4)"], hint:"√16=4.", steps:["1. √x²=x, √16=4.","2. (x−4)(x+4).","3. Check: x²−16 ✓.","4. Answer."] },
+    { chapter:4, type:'typed', q:"<span class='level-badge lvl-3'>L3-4</span> y‑int: y=−3(x−1)(x+4)", correctAnswers:["12"], hint:"Set x=0.", steps:["1. x=0: −3(−1)(4).","2. −3·(−1)=3.","3. 3·4=12.","4. Answer: 12."] },
+    { chapter:0, type:'typed', q:"<span class='level-badge lvl-3'>L3-4</span> Simplify: (x²−25)/(x+5)", correctAnswers:["x-5"], hint:"Factor.", steps:["1. Top: (x−5)(x+5).","2. Cancel (x+5).","3. x−5.","4. Answer."] },
+    { chapter:1, type:'typed', q:"<span class='level-badge lvl-5'>L5-6</span> Factor: 3x<sup>2</sup>−27", correctAnswers:["3(x-3)(x+3)","3(x+3)(x-3)"], hint:"GCF first.", steps:["1. GCF 3: 3(x²−9).","2. x²−9 DOTS: (x−3)(x+3).","3. 3(x−3)(x+3).","4. Answer."] },
+    { chapter:4, type:'typed', q:"<span class='level-badge lvl-5'>L5-6</span> x‑coordinate vertex y=−2x²+12x−10", correctAnswers:["3","x=3"], hint:"Formula.", steps:["1. x=−b/(2a).","2. a=−2, b=12.","3. x=−12/(−4)=3.","4. Answer: 3."] },
+    { chapter:6, type:'typed', q:"<span class='level-badge lvl-7'>L7-8</span> k for one root: x²+kx+9=0?", correctAnswers:["6","k=6"], hint:"Δ=0.", steps:["1. One root → Δ=0.","2. k²−36=0 → k²=36.","3. Positive k=6.","4. Answer: 6."] },
+    { chapter:8, type:'typed', q:"<span class='level-badge lvl-7'>L7-8</span> Max height: y=−0.1(x−10)²+10", correctAnswers:["10","10m"], hint:"Vertex y.", steps:["1. Vertex form: k=10.","2. That's the max.","3. 10m.","4. Answer."] },
+    { chapter:9, type:'mcq', q:"<span class='level-badge lvl-7'>L7-8</span> Balloon: h=−5t²+10t+40, ground & max?", opts:["4s & 45m","8s & 40m","2s & 45m","4s & 50m"], ans:0, hint:"Factor & vertex.", steps:["1. Set 0: t=4s.","2. Vertex t=1, h=45.","3. 4s & 45m.","4. Answer."] },
+    { chapter:10, type:'mcq', q:"<span class='level-badge lvl-7'>L7-8</span> Solve: x²−4x−5 ≤ 0", opts:["−1 ≤ x ≤ 5","x ≤ −1 or x ≥ 5","−5 ≤ x ≤ 1","x ≤ −5 or x ≥ −1"], ans:0, hint:"Factor.", steps:["1. (x−5)(x+1)≤0.","2. Roots −1,5.","3. U‑shape, ≤0 between.","4. −1 ≤ x ≤ 5."] },
+    { chapter:7, type:'typed', q:"<span class='level-badge lvl-7'>L7-8</span> 'a' if vertex (2,5) passes (4,9)?", correctAnswers:["1"], hint:"Vertex form.", steps:["1. y=a(x−2)²+5.","2. (4,9): 9=a(4)+5.","3. 4a=4 → a=1.","4. Answer: 1."] },
+    { chapter:1, type:'typed', q:"<span class='level-badge lvl-7'>L7-8</span> GCF: 24x³y² & 36x²y⁴", correctAnswers:["12x^2y^2","12x²y²"], hint:"Lowest powers.", steps:["1. GCF of 24,36: 12.","2. Lowest x: x².","3. Lowest y: y².","4. 12x²y²."] },
+    { chapter:2, type:'typed', q:"<span class='level-badge lvl-5'>L5-6</span> Solve: (x+5)/4 = (9−x)/x", correctAnswers:["-12,3","3,-12"], hint:"Cross‑multiply.", steps:["1. x(x+5)=4(9−x).","2. x²+5x=36−4x.","3. x²+9x−36=0 → (x+12)(x−3)=0.","4. x=−12, 3."] },
+    { chapter:0, type:'typed', q:"<span class='level-badge lvl-7'>L7-8</span> Evaluate: 27<sup>2/3</sup>", correctAnswers:["9"], hint:"Root then power.", steps:["1. Cube root 27=3.","2. Square: 9.","3. Answer: 9.","4."] },
+    { chapter:4, type:'typed', q:"<span class='level-badge lvl-3'>L3-4</span> Domain: f(x)=√(x−3)/(x−8)", correctAnswers:["x≥3, x≠8"], hint:"Two restrictions.", steps:["1. Root: x−3≥0 → x≥3.","2. Denom: x≠8.","3. x≥3 and x≠8.","4. Answer."] },
+    { chapter:5, type:'typed', q:"<span class='level-badge lvl-5'>L5-6</span> Convert: y=x²+8x+5 to vertex", correctAnswers:["(x+4)^2-11","y=(x+4)^2-11"], hint:"Complete square.", steps:["1. (x²+8x)+5.","2. +16−16: (x+4)²−16+5.","3. (x+4)²−11.","4. Answer."] },
+    { chapter:3, type:'typed', q:"<span class='level-badge lvl-1'>L1-2</span> If f(x)=2x−5, find f(3)", correctAnswers:["1"], hint:"Substitute.", steps:["1. 2·3−5.","2. 6−5=1.","3. Answer: 1.","4."] },
+    { chapter:7, type:'typed', q:"<span class='level-badge lvl-7'>L7-8</span> Vertex of y=3x²−12x+7", correctAnswers:["(2,-5)","2,-5"], hint:"Formula.", steps:["1. x=−(−12)/(2·3)=2.","2. y=3(4)−24+7=12−24+7=−5.","3. Vertex: (2,−5).","4. Answer."] },
+    { chapter:9, type:'mcq', q:"<span class='level-badge lvl-7'>L7-8</span> Max area: A=x(60−2x)?", opts:["450","900","400","100"], ans:0, hint:"Expand.", steps:["1. A=−2x²+60x.","2. Vertex x=15.","3. A(15)=450.","4. Answer: 450."] },
+    { chapter:10, type:'typed', q:"<span class='level-badge lvl-7'>L7-8</span> Solve: 4−x² ≤ 0", correctAnswers:["x≤-2 or x≥2","x<=-2 or x>=2"], hint:"Sign diagram.", steps:["1. Roots ±2.","2. n‑shape.","3. ≤0 outside.","4. x≤−2 or x≥2."] }
+];
+
+const algebraPool = [
+    { chapter:2, type:'typed', q:"Solve: (2)/(x−1)+(5)/(x+3)=(2−x)/((x−1)(x+3))", correctAnswers:["1/8","0.125","x=1/8"], hint:"Multiply by LCD.", steps:["1. LCD = (x−1)(x+3).","2. 2(x+3)+5(x−1)=2−x.","3. 7x+1=2−x → 8x=1 → x=1/8.","4. Answer: 1/8."] },
+    { chapter:2, type:'typed', q:"Solve: x²−5x+6=0", correctAnswers:["2,3","3,2"], hint:"Factor.", steps:["1. (x−2)(x−3)=0.","2. x=2 or x=3.","3. Check: 4−10+6=0 ✓.","4. Answers: 2,3."] },
+    { chapter:2, type:'typed', q:"Solve: (2x)/(3x+1)=1/(x+2)", correctAnswers:["1/2,-1","-1,1/2","0.5,-1"], hint:"Cross‑multiply.", steps:["1. 2x(x+2)=3x+1.","2. 2x²+4x−3x−1=0 → 2x²+x−1=0.","3. (2x−1)(x+1)=0.","4. x=1/2, x=−1."] },
+    { chapter:1, type:'typed', q:"Simplify: (x²y³)²/(x³y²)", correctAnswers:["x y^4","xy^4","x*y^4"], hint:"Power then divide.", steps:["1. Numerator: x⁴y⁶.","2. Divide: x⁴⁻³ y⁶⁻².","3. x¹ y⁴.","4. Answer: xy⁴."] },
+    { chapter:2, type:'typed', q:"Solve: x⁴−7x²+12=0", correctAnswers:["2,-2,√3,-√3","±2,±√3"], hint:"u=x².", steps:["1. Let u=x²: u²−7u+12=0.","2. (u−3)(u−4)=0 → u=3,4.","3. x=±√3, ±2.","4. Answers: ±2, ±√3."] },
+    { chapter:1, type:'typed', q:"Expand: (2x−3)³", correctAnswers:["8x^3-36x^2+54x-27","8x³-36x²+54x-27"], hint:"Binomial expansion.", steps:["1. (2x−3)²=4x²−12x+9.","2. ×(2x−3): (4x²−12x+9)(2x−3).","3. 8x³−12x²−24x²+36x+18x−27.","4. 8x³−36x²+54x−27."] }
+];
+
+// ==================== QUIZ ENGINE ====================
 let quizData=[],state=[],immediateFeedback=true,flaggedQuestions=new Set();
 const questionCounts={easy:10,normal:10,hard:10,final:12,algebra:6};
 
@@ -467,7 +438,6 @@ function loadQuizLevel(level){
     document.querySelectorAll('.level-btn').forEach(b=>b.className='level-btn');
     if(level==='algebra') document.getElementById('btn-algebra').classList.add('active-final');
     else document.getElementById(`btn-${level}`).classList.add(`active-${level}`);
-
     let pool,count;
     switch(level){
         case 'easy':pool=easyPool;count=questionCounts.easy;break;
@@ -480,42 +450,64 @@ function loadQuizLevel(level){
     let shuffled=[...pool];shuffleArray(shuffled);shuffled=shuffled.slice(0,count);
     quizData=shuffled.map(q=>{if(q.type==='mcq'){let o=q.opts.map((t,i)=>({text:t,isCorrect:i===q.ans}));shuffleArray(o);q.opts=o.map(z=>z.text);q.ans=o.findIndex(z=>z.isCorrect);} return q;});
     currentMode=level;initTimer(defaultTimes[level]||30);
-    state=Array(quizData.length).fill(null).map(()=>({selected:null,userText:null,hintUsed:false,solutionUsed:false,isEvaluated:false,points:0}));
+    state=Array(quizData.length).fill(null).map(()=>({selected:null,userText:null,hintStep:0,solutionUsed:false,isEvaluated:false,points:0}));
     document.getElementById('total-score-display').innerText=quizData.length;
-    document.getElementById('sidebar-title').innerText=level==='algebra'?'Algebra Manipulation Test':`${level.charAt(0).toUpperCase()+level.slice(1)} Navigator (${quizData.length}Q)`;
+    document.getElementById('sidebar-title').innerText=level==='algebra'?'Algebra Formative':`${level.charAt(0).toUpperCase()+level.slice(1)} (${quizData.length}Q)`;
     renderNav();renderQuestions();
     document.getElementById('exam-content').style.display='block';
     document.getElementById('arrow-exam').style.transform='rotate(0deg)';
-    document.getElementById('exam-wrapper').scrollIntoView({behavior:'smooth'});
 }
 function shuffleArray(a){for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}return a;}
 
 function renderNav(){const g=document.getElementById('nav-grid');g.innerHTML='';for(let i=0;i<quizData.length;i++){let b=document.createElement('button');b.className='nav-btn';b.innerText=i+1;b.id='nav-btn-'+i;b.onclick=()=>scrollToQ(i);g.appendChild(b);}updateNavStyles();}
-function updateNavStyles(){for(let i=0;i<quizData.length;i++){let b=document.getElementById('nav-btn-'+i);if(!b)continue;let s=state[i];b.className='nav-btn';if(s.isEvaluated){if(s.points===1)b.classList.add('status-correct');else if(s.points===0.5)b.classList.add('status-half');else b.classList.add('status-incorrect');}else if(s.selected!==null||s.userText!==null){b.classList.add('status-answered');}if(flaggedQuestions.has(i))b.classList.add('status-flagged');}}
-function renderQuestions(){const c=document.getElementById('quiz-container');c.innerHTML='';quizData.forEach((qData,qi)=>{const d=document.createElement('div');d.className='question-container';d.id='q-'+qi;let ch=chapterTitles[qData.chapter]||'Algebraic Manipulation';let h=`<div class="chapter-source">📘 Chapter ${qData.chapter+1}: ${ch}</div><div class="question-text">Q${qi+1}. ${qData.q}</div>`;if(qData.type==='typed'){h+=`<div class="math-toolbar"><span>Math:</span><button class="math-btn" onclick="insertSymbol(${qi}, 'x')">x</button><button class="math-btn" onclick="insertSymbol(${qi}, 'y')">y</button><button class="math-btn" onclick="insertSymbol(${qi}, '^2')">x²</button><button class="math-btn" onclick="insertSymbol(${qi}, '^3')">x³</button><button class="math-btn" onclick="insertSymbol(${qi}, '(')">(</button><button class="math-btn" onclick="insertSymbol(${qi},')')">)</button><button class="math-btn" onclick="insertSymbol(${qi},'+')">+</button><button class="math-btn" onclick="insertSymbol(${qi},'-')">−</button><button class="math-btn" onclick="insertSymbol(${qi},'>')">&gt;</button><button class="math-btn" onclick="insertSymbol(${qi},'<')">&lt;</button></div><div class="typed-input-container"><input type="text" class="typed-input" id="input-${qi}" placeholder="Type your answer..." onkeypress="handleEnter(event,${qi})" oninput="trackTypedAnswer(${qi})"><button class="check-btn" id="check-btn-${qi}" onclick="checkTypedAnswer(${qi})">Check Answer</button></div>`;}else{h+=`<div class="options">`;qData.opts.forEach((o,oi)=>{h+=`<button class="option-btn" id="opt-${qi}-${oi}" onclick="selectOption(${qi},${oi})">${o}</button>`;});h+=`</div>`;}h+=`<div class="action-row" id="actions-${qi}"><button class="action-btn btn-read-chapter" onclick="openModal(${qData.chapter})">📖 Read Chapter</button><button class="action-btn btn-hint" onclick="useHint(${qi})">💡 Hint (−0.5 pt)</button><button class="action-btn btn-solution" onclick="useSolution(${qi})">🔍 Show Solution (0 pts)</button><button class="action-btn btn-flag" id="flag-btn-${qi}" onclick="toggleFlag(${qi})">🚩 Flag</button></div><div class="hint-box" style="display:none;" id="hint-box-${qi}">${qData.hint}</div><div class="feedback" id="feedback-${qi}"></div>`;d.innerHTML=h;c.appendChild(d);});}
+function updateNavStyles(){for(let i=0;i<quizData.length;i++){let b=document.getElementById('nav-btn-'+i);if(!b)continue;let s=state[i];b.className='nav-btn';if(s.isEvaluated){if(s.points===1)b.classList.add('status-correct');else if(s.points>=0.25&&s.points<1)b.classList.add('status-half');else b.classList.add('status-incorrect');}else if(s.selected!==null||s.userText!==null){b.classList.add('status-answered');}if(flaggedQuestions.has(i))b.classList.add('status-flagged');}}
 
-// --- NEW: useSolution sets answerShown and evaluates with 0 points ---
-function useSolution(qIndex){
+function renderQuestions(){const c=document.getElementById('quiz-container');c.innerHTML='';quizData.forEach((qData,qi)=>{const d=document.createElement('div');d.className='question-container';d.id='q-'+qi;let ch=chapterTitles[qData.chapter]||'Algebraic Manipulation';let h=`<div class="chapter-source">📘 Chapter ${qData.chapter+1}: ${ch}</div><div class="question-text">Q${qi+1}. ${qData.q}</div>`;if(qData.type==='typed'){h+=`<div class="math-toolbar"><button class="math-btn" onclick="insertSymbol(${qi},'x')">x</button><button class="math-btn" onclick="insertSymbol(${qi},'y')">y</button><button class="math-btn" onclick="insertSymbol(${qi},'^2')">x²</button><button class="math-btn" onclick="insertSymbol(${qi},'^3')">x³</button><button class="math-btn" onclick="insertSymbol(${qi},'(')">(</button><button class="math-btn" onclick="insertSymbol(${qi},')')">)</button><button class="math-btn" onclick="insertSymbol(${qi},'+')">+</button><button class="math-btn" onclick="insertSymbol(${qi},'-')">−</button></div><div class="typed-input-container"><input type="text" class="typed-input" id="input-${qi}" placeholder="Type answer..." onkeypress="handleEnter(event,${qi})" oninput="trackTypedAnswer(${qi})"><button class="check-btn" id="check-btn-${qi}" onclick="checkTypedAnswer(${qi})">Check</button></div>`;}else{h+=`<div class="options">`;qData.opts.forEach((o,oi)=>{h+=`<button class="option-btn" id="opt-${qi}-${oi}" onclick="selectOption(${qi},${oi})">${o}</button>`;});h+=`</div>`;}h+=`<div class="action-row" id="actions-${qi}"><button class="action-btn btn-read-chapter" onclick="openModal(${qData.chapter})">📖 Read</button><button class="action-btn btn-hint" id="hint-btn-${qi}" onclick="useProgressiveHint(${qi})">💡 Hint (−.25)</button><button class="action-btn btn-solution" id="sol-btn-${qi}" onclick="useFullSolution(${qi})">🔍 Solution (−1 pt)</button><button class="action-btn btn-flag" id="flag-btn-${qi}" onclick="toggleFlag(${qi})">🚩 Flag</button></div><div class="hint-box" id="hint-box-${qi}"></div><div class="feedback" id="feedback-${qi}"></div>`;d.innerHTML=h;c.appendChild(d);});}
+
+// PROGRESSIVE HINT – each click shows next step, deducts 0.25
+function useProgressiveHint(qIndex){
+    if (state[qIndex].isEvaluated) return;
+    playClick();
+    let s = state[qIndex];
+    let steps = quizData[qIndex].steps;
+    if (s.hintStep >= steps.length) return;
+    s.hintStep++;
+    s.points = Math.max(0, s.points - 0.25);
+    let box = document.getElementById(`hint-box-${qIndex}`);
+    box.style.display = 'block';
+    box.innerHTML = `<strong>Step ${s.hintStep} of ${steps.length}:</strong> ${steps[s.hintStep-1]}${s.hintStep===steps.length ? ' <br><strong>(Final answer revealed)</strong>' : ''}`;
+    let btn = document.getElementById(`hint-btn-${qIndex}`);
+    if (s.hintStep < steps.length) {
+        let deduct = (s.hintStep+1)*0.25;
+        btn.innerText = `💡 Hint (−${deduct.toFixed(2)})`;
+    } else {
+        btn.disabled = true;
+        btn.innerText = 'Hint (max)';
+    }
+    updateNavStyles();
+}
+
+// FULL SOLUTION – deducts 1 point, fills answer, marks evaluated
+function useFullSolution(qIndex){
     if (state[qIndex].isEvaluated) return;
     playClick();
     state[qIndex].solutionUsed = true;
-    state[qIndex].answerShown = true;   // triggers 0 points in evaluateQuestion
+    state[qIndex].answerShown = true;
     state[qIndex].selected = null;
     state[qIndex].userText = null;
     evaluateQuestion(qIndex);
 }
 
 function toggleFlag(qIndex) { playClick(); if (flaggedQuestions.has(qIndex)) { flaggedQuestions.delete(qIndex); document.getElementById(`flag-btn-${qIndex}`).classList.remove('flagged-active'); document.getElementById(`flag-btn-${qIndex}`).innerText='🚩 Flag'; document.getElementById('q-'+qIndex).classList.remove('flagged-q'); showToast(`Q${qIndex+1} unflagged`,'#94a3b8'); } else { flaggedQuestions.add(qIndex); document.getElementById(`flag-btn-${qIndex}`).classList.add('flagged-active'); document.getElementById(`flag-btn-${qIndex}`).innerText='🚩 Flagged'; document.getElementById('q-'+qIndex).classList.add('flagged-q'); showToast(`🚩 Q${qIndex+1} flagged!`,'#a855f7'); } updateNavStyles(); }
-function openReviewModal() { playClick(); const overlay=document.getElementById('reviewModalOverlay'); const body=document.getElementById('reviewModalBody'); if (flaggedQuestions.size===0) { body.innerHTML=`<div class="review-empty">No questions flagged yet.<br>Click the 🚩 Flag button to add.</div>`; } else { body.innerHTML=''; [...flaggedQuestions].sort((a,b)=>a-b).forEach(qIndex=>{ const qData=quizData[qIndex]; const chTitle=chapterTitles[qData.chapter]||'Algebraic Manipulation'; const item=document.createElement('div'); item.className='review-item'; item.innerHTML=`<div class="review-item-title">Q${qIndex+1} — ${qData.type==='mcq'?'Multiple Choice':'Written Answer'}</div><div class="review-item-chapter">📘 Chapter ${qData.chapter+1}: ${chTitle}</div><div class="review-item-btns"><button class="review-item-btn review-read-btn" onclick="closeReviewModal();openModal(${qData.chapter})">📖 Read Chapter</button><button class="review-item-btn review-jump-btn" onclick="closeReviewModal();scrollToQ(${qIndex})">⬇️ Jump to Q${qIndex+1}</button></div>`; body.appendChild(item); }); } overlay.style.display='block'; }
+function openReviewModal() { playClick(); const overlay=document.getElementById('reviewModalOverlay'); const body=document.getElementById('reviewModalBody'); if (flaggedQuestions.size===0) { body.innerHTML=`<div class="review-empty">No questions flagged.<br>Click 🚩 to add.</div>`; } else { body.innerHTML=''; [...flaggedQuestions].sort((a,b)=>a-b).forEach(qIndex=>{ const qData=quizData[qIndex]; const chTitle=chapterTitles[qData.chapter]||'Algebraic Manipulation'; const item=document.createElement('div'); item.className='review-item'; item.innerHTML=`<div class="review-item-title">Q${qIndex+1} — ${qData.type==='mcq'?'MC':'Written'}</div><div class="review-item-chapter">📘 Ch. ${qData.chapter+1}: ${chTitle}</div><div class="review-item-btns"><button class="review-item-btn review-read-btn" onclick="closeReviewModal();openModal(${qData.chapter})">📖 Read</button><button class="review-item-btn review-jump-btn" onclick="closeReviewModal();scrollToQ(${qIndex})">⬇️ Jump</button></div>`; body.appendChild(item); }); } overlay.style.display='block'; }
 function closeReviewModal(){document.getElementById('reviewModalOverlay').style.display='none';}
 document.getElementById('reviewModalOverlay').addEventListener('click',function(e){if(e.target===this)closeReviewModal();});
 function insertSymbol(qIndex,sym){if(state[qIndex].isEvaluated)return;const inp=document.getElementById(`input-${qIndex}`);inp.value+=sym;inp.focus();trackTypedAnswer(qIndex);}
 function handleEnter(e,qIndex){if(e.key==='Enter'){e.preventDefault();checkTypedAnswer(qIndex);}}
 function trackTypedAnswer(qIndex){const val=document.getElementById(`input-${qIndex}`).value;state[qIndex].userText=val.trim()!==''?val:null;if(!immediateFeedback)updateNavStyles();}
-function checkTypedAnswer(qIndex){if(state[qIndex].isEvaluated)return;const val=document.getElementById(`input-${qIndex}`).value;if(val.trim()==='')return;state[qIndex].userText=val;if(immediateFeedback){evaluateQuestion(qIndex);}else{updateNavStyles();const btn=document.getElementById(`check-btn-${qIndex}`);if(btn){btn.innerText='Saved ✓';btn.style.background='var(--answered)';}}}
+function checkTypedAnswer(qIndex){if(state[qIndex].isEvaluated)return;const val=document.getElementById(`input-${qIndex}`).value;if(val.trim()==='')return;state[qIndex].userText=val;if(immediateFeedback)evaluateQuestion(qIndex);else{updateNavStyles();const btn=document.getElementById(`check-btn-${qIndex}`);if(btn){btn.innerText='Saved ✓';btn.style.background='var(--answered)';}}}
 function scrollToQ(index){const el=document.getElementById('q-'+index);if(!el)return;el.scrollIntoView({behavior:'smooth',block:'center'});el.style.boxShadow='0 0 0 4px rgba(59,130,246,0.4)';setTimeout(()=>el.style.boxShadow='',1500);}
-function toggleFeedbackMode(){playClick();immediateFeedback=document.getElementById('mode-toggle').checked;const label=document.getElementById('mode-label');if(immediateFeedback){label.innerText='ON: Immediate Feedback';label.style.color='var(--correct)';}else{label.innerText='OFF: Test Mode (Hidden)';label.style.color='var(--text-muted)';}}
-function useHint(qIndex){if(state[qIndex].isEvaluated)return;playClick();state[qIndex].hintUsed=true;document.getElementById(`hint-box-${qIndex}`).style.display='block';const hintBtn=document.getElementById(`actions-${qIndex}`).querySelector('.btn-hint');if(hintBtn){hintBtn.disabled=true;hintBtn.innerText='Hint Used';}}
+function toggleFeedbackMode(){playClick();immediateFeedback=document.getElementById('mode-toggle').checked;const label=document.getElementById('mode-label');label.innerText=immediateFeedback?'ON: Immediate Feedback':'OFF: Test Mode (Hidden)';label.style.color=immediateFeedback?'var(--correct)':'var(--text-muted)';}
 function selectOption(qIndex,optIndex){if(state[qIndex].isEvaluated)return;playClick();state[qIndex].selected=optIndex;const allBtns=document.getElementById(`q-${qIndex}`).querySelectorAll('.option-btn');allBtns.forEach(b=>b.classList.remove('selected-option'));document.getElementById(`opt-${qIndex}-${optIndex}`).classList.add('selected-option');if(immediateFeedback)evaluateQuestion(qIndex);else updateNavStyles();}
 
 function evaluateQuestion(qIndex){
@@ -523,32 +515,29 @@ function evaluateQuestion(qIndex){
     const fb=document.getElementById(`feedback-${qIndex}`);
     const actions=document.getElementById(`actions-${qIndex}`).querySelectorAll('.action-btn');
     actions.forEach(b=>{if(!b.classList.contains('btn-read-chapter')&&!b.classList.contains('btn-solution')&&!b.classList.contains('btn-flag')&&!b.classList.contains('btn-hint'))b.style.display='none';});
-    // Build step-by-step explanation if solutionUsed
-    let stepsHtml = '';
-    if (s.solutionUsed && qData.steps) {
-        stepsHtml = '<br><strong>Step‑by‑step:</strong><ol>' + qData.steps.map(step => `<li>${step}</li>`).join('') + '</ol>';
+    let stepsHtml='';
+    if(s.solutionUsed && qData.steps){
+        stepsHtml='<br><strong>Full Solution:</strong><ol>'+qData.steps.map(step=>`<li>${step}</li>`).join('')+'</ol>';
     }
     if(qData.type==='mcq'){
         const ci=qData.ans,all=document.getElementById(`q-${qIndex}`).querySelectorAll('.option-btn');all.forEach(b=>b.disabled=true);
         if(s.answerShown){
             s.points=0;
             all[ci].classList.add('correct-btn');
-            fb.innerHTML=`<strong>Solution Shown (0 pts)</strong><br>${qData.exp}${stepsHtml}`;
-            fb.className='feedback show error';
-            playIncorrect();
-        } else if(s.selected===ci){
-            s.points=s.hintUsed?0.5:1;
+            fb.innerHTML=`<strong>Solution (0 pts)</strong><br>${qData.exp}${stepsHtml}`;
+            fb.className='feedback show error';playIncorrect();
+        }else if(s.selected===ci){
+            let pts = 1 - (s.hintStep * 0.25);
+            s.points=Math.max(0,pts);
             all[s.selected].classList.add('correct-btn');
-            fb.innerHTML=`<strong>${s.hintUsed?'✓ Half Correct (+0.5)':'✓ Correct! (+1 pt)'}</strong><br>${qData.exp}`;
-            fb.className=`feedback show ${s.hintUsed?'half':'success'}`;
-            playCorrect();
-        } else {
+            fb.innerHTML=`<strong>${s.points>=1?'✓ Correct! (+1)':`✓ Correct (+${s.points.toFixed(2)})`}</strong><br>${qData.exp}`;
+            fb.className=`feedback show ${s.points>=0.5?'success':'half'}`;playCorrect();
+        }else{
             s.points=0;
             if(s.selected!==null)all[s.selected].classList.add('incorrect-btn');
             all[ci].classList.add('correct-btn');
             fb.innerHTML=`<strong>✗ Incorrect (0 pts).</strong><br>${qData.exp}`;
-            fb.className='feedback show error';
-            playIncorrect();
+            fb.className='feedback show error';playIncorrect();
         }
     }else{
         const inp=document.getElementById(`input-${qIndex}`),cb=document.getElementById(`check-btn-${qIndex}`);
@@ -556,24 +545,22 @@ function evaluateQuestion(qIndex){
         if(s.answerShown){
             s.points=0;
             if(inp){inp.value=qData.correctAnswers[0];inp.style.borderColor='var(--incorrect)';inp.style.color='var(--incorrect)';}
-            fb.innerHTML=`<strong>Solution Shown (0 pts)</strong><br>A correct answer: <strong>${qData.correctAnswers[0]}</strong><br>${qData.exp}${stepsHtml}`;
-            fb.className='feedback show error';
-            playIncorrect();
-        } else {
+            fb.innerHTML=`<strong>Solution (0 pts)</strong><br>A correct answer: <strong>${qData.correctAnswers[0]}</strong><br>${qData.exp}${stepsHtml}`;
+            fb.className='feedback show error';playIncorrect();
+        }else{
             let norm=(s.userText||'').replace(/\s+/g,'').toLowerCase();
             let ok=qData.correctAnswers.some(a=>a.replace(/\s+/g,'').toLowerCase()===norm);
             if(ok){
-                s.points=s.hintUsed?0.5:1;
+                let pts = 1 - (s.hintStep * 0.25);
+                s.points=Math.max(0,pts);
                 if(inp){inp.style.borderColor='var(--correct)';inp.style.backgroundColor='rgba(16,185,129,0.1)';inp.style.color='var(--correct)';}
-                fb.innerHTML=`<strong>${s.hintUsed?'✓ Half Correct (+0.5)':'✓ Correct! (+1 pt)'}</strong><br>${qData.exp}`;
-                fb.className=`feedback show ${s.hintUsed?'half':'success'}`;
-                playCorrect();
-            } else {
+                fb.innerHTML=`<strong>${s.points>=1?'✓ Correct! (+1)':`✓ Correct (+${s.points.toFixed(2)})`}</strong><br>${qData.exp}`;
+                fb.className=`feedback show ${s.points>=0.5?'success':'half'}`;playCorrect();
+            }else{
                 s.points=0;
                 if(inp){inp.style.borderColor='var(--incorrect)';inp.style.backgroundColor='rgba(239,68,68,0.1)';inp.style.color='var(--incorrect)';}
                 fb.innerHTML=`<strong>✗ Incorrect (0 pts).</strong><br>A correct answer: <strong>${qData.correctAnswers[0]}</strong><br>${qData.exp}`;
-                fb.className='feedback show error';
-                playIncorrect();
+                fb.className='feedback show error';playIncorrect();
             }
         }
     }
@@ -585,7 +572,7 @@ function submitQuiz(){
     for(let i=0;i<quizData.length;i++){let s=state[i],qData=quizData[i];if(!s.isEvaluated){if((qData.type==='mcq'&&s.selected!==null)||(qData.type==='typed'&&s.userText!==null)){evaluateQuestion(i);}else{s.answerShown=true;evaluateQuestion(i);}}}
     let total=0;state.forEach(s=>total+=s.points);
     let mypGrade=getMYP(total,quizData.length);
-    document.getElementById('final-score').innerText=total; document.getElementById('myp-score').innerText=mypGrade;
+    document.getElementById('final-score').innerText=total.toFixed(2);document.getElementById('myp-score').innerText=mypGrade;
     if(mypGrade>=7&&currentMode==='final'){launchConfetti();playVictoryChord();}else if(mypGrade>=6){playCorrect();}
     saveProgress(currentMode,total,mypGrade);loadProgress();
     document.getElementById('final-results').style.display='block';
@@ -593,27 +580,15 @@ function submitQuiz(){
 }
 function getMYP(score,totalQs){let pct=score/totalQs;if(pct>=0.88)return 8;if(pct>=0.76)return 7;if(pct>=0.63)return 6;if(pct>=0.50)return 5;if(pct>=0.38)return 4;if(pct>=0.25)return 3;if(pct>=0.12)return 2;return pct>0?1:0;}
 function saveProgress(mode,score,myp){let history=JSON.parse(localStorage.getItem('mypMathHistory'))||[];history.unshift({mode:mode.toUpperCase(),score:score,myp:myp,date:new Date().toLocaleDateString()});if(history.length>5)history.pop();localStorage.setItem('mypMathHistory',JSON.stringify(history));}
-function loadProgress(){let history=JSON.parse(localStorage.getItem('mypMathHistory'))||[];let list=document.getElementById('history-list');if(!list)return;list.innerHTML='';if(history.length===0){list.innerHTML='<li>No past attempts found. Take a test!</li>';return;}history.forEach(h=>{list.innerHTML+=`<li><span>📅 ${h.date} — <strong>${h.mode}</strong></span> <span>Score: ${h.score} | <strong>Level ${h.myp}</strong></span></li>`;});}
+function loadProgress(){let history=JSON.parse(localStorage.getItem('mypMathHistory'))||[];let list=document.getElementById('history-list');if(!list)return;list.innerHTML='';if(history.length===0){list.innerHTML='<li>No past attempts.</li>';return;}history.forEach(h=>{list.innerHTML+=`<li><span>📅 ${h.date} — <strong>${h.mode}</strong></span> <span>Score: ${h.score} | <strong>Level ${h.myp}</strong></span></li>`;});}
 
 // ==================== LEARNING MODULE MODAL ====================
-window.openModal=function(index){
-    playClick();
-    currentTopicIndex=index;
-    document.getElementById('modalTitle').innerText=modalContent[index].title;
-    document.getElementById('modalBody').innerHTML=modalContent[index].body;
-    document.getElementById('modalOverlay').style.display='block';
-    document.body.style.overflow='hidden';
-    document.getElementById('modalBody').scrollTop=0;
-};
+window.openModal=function(index){playClick();currentTopicIndex=index;document.getElementById('modalTitle').innerText=modalContent[index].title;document.getElementById('modalBody').innerHTML=modalContent[index].body;document.getElementById('modalOverlay').style.display='block';document.body.style.overflow='hidden';document.getElementById('modalBody').scrollTop=0;};
 window.closeModal=function(){document.getElementById('modalOverlay').style.display='none';document.body.style.overflow='auto';document.getElementById('modalBody').innerHTML='';};
 document.getElementById('modalOverlay').addEventListener('click',function(e){if(e.target===this)closeModal();});
 
 // ==================== INIT ====================
-window.onload=function(){
-    loadQuizLevel('easy');
-    renderTextbook();
-    loadProgress();
-};
+window.onload=function(){loadQuizLevel('easy');renderTextbook();loadProgress();};
 </script>
 </body>
 </html>
